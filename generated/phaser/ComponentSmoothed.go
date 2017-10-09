@@ -4,51 +4,45 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // ComponentSmoothed The Smoothed component allows a Game Object to control anti-aliasing of an image based texture.
 type ComponentSmoothed struct {
-    *js.Object
+	*js.Object
 }
 
 // NewComponentSmoothed The Smoothed component allows a Game Object to control anti-aliasing of an image based texture.
 func NewComponentSmoothed() *ComponentSmoothed {
-    return &ComponentSmoothed{js.Global.Get("Phaser").Get("Component").Get("Smoothed").New()}
+	return &ComponentSmoothed{js.Global.Get("Phaser").Get("Component").Get("Smoothed").New()}
 }
+
 // NewComponentSmoothedI The Smoothed component allows a Game Object to control anti-aliasing of an image based texture.
 func NewComponentSmoothedI(args ...interface{}) *ComponentSmoothed {
-    return &ComponentSmoothed{js.Global.Get("Phaser").Get("Component").Get("Smoothed").New(args)}
+	return &ComponentSmoothed{js.Global.Get("Phaser").Get("Component").Get("Smoothed").New(args)}
 }
 
-
-
-// ComponentSmoothed Binding conversion method to ComponentSmoothed point 
+// ComponentSmoothed Binding conversion method to ComponentSmoothed point
 func ToComponentSmoothed(jsStruct interface{}) *ComponentSmoothed {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &ComponentSmoothed{Object: object}
 	}
 	return nil
 }
 
-
-
 // Smoothed Enable or disable texture smoothing for this Game Object.
-// 
+//
 // It only takes effect if the Game Object is using an image based texture.
-// 
+//
 // Smoothing is enabled by default.
-func (self *ComponentSmoothed) Smoothed() bool{
-    return self.Object.Get("smoothed").Bool()
+func (self *ComponentSmoothed) Smoothed() bool {
+	return self.Object.Get("smoothed").Bool()
 }
 
 // SetSmoothedA Enable or disable texture smoothing for this Game Object.
-// 
+//
 // It only takes effect if the Game Object is using an image based texture.
-// 
+//
 // Smoothing is enabled by default.
 func (self *ComponentSmoothed) SetSmoothedA(member bool) {
-    self.Object.Set("smoothed", member)
+	self.Object.Set("smoothed", member)
 }
-
-

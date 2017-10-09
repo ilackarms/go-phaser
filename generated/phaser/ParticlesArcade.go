@@ -4,33 +4,27 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // ParticlesArcade Arcade Particles is a Particle System integrated with Arcade Physics.
 type ParticlesArcade struct {
-    *js.Object
+	*js.Object
 }
 
 // NewParticlesArcade Arcade Particles is a Particle System integrated with Arcade Physics.
 func NewParticlesArcade() *ParticlesArcade {
-    return &ParticlesArcade{js.Global.Get("Phaser").Get("Particles").Get("Arcade").New()}
+	return &ParticlesArcade{js.Global.Get("Phaser").Get("Particles").Get("Arcade").New()}
 }
+
 // NewParticlesArcadeI Arcade Particles is a Particle System integrated with Arcade Physics.
 func NewParticlesArcadeI(args ...interface{}) *ParticlesArcade {
-    return &ParticlesArcade{js.Global.Get("Phaser").Get("Particles").Get("Arcade").New(args)}
+	return &ParticlesArcade{js.Global.Get("Phaser").Get("Particles").Get("Arcade").New(args)}
 }
 
-
-
-// ParticlesArcade Binding conversion method to ParticlesArcade point 
+// ParticlesArcade Binding conversion method to ParticlesArcade point
 func ToParticlesArcade(jsStruct interface{}) *ParticlesArcade {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &ParticlesArcade{Object: object}
 	}
 	return nil
 }
-
-
-
-

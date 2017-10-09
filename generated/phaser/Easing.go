@@ -4,33 +4,27 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // Easing A collection of easing methods defining ease-in and ease-out curves.
 type Easing struct {
-    *js.Object
+	*js.Object
 }
 
 // NewEasing A collection of easing methods defining ease-in and ease-out curves.
 func NewEasing() *Easing {
-    return &Easing{js.Global.Get("Phaser").Get("Easing").New()}
+	return &Easing{js.Global.Get("Phaser").Get("Easing").New()}
 }
+
 // NewEasingI A collection of easing methods defining ease-in and ease-out curves.
 func NewEasingI(args ...interface{}) *Easing {
-    return &Easing{js.Global.Get("Phaser").Get("Easing").New(args)}
+	return &Easing{js.Global.Get("Phaser").Get("Easing").New(args)}
 }
 
-
-
-// Easing Binding conversion method to Easing point 
+// Easing Binding conversion method to Easing point
 func ToEasing(jsStruct interface{}) *Easing {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &Easing{Object: object}
 	}
 	return nil
 }
-
-
-
-

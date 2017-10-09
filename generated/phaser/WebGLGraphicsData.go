@@ -4,53 +4,47 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // WebGLGraphicsData empty description
 type WebGLGraphicsData struct {
-    *js.Object
+	*js.Object
 }
 
 // NewWebGLGraphicsData empty description
 func NewWebGLGraphicsData() *WebGLGraphicsData {
-    return &WebGLGraphicsData{js.Global.Get("PIXI").Get("WebGLGraphicsData").New()}
+	return &WebGLGraphicsData{js.Global.Get("PIXI").Get("WebGLGraphicsData").New()}
 }
+
 // NewWebGLGraphicsDataI empty description
 func NewWebGLGraphicsDataI(args ...interface{}) *WebGLGraphicsData {
-    return &WebGLGraphicsData{js.Global.Get("PIXI").Get("WebGLGraphicsData").New(args)}
+	return &WebGLGraphicsData{js.Global.Get("PIXI").Get("WebGLGraphicsData").New(args)}
 }
 
-
-
-// WebGLGraphicsData Binding conversion method to WebGLGraphicsData point 
+// WebGLGraphicsData Binding conversion method to WebGLGraphicsData point
 func ToWebGLGraphicsData(jsStruct interface{}) *WebGLGraphicsData {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &WebGLGraphicsData{Object: object}
 	}
 	return nil
 }
 
-
-
-
 // Reset empty description
 func (self *WebGLGraphicsData) Reset() {
-    self.Object.Call("reset")
+	self.Object.Call("reset")
 }
 
 // ResetI empty description
 func (self *WebGLGraphicsData) ResetI(args ...interface{}) {
-    self.Object.Call("reset", args)
+	self.Object.Call("reset", args)
 }
 
 // Upload empty description
 func (self *WebGLGraphicsData) Upload() {
-    self.Object.Call("upload")
+	self.Object.Call("upload")
 }
 
 // UploadI empty description
 func (self *WebGLGraphicsData) UploadI(args ...interface{}) {
-    self.Object.Call("upload", args)
+	self.Object.Call("upload", args)
 }
-

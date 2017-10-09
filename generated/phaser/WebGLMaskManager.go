@@ -4,73 +4,67 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // WebGLMaskManager empty description
 type WebGLMaskManager struct {
-    *js.Object
+	*js.Object
 }
 
 // NewWebGLMaskManager empty description
 func NewWebGLMaskManager() *WebGLMaskManager {
-    return &WebGLMaskManager{js.Global.Get("PIXI").Get("WebGLMaskManager").New()}
+	return &WebGLMaskManager{js.Global.Get("PIXI").Get("WebGLMaskManager").New()}
 }
+
 // NewWebGLMaskManagerI empty description
 func NewWebGLMaskManagerI(args ...interface{}) *WebGLMaskManager {
-    return &WebGLMaskManager{js.Global.Get("PIXI").Get("WebGLMaskManager").New(args)}
+	return &WebGLMaskManager{js.Global.Get("PIXI").Get("WebGLMaskManager").New(args)}
 }
 
-
-
-// WebGLMaskManager Binding conversion method to WebGLMaskManager point 
+// WebGLMaskManager Binding conversion method to WebGLMaskManager point
 func ToWebGLMaskManager(jsStruct interface{}) *WebGLMaskManager {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &WebGLMaskManager{Object: object}
 	}
 	return nil
 }
 
-
-
-
 // SetContext Sets the drawing context to the one given in parameter.
 func (self *WebGLMaskManager) SetContext(gl *WebGLContext) {
-    self.Object.Call("setContext", gl)
+	self.Object.Call("setContext", gl)
 }
 
 // SetContextI Sets the drawing context to the one given in parameter.
 func (self *WebGLMaskManager) SetContextI(args ...interface{}) {
-    self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args)
 }
 
 // PushMask Applies the Mask and adds it to the current filter stack.
 func (self *WebGLMaskManager) PushMask(maskData []interface{}, renderSession interface{}) {
-    self.Object.Call("pushMask", maskData, renderSession)
+	self.Object.Call("pushMask", maskData, renderSession)
 }
 
 // PushMaskI Applies the Mask and adds it to the current filter stack.
 func (self *WebGLMaskManager) PushMaskI(args ...interface{}) {
-    self.Object.Call("pushMask", args)
+	self.Object.Call("pushMask", args)
 }
 
 // PopMask Removes the last filter from the filter stack and doesn't return it.
 func (self *WebGLMaskManager) PopMask(maskData []interface{}, renderSession interface{}) {
-    self.Object.Call("popMask", maskData, renderSession)
+	self.Object.Call("popMask", maskData, renderSession)
 }
 
 // PopMaskI Removes the last filter from the filter stack and doesn't return it.
 func (self *WebGLMaskManager) PopMaskI(args ...interface{}) {
-    self.Object.Call("popMask", args)
+	self.Object.Call("popMask", args)
 }
 
 // Destroy Destroys the mask stack.
 func (self *WebGLMaskManager) Destroy() {
-    self.Object.Call("destroy")
+	self.Object.Call("destroy")
 }
 
 // DestroyI Destroys the mask stack.
 func (self *WebGLMaskManager) DestroyI(args ...interface{}) {
-    self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args)
 }
-

@@ -4,7 +4,6 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // Mat2d A mat2d contains six elements defined as:
@@ -20,7 +19,7 @@ import (
 // </pre>
 // The last row is ignored so the array is shorter and operations are faster.
 type Mat2d struct {
-    *js.Object
+	*js.Object
 }
 
 // NewMat2d A mat2d contains six elements defined as:
@@ -36,8 +35,9 @@ type Mat2d struct {
 // </pre>
 // The last row is ignored so the array is shorter and operations are faster.
 func NewMat2d() *Mat2d {
-    return &Mat2d{js.Global.Get("mat2d").New()}
+	return &Mat2d{js.Global.Get("mat2d").New()}
 }
+
 // NewMat2dI A mat2d contains six elements defined as:
 // <pre>
 // [a, c, tx,
@@ -51,19 +51,13 @@ func NewMat2d() *Mat2d {
 // </pre>
 // The last row is ignored so the array is shorter and operations are faster.
 func NewMat2dI(args ...interface{}) *Mat2d {
-    return &Mat2d{js.Global.Get("mat2d").New(args)}
+	return &Mat2d{js.Global.Get("mat2d").New(args)}
 }
 
-
-
-// Mat2d Binding conversion method to Mat2d point 
+// Mat2d Binding conversion method to Mat2d point
 func ToMat2d(jsStruct interface{}) *Mat2d {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &Mat2d{Object: object}
 	}
 	return nil
 }
-
-
-
-

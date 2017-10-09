@@ -4,63 +4,57 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // EasingBack Back easing.
 type EasingBack struct {
-    *js.Object
+	*js.Object
 }
 
 // NewEasingBack Back easing.
 func NewEasingBack() *EasingBack {
-    return &EasingBack{js.Global.Get("Phaser").Get("Easing").Get("Back").New()}
+	return &EasingBack{js.Global.Get("Phaser").Get("Easing").Get("Back").New()}
 }
+
 // NewEasingBackI Back easing.
 func NewEasingBackI(args ...interface{}) *EasingBack {
-    return &EasingBack{js.Global.Get("Phaser").Get("Easing").Get("Back").New(args)}
+	return &EasingBack{js.Global.Get("Phaser").Get("Easing").Get("Back").New(args)}
 }
 
-
-
-// EasingBack Binding conversion method to EasingBack point 
+// EasingBack Binding conversion method to EasingBack point
 func ToEasingBack(jsStruct interface{}) *EasingBack {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &EasingBack{Object: object}
 	}
 	return nil
 }
 
-
-
-
 // In Back ease-in.
-func (self *EasingBack) In(k int) int{
-    return self.Object.Call("In", k).Int()
+func (self *EasingBack) In(k int) int {
+	return self.Object.Call("In", k).Int()
 }
 
 // InI Back ease-in.
-func (self *EasingBack) InI(args ...interface{}) int{
-    return self.Object.Call("In", args).Int()
+func (self *EasingBack) InI(args ...interface{}) int {
+	return self.Object.Call("In", args).Int()
 }
 
 // Out Back ease-out.
-func (self *EasingBack) Out(k int) int{
-    return self.Object.Call("Out", k).Int()
+func (self *EasingBack) Out(k int) int {
+	return self.Object.Call("Out", k).Int()
 }
 
 // OutI Back ease-out.
-func (self *EasingBack) OutI(args ...interface{}) int{
-    return self.Object.Call("Out", args).Int()
+func (self *EasingBack) OutI(args ...interface{}) int {
+	return self.Object.Call("Out", args).Int()
 }
 
 // InOut Back ease-in/out.
-func (self *EasingBack) InOut(k int) int{
-    return self.Object.Call("InOut", k).Int()
+func (self *EasingBack) InOut(k int) int {
+	return self.Object.Call("InOut", k).Int()
 }
 
 // InOutI Back ease-in/out.
-func (self *EasingBack) InOutI(args ...interface{}) int{
-    return self.Object.Call("InOut", args).Int()
+func (self *EasingBack) InOutI(args ...interface{}) int {
+	return self.Object.Call("InOut", args).Int()
 }
-

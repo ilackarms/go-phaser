@@ -4,47 +4,43 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // WebGLShaderManager empty description
 type WebGLShaderManager struct {
-    *js.Object
+	*js.Object
 }
 
 // NewWebGLShaderManager empty description
 func NewWebGLShaderManager() *WebGLShaderManager {
-    return &WebGLShaderManager{js.Global.Get("PIXI").Get("WebGLShaderManager").New()}
+	return &WebGLShaderManager{js.Global.Get("PIXI").Get("WebGLShaderManager").New()}
 }
+
 // NewWebGLShaderManagerI empty description
 func NewWebGLShaderManagerI(args ...interface{}) *WebGLShaderManager {
-    return &WebGLShaderManager{js.Global.Get("PIXI").Get("WebGLShaderManager").New(args)}
+	return &WebGLShaderManager{js.Global.Get("PIXI").Get("WebGLShaderManager").New(args)}
 }
 
-
-
-// WebGLShaderManager Binding conversion method to WebGLShaderManager point 
+// WebGLShaderManager Binding conversion method to WebGLShaderManager point
 func ToWebGLShaderManager(jsStruct interface{}) *WebGLShaderManager {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &WebGLShaderManager{Object: object}
 	}
 	return nil
 }
 
-
-
 // MaxAttibs empty description
-func (self *WebGLShaderManager) MaxAttibs() int{
-    return self.Object.Get("maxAttibs").Int()
+func (self *WebGLShaderManager) MaxAttibs() int {
+	return self.Object.Get("maxAttibs").Int()
 }
 
 // SetMaxAttibsA empty description
 func (self *WebGLShaderManager) SetMaxAttibsA(member int) {
-    self.Object.Set("maxAttibs", member)
+	self.Object.Set("maxAttibs", member)
 }
 
 // AttribState empty description
-func (self *WebGLShaderManager) AttribState() []interface{}{
+func (self *WebGLShaderManager) AttribState() []interface{} {
 	array00 := self.Object.Get("attribState")
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
@@ -56,11 +52,11 @@ func (self *WebGLShaderManager) AttribState() []interface{}{
 
 // SetAttribStateA empty description
 func (self *WebGLShaderManager) SetAttribStateA(member []interface{}) {
-    self.Object.Set("attribState", member)
+	self.Object.Set("attribState", member)
 }
 
 // TempAttribState empty description
-func (self *WebGLShaderManager) TempAttribState() []interface{}{
+func (self *WebGLShaderManager) TempAttribState() []interface{} {
 	array00 := self.Object.Get("tempAttribState")
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
@@ -72,11 +68,11 @@ func (self *WebGLShaderManager) TempAttribState() []interface{}{
 
 // SetTempAttribStateA empty description
 func (self *WebGLShaderManager) SetTempAttribStateA(member []interface{}) {
-    self.Object.Set("tempAttribState", member)
+	self.Object.Set("tempAttribState", member)
 }
 
 // Stack empty description
-func (self *WebGLShaderManager) Stack() []interface{}{
+func (self *WebGLShaderManager) Stack() []interface{} {
 	array00 := self.Object.Get("stack")
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
@@ -88,47 +84,45 @@ func (self *WebGLShaderManager) Stack() []interface{}{
 
 // SetStackA empty description
 func (self *WebGLShaderManager) SetStackA(member []interface{}) {
-    self.Object.Set("stack", member)
+	self.Object.Set("stack", member)
 }
-
 
 // SetContext Initialises the context and the properties.
 func (self *WebGLShaderManager) SetContext(gl *WebGLContext) {
-    self.Object.Call("setContext", gl)
+	self.Object.Call("setContext", gl)
 }
 
 // SetContextI Initialises the context and the properties.
 func (self *WebGLShaderManager) SetContextI(args ...interface{}) {
-    self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args)
 }
 
 // SetAttribs Takes the attributes given in parameters.
 func (self *WebGLShaderManager) SetAttribs(attribs []interface{}) {
-    self.Object.Call("setAttribs", attribs)
+	self.Object.Call("setAttribs", attribs)
 }
 
 // SetAttribsI Takes the attributes given in parameters.
 func (self *WebGLShaderManager) SetAttribsI(args ...interface{}) {
-    self.Object.Call("setAttribs", args)
+	self.Object.Call("setAttribs", args)
 }
 
 // SetShader Sets the current shader.
 func (self *WebGLShaderManager) SetShader(shader interface{}) {
-    self.Object.Call("setShader", shader)
+	self.Object.Call("setShader", shader)
 }
 
 // SetShaderI Sets the current shader.
 func (self *WebGLShaderManager) SetShaderI(args ...interface{}) {
-    self.Object.Call("setShader", args)
+	self.Object.Call("setShader", args)
 }
 
 // Destroy Destroys this object.
 func (self *WebGLShaderManager) Destroy() {
-    self.Object.Call("destroy")
+	self.Object.Call("destroy")
 }
 
 // DestroyI Destroys this object.
 func (self *WebGLShaderManager) DestroyI(args ...interface{}) {
-    self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args)
 }
-

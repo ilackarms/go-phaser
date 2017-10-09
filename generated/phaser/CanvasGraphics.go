@@ -4,33 +4,27 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // CanvasGraphics A set of functions used by the canvas renderer to draw the primitive graphics data.
 type CanvasGraphics struct {
-    *js.Object
+	*js.Object
 }
 
 // NewCanvasGraphics A set of functions used by the canvas renderer to draw the primitive graphics data.
 func NewCanvasGraphics() *CanvasGraphics {
-    return &CanvasGraphics{js.Global.Get("PIXI").Get("CanvasGraphics").New()}
+	return &CanvasGraphics{js.Global.Get("PIXI").Get("CanvasGraphics").New()}
 }
+
 // NewCanvasGraphicsI A set of functions used by the canvas renderer to draw the primitive graphics data.
 func NewCanvasGraphicsI(args ...interface{}) *CanvasGraphics {
-    return &CanvasGraphics{js.Global.Get("PIXI").Get("CanvasGraphics").New(args)}
+	return &CanvasGraphics{js.Global.Get("PIXI").Get("CanvasGraphics").New(args)}
 }
 
-
-
-// CanvasGraphics Binding conversion method to CanvasGraphics point 
+// CanvasGraphics Binding conversion method to CanvasGraphics point
 func ToCanvasGraphics(jsStruct interface{}) *CanvasGraphics {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &CanvasGraphics{Object: object}
 	}
 	return nil
 }
-
-
-
-

@@ -4,63 +4,57 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // EasingQuartic Quartic easing.
 type EasingQuartic struct {
-    *js.Object
+	*js.Object
 }
 
 // NewEasingQuartic Quartic easing.
 func NewEasingQuartic() *EasingQuartic {
-    return &EasingQuartic{js.Global.Get("Phaser").Get("Easing").Get("Quartic").New()}
+	return &EasingQuartic{js.Global.Get("Phaser").Get("Easing").Get("Quartic").New()}
 }
+
 // NewEasingQuarticI Quartic easing.
 func NewEasingQuarticI(args ...interface{}) *EasingQuartic {
-    return &EasingQuartic{js.Global.Get("Phaser").Get("Easing").Get("Quartic").New(args)}
+	return &EasingQuartic{js.Global.Get("Phaser").Get("Easing").Get("Quartic").New(args)}
 }
 
-
-
-// EasingQuartic Binding conversion method to EasingQuartic point 
+// EasingQuartic Binding conversion method to EasingQuartic point
 func ToEasingQuartic(jsStruct interface{}) *EasingQuartic {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &EasingQuartic{Object: object}
 	}
 	return nil
 }
 
-
-
-
 // In Quartic ease-in.
-func (self *EasingQuartic) In(k int) int{
-    return self.Object.Call("In", k).Int()
+func (self *EasingQuartic) In(k int) int {
+	return self.Object.Call("In", k).Int()
 }
 
 // InI Quartic ease-in.
-func (self *EasingQuartic) InI(args ...interface{}) int{
-    return self.Object.Call("In", args).Int()
+func (self *EasingQuartic) InI(args ...interface{}) int {
+	return self.Object.Call("In", args).Int()
 }
 
 // Out Quartic ease-out.
-func (self *EasingQuartic) Out(k int) int{
-    return self.Object.Call("Out", k).Int()
+func (self *EasingQuartic) Out(k int) int {
+	return self.Object.Call("Out", k).Int()
 }
 
 // OutI Quartic ease-out.
-func (self *EasingQuartic) OutI(args ...interface{}) int{
-    return self.Object.Call("Out", args).Int()
+func (self *EasingQuartic) OutI(args ...interface{}) int {
+	return self.Object.Call("Out", args).Int()
 }
 
 // InOut Quartic ease-in/out.
-func (self *EasingQuartic) InOut(k int) int{
-    return self.Object.Call("InOut", k).Int()
+func (self *EasingQuartic) InOut(k int) int {
+	return self.Object.Call("InOut", k).Int()
 }
 
 // InOutI Quartic ease-in/out.
-func (self *EasingQuartic) InOutI(args ...interface{}) int{
-    return self.Object.Call("InOut", args).Int()
+func (self *EasingQuartic) InOutI(args ...interface{}) int {
+	return self.Object.Call("InOut", args).Int()
 }
-

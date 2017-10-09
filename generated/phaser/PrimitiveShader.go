@@ -4,57 +4,53 @@ package phaser
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-
 )
 
 // PrimitiveShader empty description
 type PrimitiveShader struct {
-    *js.Object
+	*js.Object
 }
 
 // NewPrimitiveShader empty description
 func NewPrimitiveShader(gl *WebGLContext) *PrimitiveShader {
-    return &PrimitiveShader{js.Global.Get("PIXI").Get("PrimitiveShader").New(gl)}
+	return &PrimitiveShader{js.Global.Get("PIXI").Get("PrimitiveShader").New(gl)}
 }
+
 // NewPrimitiveShaderI empty description
 func NewPrimitiveShaderI(args ...interface{}) *PrimitiveShader {
-    return &PrimitiveShader{js.Global.Get("PIXI").Get("PrimitiveShader").New(args)}
+	return &PrimitiveShader{js.Global.Get("PIXI").Get("PrimitiveShader").New(args)}
 }
 
-
-
-// PrimitiveShader Binding conversion method to PrimitiveShader point 
+// PrimitiveShader Binding conversion method to PrimitiveShader point
 func ToPrimitiveShader(jsStruct interface{}) *PrimitiveShader {
-    if object, ok := jsStruct.(*js.Object); ok {
+	if object, ok := jsStruct.(*js.Object); ok {
 		return &PrimitiveShader{Object: object}
 	}
 	return nil
 }
 
-
-
 // Gl empty description
-func (self *PrimitiveShader) Gl() WebGLContext{
-    return WrapWebGLContext(self.Object.Get("gl"))
+func (self *PrimitiveShader) Gl() WebGLContext {
+	return WrapWebGLContext(self.Object.Get("gl"))
 }
 
 // SetGlA empty description
 func (self *PrimitiveShader) SetGlA(member WebGLContext) {
-    self.Object.Set("gl", member)
+	self.Object.Set("gl", member)
 }
 
 // Program The WebGL program.
-func (self *PrimitiveShader) Program() interface{}{
-    return self.Object.Get("program")
+func (self *PrimitiveShader) Program() interface{} {
+	return self.Object.Get("program")
 }
 
 // SetProgramA The WebGL program.
 func (self *PrimitiveShader) SetProgramA(member interface{}) {
-    self.Object.Set("program", member)
+	self.Object.Set("program", member)
 }
 
 // FragmentSrc The fragment shader.
-func (self *PrimitiveShader) FragmentSrc() []interface{}{
+func (self *PrimitiveShader) FragmentSrc() []interface{} {
 	array00 := self.Object.Get("fragmentSrc")
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
@@ -66,11 +62,11 @@ func (self *PrimitiveShader) FragmentSrc() []interface{}{
 
 // SetFragmentSrcA The fragment shader.
 func (self *PrimitiveShader) SetFragmentSrcA(member []interface{}) {
-    self.Object.Set("fragmentSrc", member)
+	self.Object.Set("fragmentSrc", member)
 }
 
 // VertexSrc The vertex shader.
-func (self *PrimitiveShader) VertexSrc() []interface{}{
+func (self *PrimitiveShader) VertexSrc() []interface{} {
 	array00 := self.Object.Get("vertexSrc")
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
@@ -82,27 +78,25 @@ func (self *PrimitiveShader) VertexSrc() []interface{}{
 
 // SetVertexSrcA The vertex shader.
 func (self *PrimitiveShader) SetVertexSrcA(member []interface{}) {
-    self.Object.Set("vertexSrc", member)
+	self.Object.Set("vertexSrc", member)
 }
-
 
 // Init Initialises the shader.
 func (self *PrimitiveShader) Init() {
-    self.Object.Call("init")
+	self.Object.Call("init")
 }
 
 // InitI Initialises the shader.
 func (self *PrimitiveShader) InitI(args ...interface{}) {
-    self.Object.Call("init", args)
+	self.Object.Call("init", args)
 }
 
 // Destroy Destroys the shader.
 func (self *PrimitiveShader) Destroy() {
-    self.Object.Call("destroy")
+	self.Object.Call("destroy")
 }
 
 // DestroyI Destroys the shader.
 func (self *PrimitiveShader) DestroyI(args ...interface{}) {
-    self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args)
 }
-
