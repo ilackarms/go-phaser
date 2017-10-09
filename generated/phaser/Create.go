@@ -64,12 +64,12 @@ func (self *Create) SetBmdA(member *BitmapData) {
 }
 
 // Canvas The canvas the BitmapData uses.
-func (self *Create) Canvas() dom.HTMLCanvasElement {
+func (self *Create) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA The canvas the BitmapData uses.
-func (self *Create) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *Create) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 

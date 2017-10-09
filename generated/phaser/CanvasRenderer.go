@@ -130,12 +130,12 @@ func (self *CanvasRenderer) SetHeightA(member int) {
 }
 
 // View The canvas element that everything is drawn to.
-func (self *CanvasRenderer) View() dom.HTMLCanvasElement {
+func (self *CanvasRenderer) View() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("view"))
 }
 
 // SetViewA The canvas element that everything is drawn to.
-func (self *CanvasRenderer) SetViewA(member dom.HTMLCanvasElement) {
+func (self *CanvasRenderer) SetViewA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("view", member)
 }
 

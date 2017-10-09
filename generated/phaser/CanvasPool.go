@@ -48,12 +48,12 @@ func (self *CanvasPool) SetPoolA(member []interface{}) {
 }
 
 // Create Creates a new Canvas DOM element, or pulls one from the pool if free.
-func (self *CanvasPool) Create(parent interface{}, width int, height int) dom.HTMLCanvasElement {
+func (self *CanvasPool) Create(parent interface{}, width int, height int) *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Call("create", parent, width, height))
 }
 
 // CreateI Creates a new Canvas DOM element, or pulls one from the pool if free.
-func (self *CanvasPool) CreateI(args ...interface{}) dom.HTMLCanvasElement {
+func (self *CanvasPool) CreateI(args ...interface{}) *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Call("create", args))
 }
 

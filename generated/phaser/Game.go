@@ -476,12 +476,12 @@ func (self *Game) SetCameraA(member *Camera) {
 }
 
 // Canvas A handy reference to renderer.view, the canvas that the game is being rendered in to.
-func (self *Game) Canvas() dom.HTMLCanvasElement {
+func (self *Game) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA A handy reference to renderer.view, the canvas that the game is being rendered in to.
-func (self *Game) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *Game) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 

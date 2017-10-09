@@ -56,12 +56,12 @@ func (self *CanvasTinter) SetCanUseMultiplyA(member bool) {
 }
 
 // GetTintedTexture Basically this method just needs a sprite and a color and tints the sprite with the given color.
-func (self *CanvasTinter) GetTintedTexture(sprite *Sprite, color int) dom.HTMLCanvasElement {
+func (self *CanvasTinter) GetTintedTexture(sprite *Sprite, color int) *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Call("getTintedTexture", sprite, color))
 }
 
 // GetTintedTextureI Basically this method just needs a sprite and a color and tints the sprite with the given color.
-func (self *CanvasTinter) GetTintedTextureI(args ...interface{}) dom.HTMLCanvasElement {
+func (self *CanvasTinter) GetTintedTextureI(args ...interface{}) *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Call("getTintedTexture", args))
 }
 

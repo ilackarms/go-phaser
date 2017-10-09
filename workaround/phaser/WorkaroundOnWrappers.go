@@ -15,7 +15,7 @@ func WrapDOMElement(o *js.Object) DOMElement {
 	return dom.WrapElement(o)
 }
 
-func WrapHTMLCanvasElement(o *js.Object) dom.HTMLCanvasElement {
+func WrapHTMLCanvasElement(o *js.Object) *dom.HTMLCanvasElement {
 	return dom.WrapHTMLElement(o).(dom.HTMLCanvasElement)
 }
 

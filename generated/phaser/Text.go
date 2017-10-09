@@ -261,22 +261,22 @@ func (self *Text) SetTextBoundsA(member *Rectangle) {
 }
 
 // Canvas The canvas element that the text is rendered.
-func (self *Text) Canvas() dom.HTMLCanvasElement {
+func (self *Text) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA The canvas element that the text is rendered.
-func (self *Text) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *Text) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 
 // Context The context of the canvas element that the text is rendered to.
-func (self *Text) Context() dom.HTMLCanvasElement {
+func (self *Text) Context() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("context"))
 }
 
 // SetContextA The context of the canvas element that the text is rendered to.
-func (self *Text) SetContextA(member dom.HTMLCanvasElement) {
+func (self *Text) SetContextA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("context", member)
 }
 

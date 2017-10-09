@@ -123,12 +123,12 @@ func (self *BitmapData) SetHeightA(member int) {
 }
 
 // Canvas The canvas to which this BitmapData draws.
-func (self *BitmapData) Canvas() dom.HTMLCanvasElement {
+func (self *BitmapData) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA The canvas to which this BitmapData draws.
-func (self *BitmapData) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *BitmapData) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 

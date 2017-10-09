@@ -89,12 +89,12 @@ func (self *UtilsDebug) SetBmdA(member *BitmapData) {
 }
 
 // Canvas The canvas to which Debug calls draws.
-func (self *UtilsDebug) Canvas() dom.HTMLCanvasElement {
+func (self *UtilsDebug) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA The canvas to which Debug calls draws.
-func (self *UtilsDebug) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *UtilsDebug) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 

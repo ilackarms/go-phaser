@@ -52,12 +52,12 @@ func (self *CanvasBuffer) SetHeightA(member int) {
 }
 
 // Canvas The Canvas object that belongs to this CanvasBuffer.
-func (self *CanvasBuffer) Canvas() dom.HTMLCanvasElement {
+func (self *CanvasBuffer) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA The Canvas object that belongs to this CanvasBuffer.
-func (self *CanvasBuffer) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *CanvasBuffer) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 

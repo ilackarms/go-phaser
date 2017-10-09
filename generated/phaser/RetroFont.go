@@ -861,12 +861,12 @@ func (self *RetroFont) GetBase64I(args ...interface{}) string {
 }
 
 // GetCanvas Creates a Canvas element, renders this RenderTexture to it and then returns it.
-func (self *RetroFont) GetCanvas() dom.HTMLCanvasElement {
+func (self *RetroFont) GetCanvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Call("getCanvas"))
 }
 
 // GetCanvasI Creates a Canvas element, renders this RenderTexture to it and then returns it.
-func (self *RetroFont) GetCanvasI(args ...interface{}) dom.HTMLCanvasElement {
+func (self *RetroFont) GetCanvasI(args ...interface{}) *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Call("getCanvas", args))
 }
 

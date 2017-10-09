@@ -459,6 +459,168 @@ const (
 	* @type {integer}
 	 */
 	BOTTOM_RIGHT = 12
+
+	/**
+	* @const
+	* @type {number}
+	 */
+	Physics_ARCADE = 0
+
+	/**
+	* @const
+	* @type {number}
+	 */
+	Physics_P2JS = 1
+
+	/**
+	* @const
+	* @type {number}
+	 */
+	Physics_NINJA = 2
+
+	/**
+	* @const
+	* @type {number}
+	 */
+	Physics_BOX2D = 3
+
+	/**
+	* @const
+	* @type {number}
+	 */
+	Physics_CHIPMUNK = 4
+
+	/**
+	* @const
+	* @type {number}
+	 */
+	Physics_MATTERJS = 5
+
+	/**
+	* A constant used for the sortDirection value.
+	* Use this if you don't wish to perform any pre-collision sorting at all, or will manually sort your Groups.
+	* @constant
+	* @type {number}
+	 */
+	Physics_Arcade_SORT_NONE = 0
+
+	/**
+	* A constant used for the sortDirection value.
+	* Use this if your game world is wide but short and scrolls from the left to the right (i.e. Mario)
+	* @constant
+	* @type {number}
+	 */
+	Physics_Arcade_LEFT_RIGHT = 1
+
+	/**
+	* A constant used for the sortDirection value.
+	* Use this if your game world is wide but short and scrolls from the right to the left (i.e. Mario backwards)
+	* @constant
+	* @type {number}
+	 */
+	Physics_Arcade_RIGHT_LEFT = 2
+
+	/**
+	* A constant used for the sortDirection value.
+	* Use this if your game world is narrow but tall and scrolls from the top to the bottom (i.e. Dig Dug)
+	* @constant
+	* @type {number}
+	 */
+	Physics_Arcade_TOP_BOTTOM = 3
+
+	/**
+	* A constant used for the sortDirection value.
+	* Use this if your game world is narrow but tall and scrolls from the bottom to the top (i.e. Commando or a vertically scrolling shoot-em-up)
+	* @constant
+	* @type {number}
+	 */
+	Physics_Arcade_BOTTOM_TOP = 4
+
+	/**
+	* @constant
+	* @type {number}
+	 */
+	Tilemap_CSV = 0
+
+	/**
+	 * @constant
+	 * @type {number}
+	 */
+	Tilemap_TILED_JSON = 1
+
+	/**
+	 * @constant
+	 * @type {number}
+	 */
+	Tilemap_NORTH = 0
+
+	/**
+	 * @constant
+	 * @type {number}
+	 */
+	Tilemap_EAST = 1
+
+	/**
+	 * @constant
+	 * @type {number}
+	 */
+	Tilemap_SOUTH = 2
+
+	/**
+	 * @constant
+	 * @type {number}
+	 */
+	Tilemap_WEST = 3
+
+	/**
+	* A `bulletKillType` constant that stops the bullets from ever being destroyed automatically.
+	* @constant
+	* @type {integer}
+	 */
+	Weapon_KILL_NEVER = 0
+
+	/**
+	 * A `bulletKillType` constant that automatically kills the bullets when their `bulletLifespan` expires.
+	 * @constant
+	 * @type {integer}
+	 */
+	Weapon_KILL_LIFESPAN = 1
+
+	/**
+	 * A `bulletKillType` constant that automatically kills the bullets after they
+	 * exceed the `bulletDistance` from their original firing position.
+	 * @constant
+	 * @type {integer}
+	 */
+	Weapon_KILL_DISTANCE = 2
+
+	/**
+	 * A `bulletKillType` constant that automatically kills the bullets when they leave the `Weapon.bounds` rectangle.
+	 * @constant
+	 * @type {integer}
+	 */
+	Weapon_KILL_WEAPON_BOUNDS = 3
+
+	/**
+	 * A `bulletKillType` constant that automatically kills the bullets when they leave the `Camera.bounds` rectangle.
+	 * @constant
+	 * @type {integer}
+	 */
+	Weapon_KILL_CAMERA_BOUNDS = 4
+
+	/**
+	 * A `bulletKillType` constant that automatically kills the bullets when they leave the `World.bounds` rectangle.
+	 * @constant
+	 * @type {integer}
+	 */
+	Weapon_KILL_WORLD_BOUNDS = 5
+
+	/**
+	 * A `bulletKillType` constant that automatically kills the bullets when they leave the `Weapon.bounds` rectangle.
+	 * @constant
+	 * @type {integer}
+	 */
+	Weapon_KILL_STATIC_BOUNDS = 6
 )
 
 var (
@@ -467,7 +629,7 @@ var (
 	* @constant
 	* @type {array}
 	 */
-	GAMES = js.Global.Get("Phaser.GAMES")
+	GAMES = js.Global.Get("GAMES")
 
 	/**
 	 * Various blend modes supported by Pixi.
@@ -539,7 +701,7 @@ var (
 	 * It can be re-assigned to either LINEAR or NEAREST depending upon suitability.
 	 *
 	 * @constant
-	 * @property {Object} Phaser.scaleModes
+	 * @property {Object} scaleModes
 	 * @property {Number} scaleModes.DEFAULT=LINEAR
 	 * @property {Number} scaleModes.LINEAR Smooth scaling
 	 * @property {Number} scaleModes.NEAREST Pixelating scaling

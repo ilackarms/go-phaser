@@ -45,12 +45,12 @@ func (self *Input) SetGameA(member *Game) {
 }
 
 // HitCanvas The canvas to which single pixels are drawn in order to perform pixel-perfect hit detection.
-func (self *Input) HitCanvas() dom.HTMLCanvasElement {
+func (self *Input) HitCanvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("hitCanvas"))
 }
 
 // SetHitCanvasA The canvas to which single pixels are drawn in order to perform pixel-perfect hit detection.
-func (self *Input) SetHitCanvasA(member dom.HTMLCanvasElement) {
+func (self *Input) SetHitCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("hitCanvas", member)
 }
 

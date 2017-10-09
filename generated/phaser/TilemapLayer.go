@@ -74,12 +74,12 @@ func (self *TilemapLayer) SetLayerA(member interface{}) {
 }
 
 // Canvas The canvas to which this TilemapLayer draws.
-func (self *TilemapLayer) Canvas() dom.HTMLCanvasElement {
+func (self *TilemapLayer) Canvas() *dom.HTMLCanvasElement {
 	return WrapHTMLCanvasElement(self.Object.Get("canvas"))
 }
 
 // SetCanvasA The canvas to which this TilemapLayer draws.
-func (self *TilemapLayer) SetCanvasA(member dom.HTMLCanvasElement) {
+func (self *TilemapLayer) SetCanvasA(member *dom.HTMLCanvasElement) {
 	self.Object.Set("canvas", member)
 }
 
