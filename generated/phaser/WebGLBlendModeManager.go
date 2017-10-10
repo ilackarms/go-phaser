@@ -18,7 +18,7 @@ func NewWebGLBlendModeManager(gl *WebGLContext) *WebGLBlendModeManager {
 
 // NewWebGLBlendModeManagerI empty description
 func NewWebGLBlendModeManagerI(args ...interface{}) *WebGLBlendModeManager {
-	return &WebGLBlendModeManager{js.Global.Get("PIXI").Get("WebGLBlendModeManager").New(args)}
+	return &WebGLBlendModeManager{js.Global.Get("PIXI").Get("WebGLBlendModeManager").New(args...)}
 }
 
 // WebGLBlendModeManager Binding conversion method to WebGLBlendModeManager point
@@ -46,7 +46,7 @@ func (self *WebGLBlendModeManager) SetContext(gl *WebGLContext) {
 
 // SetContextI Sets the WebGL Context.
 func (self *WebGLBlendModeManager) SetContextI(args ...interface{}) {
-	self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args...)
 }
 
 // SetBlendMode Sets-up the given blendMode from WebGL's point of view.
@@ -56,7 +56,7 @@ func (self *WebGLBlendModeManager) SetBlendMode(blendMode int) {
 
 // SetBlendModeI Sets-up the given blendMode from WebGL's point of view.
 func (self *WebGLBlendModeManager) SetBlendModeI(args ...interface{}) {
-	self.Object.Call("setBlendMode", args)
+	self.Object.Call("setBlendMode", args...)
 }
 
 // Destroy Destroys this object.
@@ -66,5 +66,5 @@ func (self *WebGLBlendModeManager) Destroy() {
 
 // DestroyI Destroys this object.
 func (self *WebGLBlendModeManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

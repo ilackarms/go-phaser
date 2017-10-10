@@ -18,7 +18,7 @@ func NewEvent(target interface{}, name string, data interface{}) *Event {
 
 // NewEventI Creates an homogenous object for tracking events so users can know what to expect.
 func NewEventI(args ...interface{}) *Event {
-	return &Event{js.Global.Get("PIXI").Get("Event").New(args)}
+	return &Event{js.Global.Get("PIXI").Get("Event").New(args...)}
 }
 
 // Event Binding conversion method to Event point
@@ -76,7 +76,7 @@ func (self *Event) StopPropagation() {
 
 // StopPropagationI Stops the propagation of events up the scene graph (prevents bubbling).
 func (self *Event) StopPropagationI(args ...interface{}) {
-	self.Object.Call("stopPropagation", args)
+	self.Object.Call("stopPropagation", args...)
 }
 
 // StopImmediatePropagation Stops the propagation of events to sibling listeners (no longer calls any listeners).
@@ -86,5 +86,5 @@ func (self *Event) StopImmediatePropagation() {
 
 // StopImmediatePropagationI Stops the propagation of events to sibling listeners (no longer calls any listeners).
 func (self *Event) StopImmediatePropagationI(args ...interface{}) {
-	self.Object.Call("stopImmediatePropagation", args)
+	self.Object.Call("stopImmediatePropagation", args...)
 }

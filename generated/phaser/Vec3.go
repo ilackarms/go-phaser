@@ -18,7 +18,7 @@ func NewVec3() *Vec3 {
 
 // NewVec3I empty description
 func NewVec3I(args ...interface{}) *Vec3 {
-	return &Vec3{js.Global.Get("vec3").New(args)}
+	return &Vec3{js.Global.Get("vec3").New(args...)}
 }
 
 // Vec3 Binding conversion method to Vec3 point

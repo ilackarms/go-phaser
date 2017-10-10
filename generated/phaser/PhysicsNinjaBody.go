@@ -63,7 +63,7 @@ func NewPhysicsNinjaBody7O(system *PhysicsNinja, sprite *Sprite, type_ int, id i
 // NewPhysicsNinjaBodyI The Physics Body is linked to a single Sprite. All physics operations should be performed against the body rather than
 // the Sprite itself. For example you can set the velocity, bounce values etc all on the Body.
 func NewPhysicsNinjaBodyI(args ...interface{}) *PhysicsNinjaBody {
-	return &PhysicsNinjaBody{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("Body").New(args)}
+	return &PhysicsNinjaBody{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("Body").New(args...)}
 }
 
 // PhysicsNinjaBody Binding conversion method to PhysicsNinjaBody point
@@ -365,7 +365,7 @@ func (self *PhysicsNinjaBody) PreUpdate() {
 
 // PreUpdateI Internal method.
 func (self *PhysicsNinjaBody) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // PostUpdate Internal method.
@@ -375,7 +375,7 @@ func (self *PhysicsNinjaBody) PostUpdate() {
 
 // PostUpdateI Internal method.
 func (self *PhysicsNinjaBody) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // SetZeroVelocity Stops all movement of this body.
@@ -385,7 +385,7 @@ func (self *PhysicsNinjaBody) SetZeroVelocity() {
 
 // SetZeroVelocityI Stops all movement of this body.
 func (self *PhysicsNinjaBody) SetZeroVelocityI(args ...interface{}) {
-	self.Object.Call("setZeroVelocity", args)
+	self.Object.Call("setZeroVelocity", args...)
 }
 
 // Reset Resets all Body values and repositions on the Sprite.
@@ -395,7 +395,7 @@ func (self *PhysicsNinjaBody) Reset() {
 
 // ResetI Resets all Body values and repositions on the Sprite.
 func (self *PhysicsNinjaBody) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // DeltaAbsX Returns the absolute delta x value.
@@ -405,7 +405,7 @@ func (self *PhysicsNinjaBody) DeltaAbsX() int {
 
 // DeltaAbsXI Returns the absolute delta x value.
 func (self *PhysicsNinjaBody) DeltaAbsXI(args ...interface{}) int {
-	return self.Object.Call("deltaAbsX", args).Int()
+	return self.Object.Call("deltaAbsX", args...).Int()
 }
 
 // DeltaAbsY Returns the absolute delta y value.
@@ -415,7 +415,7 @@ func (self *PhysicsNinjaBody) DeltaAbsY() int {
 
 // DeltaAbsYI Returns the absolute delta y value.
 func (self *PhysicsNinjaBody) DeltaAbsYI(args ...interface{}) int {
-	return self.Object.Call("deltaAbsY", args).Int()
+	return self.Object.Call("deltaAbsY", args...).Int()
 }
 
 // DeltaX Returns the delta x value. The difference between Body.x now and in the previous step.
@@ -425,7 +425,7 @@ func (self *PhysicsNinjaBody) DeltaX() int {
 
 // DeltaXI Returns the delta x value. The difference between Body.x now and in the previous step.
 func (self *PhysicsNinjaBody) DeltaXI(args ...interface{}) int {
-	return self.Object.Call("deltaX", args).Int()
+	return self.Object.Call("deltaX", args...).Int()
 }
 
 // DeltaY Returns the delta y value. The difference between Body.y now and in the previous step.
@@ -435,7 +435,7 @@ func (self *PhysicsNinjaBody) DeltaY() int {
 
 // DeltaYI Returns the delta y value. The difference between Body.y now and in the previous step.
 func (self *PhysicsNinjaBody) DeltaYI(args ...interface{}) int {
-	return self.Object.Call("deltaY", args).Int()
+	return self.Object.Call("deltaY", args...).Int()
 }
 
 // Destroy Destroys this body's reference to the sprite and system, and destroys its shape.
@@ -445,7 +445,7 @@ func (self *PhysicsNinjaBody) Destroy() {
 
 // DestroyI Destroys this body's reference to the sprite and system, and destroys its shape.
 func (self *PhysicsNinjaBody) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Render Render Sprite's Body.
@@ -465,5 +465,5 @@ func (self *PhysicsNinjaBody) Render2O(context interface{}, body *PhysicsNinjaBo
 
 // RenderI Render Sprite's Body.
 func (self *PhysicsNinjaBody) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }

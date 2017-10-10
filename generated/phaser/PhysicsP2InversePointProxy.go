@@ -18,7 +18,7 @@ func NewPhysicsP2InversePointProxy(world *PhysicsP2, destination interface{}) *P
 
 // NewPhysicsP2InversePointProxyI A InversePointProxy is an internal class that allows for direct getter/setter style property access to Arrays and TypedArrays but inverses the values on set.
 func NewPhysicsP2InversePointProxyI(args ...interface{}) *PhysicsP2InversePointProxy {
-	return &PhysicsP2InversePointProxy{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("InversePointProxy").New(args)}
+	return &PhysicsP2InversePointProxy{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("InversePointProxy").New(args...)}
 }
 
 // PhysicsP2InversePointProxy Binding conversion method to PhysicsP2InversePointProxy point

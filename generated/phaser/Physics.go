@@ -47,7 +47,7 @@ func NewPhysics1O(game *Game, physicsConfig interface{}) *Physics {
 // For example you could have P2 managing a polygon-built terrain landscape that an vehicle drives over, while it could be firing bullets that use the
 // faster (due to being much simpler) Arcade Physics system.
 func NewPhysicsI(args ...interface{}) *Physics {
-	return &Physics{js.Global.Get("Phaser").Get("Physics").New(args)}
+	return &Physics{js.Global.Get("Phaser").Get("Physics").New(args...)}
 }
 
 // Physics Binding conversion method to Physics point
@@ -205,7 +205,7 @@ func (self *Physics) ParseConfig() {
 
 // ParseConfigI Parses the Physics Configuration object passed to the Game constructor and starts any physics systems specified within.
 func (self *Physics) ParseConfigI(args ...interface{}) {
-	self.Object.Call("parseConfig", args)
+	self.Object.Call("parseConfig", args...)
 }
 
 // StartSystem This will create an instance of the requested physics simulation.
@@ -243,7 +243,7 @@ func (self *Physics) StartSystem(system int) {
 // calling startSystem will reset the physics world, not re-create it. If you need to start them again from their constructors
 // then set Phaser.Physics.p2 (or whichever system you want to recreate) to `null` before calling `startSystem`.
 func (self *Physics) StartSystemI(args ...interface{}) {
-	self.Object.Call("startSystem", args)
+	self.Object.Call("startSystem", args...)
 }
 
 // Enable This will create a default physics body on the given game object or array of objects.
@@ -311,7 +311,7 @@ func (self *Physics) Enable2O(object interface{}, system int, debug bool) {
 // If you require more control over what type of body is created, for example to create a Ninja Physics Circle instead of the default AABB, then see the
 // individual physics systems `enable` methods instead of using this generic one.
 func (self *Physics) EnableI(args ...interface{}) {
-	self.Object.Call("enable", args)
+	self.Object.Call("enable", args...)
 }
 
 // PreUpdate preUpdate checks.
@@ -321,7 +321,7 @@ func (self *Physics) PreUpdate() {
 
 // PreUpdateI preUpdate checks.
 func (self *Physics) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update Updates all running physics systems.
@@ -331,7 +331,7 @@ func (self *Physics) Update() {
 
 // UpdateI Updates all running physics systems.
 func (self *Physics) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // SetBoundsToWorld Updates the physics bounds to match the world dimensions.
@@ -341,7 +341,7 @@ func (self *Physics) SetBoundsToWorld() {
 
 // SetBoundsToWorldI Updates the physics bounds to match the world dimensions.
 func (self *Physics) SetBoundsToWorldI(args ...interface{}) {
-	self.Object.Call("setBoundsToWorld", args)
+	self.Object.Call("setBoundsToWorld", args...)
 }
 
 // Clear Clears down all active physics systems. This doesn't destroy them, it just clears them of objects and is called when the State changes.
@@ -351,7 +351,7 @@ func (self *Physics) Clear() {
 
 // ClearI Clears down all active physics systems. This doesn't destroy them, it just clears them of objects and is called when the State changes.
 func (self *Physics) ClearI(args ...interface{}) {
-	self.Object.Call("clear", args)
+	self.Object.Call("clear", args...)
 }
 
 // Reset Resets the active physics system. Called automatically on a Phaser.State swap.
@@ -361,7 +361,7 @@ func (self *Physics) Reset() {
 
 // ResetI Resets the active physics system. Called automatically on a Phaser.State swap.
 func (self *Physics) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // Destroy Destroys all active physics systems. Usually only called on a Game Shutdown, not on a State swap.
@@ -371,5 +371,5 @@ func (self *Physics) Destroy() {
 
 // DestroyI Destroys all active physics systems. Usually only called on a Game Shutdown, not on a State swap.
 func (self *Physics) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

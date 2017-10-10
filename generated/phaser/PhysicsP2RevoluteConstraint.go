@@ -33,7 +33,7 @@ func NewPhysicsP2RevoluteConstraint2O(world *PhysicsP2, bodyA *P2Body, pivotA *F
 // NewPhysicsP2RevoluteConstraintI Connects two bodies at given offset points, letting them rotate relative to each other around this point.
 // The pivot points are given in world (pixel) coordinates.
 func NewPhysicsP2RevoluteConstraintI(args ...interface{}) *PhysicsP2RevoluteConstraint {
-	return &PhysicsP2RevoluteConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("RevoluteConstraint").New(args)}
+	return &PhysicsP2RevoluteConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("RevoluteConstraint").New(args...)}
 }
 
 // PhysicsP2RevoluteConstraint Binding conversion method to PhysicsP2RevoluteConstraint point

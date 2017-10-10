@@ -18,7 +18,7 @@ func NewEasingExponential() *EasingExponential {
 
 // NewEasingExponentialI Exponential easing.
 func NewEasingExponentialI(args ...interface{}) *EasingExponential {
-	return &EasingExponential{js.Global.Get("Phaser").Get("Easing").Get("Exponential").New(args)}
+	return &EasingExponential{js.Global.Get("Phaser").Get("Easing").Get("Exponential").New(args...)}
 }
 
 // EasingExponential Binding conversion method to EasingExponential point
@@ -36,7 +36,7 @@ func (self *EasingExponential) In(k int) int {
 
 // InI Exponential ease-in.
 func (self *EasingExponential) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Exponential ease-out.
@@ -46,7 +46,7 @@ func (self *EasingExponential) Out(k int) int {
 
 // OutI Exponential ease-out.
 func (self *EasingExponential) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Exponential ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingExponential) InOut(k int) int {
 
 // InOutI Exponential ease-in/out.
 func (self *EasingExponential) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

@@ -53,7 +53,7 @@ func NewPhysicsP2Spring7O(world *PhysicsP2, bodyA *P2Body, bodyB *P2Body, restLe
 
 // NewPhysicsP2SpringI Creates a linear spring, connecting two bodies. A spring can have a resting length, a stiffness and damping.
 func NewPhysicsP2SpringI(args ...interface{}) *PhysicsP2Spring {
-	return &PhysicsP2Spring{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("Spring").New(args)}
+	return &PhysicsP2Spring{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("Spring").New(args...)}
 }
 
 // PhysicsP2Spring Binding conversion method to PhysicsP2Spring point

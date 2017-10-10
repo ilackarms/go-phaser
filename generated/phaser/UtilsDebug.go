@@ -47,7 +47,7 @@ func NewUtilsDebug(game *Game) *UtilsDebug {
 // to it, which must be uploaded every frame. Be advised: this is very expensive, especially in browsers like Firefox. So please only enable Debug
 // in WebGL mode if you really need it (or your desktop can cope with it well) and disable it for production!
 func NewUtilsDebugI(args ...interface{}) *UtilsDebug {
-	return &UtilsDebug{js.Global.Get("Phaser").Get("Utils").Get("Debug").New(args)}
+	return &UtilsDebug{js.Global.Get("Phaser").Get("Utils").Get("Debug").New(args...)}
 }
 
 // UtilsDebug Binding conversion method to UtilsDebug point
@@ -195,7 +195,7 @@ func (self *UtilsDebug) Boot() {
 
 // BootI Internal method that boots the debug displayer.
 func (self *UtilsDebug) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // Resize Internal method that resizes the BitmapData and Canvas.
@@ -207,7 +207,7 @@ func (self *UtilsDebug) Resize(scaleManager *ScaleManager, width int, height int
 // ResizeI Internal method that resizes the BitmapData and Canvas.
 // Called by ScaleManager.onSizeChange only in WebGL mode.
 func (self *UtilsDebug) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // PreUpdate Internal method that clears the canvas (if a Sprite) ready for a new debug session.
@@ -217,7 +217,7 @@ func (self *UtilsDebug) PreUpdate() {
 
 // PreUpdateI Internal method that clears the canvas (if a Sprite) ready for a new debug session.
 func (self *UtilsDebug) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Reset Clears the Debug canvas.
@@ -227,7 +227,7 @@ func (self *UtilsDebug) Reset() {
 
 // ResetI Clears the Debug canvas.
 func (self *UtilsDebug) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // Start Internal method that resets and starts the debug output values.
@@ -257,7 +257,7 @@ func (self *UtilsDebug) Start4O(x int, y int, color string, columnWidth int) {
 
 // StartI Internal method that resets and starts the debug output values.
 func (self *UtilsDebug) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Stop Internal method that stops the debug output.
@@ -267,7 +267,7 @@ func (self *UtilsDebug) Stop() {
 
 // StopI Internal method that stops the debug output.
 func (self *UtilsDebug) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Line Internal method that outputs a single line of text split over as many columns as needed, one per parameter.
@@ -277,7 +277,7 @@ func (self *UtilsDebug) Line() {
 
 // LineI Internal method that outputs a single line of text split over as many columns as needed, one per parameter.
 func (self *UtilsDebug) LineI(args ...interface{}) {
-	self.Object.Call("line", args)
+	self.Object.Call("line", args...)
 }
 
 // SoundInfo Render Sound information, including decoded state, duration, volume and more.
@@ -292,7 +292,7 @@ func (self *UtilsDebug) SoundInfo1O(sound *Sound, x int, y int, color string) {
 
 // SoundInfoI Render Sound information, including decoded state, duration, volume and more.
 func (self *UtilsDebug) SoundInfoI(args ...interface{}) {
-	self.Object.Call("soundInfo", args)
+	self.Object.Call("soundInfo", args...)
 }
 
 // CameraInfo Render camera information including dimensions and location.
@@ -307,7 +307,7 @@ func (self *UtilsDebug) CameraInfo1O(camera *Camera, x int, y int, color string)
 
 // CameraInfoI Render camera information including dimensions and location.
 func (self *UtilsDebug) CameraInfoI(args ...interface{}) {
-	self.Object.Call("cameraInfo", args)
+	self.Object.Call("cameraInfo", args...)
 }
 
 // Timer Render Timer information.
@@ -322,7 +322,7 @@ func (self *UtilsDebug) Timer1O(timer *Timer, x int, y int, color string) {
 
 // TimerI Render Timer information.
 func (self *UtilsDebug) TimerI(args ...interface{}) {
-	self.Object.Call("timer", args)
+	self.Object.Call("timer", args...)
 }
 
 // Pointer Renders the Pointer.circle object onto the stage in green if down or red if up along with debug text.
@@ -352,7 +352,7 @@ func (self *UtilsDebug) Pointer4O(pointer *Pointer, hideIfUp bool, downColor str
 
 // PointerI Renders the Pointer.circle object onto the stage in green if down or red if up along with debug text.
 func (self *UtilsDebug) PointerI(args ...interface{}) {
-	self.Object.Call("pointer", args)
+	self.Object.Call("pointer", args...)
 }
 
 // SpriteInputInfo Render Sprite Input Debug information.
@@ -367,7 +367,7 @@ func (self *UtilsDebug) SpriteInputInfo1O(sprite interface{}, x int, y int, colo
 
 // SpriteInputInfoI Render Sprite Input Debug information.
 func (self *UtilsDebug) SpriteInputInfoI(args ...interface{}) {
-	self.Object.Call("spriteInputInfo", args)
+	self.Object.Call("spriteInputInfo", args...)
 }
 
 // Key Renders Phaser.Key object information.
@@ -382,7 +382,7 @@ func (self *UtilsDebug) Key1O(key *Key, x int, y int, color string) {
 
 // KeyI Renders Phaser.Key object information.
 func (self *UtilsDebug) KeyI(args ...interface{}) {
-	self.Object.Call("key", args)
+	self.Object.Call("key", args...)
 }
 
 // InputInfo Render debug information about the Input object.
@@ -397,7 +397,7 @@ func (self *UtilsDebug) InputInfo1O(x int, y int, color string) {
 
 // InputInfoI Render debug information about the Input object.
 func (self *UtilsDebug) InputInfoI(args ...interface{}) {
-	self.Object.Call("inputInfo", args)
+	self.Object.Call("inputInfo", args...)
 }
 
 // SpriteBounds Renders the Sprites bounds. Note: This is really expensive as it has to calculate the bounds every time you call it!
@@ -417,7 +417,7 @@ func (self *UtilsDebug) SpriteBounds2O(sprite interface{}, color string, filled 
 
 // SpriteBoundsI Renders the Sprites bounds. Note: This is really expensive as it has to calculate the bounds every time you call it!
 func (self *UtilsDebug) SpriteBoundsI(args ...interface{}) {
-	self.Object.Call("spriteBounds", args)
+	self.Object.Call("spriteBounds", args...)
 }
 
 // RopeSegments Renders the Rope's segments. Note: This is really expensive as it has to calculate new segments every time you call it
@@ -437,7 +437,7 @@ func (self *UtilsDebug) RopeSegments2O(rope *Rope, color string, filled bool) {
 
 // RopeSegmentsI Renders the Rope's segments. Note: This is really expensive as it has to calculate new segments every time you call it
 func (self *UtilsDebug) RopeSegmentsI(args ...interface{}) {
-	self.Object.Call("ropeSegments", args)
+	self.Object.Call("ropeSegments", args...)
 }
 
 // SpriteInfo Render debug infos (including name, bounds info, position and some other properties) about the Sprite.
@@ -452,7 +452,7 @@ func (self *UtilsDebug) SpriteInfo1O(sprite *Sprite, x int, y int, color string)
 
 // SpriteInfoI Render debug infos (including name, bounds info, position and some other properties) about the Sprite.
 func (self *UtilsDebug) SpriteInfoI(args ...interface{}) {
-	self.Object.Call("spriteInfo", args)
+	self.Object.Call("spriteInfo", args...)
 }
 
 // SpriteCoords Renders the sprite coordinates in local, positional and world space.
@@ -467,7 +467,7 @@ func (self *UtilsDebug) SpriteCoords1O(sprite interface{}, x int, y int, color s
 
 // SpriteCoordsI Renders the sprite coordinates in local, positional and world space.
 func (self *UtilsDebug) SpriteCoordsI(args ...interface{}) {
-	self.Object.Call("spriteCoords", args)
+	self.Object.Call("spriteCoords", args...)
 }
 
 // LineInfo Renders Line information in the given color.
@@ -482,7 +482,7 @@ func (self *UtilsDebug) LineInfo1O(line *Line, x int, y int, color string) {
 
 // LineInfoI Renders Line information in the given color.
 func (self *UtilsDebug) LineInfoI(args ...interface{}) {
-	self.Object.Call("lineInfo", args)
+	self.Object.Call("lineInfo", args...)
 }
 
 // Pixel Renders a single pixel at the given size.
@@ -502,7 +502,7 @@ func (self *UtilsDebug) Pixel2O(x int, y int, color string, size int) {
 
 // PixelI Renders a single pixel at the given size.
 func (self *UtilsDebug) PixelI(args ...interface{}) {
-	self.Object.Call("pixel", args)
+	self.Object.Call("pixel", args...)
 }
 
 // Geom Renders a Phaser geometry object including Rectangle, Circle, Point or Line.
@@ -527,7 +527,7 @@ func (self *UtilsDebug) Geom3O(object interface{}, color string, filled bool, fo
 
 // GeomI Renders a Phaser geometry object including Rectangle, Circle, Point or Line.
 func (self *UtilsDebug) GeomI(args ...interface{}) {
-	self.Object.Call("geom", args)
+	self.Object.Call("geom", args...)
 }
 
 // Text Render a string of text.
@@ -547,7 +547,7 @@ func (self *UtilsDebug) Text2O(text string, x int, y int, color string, font str
 
 // TextI Render a string of text.
 func (self *UtilsDebug) TextI(args ...interface{}) {
-	self.Object.Call("text", args)
+	self.Object.Call("text", args...)
 }
 
 // QuadTree Visually renders a QuadTree to the display.
@@ -557,7 +557,7 @@ func (self *UtilsDebug) QuadTree(quadtree *QuadTree, color string) {
 
 // QuadTreeI Visually renders a QuadTree to the display.
 func (self *UtilsDebug) QuadTreeI(args ...interface{}) {
-	self.Object.Call("quadTree", args)
+	self.Object.Call("quadTree", args...)
 }
 
 // Body Render a Sprites Physics body if it has one set. The body is rendered as a filled or stroked rectangle.
@@ -585,7 +585,7 @@ func (self *UtilsDebug) Body2O(sprite *Sprite, color string, filled bool) {
 // This only works for Arcade Physics, Ninja Physics (AABB and Circle only) and Box2D Physics bodies.
 // To display a P2 Physics body you should enable debug mode on the body when creating it.
 func (self *UtilsDebug) BodyI(args ...interface{}) {
-	self.Object.Call("body", args)
+	self.Object.Call("body", args...)
 }
 
 // BodyInfo Render a Sprites Physic Body information.
@@ -600,7 +600,7 @@ func (self *UtilsDebug) BodyInfo1O(sprite *Sprite, x int, y int, color string) {
 
 // BodyInfoI Render a Sprites Physic Body information.
 func (self *UtilsDebug) BodyInfoI(args ...interface{}) {
-	self.Object.Call("bodyInfo", args)
+	self.Object.Call("bodyInfo", args...)
 }
 
 // Box2dWorld Renders 'debug draw' data for the Box2D world if it exists.
@@ -614,7 +614,7 @@ func (self *UtilsDebug) Box2dWorld() {
 // This uses the standard debug drawing feature of Box2D, so colors will be decided by
 // the Box2D engine.
 func (self *UtilsDebug) Box2dWorldI(args ...interface{}) {
-	self.Object.Call("box2dWorld", args)
+	self.Object.Call("box2dWorld", args...)
 }
 
 // Box2dBody Renders 'debug draw' data for the given Box2D body.
@@ -632,7 +632,7 @@ func (self *UtilsDebug) Box2dBody1O(sprite *Sprite, color string) {
 // Box2dBodyI Renders 'debug draw' data for the given Box2D body.
 // This uses the standard debug drawing feature of Box2D, so colors will be decided by the Box2D engine.
 func (self *UtilsDebug) Box2dBodyI(args ...interface{}) {
-	self.Object.Call("box2dBody", args)
+	self.Object.Call("box2dBody", args...)
 }
 
 // Destroy Destroy this object.
@@ -642,5 +642,5 @@ func (self *UtilsDebug) Destroy() {
 
 // DestroyI Destroy this object.
 func (self *UtilsDebug) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

@@ -53,7 +53,7 @@ func NewRenderTexture5O(game *Game, width int, height int, key string, scaleMode
 // NewRenderTextureI A RenderTexture is a special texture that allows any displayObject to be rendered to it. It allows you to take many complex objects and
 // render them down into a single quad (on WebGL) which can then be used to texture other display objects with. A way of generating textures at run-time.
 func NewRenderTextureI(args ...interface{}) *RenderTexture {
-	return &RenderTexture{js.Global.Get("Phaser").Get("RenderTexture").New(args)}
+	return &RenderTexture{js.Global.Get("Phaser").Get("RenderTexture").New(args...)}
 }
 
 // RenderTexture Binding conversion method to RenderTexture point
@@ -252,7 +252,7 @@ func (self *RenderTexture) RenderXY1O(displayObject interface{}, x int, y int, c
 //
 // If you don't want those then use RenderTexture.renderRawXY instead.
 func (self *RenderTexture) RenderXYI(args ...interface{}) {
-	self.Object.Call("renderXY", args)
+	self.Object.Call("renderXY", args...)
 }
 
 // RenderRawXY This function will draw the display object to the RenderTexture at the given coordinates.
@@ -279,7 +279,7 @@ func (self *RenderTexture) RenderRawXY1O(displayObject interface{}, x int, y int
 //
 // If you need those then use RenderTexture.renderXY instead.
 func (self *RenderTexture) RenderRawXYI(args ...interface{}) {
-	self.Object.Call("renderRawXY", args)
+	self.Object.Call("renderRawXY", args...)
 }
 
 // Render This function will draw the display object to the RenderTexture.
@@ -327,7 +327,7 @@ func (self *RenderTexture) Render2O(displayObject interface{}, matrix *Matrix, c
 // If you wish for the displayObject to be rendered taking its current scale, rotation and translation into account then either
 // pass `null`, leave it undefined or pass `displayObject.worldTransform` as the matrix value.
 func (self *RenderTexture) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // Resize Resizes the RenderTexture.
@@ -337,7 +337,7 @@ func (self *RenderTexture) Resize(width int, height int, updateBase bool) {
 
 // ResizeI Resizes the RenderTexture.
 func (self *RenderTexture) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // Clear Clears the RenderTexture.
@@ -347,7 +347,7 @@ func (self *RenderTexture) Clear() {
 
 // ClearI Clears the RenderTexture.
 func (self *RenderTexture) ClearI(args ...interface{}) {
-	self.Object.Call("clear", args)
+	self.Object.Call("clear", args...)
 }
 
 // RenderWebGL This function will draw the display object to the texture.
@@ -367,7 +367,7 @@ func (self *RenderTexture) RenderWebGL2O(displayObject *DisplayObject, matrix *M
 
 // RenderWebGLI This function will draw the display object to the texture.
 func (self *RenderTexture) RenderWebGLI(args ...interface{}) {
-	self.Object.Call("renderWebGL", args)
+	self.Object.Call("renderWebGL", args...)
 }
 
 // RenderCanvas This function will draw the display object to the texture.
@@ -387,7 +387,7 @@ func (self *RenderTexture) RenderCanvas2O(displayObject *DisplayObject, matrix *
 
 // RenderCanvasI This function will draw the display object to the texture.
 func (self *RenderTexture) RenderCanvasI(args ...interface{}) {
-	self.Object.Call("renderCanvas", args)
+	self.Object.Call("renderCanvas", args...)
 }
 
 // GetImage Will return a HTML Image of the texture
@@ -397,7 +397,7 @@ func (self *RenderTexture) GetImage() *Image {
 
 // GetImageI Will return a HTML Image of the texture
 func (self *RenderTexture) GetImageI(args ...interface{}) *Image {
-	return &Image{self.Object.Call("getImage", args)}
+	return &Image{self.Object.Call("getImage", args...)}
 }
 
 // GetBase64 Will return a base64 encoded string of this texture. It works by calling RenderTexture.getCanvas and then running toDataURL on that.
@@ -407,7 +407,7 @@ func (self *RenderTexture) GetBase64() string {
 
 // GetBase64I Will return a base64 encoded string of this texture. It works by calling RenderTexture.getCanvas and then running toDataURL on that.
 func (self *RenderTexture) GetBase64I(args ...interface{}) string {
-	return self.Object.Call("getBase64", args).String()
+	return self.Object.Call("getBase64", args...).String()
 }
 
 // GetCanvas Creates a Canvas element, renders this RenderTexture to it and then returns it.
@@ -417,7 +417,7 @@ func (self *RenderTexture) GetCanvas() *dom.HTMLCanvasElement {
 
 // GetCanvasI Creates a Canvas element, renders this RenderTexture to it and then returns it.
 func (self *RenderTexture) GetCanvasI(args ...interface{}) *dom.HTMLCanvasElement {
-	return WrapHTMLCanvasElement(self.Object.Call("getCanvas", args))
+	return WrapHTMLCanvasElement(self.Object.Call("getCanvas", args...))
 }
 
 // OnBaseTextureLoaded Called when the base texture is loaded
@@ -427,7 +427,7 @@ func (self *RenderTexture) OnBaseTextureLoaded() {
 
 // OnBaseTextureLoadedI Called when the base texture is loaded
 func (self *RenderTexture) OnBaseTextureLoadedI(args ...interface{}) {
-	self.Object.Call("onBaseTextureLoaded", args)
+	self.Object.Call("onBaseTextureLoaded", args...)
 }
 
 // Destroy Destroys this texture
@@ -437,7 +437,7 @@ func (self *RenderTexture) Destroy(destroyBase bool) {
 
 // DestroyI Destroys this texture
 func (self *RenderTexture) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // SetFrame Specifies the region of the baseTexture that this texture will use.
@@ -447,7 +447,7 @@ func (self *RenderTexture) SetFrame(frame *Rectangle) {
 
 // SetFrameI Specifies the region of the baseTexture that this texture will use.
 func (self *RenderTexture) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // _updateUvs Updates the internal WebGL UV cache.
@@ -457,5 +457,5 @@ func (self *RenderTexture) _updateUvs() {
 
 // _updateUvsI Updates the internal WebGL UV cache.
 func (self *RenderTexture) _updateUvsI(args ...interface{}) {
-	self.Object.Call("_updateUvs", args)
+	self.Object.Call("_updateUvs", args...)
 }

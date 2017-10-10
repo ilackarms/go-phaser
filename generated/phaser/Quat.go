@@ -18,7 +18,7 @@ func NewQuat() *Quat {
 
 // NewQuatI empty description
 func NewQuatI(args ...interface{}) *Quat {
-	return &Quat{js.Global.Get("quat").New(args)}
+	return &Quat{js.Global.Get("quat").New(args...)}
 }
 
 // Quat Binding conversion method to Quat point

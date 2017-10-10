@@ -18,7 +18,7 @@ func NewComponentScaleMinMax() *ComponentScaleMinMax {
 
 // NewComponentScaleMinMaxI The ScaleMinMax component allows a Game Object to limit how far it can be scaled by its parent.
 func NewComponentScaleMinMaxI(args ...interface{}) *ComponentScaleMinMax {
-	return &ComponentScaleMinMax{js.Global.Get("Phaser").Get("Component").Get("ScaleMinMax").New(args)}
+	return &ComponentScaleMinMax{js.Global.Get("Phaser").Get("Component").Get("ScaleMinMax").New(args...)}
 }
 
 // ComponentScaleMinMax Binding conversion method to ComponentScaleMinMax point
@@ -92,7 +92,7 @@ func (self *ComponentScaleMinMax) CheckTransform(wt *Matrix) {
 
 // CheckTransformI Adjust scaling limits, if set, to this Game Object.
 func (self *ComponentScaleMinMax) CheckTransformI(args ...interface{}) {
-	self.Object.Call("checkTransform", args)
+	self.Object.Call("checkTransform", args...)
 }
 
 // SetScaleMinMax Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
@@ -134,5 +134,5 @@ func (self *ComponentScaleMinMax) SetScaleMinMax(minX interface{}, minY interfac
 //
 // Call `setScaleMinMax(null)` to clear all previously set values.
 func (self *ComponentScaleMinMax) SetScaleMinMaxI(args ...interface{}) {
-	self.Object.Call("setScaleMinMax", args)
+	self.Object.Call("setScaleMinMax", args...)
 }

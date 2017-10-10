@@ -18,7 +18,7 @@ func NewPhysicsP2CollisionGroup(bitmask int) *PhysicsP2CollisionGroup {
 
 // NewPhysicsP2CollisionGroupI Collision Group
 func NewPhysicsP2CollisionGroupI(args ...interface{}) *PhysicsP2CollisionGroup {
-	return &PhysicsP2CollisionGroup{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("CollisionGroup").New(args)}
+	return &PhysicsP2CollisionGroup{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("CollisionGroup").New(args...)}
 }
 
 // PhysicsP2CollisionGroup Binding conversion method to PhysicsP2CollisionGroup point

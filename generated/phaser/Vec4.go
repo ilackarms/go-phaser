@@ -18,7 +18,7 @@ func NewVec4() *Vec4 {
 
 // NewVec4I empty description
 func NewVec4I(args ...interface{}) *Vec4 {
-	return &Vec4{js.Global.Get("vec4").New(args)}
+	return &Vec4{js.Global.Get("vec4").New(args...)}
 }
 
 // Vec4 Binding conversion method to Vec4 point

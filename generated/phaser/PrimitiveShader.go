@@ -18,7 +18,7 @@ func NewPrimitiveShader(gl *WebGLContext) *PrimitiveShader {
 
 // NewPrimitiveShaderI empty description
 func NewPrimitiveShaderI(args ...interface{}) *PrimitiveShader {
-	return &PrimitiveShader{js.Global.Get("PIXI").Get("PrimitiveShader").New(args)}
+	return &PrimitiveShader{js.Global.Get("PIXI").Get("PrimitiveShader").New(args...)}
 }
 
 // PrimitiveShader Binding conversion method to PrimitiveShader point
@@ -88,7 +88,7 @@ func (self *PrimitiveShader) Init() {
 
 // InitI Initialises the shader.
 func (self *PrimitiveShader) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // Destroy Destroys the shader.
@@ -98,5 +98,5 @@ func (self *PrimitiveShader) Destroy() {
 
 // DestroyI Destroys the shader.
 func (self *PrimitiveShader) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

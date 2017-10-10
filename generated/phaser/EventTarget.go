@@ -18,7 +18,7 @@ func NewEventTarget() *EventTarget {
 
 // NewEventTargetI Mixins event emitter functionality to a class
 func NewEventTargetI(args ...interface{}) *EventTarget {
-	return &EventTarget{js.Global.Get("PIXI").Get("EventTarget").New(args)}
+	return &EventTarget{js.Global.Get("PIXI").Get("EventTarget").New(args...)}
 }
 
 // EventTarget Binding conversion method to EventTarget point
@@ -36,7 +36,7 @@ func (self *EventTarget) Mixin(object interface{}) {
 
 // MixinI Mixes in the properties of the EventTarget prototype onto another object
 func (self *EventTarget) MixinI(args ...interface{}) {
-	self.Object.Call("mixin", args)
+	self.Object.Call("mixin", args...)
 }
 
 // Listeners Return a list of assigned event listeners.
@@ -52,7 +52,7 @@ func (self *EventTarget) Listeners(eventName string) []interface{} {
 
 // ListenersI Return a list of assigned event listeners.
 func (self *EventTarget) ListenersI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("listeners", args)
+	array00 := self.Object.Call("listeners", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -68,7 +68,7 @@ func (self *EventTarget) Emit(eventName string) bool {
 
 // EmitI Emit an event to all registered event listeners.
 func (self *EventTarget) EmitI(args ...interface{}) bool {
-	return self.Object.Call("emit", args).Bool()
+	return self.Object.Call("emit", args...).Bool()
 }
 
 // On Register a new EventListener for the given event.
@@ -78,7 +78,7 @@ func (self *EventTarget) On(eventName string, callback interface{}) {
 
 // OnI Register a new EventListener for the given event.
 func (self *EventTarget) OnI(args ...interface{}) {
-	self.Object.Call("on", args)
+	self.Object.Call("on", args...)
 }
 
 // Once Add an EventListener that's only called once.
@@ -88,7 +88,7 @@ func (self *EventTarget) Once(eventName string, callback interface{}) {
 
 // OnceI Add an EventListener that's only called once.
 func (self *EventTarget) OnceI(args ...interface{}) {
-	self.Object.Call("once", args)
+	self.Object.Call("once", args...)
 }
 
 // Off Remove event listeners.
@@ -98,7 +98,7 @@ func (self *EventTarget) Off(eventName string, callback interface{}) {
 
 // OffI Remove event listeners.
 func (self *EventTarget) OffI(args ...interface{}) {
-	self.Object.Call("off", args)
+	self.Object.Call("off", args...)
 }
 
 // RemoveAllListeners Remove all listeners or only the listeners for the specified event.
@@ -108,5 +108,5 @@ func (self *EventTarget) RemoveAllListeners(eventName string) {
 
 // RemoveAllListenersI Remove all listeners or only the listeners for the specified event.
 func (self *EventTarget) RemoveAllListenersI(args ...interface{}) {
-	self.Object.Call("removeAllListeners", args)
+	self.Object.Call("removeAllListeners", args...)
 }

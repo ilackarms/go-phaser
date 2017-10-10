@@ -45,7 +45,7 @@ func NewPolygon(points interface{}) *Polygon {
 // - As separate objects with public x/y properties arguments: `setTo(obj1, obj2, ...)`
 // - As separate arguments representing point coordinates: `setTo(x1,y1, x2,y2, ...)`
 func NewPolygonI(args ...interface{}) *Polygon {
-	return &Polygon{js.Global.Get("Phaser").Get("Polygon").New(args)}
+	return &Polygon{js.Global.Get("Phaser").Get("Polygon").New(args...)}
 }
 
 // Polygon Binding conversion method to Polygon point
@@ -140,7 +140,7 @@ func (self *Polygon) ToNumberArray1O(output []interface{}) []interface{} {
 
 // ToNumberArrayI Export the points as an array of flat numbers, following the sequence [ x,y, x,y, x,y ]
 func (self *Polygon) ToNumberArrayI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("toNumberArray", args)
+	array00 := self.Object.Call("toNumberArray", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -160,7 +160,7 @@ func (self *Polygon) Flatten() *Polygon {
 // Any Point objects found are removed and replaced with two numbers.
 // Also sets the Polygon.flattened property to `true`.
 func (self *Polygon) FlattenI(args ...interface{}) *Polygon {
-	return &Polygon{self.Object.Call("flatten", args)}
+	return &Polygon{self.Object.Call("flatten", args...)}
 }
 
 // Clone Creates a copy of the given Polygon.
@@ -178,7 +178,7 @@ func (self *Polygon) Clone1O(output *Polygon) *Polygon {
 // CloneI Creates a copy of the given Polygon.
 // This is a deep clone, the resulting copy contains new Phaser.Point objects
 func (self *Polygon) CloneI(args ...interface{}) *Polygon {
-	return &Polygon{self.Object.Call("clone", args)}
+	return &Polygon{self.Object.Call("clone", args...)}
 }
 
 // Contains Checks whether the x and y coordinates are contained within this polygon.
@@ -188,7 +188,7 @@ func (self *Polygon) Contains(x int, y int) bool {
 
 // ContainsI Checks whether the x and y coordinates are contained within this polygon.
 func (self *Polygon) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // SetTo Sets this Polygon to the given points.
@@ -222,7 +222,7 @@ func (self *Polygon) SetTo(points interface{}) *Polygon {
 //
 // `setTo` may also be called without any arguments to remove all points.
 func (self *Polygon) SetToI(args ...interface{}) *Polygon {
-	return &Polygon{self.Object.Call("setTo", args)}
+	return &Polygon{self.Object.Call("setTo", args...)}
 }
 
 // CalculateArea Calcuates the area of the Polygon. This is available in the property Polygon.area
@@ -232,5 +232,5 @@ func (self *Polygon) CalculateArea(y0 int) int {
 
 // CalculateAreaI Calcuates the area of the Polygon. This is available in the property Polygon.area
 func (self *Polygon) CalculateAreaI(args ...interface{}) int {
-	return self.Object.Call("calculateArea", args).Int()
+	return self.Object.Call("calculateArea", args...).Int()
 }

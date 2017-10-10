@@ -18,7 +18,7 @@ func NewComponentDelta() *ComponentDelta {
 
 // NewComponentDeltaI The Delta component provides access to delta values between the Game Objects current and previous position.
 func NewComponentDeltaI(args ...interface{}) *ComponentDelta {
-	return &ComponentDelta{js.Global.Get("Phaser").Get("Component").Get("Delta").New(args)}
+	return &ComponentDelta{js.Global.Get("Phaser").Get("Component").Get("Delta").New(args...)}
 }
 
 // ComponentDelta Binding conversion method to ComponentDelta point

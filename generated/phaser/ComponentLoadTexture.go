@@ -18,7 +18,7 @@ func NewComponentLoadTexture() *ComponentLoadTexture {
 
 // NewComponentLoadTextureI The LoadTexture component manages the loading of a texture into the Game Object and the changing of frames.
 func NewComponentLoadTextureI(args ...interface{}) *ComponentLoadTexture {
-	return &ComponentLoadTexture{js.Global.Get("Phaser").Get("Component").Get("LoadTexture").New(args)}
+	return &ComponentLoadTexture{js.Global.Get("Phaser").Get("Component").Get("LoadTexture").New(args...)}
 }
 
 // ComponentLoadTexture Binding conversion method to ComponentLoadTexture point
@@ -162,7 +162,7 @@ func (self *ComponentLoadTexture) LoadTexture2O(key interface{}, frame interface
 //
 // Note: You cannot use a RenderTexture as a texture for a TileSprite.
 func (self *ComponentLoadTexture) LoadTextureI(args ...interface{}) {
-	self.Object.Call("loadTexture", args)
+	self.Object.Call("loadTexture", args...)
 }
 
 // SetFrame Sets the texture frame the Game Object uses for rendering.
@@ -176,7 +176,7 @@ func (self *ComponentLoadTexture) SetFrame(frame *Frame) {
 //
 // This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
 func (self *ComponentLoadTexture) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // ResizeFrame Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -192,7 +192,7 @@ func (self *ComponentLoadTexture) ResizeFrame(parent interface{}, width int, hei
 // You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
 // it can be useful to adjust the dimensions directly in this way.
 func (self *ComponentLoadTexture) ResizeFrameI(args ...interface{}) {
-	self.Object.Call("resizeFrame", args)
+	self.Object.Call("resizeFrame", args...)
 }
 
 // ResetFrame Resets the texture frame dimensions that the Game Object uses for rendering.
@@ -202,5 +202,5 @@ func (self *ComponentLoadTexture) ResetFrame() {
 
 // ResetFrameI Resets the texture frame dimensions that the Game Object uses for rendering.
 func (self *ComponentLoadTexture) ResetFrameI(args ...interface{}) {
-	self.Object.Call("resetFrame", args)
+	self.Object.Call("resetFrame", args...)
 }

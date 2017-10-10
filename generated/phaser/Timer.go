@@ -47,7 +47,7 @@ func NewTimer1O(game *Game, autoDestroy bool) *Timer {
 // Timers are based on real life time, adjusted for game pause durations.
 // That is, *timer events are based on elapsed {@link Phaser.Time game time}* and do *not* take physics time or slow motion into account.
 func NewTimerI(args ...interface{}) *Timer {
-	return &Timer{js.Global.Get("Phaser").Get("Timer").New(args)}
+	return &Timer{js.Global.Get("Phaser").Get("Timer").New(args...)}
 }
 
 // Timer Binding conversion method to Timer point
@@ -273,7 +273,7 @@ func (self *Timer) Create(delay int, loop bool, repeatCount int, callback interf
 //
 // Use {@link Phaser.Timer#add}, {@link Phaser.Timer#repeat}, or {@link Phaser.Timer#loop} methods to create a new event.
 func (self *Timer) CreateI(args ...interface{}) *TimerEvent {
-	return &TimerEvent{self.Object.Call("create", args)}
+	return &TimerEvent{self.Object.Call("create", args...)}
 }
 
 // Add Adds a new Event to this Timer.
@@ -293,7 +293,7 @@ func (self *Timer) Add(delay int, callback interface{}, callbackContext interfac
 //
 // Make sure to call {@link Phaser.Timer#start start} after adding all of the Events you require for this Timer.
 func (self *Timer) AddI(args ...interface{}) *TimerEvent {
-	return &TimerEvent{self.Object.Call("add", args)}
+	return &TimerEvent{self.Object.Call("add", args...)}
 }
 
 // Repeat Adds a new TimerEvent that will always play through once and then repeat for the given number of iterations.
@@ -315,7 +315,7 @@ func (self *Timer) Repeat(delay int, repeatCount int, callback interface{}, call
 //
 // Make sure to call {@link Phaser.Timer#start start} after adding all of the Events you require for this Timer.
 func (self *Timer) RepeatI(args ...interface{}) *TimerEvent {
-	return &TimerEvent{self.Object.Call("repeat", args)}
+	return &TimerEvent{self.Object.Call("repeat", args...)}
 }
 
 // Loop Adds a new looped Event to this Timer that will repeat forever or until the Timer is stopped.
@@ -335,7 +335,7 @@ func (self *Timer) Loop(delay int, callback interface{}, callbackContext interfa
 //
 // Make sure to call {@link Phaser.Timer#start start} after adding all of the Events you require for this Timer.
 func (self *Timer) LoopI(args ...interface{}) *TimerEvent {
-	return &TimerEvent{self.Object.Call("loop", args)}
+	return &TimerEvent{self.Object.Call("loop", args...)}
 }
 
 // Start Starts this Timer running.
@@ -350,7 +350,7 @@ func (self *Timer) Start1O(delay int) {
 
 // StartI Starts this Timer running.
 func (self *Timer) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Stop Stops this Timer from running. Does not cause it to be destroyed if autoDestroy is set to true.
@@ -365,7 +365,7 @@ func (self *Timer) Stop1O(clearEvents bool) {
 
 // StopI Stops this Timer from running. Does not cause it to be destroyed if autoDestroy is set to true.
 func (self *Timer) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Remove Removes a pending TimerEvent from the queue.
@@ -375,7 +375,7 @@ func (self *Timer) Remove(event *TimerEvent) {
 
 // RemoveI Removes a pending TimerEvent from the queue.
 func (self *Timer) RemoveI(args ...interface{}) {
-	self.Object.Call("remove", args)
+	self.Object.Call("remove", args...)
 }
 
 // Order Orders the events on this Timer so they are in tick order.
@@ -387,7 +387,7 @@ func (self *Timer) Order() {
 // OrderI Orders the events on this Timer so they are in tick order.
 // This is called automatically when new events are created.
 func (self *Timer) OrderI(args ...interface{}) {
-	self.Object.Call("order", args)
+	self.Object.Call("order", args...)
 }
 
 // SortHandler Sort handler used by Phaser.Timer.order.
@@ -397,7 +397,7 @@ func (self *Timer) SortHandler() {
 
 // SortHandlerI Sort handler used by Phaser.Timer.order.
 func (self *Timer) SortHandlerI(args ...interface{}) {
-	self.Object.Call("sortHandler", args)
+	self.Object.Call("sortHandler", args...)
 }
 
 // ClearPendingEvents Clears any events from the Timer which have pendingDelete set to true and then resets the private _len and _i values.
@@ -407,7 +407,7 @@ func (self *Timer) ClearPendingEvents() {
 
 // ClearPendingEventsI Clears any events from the Timer which have pendingDelete set to true and then resets the private _len and _i values.
 func (self *Timer) ClearPendingEventsI(args ...interface{}) {
-	self.Object.Call("clearPendingEvents", args)
+	self.Object.Call("clearPendingEvents", args...)
 }
 
 // Update The main Timer update event, called automatically by Phaser.Time.update.
@@ -417,7 +417,7 @@ func (self *Timer) Update(time int) bool {
 
 // UpdateI The main Timer update event, called automatically by Phaser.Time.update.
 func (self *Timer) UpdateI(args ...interface{}) bool {
-	return self.Object.Call("update", args).Bool()
+	return self.Object.Call("update", args...).Bool()
 }
 
 // Pause Pauses the Timer and all events in the queue.
@@ -427,7 +427,7 @@ func (self *Timer) Pause() {
 
 // PauseI Pauses the Timer and all events in the queue.
 func (self *Timer) PauseI(args ...interface{}) {
-	self.Object.Call("pause", args)
+	self.Object.Call("pause", args...)
 }
 
 // _pause Internal pause/resume control - user code should use Timer.pause instead.
@@ -437,7 +437,7 @@ func (self *Timer) _pause() {
 
 // _pauseI Internal pause/resume control - user code should use Timer.pause instead.
 func (self *Timer) _pauseI(args ...interface{}) {
-	self.Object.Call("_pause", args)
+	self.Object.Call("_pause", args...)
 }
 
 // AdjustEvents Adjusts the time of all pending events and the nextTick by the given baseTime.
@@ -447,7 +447,7 @@ func (self *Timer) AdjustEvents() {
 
 // AdjustEventsI Adjusts the time of all pending events and the nextTick by the given baseTime.
 func (self *Timer) AdjustEventsI(args ...interface{}) {
-	self.Object.Call("adjustEvents", args)
+	self.Object.Call("adjustEvents", args...)
 }
 
 // Resume Resumes the Timer and updates all pending events.
@@ -457,7 +457,7 @@ func (self *Timer) Resume() {
 
 // ResumeI Resumes the Timer and updates all pending events.
 func (self *Timer) ResumeI(args ...interface{}) {
-	self.Object.Call("resume", args)
+	self.Object.Call("resume", args...)
 }
 
 // _resume Internal pause/resume control - user code should use Timer.resume instead.
@@ -467,7 +467,7 @@ func (self *Timer) _resume() {
 
 // _resumeI Internal pause/resume control - user code should use Timer.resume instead.
 func (self *Timer) _resumeI(args ...interface{}) {
-	self.Object.Call("_resume", args)
+	self.Object.Call("_resume", args...)
 }
 
 // RemoveAll Removes all Events from this Timer and all callbacks linked to onComplete, but leaves the Timer running.
@@ -479,7 +479,7 @@ func (self *Timer) RemoveAll() {
 // RemoveAllI Removes all Events from this Timer and all callbacks linked to onComplete, but leaves the Timer running.
 // The onComplete callbacks won't be called.
 func (self *Timer) RemoveAllI(args ...interface{}) {
-	self.Object.Call("removeAll", args)
+	self.Object.Call("removeAll", args...)
 }
 
 // Destroy Destroys this Timer. Any pending Events are not dispatched.
@@ -491,5 +491,5 @@ func (self *Timer) Destroy() {
 // DestroyI Destroys this Timer. Any pending Events are not dispatched.
 // The onComplete callbacks won't be called.
 func (self *Timer) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

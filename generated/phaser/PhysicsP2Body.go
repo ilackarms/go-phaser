@@ -73,7 +73,7 @@ func NewPhysicsP2Body4O(game *Game, sprite *Sprite, x int, y int, mass int) *Phy
 // Note: When bound to a Sprite to avoid single-pixel jitters on mobile devices we strongly recommend using Sprite sizes that are even on both axis, i.e. 128x128 not 127x127.
 // Note: When a game object is given a P2 body it has its anchor x/y set to 0.5, so it becomes centered.
 func NewPhysicsP2BodyI(args ...interface{}) *PhysicsP2Body {
-	return &PhysicsP2Body{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("Body").New(args)}
+	return &PhysicsP2Body{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("Body").New(args...)}
 }
 
 // PhysicsP2Body Binding conversion method to PhysicsP2Body point
@@ -529,7 +529,7 @@ func (self *PhysicsP2Body) CreateBodyCallback(object interface{}, callback inter
 // Note that the impact event happens after collision resolution, so it cannot be used to prevent a collision from happening.
 // It also happens mid-step. So do not destroy a Body during this callback, instead set safeDestroy to true so it will be killed on the next preUpdate.
 func (self *PhysicsP2Body) CreateBodyCallbackI(args ...interface{}) {
-	self.Object.Call("createBodyCallback", args)
+	self.Object.Call("createBodyCallback", args...)
 }
 
 // CreateGroupCallback Sets a callback to be fired any time this Body impacts with the given Group. The impact test is performed against shape.collisionGroup values.
@@ -547,7 +547,7 @@ func (self *PhysicsP2Body) CreateGroupCallback(group *PhysicsCollisionGroup, cal
 // Note that the impact event happens after collision resolution, so it cannot be used to prevent a collision from happening.
 // It also happens mid-step. So do not destroy a Body during this callback, instead set safeDestroy to true so it will be killed on the next preUpdate.
 func (self *PhysicsP2Body) CreateGroupCallbackI(args ...interface{}) {
-	self.Object.Call("createGroupCallback", args)
+	self.Object.Call("createGroupCallback", args...)
 }
 
 // GetCollisionMask Gets the collision bitmask from the groups this body collides with.
@@ -557,7 +557,7 @@ func (self *PhysicsP2Body) GetCollisionMask() int {
 
 // GetCollisionMaskI Gets the collision bitmask from the groups this body collides with.
 func (self *PhysicsP2Body) GetCollisionMaskI(args ...interface{}) int {
-	return self.Object.Call("getCollisionMask", args).Int()
+	return self.Object.Call("getCollisionMask", args...).Int()
 }
 
 // UpdateCollisionMask Updates the collisionMask.
@@ -572,7 +572,7 @@ func (self *PhysicsP2Body) UpdateCollisionMask1O(shape *P2Shape) {
 
 // UpdateCollisionMaskI Updates the collisionMask.
 func (self *PhysicsP2Body) UpdateCollisionMaskI(args ...interface{}) {
-	self.Object.Call("updateCollisionMask", args)
+	self.Object.Call("updateCollisionMask", args...)
 }
 
 // SetCollisionGroup Sets the given CollisionGroup to be the collision group for all shapes in this Body, unless a shape is specified.
@@ -590,7 +590,7 @@ func (self *PhysicsP2Body) SetCollisionGroup1O(group *PhysicsCollisionGroup, sha
 // SetCollisionGroupI Sets the given CollisionGroup to be the collision group for all shapes in this Body, unless a shape is specified.
 // This also resets the collisionMask.
 func (self *PhysicsP2Body) SetCollisionGroupI(args ...interface{}) {
-	self.Object.Call("setCollisionGroup", args)
+	self.Object.Call("setCollisionGroup", args...)
 }
 
 // ClearCollision Clears the collision data from the shapes in this Body. Optionally clears Group and/or Mask.
@@ -615,7 +615,7 @@ func (self *PhysicsP2Body) ClearCollision3O(clearGroup bool, clearMask bool, sha
 
 // ClearCollisionI Clears the collision data from the shapes in this Body. Optionally clears Group and/or Mask.
 func (self *PhysicsP2Body) ClearCollisionI(args ...interface{}) {
-	self.Object.Call("clearCollision", args)
+	self.Object.Call("clearCollision", args...)
 }
 
 // RemoveCollisionGroup Removes the given CollisionGroup, or array of CollisionGroups, from the list of groups that this body will collide with and updates the collision masks.
@@ -635,7 +635,7 @@ func (self *PhysicsP2Body) RemoveCollisionGroup2O(group interface{}, clearCallba
 
 // RemoveCollisionGroupI Removes the given CollisionGroup, or array of CollisionGroups, from the list of groups that this body will collide with and updates the collision masks.
 func (self *PhysicsP2Body) RemoveCollisionGroupI(args ...interface{}) {
-	self.Object.Call("removeCollisionGroup", args)
+	self.Object.Call("removeCollisionGroup", args...)
 }
 
 // Collides Adds the given CollisionGroup, or array of CollisionGroups, to the list of groups that this body will collide with and updates the collision masks.
@@ -660,7 +660,7 @@ func (self *PhysicsP2Body) Collides3O(group interface{}, callback interface{}, c
 
 // CollidesI Adds the given CollisionGroup, or array of CollisionGroups, to the list of groups that this body will collide with and updates the collision masks.
 func (self *PhysicsP2Body) CollidesI(args ...interface{}) {
-	self.Object.Call("collides", args)
+	self.Object.Call("collides", args...)
 }
 
 // AdjustCenterOfMass Moves the shape offsets so their center of mass becomes the body center of mass.
@@ -670,7 +670,7 @@ func (self *PhysicsP2Body) AdjustCenterOfMass() {
 
 // AdjustCenterOfMassI Moves the shape offsets so their center of mass becomes the body center of mass.
 func (self *PhysicsP2Body) AdjustCenterOfMassI(args ...interface{}) {
-	self.Object.Call("adjustCenterOfMass", args)
+	self.Object.Call("adjustCenterOfMass", args...)
 }
 
 // GetVelocityAtPoint Gets the velocity of a point in the body.
@@ -686,7 +686,7 @@ func (self *PhysicsP2Body) GetVelocityAtPoint(result []interface{}, relativePoin
 
 // GetVelocityAtPointI Gets the velocity of a point in the body.
 func (self *PhysicsP2Body) GetVelocityAtPointI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("getVelocityAtPoint", args)
+	array00 := self.Object.Call("getVelocityAtPoint", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -702,7 +702,7 @@ func (self *PhysicsP2Body) ApplyDamping(dt int) {
 
 // ApplyDampingI Apply damping, see http://code.google.com/p/bullet/issues/detail?id=74 for details.
 func (self *PhysicsP2Body) ApplyDampingI(args ...interface{}) {
-	self.Object.Call("applyDamping", args)
+	self.Object.Call("applyDamping", args...)
 }
 
 // ApplyImpulse Apply impulse to a point relative to the body.
@@ -716,7 +716,7 @@ func (self *PhysicsP2Body) ApplyImpulse(impulse interface{}, worldX int, worldY 
 // This could for example be a point on the Body surface. An impulse is a force added to a body during a short
 // period of time (impulse = force * time). Impulses will be added to Body.velocity and Body.angularVelocity.
 func (self *PhysicsP2Body) ApplyImpulseI(args ...interface{}) {
-	self.Object.Call("applyImpulse", args)
+	self.Object.Call("applyImpulse", args...)
 }
 
 // ApplyImpulseLocal Apply impulse to a point local to the body.
@@ -732,7 +732,7 @@ func (self *PhysicsP2Body) ApplyImpulseLocal(impulse interface{}, localX int, lo
 // This could for example be a point on the Body surface. An impulse is a force added to a body during a short
 // period of time (impulse = force * time). Impulses will be added to Body.velocity and Body.angularVelocity.
 func (self *PhysicsP2Body) ApplyImpulseLocalI(args ...interface{}) {
-	self.Object.Call("applyImpulseLocal", args)
+	self.Object.Call("applyImpulseLocal", args...)
 }
 
 // ApplyForce Apply force to a world point.
@@ -748,7 +748,7 @@ func (self *PhysicsP2Body) ApplyForce(force interface{}, worldX int, worldY int)
 // This could for example be a point on the RigidBody surface. Applying force
 // this way will add to Body.force and Body.angularForce.
 func (self *PhysicsP2Body) ApplyForceI(args ...interface{}) {
-	self.Object.Call("applyForce", args)
+	self.Object.Call("applyForce", args...)
 }
 
 // SetZeroForce Sets the force on the body to zero.
@@ -758,7 +758,7 @@ func (self *PhysicsP2Body) SetZeroForce() {
 
 // SetZeroForceI Sets the force on the body to zero.
 func (self *PhysicsP2Body) SetZeroForceI(args ...interface{}) {
-	self.Object.Call("setZeroForce", args)
+	self.Object.Call("setZeroForce", args...)
 }
 
 // SetZeroRotation If this Body is dynamic then this will zero its angular velocity.
@@ -768,7 +768,7 @@ func (self *PhysicsP2Body) SetZeroRotation() {
 
 // SetZeroRotationI If this Body is dynamic then this will zero its angular velocity.
 func (self *PhysicsP2Body) SetZeroRotationI(args ...interface{}) {
-	self.Object.Call("setZeroRotation", args)
+	self.Object.Call("setZeroRotation", args...)
 }
 
 // SetZeroVelocity If this Body is dynamic then this will zero its velocity on both axis.
@@ -778,7 +778,7 @@ func (self *PhysicsP2Body) SetZeroVelocity() {
 
 // SetZeroVelocityI If this Body is dynamic then this will zero its velocity on both axis.
 func (self *PhysicsP2Body) SetZeroVelocityI(args ...interface{}) {
-	self.Object.Call("setZeroVelocity", args)
+	self.Object.Call("setZeroVelocity", args...)
 }
 
 // SetZeroDamping Sets the Body damping and angularDamping to zero.
@@ -788,7 +788,7 @@ func (self *PhysicsP2Body) SetZeroDamping() {
 
 // SetZeroDampingI Sets the Body damping and angularDamping to zero.
 func (self *PhysicsP2Body) SetZeroDampingI(args ...interface{}) {
-	self.Object.Call("setZeroDamping", args)
+	self.Object.Call("setZeroDamping", args...)
 }
 
 // ToLocalFrame Transform a world point to local body frame.
@@ -798,7 +798,7 @@ func (self *PhysicsP2Body) ToLocalFrame(out interface{}, worldPoint interface{})
 
 // ToLocalFrameI Transform a world point to local body frame.
 func (self *PhysicsP2Body) ToLocalFrameI(args ...interface{}) {
-	self.Object.Call("toLocalFrame", args)
+	self.Object.Call("toLocalFrame", args...)
 }
 
 // ToWorldFrame Transform a local point to world frame.
@@ -808,7 +808,7 @@ func (self *PhysicsP2Body) ToWorldFrame(out []interface{}, localPoint []interfac
 
 // ToWorldFrameI Transform a local point to world frame.
 func (self *PhysicsP2Body) ToWorldFrameI(args ...interface{}) {
-	self.Object.Call("toWorldFrame", args)
+	self.Object.Call("toWorldFrame", args...)
 }
 
 // RotateLeft This will rotate the Body by the given speed to the left (counter-clockwise).
@@ -818,7 +818,7 @@ func (self *PhysicsP2Body) RotateLeft(speed int) {
 
 // RotateLeftI This will rotate the Body by the given speed to the left (counter-clockwise).
 func (self *PhysicsP2Body) RotateLeftI(args ...interface{}) {
-	self.Object.Call("rotateLeft", args)
+	self.Object.Call("rotateLeft", args...)
 }
 
 // RotateRight This will rotate the Body by the given speed to the left (clockwise).
@@ -828,7 +828,7 @@ func (self *PhysicsP2Body) RotateRight(speed int) {
 
 // RotateRightI This will rotate the Body by the given speed to the left (clockwise).
 func (self *PhysicsP2Body) RotateRightI(args ...interface{}) {
-	self.Object.Call("rotateRight", args)
+	self.Object.Call("rotateRight", args...)
 }
 
 // MoveForward Moves the Body forwards based on its current angle and the given speed.
@@ -840,7 +840,7 @@ func (self *PhysicsP2Body) MoveForward(speed int) {
 // MoveForwardI Moves the Body forwards based on its current angle and the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) MoveForwardI(args ...interface{}) {
-	self.Object.Call("moveForward", args)
+	self.Object.Call("moveForward", args...)
 }
 
 // MoveBackward Moves the Body backwards based on its current angle and the given speed.
@@ -852,7 +852,7 @@ func (self *PhysicsP2Body) MoveBackward(speed int) {
 // MoveBackwardI Moves the Body backwards based on its current angle and the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) MoveBackwardI(args ...interface{}) {
-	self.Object.Call("moveBackward", args)
+	self.Object.Call("moveBackward", args...)
 }
 
 // Thrust Applies a force to the Body that causes it to 'thrust' forwards, based on its current angle and the given speed.
@@ -864,7 +864,7 @@ func (self *PhysicsP2Body) Thrust(speed int) {
 // ThrustI Applies a force to the Body that causes it to 'thrust' forwards, based on its current angle and the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) ThrustI(args ...interface{}) {
-	self.Object.Call("thrust", args)
+	self.Object.Call("thrust", args...)
 }
 
 // ThrustLeft Applies a force to the Body that causes it to 'thrust' to the left, based on its current angle and the given speed.
@@ -876,7 +876,7 @@ func (self *PhysicsP2Body) ThrustLeft(speed int) {
 // ThrustLeftI Applies a force to the Body that causes it to 'thrust' to the left, based on its current angle and the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) ThrustLeftI(args ...interface{}) {
-	self.Object.Call("thrustLeft", args)
+	self.Object.Call("thrustLeft", args...)
 }
 
 // ThrustRight Applies a force to the Body that causes it to 'thrust' to the right, based on its current angle and the given speed.
@@ -888,7 +888,7 @@ func (self *PhysicsP2Body) ThrustRight(speed int) {
 // ThrustRightI Applies a force to the Body that causes it to 'thrust' to the right, based on its current angle and the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) ThrustRightI(args ...interface{}) {
-	self.Object.Call("thrustRight", args)
+	self.Object.Call("thrustRight", args...)
 }
 
 // Reverse Applies a force to the Body that causes it to 'thrust' backwards (in reverse), based on its current angle and the given speed.
@@ -900,7 +900,7 @@ func (self *PhysicsP2Body) Reverse(speed int) {
 // ReverseI Applies a force to the Body that causes it to 'thrust' backwards (in reverse), based on its current angle and the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) ReverseI(args ...interface{}) {
-	self.Object.Call("reverse", args)
+	self.Object.Call("reverse", args...)
 }
 
 // MoveLeft If this Body is dynamic then this will move it to the left by setting its x velocity to the given speed.
@@ -912,7 +912,7 @@ func (self *PhysicsP2Body) MoveLeft(speed int) {
 // MoveLeftI If this Body is dynamic then this will move it to the left by setting its x velocity to the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) MoveLeftI(args ...interface{}) {
-	self.Object.Call("moveLeft", args)
+	self.Object.Call("moveLeft", args...)
 }
 
 // MoveRight If this Body is dynamic then this will move it to the right by setting its x velocity to the given speed.
@@ -924,7 +924,7 @@ func (self *PhysicsP2Body) MoveRight(speed int) {
 // MoveRightI If this Body is dynamic then this will move it to the right by setting its x velocity to the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) MoveRightI(args ...interface{}) {
-	self.Object.Call("moveRight", args)
+	self.Object.Call("moveRight", args...)
 }
 
 // MoveUp If this Body is dynamic then this will move it up by setting its y velocity to the given speed.
@@ -936,7 +936,7 @@ func (self *PhysicsP2Body) MoveUp(speed int) {
 // MoveUpI If this Body is dynamic then this will move it up by setting its y velocity to the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) MoveUpI(args ...interface{}) {
-	self.Object.Call("moveUp", args)
+	self.Object.Call("moveUp", args...)
 }
 
 // MoveDown If this Body is dynamic then this will move it down by setting its y velocity to the given speed.
@@ -948,7 +948,7 @@ func (self *PhysicsP2Body) MoveDown(speed int) {
 // MoveDownI If this Body is dynamic then this will move it down by setting its y velocity to the given speed.
 // The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
 func (self *PhysicsP2Body) MoveDownI(args ...interface{}) {
-	self.Object.Call("moveDown", args)
+	self.Object.Call("moveDown", args...)
 }
 
 // PreUpdate Internal method. This is called directly before the sprites are sent to the renderer and after the update function has finished.
@@ -958,7 +958,7 @@ func (self *PhysicsP2Body) PreUpdate() {
 
 // PreUpdateI Internal method. This is called directly before the sprites are sent to the renderer and after the update function has finished.
 func (self *PhysicsP2Body) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // PostUpdate Internal method. This is called directly before the sprites are sent to the renderer and after the update function has finished.
@@ -968,7 +968,7 @@ func (self *PhysicsP2Body) PostUpdate() {
 
 // PostUpdateI Internal method. This is called directly before the sprites are sent to the renderer and after the update function has finished.
 func (self *PhysicsP2Body) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Reset Resets the Body force, velocity (linear and angular) and rotation. Optionally resets damping and mass.
@@ -988,7 +988,7 @@ func (self *PhysicsP2Body) Reset2O(x int, y int, resetDamping bool, resetMass bo
 
 // ResetI Resets the Body force, velocity (linear and angular) and rotation. Optionally resets damping and mass.
 func (self *PhysicsP2Body) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // AddToWorld Adds this physics body to the world.
@@ -998,7 +998,7 @@ func (self *PhysicsP2Body) AddToWorld() {
 
 // AddToWorldI Adds this physics body to the world.
 func (self *PhysicsP2Body) AddToWorldI(args ...interface{}) {
-	self.Object.Call("addToWorld", args)
+	self.Object.Call("addToWorld", args...)
 }
 
 // RemoveFromWorld Removes this physics body from the world.
@@ -1008,7 +1008,7 @@ func (self *PhysicsP2Body) RemoveFromWorld() {
 
 // RemoveFromWorldI Removes this physics body from the world.
 func (self *PhysicsP2Body) RemoveFromWorldI(args ...interface{}) {
-	self.Object.Call("removeFromWorld", args)
+	self.Object.Call("removeFromWorld", args...)
 }
 
 // Destroy Destroys this Body and all references it holds to other objects.
@@ -1018,7 +1018,7 @@ func (self *PhysicsP2Body) Destroy() {
 
 // DestroyI Destroys this Body and all references it holds to other objects.
 func (self *PhysicsP2Body) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // ClearShapes Removes all Shapes from this Body.
@@ -1028,7 +1028,7 @@ func (self *PhysicsP2Body) ClearShapes() {
 
 // ClearShapesI Removes all Shapes from this Body.
 func (self *PhysicsP2Body) ClearShapesI(args ...interface{}) {
-	self.Object.Call("clearShapes", args)
+	self.Object.Call("clearShapes", args...)
 }
 
 // AddShape Add a shape to the body. You can pass a local transform when adding a shape, so that the shape gets an offset and an angle relative to the body center of mass.
@@ -1063,7 +1063,7 @@ func (self *PhysicsP2Body) AddShape3O(shape *P2Shape, offsetX int, offsetY int, 
 // Will automatically update the mass properties and bounding radius.
 // If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
 func (self *PhysicsP2Body) AddShapeI(args ...interface{}) *P2Shape {
-	return &P2Shape{self.Object.Call("addShape", args)}
+	return &P2Shape{self.Object.Call("addShape", args...)}
 }
 
 // AddCircle Adds a Circle shape to this Body. You can control the offset from the center of the body and the rotation.
@@ -1088,7 +1088,7 @@ func (self *PhysicsP2Body) AddCircle3O(radius int, offsetX int, offsetY int, rot
 
 // AddCircleI Adds a Circle shape to this Body. You can control the offset from the center of the body and the rotation.
 func (self *PhysicsP2Body) AddCircleI(args ...interface{}) *P2Circle {
-	return &P2Circle{self.Object.Call("addCircle", args)}
+	return &P2Circle{self.Object.Call("addCircle", args...)}
 }
 
 // AddRectangle Adds a Rectangle shape to this Body. You can control the offset from the center of the body and the rotation.
@@ -1113,7 +1113,7 @@ func (self *PhysicsP2Body) AddRectangle3O(width int, height int, offsetX int, of
 
 // AddRectangleI Adds a Rectangle shape to this Body. You can control the offset from the center of the body and the rotation.
 func (self *PhysicsP2Body) AddRectangleI(args ...interface{}) *P2Box {
-	return &P2Box{self.Object.Call("addRectangle", args)}
+	return &P2Box{self.Object.Call("addRectangle", args...)}
 }
 
 // AddPlane Adds a Plane shape to this Body. The plane is facing in the Y direction. You can control the offset from the center of the body and the rotation.
@@ -1138,7 +1138,7 @@ func (self *PhysicsP2Body) AddPlane3O(offsetX int, offsetY int, rotation int) *P
 
 // AddPlaneI Adds a Plane shape to this Body. The plane is facing in the Y direction. You can control the offset from the center of the body and the rotation.
 func (self *PhysicsP2Body) AddPlaneI(args ...interface{}) *P2Plane {
-	return &P2Plane{self.Object.Call("addPlane", args)}
+	return &P2Plane{self.Object.Call("addPlane", args...)}
 }
 
 // AddParticle Adds a Particle shape to this Body. You can control the offset from the center of the body and the rotation.
@@ -1163,7 +1163,7 @@ func (self *PhysicsP2Body) AddParticle3O(offsetX int, offsetY int, rotation int)
 
 // AddParticleI Adds a Particle shape to this Body. You can control the offset from the center of the body and the rotation.
 func (self *PhysicsP2Body) AddParticleI(args ...interface{}) *P2Particle {
-	return &P2Particle{self.Object.Call("addParticle", args)}
+	return &P2Particle{self.Object.Call("addParticle", args...)}
 }
 
 // AddLine Adds a Line shape to this Body.
@@ -1198,7 +1198,7 @@ func (self *PhysicsP2Body) AddLine3O(length int, offsetX int, offsetY int, rotat
 // The line shape is along the x direction, and stretches from [-length/2, 0] to [length/2,0].
 // You can control the offset from the center of the body and the rotation.
 func (self *PhysicsP2Body) AddLineI(args ...interface{}) *P2Line {
-	return &P2Line{self.Object.Call("addLine", args)}
+	return &P2Line{self.Object.Call("addLine", args...)}
 }
 
 // AddCapsule Adds a Capsule shape to this Body.
@@ -1228,7 +1228,7 @@ func (self *PhysicsP2Body) AddCapsule3O(length int, radius int, offsetX int, off
 // AddCapsuleI Adds a Capsule shape to this Body.
 // You can control the offset from the center of the body and the rotation.
 func (self *PhysicsP2Body) AddCapsuleI(args ...interface{}) *P2Capsule {
-	return &P2Capsule{self.Object.Call("addCapsule", args)}
+	return &P2Capsule{self.Object.Call("addCapsule", args...)}
 }
 
 // AddPolygon Reads a polygon shape path, and assembles convex shapes from that and puts them at proper offset points. The shape must be simple and without holes.
@@ -1240,7 +1240,7 @@ func (self *PhysicsP2Body) AddPolygon(options interface{}, points interface{}) b
 // AddPolygonI Reads a polygon shape path, and assembles convex shapes from that and puts them at proper offset points. The shape must be simple and without holes.
 // This function expects the x.y values to be given in pixels. If you want to provide them at p2 world scales then call Body.data.fromPolygon directly.
 func (self *PhysicsP2Body) AddPolygonI(args ...interface{}) bool {
-	return self.Object.Call("addPolygon", args).Bool()
+	return self.Object.Call("addPolygon", args...).Bool()
 }
 
 // RemoveShape Remove a shape from the body. Will automatically update the mass properties and bounding radius.
@@ -1250,7 +1250,7 @@ func (self *PhysicsP2Body) RemoveShape(shape interface{}) bool {
 
 // RemoveShapeI Remove a shape from the body. Will automatically update the mass properties and bounding radius.
 func (self *PhysicsP2Body) RemoveShapeI(args ...interface{}) bool {
-	return self.Object.Call("removeShape", args).Bool()
+	return self.Object.Call("removeShape", args...).Bool()
 }
 
 // SetCircle Clears any previously set shapes. Then creates a new Circle shape and adds it to this Body.
@@ -1280,7 +1280,7 @@ func (self *PhysicsP2Body) SetCircle3O(radius int, offsetX int, offsetY int, rot
 // SetCircleI Clears any previously set shapes. Then creates a new Circle shape and adds it to this Body.
 // If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
 func (self *PhysicsP2Body) SetCircleI(args ...interface{}) {
-	self.Object.Call("setCircle", args)
+	self.Object.Call("setCircle", args...)
 }
 
 // SetRectangle Clears any previously set shapes. The creates a new Rectangle shape at the given size and offset, and adds it to this Body.
@@ -1329,7 +1329,7 @@ func (self *PhysicsP2Body) SetRectangle5O(width int, height int, offsetX int, of
 // If you wish to create a Rectangle to match the size of a Sprite or Image see Body.setRectangleFromSprite.
 // If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
 func (self *PhysicsP2Body) SetRectangleI(args ...interface{}) *P2Rectangle {
-	return &P2Rectangle{self.Object.Call("setRectangle", args)}
+	return &P2Rectangle{self.Object.Call("setRectangle", args...)}
 }
 
 // SetRectangleFromSprite Clears any previously set shapes.
@@ -1353,7 +1353,7 @@ func (self *PhysicsP2Body) SetRectangleFromSprite1O(sprite interface{}) *P2Recta
 // If no Sprite is given it defaults to using the parent of this Body.
 // If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
 func (self *PhysicsP2Body) SetRectangleFromSpriteI(args ...interface{}) *P2Rectangle {
-	return &P2Rectangle{self.Object.Call("setRectangleFromSprite", args)}
+	return &P2Rectangle{self.Object.Call("setRectangleFromSprite", args...)}
 }
 
 // SetMaterial Adds the given Material to all Shapes that belong to this Body.
@@ -1371,7 +1371,7 @@ func (self *PhysicsP2Body) SetMaterial1O(material *PhysicsP2Material, shape *P2S
 // SetMaterialI Adds the given Material to all Shapes that belong to this Body.
 // If you only wish to apply it to a specific Shape in this Body then provide that as the 2nd parameter.
 func (self *PhysicsP2Body) SetMaterialI(args ...interface{}) {
-	self.Object.Call("setMaterial", args)
+	self.Object.Call("setMaterial", args...)
 }
 
 // ShapeChanged Updates the debug draw if any body shapes change.
@@ -1381,7 +1381,7 @@ func (self *PhysicsP2Body) ShapeChanged() {
 
 // ShapeChangedI Updates the debug draw if any body shapes change.
 func (self *PhysicsP2Body) ShapeChangedI(args ...interface{}) {
-	self.Object.Call("shapeChanged", args)
+	self.Object.Call("shapeChanged", args...)
 }
 
 // AddPhaserPolygon Reads the shape data from a physics data file stored in the Game.Cache and adds it as a polygon to this Body.
@@ -1403,7 +1403,7 @@ func (self *PhysicsP2Body) AddPhaserPolygon(key string, object string) []interfa
 // {@link https://github.com/photonstorm/phaser/tree/master/resources/PhysicsEditor%20Exporter|custom phaser exporter} for
 // {@link https://www.codeandweb.com/physicseditor|PhysicsEditor}
 func (self *PhysicsP2Body) AddPhaserPolygonI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("addPhaserPolygon", args)
+	array00 := self.Object.Call("addPhaserPolygon", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -1425,7 +1425,7 @@ func (self *PhysicsP2Body) AddFixture(fixtureData string) []interface{} {
 
 // AddFixtureI Add a polygon fixture. This is used during #loadPolygon.
 func (self *PhysicsP2Body) AddFixtureI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("addFixture", args)
+	array00 := self.Object.Call("addFixture", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -1451,5 +1451,5 @@ func (self *PhysicsP2Body) LoadPolygon(key string, object interface{}) bool {
 //
 // For more details see the format of the Lime / Corona Physics Editor export.
 func (self *PhysicsP2Body) LoadPolygonI(args ...interface{}) bool {
-	return self.Object.Call("loadPolygon", args).Bool()
+	return self.Object.Call("loadPolygon", args...).Bool()
 }

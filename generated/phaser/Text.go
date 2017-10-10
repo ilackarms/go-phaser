@@ -205,7 +205,7 @@ func NewText17O(game *Game, x int, y int, text string, style interface{}) *Text 
 //
 // See {@link http://www.jordanm.co.uk/tinytype this compatibility table} for the available default fonts across mobile browsers.
 func NewTextI(args ...interface{}) *Text {
-	return &Text{js.Global.Get("Phaser").Get("Text").New(args)}
+	return &Text{js.Global.Get("Phaser").Get("Text").New(args...)}
 }
 
 // Text Binding conversion method to Text point
@@ -1693,7 +1693,7 @@ func (self *Text) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *Text) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update Override this function to handle any special update requirements.
@@ -1703,7 +1703,7 @@ func (self *Text) Update() {
 
 // UpdateI Override this function to handle any special update requirements.
 func (self *Text) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Destroy Destroy this Text object, removing it from the group it belongs to.
@@ -1718,7 +1718,7 @@ func (self *Text) Destroy1O(destroyChildren bool) {
 
 // DestroyI Destroy this Text object, removing it from the group it belongs to.
 func (self *Text) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // SetShadow Sets a drop shadow effect on the Text. You can specify the horizontal and vertical distance of the drop shadow with the `x` and `y` parameters.
@@ -1782,7 +1782,7 @@ func (self *Text) SetShadow6O(x int, y int, color string, blur int, shadowStroke
 // The blur is the strength of the shadow. A value of zero means a hard shadow, a value of 10 means a very soft shadow.
 // To remove a shadow already in place you can call this method with no parameters set.
 func (self *Text) SetShadowI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("setShadow", args)}
+	return &Text{self.Object.Call("setShadow", args...)}
 }
 
 // SetStyle Set the style of the text by passing a single style object to it.
@@ -1882,7 +1882,7 @@ func (self *Text) SetStyle18O(style interface{}, update bool) *Text {
 
 // SetStyleI Set the style of the text by passing a single style object to it.
 func (self *Text) SetStyleI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("setStyle", args)}
+	return &Text{self.Object.Call("setStyle", args...)}
 }
 
 // UpdateText Renders text. This replaces the Pixi.Text.updateText function as we need a few extra bits in here.
@@ -1892,7 +1892,7 @@ func (self *Text) UpdateText() {
 
 // UpdateTextI Renders text. This replaces the Pixi.Text.updateText function as we need a few extra bits in here.
 func (self *Text) UpdateTextI(args ...interface{}) {
-	self.Object.Call("updateText", args)
+	self.Object.Call("updateText", args...)
 }
 
 // RenderTabLine Renders a line of text that contains tab characters if Text.tab > 0.
@@ -1904,7 +1904,7 @@ func (self *Text) RenderTabLine(line string, x int, y int, fill bool) {
 // RenderTabLineI Renders a line of text that contains tab characters if Text.tab > 0.
 // Called automatically by updateText.
 func (self *Text) RenderTabLineI(args ...interface{}) {
-	self.Object.Call("renderTabLine", args)
+	self.Object.Call("renderTabLine", args...)
 }
 
 // UpdateShadow Sets the Shadow on the Text.context based on the Style settings, or disables it if not enabled.
@@ -1916,7 +1916,7 @@ func (self *Text) UpdateShadow(state bool) {
 // UpdateShadowI Sets the Shadow on the Text.context based on the Style settings, or disables it if not enabled.
 // This is called automatically by Text.updateText.
 func (self *Text) UpdateShadowI(args ...interface{}) {
-	self.Object.Call("updateShadow", args)
+	self.Object.Call("updateShadow", args...)
 }
 
 // MeasureLine Measures a line of text character by character taking into the account the specified character styles.
@@ -1926,7 +1926,7 @@ func (self *Text) MeasureLine(line string) int {
 
 // MeasureLineI Measures a line of text character by character taking into the account the specified character styles.
 func (self *Text) MeasureLineI(args ...interface{}) int {
-	return self.Object.Call("measureLine", args).Int()
+	return self.Object.Call("measureLine", args...).Int()
 }
 
 // UpdateLine Updates a line of text, applying fill and stroke per-character colors or style and weight per-character font if applicable.
@@ -1936,7 +1936,7 @@ func (self *Text) UpdateLine() {
 
 // UpdateLineI Updates a line of text, applying fill and stroke per-character colors or style and weight per-character font if applicable.
 func (self *Text) UpdateLineI(args ...interface{}) {
-	self.Object.Call("updateLine", args)
+	self.Object.Call("updateLine", args...)
 }
 
 // ClearColors Clears any text fill or stroke colors that were set by `addColor` or `addStrokeColor`.
@@ -1946,7 +1946,7 @@ func (self *Text) ClearColors() *Text {
 
 // ClearColorsI Clears any text fill or stroke colors that were set by `addColor` or `addStrokeColor`.
 func (self *Text) ClearColorsI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("clearColors", args)}
+	return &Text{self.Object.Call("clearColors", args...)}
 }
 
 // ClearFontValues Clears any text styles or weights font that were set by `addFontStyle` or `addFontWeight`.
@@ -1956,7 +1956,7 @@ func (self *Text) ClearFontValues() *Text {
 
 // ClearFontValuesI Clears any text styles or weights font that were set by `addFontStyle` or `addFontWeight`.
 func (self *Text) ClearFontValuesI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("clearFontValues", args)}
+	return &Text{self.Object.Call("clearFontValues", args...)}
 }
 
 // AddColor Set specific colors for certain characters within the Text.
@@ -1980,7 +1980,7 @@ func (self *Text) AddColor(color string, position int) *Text {
 //
 // If you wish to change the stroke color see addStrokeColor instead.
 func (self *Text) AddColorI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("addColor", args)}
+	return &Text{self.Object.Call("addColor", args...)}
 }
 
 // AddStrokeColor Set specific stroke colors for certain characters within the Text.
@@ -2008,7 +2008,7 @@ func (self *Text) AddStrokeColor(color string, position int) *Text {
 //
 // If you wish to change the text fill color see addColor instead.
 func (self *Text) AddStrokeColorI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("addStrokeColor", args)}
+	return &Text{self.Object.Call("addStrokeColor", args...)}
 }
 
 // AddFontStyle Set specific font styles for certain characters within the Text.
@@ -2032,7 +2032,7 @@ func (self *Text) AddFontStyle(style string, position int) *Text {
 //
 // If you wish to change the text font weight see addFontWeight instead.
 func (self *Text) AddFontStyleI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("addFontStyle", args)}
+	return &Text{self.Object.Call("addFontStyle", args...)}
 }
 
 // AddFontWeight Set specific font weights for certain characters within the Text.
@@ -2056,7 +2056,7 @@ func (self *Text) AddFontWeight(style string, position int) *Text {
 //
 // If you wish to change the text font style see addFontStyle instead.
 func (self *Text) AddFontWeightI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("addFontWeight", args)}
+	return &Text{self.Object.Call("addFontWeight", args...)}
 }
 
 // PrecalculateWordWrap Runs the given text through the Text.runWordWrap function and returns
@@ -2080,7 +2080,7 @@ func (self *Text) PrecalculateWordWrap(text string) []interface{} {
 //
 // Useful if you wish to control pagination on long pieces of content.
 func (self *Text) PrecalculateWordWrapI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("precalculateWordWrap", args)
+	array00 := self.Object.Call("precalculateWordWrap", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -2096,7 +2096,7 @@ func (self *Text) RunWordWrap(text string) {
 
 // RunWordWrapI Greedy wrapping algorithm that will wrap words as the line grows longer than its horizontal bounds.
 func (self *Text) RunWordWrapI(args ...interface{}) {
-	self.Object.Call("runWordWrap", args)
+	self.Object.Call("runWordWrap", args...)
 }
 
 // AdvancedWordWrap Advanced wrapping algorithm that will wrap words as the line grows longer than its horizontal bounds.
@@ -2112,7 +2112,7 @@ func (self *Text) AdvancedWordWrap(text string) {
 // Lines are trimmed of white space before processing.
 // Throws an error if the user was smart enough to specify a wordWrapWidth less than a single character.
 func (self *Text) AdvancedWordWrapI(args ...interface{}) {
-	self.Object.Call("advancedWordWrap", args)
+	self.Object.Call("advancedWordWrap", args...)
 }
 
 // BasicWordWrap Greedy wrapping algorithm that will wrap words as the line grows longer than its horizontal bounds.
@@ -2122,7 +2122,7 @@ func (self *Text) BasicWordWrap(text string) {
 
 // BasicWordWrapI Greedy wrapping algorithm that will wrap words as the line grows longer than its horizontal bounds.
 func (self *Text) BasicWordWrapI(args ...interface{}) {
-	self.Object.Call("basicWordWrap", args)
+	self.Object.Call("basicWordWrap", args...)
 }
 
 // UpdateFont Updates the internal `style.font` if it now differs according to generation from components.
@@ -2132,7 +2132,7 @@ func (self *Text) UpdateFont(components interface{}) {
 
 // UpdateFontI Updates the internal `style.font` if it now differs according to generation from components.
 func (self *Text) UpdateFontI(args ...interface{}) {
-	self.Object.Call("updateFont", args)
+	self.Object.Call("updateFont", args...)
 }
 
 // FontToComponents Converting a short CSS-font string into the relevant components.
@@ -2142,7 +2142,7 @@ func (self *Text) FontToComponents(font string) {
 
 // FontToComponentsI Converting a short CSS-font string into the relevant components.
 func (self *Text) FontToComponentsI(args ...interface{}) {
-	self.Object.Call("fontToComponents", args)
+	self.Object.Call("fontToComponents", args...)
 }
 
 // ComponentsToFont Converts individual font components (see `fontToComponents`) to a short CSS font string.
@@ -2152,7 +2152,7 @@ func (self *Text) ComponentsToFont(components interface{}) {
 
 // ComponentsToFontI Converts individual font components (see `fontToComponents`) to a short CSS font string.
 func (self *Text) ComponentsToFontI(args ...interface{}) {
-	self.Object.Call("componentsToFont", args)
+	self.Object.Call("componentsToFont", args...)
 }
 
 // SetText The text to be displayed by this Text object.
@@ -2200,7 +2200,7 @@ func (self *Text) SetText2O(text string, immediate bool) *Text {
 // If not it will re-create the texture of this Text object during the next time the render
 // loop is called.
 func (self *Text) SetTextI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("setText", args)}
+	return &Text{self.Object.Call("setText", args...)}
 }
 
 // ParseList Converts the given array into a tab delimited string and then updates this Text object.
@@ -2238,7 +2238,7 @@ func (self *Text) ParseList(list []interface{}) *Text {
 //
 // would convert in to: `"a\tb\tc\nd\te\tf"`
 func (self *Text) ParseListI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("parseList", args)}
+	return &Text{self.Object.Call("parseList", args...)}
 }
 
 // SetTextBounds The Text Bounds is a rectangular region that you control the dimensions of into which the Text object itself is positioned,
@@ -2394,7 +2394,7 @@ func (self *Text) SetTextBounds4O(x int, y int, width int, height int) *Text {
 // property based on the given bounds and canvas size. This means if you need to set the pivot property directly in your game then
 // you either cannot use `setTextBounds` or you must place the Text object inside another DisplayObject on which you set the pivot.
 func (self *Text) SetTextBoundsI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("setTextBounds", args)}
+	return &Text{self.Object.Call("setTextBounds", args...)}
 }
 
 // UpdateTexture Updates the texture based on the canvas dimensions.
@@ -2404,7 +2404,7 @@ func (self *Text) UpdateTexture() {
 
 // UpdateTextureI Updates the texture based on the canvas dimensions.
 func (self *Text) UpdateTextureI(args ...interface{}) {
-	self.Object.Call("updateTexture", args)
+	self.Object.Call("updateTexture", args...)
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -2414,7 +2414,7 @@ func (self *Text) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *Text) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer.
@@ -2424,7 +2424,7 @@ func (self *Text) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer.
 func (self *Text) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // DetermineFontProperties Calculates the ascent, descent and fontSize of a given font style.
@@ -2434,7 +2434,7 @@ func (self *Text) DetermineFontProperties(fontStyle interface{}) {
 
 // DetermineFontPropertiesI Calculates the ascent, descent and fontSize of a given font style.
 func (self *Text) DetermineFontPropertiesI(args ...interface{}) {
-	self.Object.Call("determineFontProperties", args)
+	self.Object.Call("determineFontProperties", args...)
 }
 
 // GetBounds Returns the bounds of the Text as a rectangle.
@@ -2446,7 +2446,7 @@ func (self *Text) GetBounds(matrix *Matrix) *Rectangle {
 // GetBoundsI Returns the bounds of the Text as a rectangle.
 // The bounds calculation takes the worldTransform into account.
 func (self *Text) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // SetTexture Sets the texture of the sprite. Be warned that this doesn't remove or destroy the previous
@@ -2467,7 +2467,7 @@ func (self *Text) SetTexture1O(texture *Texture, destroy bool) {
 //
 // texture this Sprite was using.
 func (self *Text) SetTextureI(args ...interface{}) {
-	self.Object.Call("setTexture", args)
+	self.Object.Call("setTexture", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -2477,7 +2477,7 @@ func (self *Text) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *Text) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
@@ -2487,7 +2487,7 @@ func (self *Text) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
 func (self *Text) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -2497,7 +2497,7 @@ func (self *Text) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Text) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -2507,7 +2507,7 @@ func (self *Text) AddChildAt(child *DisplayObject, index int) *DisplayObject {
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Text) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -2517,7 +2517,7 @@ func (self *Text) SwapChildren(child *DisplayObject, child2 *DisplayObject) {
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Text) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -2527,7 +2527,7 @@ func (self *Text) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Text) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -2537,7 +2537,7 @@ func (self *Text) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Text) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -2547,7 +2547,7 @@ func (self *Text) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Text) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -2557,7 +2557,7 @@ func (self *Text) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Text) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -2567,7 +2567,7 @@ func (self *Text) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Text) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -2577,7 +2577,7 @@ func (self *Text) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Text) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -2587,7 +2587,7 @@ func (self *Text) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Text) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // PostUpdate Internal method called by the World postUpdate cycle.
@@ -2597,7 +2597,7 @@ func (self *Text) PostUpdate() {
 
 // PostUpdateI Internal method called by the World postUpdate cycle.
 func (self *Text) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Play Plays an Animation.
@@ -2647,7 +2647,7 @@ func (self *Text) Play3O(name string, frameRate int, loop bool, killOnComplete b
 // If the animation is already playing calling this again won't do anything.
 // If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
 func (self *Text) PlayI(args ...interface{}) *Animation {
-	return &Animation{self.Object.Call("play", args)}
+	return &Animation{self.Object.Call("play", args...)}
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -2817,7 +2817,7 @@ func (self *Text) AlignIn3O(container interface{}, position int, offsetX int, of
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *Text) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -2992,7 +2992,7 @@ func (self *Text) AlignTo3O(parent interface{}, position int, offsetX int, offse
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *Text) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // BringToTop Brings this Game Object to the top of its parents display list.
@@ -3010,7 +3010,7 @@ func (self *Text) BringToTop() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Text) BringToTopI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("bringToTop", args)}
+	return &DisplayObject{self.Object.Call("bringToTop", args...)}
 }
 
 // SendToBack Sends this Game Object to the bottom of its parents display list.
@@ -3028,7 +3028,7 @@ func (self *Text) SendToBack() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Text) SendToBackI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("sendToBack", args)}
+	return &DisplayObject{self.Object.Call("sendToBack", args...)}
 }
 
 // MoveUp Moves this Game Object up one place in its parents display list.
@@ -3046,7 +3046,7 @@ func (self *Text) MoveUp() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Text) MoveUpI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveUp", args)}
+	return &DisplayObject{self.Object.Call("moveUp", args...)}
 }
 
 // MoveDown Moves this Game Object down one place in its parents display list.
@@ -3064,7 +3064,7 @@ func (self *Text) MoveDown() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Text) MoveDownI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveDown", args)}
+	return &DisplayObject{self.Object.Call("moveDown", args...)}
 }
 
 // Crop Crop allows you to crop the texture being used to display this Game Object.
@@ -3109,7 +3109,7 @@ func (self *Text) Crop1O(rect *Rectangle, copy bool) {
 // A reference to the rectangle is stored in `cropRect` unless the `copy` parameter is `true`,
 // in which case the values are duplicated to a local object.
 func (self *Text) CropI(args ...interface{}) {
-	self.Object.Call("crop", args)
+	self.Object.Call("crop", args...)
 }
 
 // UpdateCrop If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -3121,7 +3121,7 @@ func (self *Text) UpdateCrop() {
 // UpdateCropI If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
 // or the rectangle it references, then you need to update the crop frame by calling this method.
 func (self *Text) UpdateCropI(args ...interface{}) {
-	self.Object.Call("updateCrop", args)
+	self.Object.Call("updateCrop", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -3148,7 +3148,7 @@ func (self *Text) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *Text) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -3172,7 +3172,7 @@ func (self *Text) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *Text) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // LoadTexture Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
@@ -3252,7 +3252,7 @@ func (self *Text) LoadTexture2O(key interface{}, frame interface{}, stopAnimatio
 //
 // Note: You cannot use a RenderTexture as a texture for a TileSprite.
 func (self *Text) LoadTextureI(args ...interface{}) {
-	self.Object.Call("loadTexture", args)
+	self.Object.Call("loadTexture", args...)
 }
 
 // SetFrame Sets the texture frame the Game Object uses for rendering.
@@ -3266,7 +3266,7 @@ func (self *Text) SetFrame(frame *Frame) {
 //
 // This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
 func (self *Text) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // ResizeFrame Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -3282,7 +3282,7 @@ func (self *Text) ResizeFrame(parent interface{}, width int, height int) {
 // You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
 // it can be useful to adjust the dimensions directly in this way.
 func (self *Text) ResizeFrameI(args ...interface{}) {
-	self.Object.Call("resizeFrame", args)
+	self.Object.Call("resizeFrame", args...)
 }
 
 // ResetFrame Resets the texture frame dimensions that the Game Object uses for rendering.
@@ -3292,7 +3292,7 @@ func (self *Text) ResetFrame() {
 
 // ResetFrameI Resets the texture frame dimensions that the Game Object uses for rendering.
 func (self *Text) ResetFrameI(args ...interface{}) {
-	self.Object.Call("resetFrame", args)
+	self.Object.Call("resetFrame", args...)
 }
 
 // Overlap Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
@@ -3314,7 +3314,7 @@ func (self *Text) Overlap(displayObject interface{}) bool {
 // Therefore it's relatively expensive to use in large quantities, i.e. with lots of Sprites at a high frequency.
 // It should be fine for low-volume testing where physics isn't required.
 func (self *Text) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }
 
 // Reset Resets the Game Object.
@@ -3350,7 +3350,7 @@ func (self *Text) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *Text) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }
 
 // CheckTransform Adjust scaling limits, if set, to this Game Object.
@@ -3360,7 +3360,7 @@ func (self *Text) CheckTransform(wt *Matrix) {
 
 // CheckTransformI Adjust scaling limits, if set, to this Game Object.
 func (self *Text) CheckTransformI(args ...interface{}) {
-	self.Object.Call("checkTransform", args)
+	self.Object.Call("checkTransform", args...)
 }
 
 // SetScaleMinMax Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
@@ -3402,5 +3402,5 @@ func (self *Text) SetScaleMinMax(minX interface{}, minY interface{}, maxX interf
 //
 // Call `setScaleMinMax(null)` to clear all previously set values.
 func (self *Text) SetScaleMinMaxI(args ...interface{}) {
-	self.Object.Call("setScaleMinMax", args)
+	self.Object.Call("setScaleMinMax", args...)
 }

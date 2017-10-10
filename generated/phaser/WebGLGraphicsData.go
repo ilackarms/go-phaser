@@ -18,7 +18,7 @@ func NewWebGLGraphicsData() *WebGLGraphicsData {
 
 // NewWebGLGraphicsDataI empty description
 func NewWebGLGraphicsDataI(args ...interface{}) *WebGLGraphicsData {
-	return &WebGLGraphicsData{js.Global.Get("PIXI").Get("WebGLGraphicsData").New(args)}
+	return &WebGLGraphicsData{js.Global.Get("PIXI").Get("WebGLGraphicsData").New(args...)}
 }
 
 // WebGLGraphicsData Binding conversion method to WebGLGraphicsData point
@@ -36,7 +36,7 @@ func (self *WebGLGraphicsData) Reset() {
 
 // ResetI empty description
 func (self *WebGLGraphicsData) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // Upload empty description
@@ -46,5 +46,5 @@ func (self *WebGLGraphicsData) Upload() {
 
 // UploadI empty description
 func (self *WebGLGraphicsData) UploadI(args ...interface{}) {
-	self.Object.Call("upload", args)
+	self.Object.Call("upload", args...)
 }

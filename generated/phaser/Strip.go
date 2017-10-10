@@ -18,7 +18,7 @@ func NewStrip(texture *Texture, width int, height int) *Strip {
 
 // NewStripI empty description
 func NewStripI(args ...interface{}) *Strip {
-	return &Strip{js.Global.Get("PIXI").Get("Strip").New(args)}
+	return &Strip{js.Global.Get("PIXI").Get("Strip").New(args...)}
 }
 
 // Strip Binding conversion method to Strip point
@@ -138,7 +138,7 @@ func (self *Strip) RenderStripFlat(strip *Strip) {
 
 // RenderStripFlatI Renders a flat strip
 func (self *Strip) RenderStripFlatI(args ...interface{}) {
-	self.Object.Call("renderStripFlat", args)
+	self.Object.Call("renderStripFlat", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -148,7 +148,7 @@ func (self *Strip) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *Strip) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GetBounds Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
@@ -158,7 +158,7 @@ func (self *Strip) GetBounds(matrix *Matrix) *Rectangle {
 
 // GetBoundsI Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
 func (self *Strip) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -168,7 +168,7 @@ func (self *Strip) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Strip) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -178,7 +178,7 @@ func (self *Strip) AddChildAt(child *DisplayObject, index int) *DisplayObject {
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Strip) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -188,7 +188,7 @@ func (self *Strip) SwapChildren(child *DisplayObject, child2 *DisplayObject) {
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Strip) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -198,7 +198,7 @@ func (self *Strip) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Strip) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -208,7 +208,7 @@ func (self *Strip) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Strip) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -218,7 +218,7 @@ func (self *Strip) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Strip) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -228,7 +228,7 @@ func (self *Strip) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Strip) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -238,7 +238,7 @@ func (self *Strip) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Strip) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -248,7 +248,7 @@ func (self *Strip) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Strip) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
@@ -258,7 +258,7 @@ func (self *Strip) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 func (self *Strip) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -268,7 +268,7 @@ func (self *Strip) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Strip) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -278,7 +278,7 @@ func (self *Strip) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *Strip) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -288,5 +288,5 @@ func (self *Strip) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *Strip) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }

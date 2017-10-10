@@ -18,7 +18,7 @@ func NewEasingLinear() *EasingLinear {
 
 // NewEasingLinearI Linear easing.
 func NewEasingLinearI(args ...interface{}) *EasingLinear {
-	return &EasingLinear{js.Global.Get("Phaser").Get("Easing").Get("Linear").New(args)}
+	return &EasingLinear{js.Global.Get("Phaser").Get("Easing").Get("Linear").New(args...)}
 }
 
 // EasingLinear Binding conversion method to EasingLinear point
@@ -36,5 +36,5 @@ func (self *EasingLinear) None(k int) int {
 
 // NoneI Linear Easing (no variation).
 func (self *EasingLinear) NoneI(args ...interface{}) int {
-	return self.Object.Call("None", args).Int()
+	return self.Object.Call("None", args...).Int()
 }

@@ -39,7 +39,7 @@ func NewKeyboard(game *Game) *Keyboard {
 // For example the Chrome extension vimium is known to disable Phaser from using the D key. And there are others.
 // So please check your extensions before opening Phaser issues.
 func NewKeyboardI(args ...interface{}) *Keyboard {
-	return &Keyboard{js.Global.Get("Phaser").Get("Keyboard").New(args)}
+	return &Keyboard{js.Global.Get("Phaser").Get("Keyboard").New(args...)}
 }
 
 // Keyboard Binding conversion method to Keyboard point
@@ -172,7 +172,7 @@ func (self *Keyboard) AddCallbacks3O(context interface{}, onDown interface{}, on
 
 // AddCallbacksI Add callbacks to the Keyboard handler so that each time a key is pressed down or released the callbacks are activated.
 func (self *Keyboard) AddCallbacksI(args ...interface{}) {
-	self.Object.Call("addCallbacks", args)
+	self.Object.Call("addCallbacks", args...)
 }
 
 // AddKey If you need more fine-grained control over a Key you can create a new Phaser.Key object via this method.
@@ -184,7 +184,7 @@ func (self *Keyboard) AddKey(keycode int) *Key {
 // AddKeyI If you need more fine-grained control over a Key you can create a new Phaser.Key object via this method.
 // The Key object can then be polled, have events attached to it, etc.
 func (self *Keyboard) AddKeyI(args ...interface{}) *Key {
-	return &Key{self.Object.Call("addKey", args)}
+	return &Key{self.Object.Call("addKey", args...)}
 }
 
 // AddKeys A practical way to create an object containing user selected hotkeys.
@@ -206,7 +206,7 @@ func (self *Keyboard) AddKeys(keys interface{}) interface{} {
 //
 // would return an object containing properties (`up`, `down`, `left` and `right`) referring to {@link Phaser.Key} object.
 func (self *Keyboard) AddKeysI(args ...interface{}) interface{} {
-	return self.Object.Call("addKeys", args)
+	return self.Object.Call("addKeys", args...)
 }
 
 // RemoveKey Removes a Key object from the Keyboard manager.
@@ -216,7 +216,7 @@ func (self *Keyboard) RemoveKey(keycode int) {
 
 // RemoveKeyI Removes a Key object from the Keyboard manager.
 func (self *Keyboard) RemoveKeyI(args ...interface{}) {
-	self.Object.Call("removeKey", args)
+	self.Object.Call("removeKey", args...)
 }
 
 // CreateCursorKeys Creates and returns an object containing 4 hotkeys for Up, Down, Left and Right.
@@ -226,7 +226,7 @@ func (self *Keyboard) CreateCursorKeys() interface{} {
 
 // CreateCursorKeysI Creates and returns an object containing 4 hotkeys for Up, Down, Left and Right.
 func (self *Keyboard) CreateCursorKeysI(args ...interface{}) interface{} {
-	return self.Object.Call("createCursorKeys", args)
+	return self.Object.Call("createCursorKeys", args...)
 }
 
 // Start Starts the Keyboard event listeners running (keydown and keyup). They are attached to the window.
@@ -238,7 +238,7 @@ func (self *Keyboard) Start() {
 // StartI Starts the Keyboard event listeners running (keydown and keyup). They are attached to the window.
 // This is called automatically by Phaser.Input and should not normally be invoked directly.
 func (self *Keyboard) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Stop Stops the Keyboard event listeners from running (keydown, keyup and keypress). They are removed from the window.
@@ -248,7 +248,7 @@ func (self *Keyboard) Stop() {
 
 // StopI Stops the Keyboard event listeners from running (keydown, keyup and keypress). They are removed from the window.
 func (self *Keyboard) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Destroy Stops the Keyboard event listeners from running (keydown and keyup). They are removed from the window.
@@ -260,7 +260,7 @@ func (self *Keyboard) Destroy() {
 // DestroyI Stops the Keyboard event listeners from running (keydown and keyup). They are removed from the window.
 // Also clears all key captures and currently created Key objects.
 func (self *Keyboard) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // AddKeyCapture By default when a key is pressed Phaser will not stop the event from propagating up to the browser.
@@ -282,7 +282,7 @@ func (self *Keyboard) AddKeyCapture(keycode interface{}) {
 //
 // Pass in either a single keycode or an array/hash of keycodes.
 func (self *Keyboard) AddKeyCaptureI(args ...interface{}) {
-	self.Object.Call("addKeyCapture", args)
+	self.Object.Call("addKeyCapture", args...)
 }
 
 // RemoveKeyCapture Removes an existing key capture.
@@ -292,7 +292,7 @@ func (self *Keyboard) RemoveKeyCapture(keycode int) {
 
 // RemoveKeyCaptureI Removes an existing key capture.
 func (self *Keyboard) RemoveKeyCaptureI(args ...interface{}) {
-	self.Object.Call("removeKeyCapture", args)
+	self.Object.Call("removeKeyCapture", args...)
 }
 
 // ClearCaptures Clear all set key captures.
@@ -302,7 +302,7 @@ func (self *Keyboard) ClearCaptures() {
 
 // ClearCapturesI Clear all set key captures.
 func (self *Keyboard) ClearCapturesI(args ...interface{}) {
-	self.Object.Call("clearCaptures", args)
+	self.Object.Call("clearCaptures", args...)
 }
 
 // Update Updates all currently defined keys.
@@ -312,7 +312,7 @@ func (self *Keyboard) Update() {
 
 // UpdateI Updates all currently defined keys.
 func (self *Keyboard) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // ProcessKeyDown Process the keydown event.
@@ -322,7 +322,7 @@ func (self *Keyboard) ProcessKeyDown(event *KeyboardEvent) {
 
 // ProcessKeyDownI Process the keydown event.
 func (self *Keyboard) ProcessKeyDownI(args ...interface{}) {
-	self.Object.Call("processKeyDown", args)
+	self.Object.Call("processKeyDown", args...)
 }
 
 // ProcessKeyPress Process the keypress event.
@@ -332,7 +332,7 @@ func (self *Keyboard) ProcessKeyPress(event *KeyboardEvent) {
 
 // ProcessKeyPressI Process the keypress event.
 func (self *Keyboard) ProcessKeyPressI(args ...interface{}) {
-	self.Object.Call("processKeyPress", args)
+	self.Object.Call("processKeyPress", args...)
 }
 
 // ProcessKeyUp Process the keyup event.
@@ -342,7 +342,7 @@ func (self *Keyboard) ProcessKeyUp(event *KeyboardEvent) {
 
 // ProcessKeyUpI Process the keyup event.
 func (self *Keyboard) ProcessKeyUpI(args ...interface{}) {
-	self.Object.Call("processKeyUp", args)
+	self.Object.Call("processKeyUp", args...)
 }
 
 // Reset Resets all Keys.
@@ -357,7 +357,7 @@ func (self *Keyboard) Reset1O(hard bool) {
 
 // ResetI Resets all Keys.
 func (self *Keyboard) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // DownDuration Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
@@ -375,7 +375,7 @@ func (self *Keyboard) DownDuration1O(keycode int, duration int) bool {
 // DownDurationI Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
 // or was pressed down longer ago than then given duration.
 func (self *Keyboard) DownDurationI(args ...interface{}) bool {
-	return self.Object.Call("downDuration", args).Bool()
+	return self.Object.Call("downDuration", args...).Bool()
 }
 
 // UpDuration Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
@@ -393,7 +393,7 @@ func (self *Keyboard) UpDuration1O(keycode interface{}, duration int) bool {
 // UpDurationI Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
 // or was pressed down longer ago than then given duration.
 func (self *Keyboard) UpDurationI(args ...interface{}) bool {
-	return self.Object.Call("upDuration", args).Bool()
+	return self.Object.Call("upDuration", args...).Bool()
 }
 
 // IsDown Returns true of the key is currently pressed down. Note that it can only detect key presses on the web browser.
@@ -403,5 +403,5 @@ func (self *Keyboard) IsDown(keycode int) bool {
 
 // IsDownI Returns true of the key is currently pressed down. Note that it can only detect key presses on the web browser.
 func (self *Keyboard) IsDownI(args ...interface{}) bool {
-	return self.Object.Call("isDown", args).Bool()
+	return self.Object.Call("isDown", args...).Bool()
 }

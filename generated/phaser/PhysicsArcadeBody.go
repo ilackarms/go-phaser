@@ -21,7 +21,7 @@ func NewPhysicsArcadeBody(sprite *Sprite) *PhysicsArcadeBody {
 // NewPhysicsArcadeBodyI The Physics Body is linked to a single Sprite. All physics operations should be performed against the body rather than
 // the Sprite itself. For example you can set the velocity, acceleration, bounce values etc all on the Body.
 func NewPhysicsArcadeBodyI(args ...interface{}) *PhysicsArcadeBody {
-	return &PhysicsArcadeBody{js.Global.Get("Phaser").Get("Physics").Get("Arcade").Get("Body").New(args)}
+	return &PhysicsArcadeBody{js.Global.Get("Phaser").Get("Physics").Get("Arcade").Get("Body").New(args...)}
 }
 
 // PhysicsArcadeBody Binding conversion method to PhysicsArcadeBody point
@@ -835,7 +835,7 @@ func (self *PhysicsArcadeBody) UpdateBounds() {
 
 // UpdateBoundsI Internal method.
 func (self *PhysicsArcadeBody) UpdateBoundsI(args ...interface{}) {
-	self.Object.Call("updateBounds", args)
+	self.Object.Call("updateBounds", args...)
 }
 
 // PreUpdate Internal method.
@@ -845,7 +845,7 @@ func (self *PhysicsArcadeBody) PreUpdate() {
 
 // PreUpdateI Internal method.
 func (self *PhysicsArcadeBody) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // UpdateMovement Internal method.
@@ -855,7 +855,7 @@ func (self *PhysicsArcadeBody) UpdateMovement() {
 
 // UpdateMovementI Internal method.
 func (self *PhysicsArcadeBody) UpdateMovementI(args ...interface{}) {
-	self.Object.Call("updateMovement", args)
+	self.Object.Call("updateMovement", args...)
 }
 
 // StopMovement If this Body is moving as a result of a call to `moveTo` or `moveFrom` (i.e. it
@@ -882,7 +882,7 @@ func (self *PhysicsArcadeBody) StopMovement1O(stopVelocity bool) {
 //
 // The `onMoveComplete` signal is dispatched.
 func (self *PhysicsArcadeBody) StopMovementI(args ...interface{}) {
-	self.Object.Call("stopMovement", args)
+	self.Object.Call("stopMovement", args...)
 }
 
 // PostUpdate Internal method.
@@ -892,7 +892,7 @@ func (self *PhysicsArcadeBody) PostUpdate() {
 
 // PostUpdateI Internal method.
 func (self *PhysicsArcadeBody) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // CheckWorldBounds Internal method.
@@ -902,7 +902,7 @@ func (self *PhysicsArcadeBody) CheckWorldBounds() bool {
 
 // CheckWorldBoundsI Internal method.
 func (self *PhysicsArcadeBody) CheckWorldBoundsI(args ...interface{}) bool {
-	return self.Object.Call("checkWorldBounds", args).Bool()
+	return self.Object.Call("checkWorldBounds", args...).Bool()
 }
 
 // MoveFrom Note: This method is experimental, and may be changed or removed in a future release.
@@ -1006,7 +1006,7 @@ func (self *PhysicsArcadeBody) MoveFrom2O(duration int, speed int, direction int
 // on the Body, such as Gravity, drag or maxVelocity, all of which may impact the
 // movement.
 func (self *PhysicsArcadeBody) MoveFromI(args ...interface{}) bool {
-	return self.Object.Call("moveFrom", args).Bool()
+	return self.Object.Call("moveFrom", args...).Bool()
 }
 
 // MoveTo Note: This method is experimental, and may be changed or removed in a future release.
@@ -1081,7 +1081,7 @@ func (self *PhysicsArcadeBody) MoveTo1O(duration int, distance int, direction in
 // on the Body, such as Gravity, drag or maxVelocity, all of which may impact the
 // movement.
 func (self *PhysicsArcadeBody) MoveToI(args ...interface{}) bool {
-	return self.Object.Call("moveTo", args).Bool()
+	return self.Object.Call("moveTo", args...).Bool()
 }
 
 // SetSize You can modify the size of the physics Body to be any dimension you need.
@@ -1161,7 +1161,7 @@ func (self *PhysicsArcadeBody) SetSize2O(width int, height int, offsetX int, off
 // Calling `setSize` on a Body that has already had `setCircle` will reset all of the Circle
 // properties, making this Body rectangular again.
 func (self *PhysicsArcadeBody) SetSizeI(args ...interface{}) {
-	self.Object.Call("setSize", args)
+	self.Object.Call("setSize", args...)
 }
 
 // SetCircle Sets this Body as using a circle, of the given radius, for all collision detection instead of a rectangle.
@@ -1226,7 +1226,7 @@ func (self *PhysicsArcadeBody) SetCircle3O(radius int, offsetX int, offsetY int)
 // Note: Circular collision only happens with other Arcade Physics bodies, it does not
 // work against tile maps, where rectangular collision is the only method supported.
 func (self *PhysicsArcadeBody) SetCircleI(args ...interface{}) {
-	self.Object.Call("setCircle", args)
+	self.Object.Call("setCircle", args...)
 }
 
 // Reset Resets all Body values (velocity, acceleration, rotation, etc)
@@ -1236,7 +1236,7 @@ func (self *PhysicsArcadeBody) Reset(x int, y int) {
 
 // ResetI Resets all Body values (velocity, acceleration, rotation, etc)
 func (self *PhysicsArcadeBody) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // GetBounds Returns the bounds of this physics body.
@@ -1250,7 +1250,7 @@ func (self *PhysicsArcadeBody) GetBounds(obj interface{}) interface{} {
 //
 // Only used internally by the World collision methods.
 func (self *PhysicsArcadeBody) GetBoundsI(args ...interface{}) interface{} {
-	return self.Object.Call("getBounds", args)
+	return self.Object.Call("getBounds", args...)
 }
 
 // HitTest Tests if a world point lies within this Body.
@@ -1260,7 +1260,7 @@ func (self *PhysicsArcadeBody) HitTest(x int, y int) bool {
 
 // HitTestI Tests if a world point lies within this Body.
 func (self *PhysicsArcadeBody) HitTestI(args ...interface{}) bool {
-	return self.Object.Call("hitTest", args).Bool()
+	return self.Object.Call("hitTest", args...).Bool()
 }
 
 // OnFloor Returns true if the bottom of this Body is in contact with either the world bounds or a tile.
@@ -1270,7 +1270,7 @@ func (self *PhysicsArcadeBody) OnFloor() bool {
 
 // OnFloorI Returns true if the bottom of this Body is in contact with either the world bounds or a tile.
 func (self *PhysicsArcadeBody) OnFloorI(args ...interface{}) bool {
-	return self.Object.Call("onFloor", args).Bool()
+	return self.Object.Call("onFloor", args...).Bool()
 }
 
 // OnCeiling Returns true if the top of this Body is in contact with either the world bounds or a tile.
@@ -1280,7 +1280,7 @@ func (self *PhysicsArcadeBody) OnCeiling() bool {
 
 // OnCeilingI Returns true if the top of this Body is in contact with either the world bounds or a tile.
 func (self *PhysicsArcadeBody) OnCeilingI(args ...interface{}) bool {
-	return self.Object.Call("onCeiling", args).Bool()
+	return self.Object.Call("onCeiling", args...).Bool()
 }
 
 // OnWall Returns true if either side of this Body is in contact with either the world bounds or a tile.
@@ -1290,7 +1290,7 @@ func (self *PhysicsArcadeBody) OnWall() bool {
 
 // OnWallI Returns true if either side of this Body is in contact with either the world bounds or a tile.
 func (self *PhysicsArcadeBody) OnWallI(args ...interface{}) bool {
-	return self.Object.Call("onWall", args).Bool()
+	return self.Object.Call("onWall", args...).Bool()
 }
 
 // DeltaAbsX Returns the absolute delta x value.
@@ -1300,7 +1300,7 @@ func (self *PhysicsArcadeBody) DeltaAbsX() int {
 
 // DeltaAbsXI Returns the absolute delta x value.
 func (self *PhysicsArcadeBody) DeltaAbsXI(args ...interface{}) int {
-	return self.Object.Call("deltaAbsX", args).Int()
+	return self.Object.Call("deltaAbsX", args...).Int()
 }
 
 // DeltaAbsY Returns the absolute delta y value.
@@ -1310,7 +1310,7 @@ func (self *PhysicsArcadeBody) DeltaAbsY() int {
 
 // DeltaAbsYI Returns the absolute delta y value.
 func (self *PhysicsArcadeBody) DeltaAbsYI(args ...interface{}) int {
-	return self.Object.Call("deltaAbsY", args).Int()
+	return self.Object.Call("deltaAbsY", args...).Int()
 }
 
 // DeltaX Returns the delta x value. The difference between Body.x now and in the previous step.
@@ -1320,7 +1320,7 @@ func (self *PhysicsArcadeBody) DeltaX() int {
 
 // DeltaXI Returns the delta x value. The difference between Body.x now and in the previous step.
 func (self *PhysicsArcadeBody) DeltaXI(args ...interface{}) int {
-	return self.Object.Call("deltaX", args).Int()
+	return self.Object.Call("deltaX", args...).Int()
 }
 
 // DeltaY Returns the delta y value. The difference between Body.y now and in the previous step.
@@ -1330,7 +1330,7 @@ func (self *PhysicsArcadeBody) DeltaY() int {
 
 // DeltaYI Returns the delta y value. The difference between Body.y now and in the previous step.
 func (self *PhysicsArcadeBody) DeltaYI(args ...interface{}) int {
-	return self.Object.Call("deltaY", args).Int()
+	return self.Object.Call("deltaY", args...).Int()
 }
 
 // DeltaZ Returns the delta z value. The difference between Body.rotation now and in the previous step.
@@ -1340,7 +1340,7 @@ func (self *PhysicsArcadeBody) DeltaZ() int {
 
 // DeltaZI Returns the delta z value. The difference between Body.rotation now and in the previous step.
 func (self *PhysicsArcadeBody) DeltaZI(args ...interface{}) int {
-	return self.Object.Call("deltaZ", args).Int()
+	return self.Object.Call("deltaZ", args...).Int()
 }
 
 // Destroy Destroys this Body.
@@ -1356,7 +1356,7 @@ func (self *PhysicsArcadeBody) Destroy() {
 // First it calls Group.removeFromHash if the Game Object this Body belongs to is part of a Group.
 // Then it nulls the Game Objects body reference, and nulls this Body.sprite reference.
 func (self *PhysicsArcadeBody) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Render Render Sprite Body.
@@ -1376,7 +1376,7 @@ func (self *PhysicsArcadeBody) Render2O(context interface{}, body *PhysicsArcade
 
 // RenderI Render Sprite Body.
 func (self *PhysicsArcadeBody) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // RenderBodyInfo Render Sprite Body Physics Data as text.
@@ -1391,5 +1391,5 @@ func (self *PhysicsArcadeBody) RenderBodyInfo1O(body *PhysicsArcadeBody, x int, 
 
 // RenderBodyInfoI Render Sprite Body Physics Data as text.
 func (self *PhysicsArcadeBody) RenderBodyInfoI(args ...interface{}) {
-	self.Object.Call("renderBodyInfo", args)
+	self.Object.Call("renderBodyInfo", args...)
 }

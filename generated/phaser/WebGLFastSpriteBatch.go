@@ -18,7 +18,7 @@ func NewWebGLFastSpriteBatch() *WebGLFastSpriteBatch {
 
 // NewWebGLFastSpriteBatchI empty description
 func NewWebGLFastSpriteBatchI(args ...interface{}) *WebGLFastSpriteBatch {
-	return &WebGLFastSpriteBatch{js.Global.Get("PIXI").Get("WebGLFastSpriteBatch").New(args)}
+	return &WebGLFastSpriteBatch{js.Global.Get("PIXI").Get("WebGLFastSpriteBatch").New(args...)}
 }
 
 // WebGLFastSpriteBatch Binding conversion method to WebGLFastSpriteBatch point
@@ -186,7 +186,7 @@ func (self *WebGLFastSpriteBatch) SetContext(gl *WebGLContext) {
 
 // SetContextI Sets the WebGL Context.
 func (self *WebGLFastSpriteBatch) SetContextI(args ...interface{}) {
-	self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args...)
 }
 
 // Begin empty description
@@ -196,7 +196,7 @@ func (self *WebGLFastSpriteBatch) Begin(spriteBatch *WebGLSpriteBatch, renderSes
 
 // BeginI empty description
 func (self *WebGLFastSpriteBatch) BeginI(args ...interface{}) {
-	self.Object.Call("begin", args)
+	self.Object.Call("begin", args...)
 }
 
 // End empty description
@@ -206,7 +206,7 @@ func (self *WebGLFastSpriteBatch) End() {
 
 // EndI empty description
 func (self *WebGLFastSpriteBatch) EndI(args ...interface{}) {
-	self.Object.Call("end", args)
+	self.Object.Call("end", args...)
 }
 
 // Render empty description
@@ -216,7 +216,7 @@ func (self *WebGLFastSpriteBatch) Render(spriteBatch *WebGLSpriteBatch) {
 
 // RenderI empty description
 func (self *WebGLFastSpriteBatch) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // RenderSprite empty description
@@ -226,7 +226,7 @@ func (self *WebGLFastSpriteBatch) RenderSprite(sprite *Sprite) {
 
 // RenderSpriteI empty description
 func (self *WebGLFastSpriteBatch) RenderSpriteI(args ...interface{}) {
-	self.Object.Call("renderSprite", args)
+	self.Object.Call("renderSprite", args...)
 }
 
 // Flush empty description
@@ -236,7 +236,7 @@ func (self *WebGLFastSpriteBatch) Flush() {
 
 // FlushI empty description
 func (self *WebGLFastSpriteBatch) FlushI(args ...interface{}) {
-	self.Object.Call("flush", args)
+	self.Object.Call("flush", args...)
 }
 
 // Stop empty description
@@ -246,7 +246,7 @@ func (self *WebGLFastSpriteBatch) Stop() {
 
 // StopI empty description
 func (self *WebGLFastSpriteBatch) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Start empty description
@@ -256,5 +256,5 @@ func (self *WebGLFastSpriteBatch) Start() {
 
 // StartI empty description
 func (self *WebGLFastSpriteBatch) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }

@@ -61,7 +61,7 @@ func NewTileset5O(name string, firstgid int, width int, height int, margin int, 
 //
 // Tilesets are normally created automatically when Tiled data is loaded.
 func NewTilesetI(args ...interface{}) *Tileset {
-	return &Tileset{js.Global.Get("Phaser").Get("Tileset").New(args)}
+	return &Tileset{js.Global.Get("Phaser").Get("Tileset").New(args...)}
 }
 
 // Tileset Binding conversion method to Tileset point
@@ -195,7 +195,7 @@ func (self *Tileset) Draw(context *dom.CanvasRenderingContext2D, x int, y int, i
 
 // DrawI Draws a tile from this Tileset at the given coordinates on the context.
 func (self *Tileset) DrawI(args ...interface{}) {
-	self.Object.Call("draw", args)
+	self.Object.Call("draw", args...)
 }
 
 // ContainsTileIndex Returns true if and only if this tileset contains the given tile index.
@@ -205,7 +205,7 @@ func (self *Tileset) ContainsTileIndex() bool {
 
 // ContainsTileIndexI Returns true if and only if this tileset contains the given tile index.
 func (self *Tileset) ContainsTileIndexI(args ...interface{}) bool {
-	return self.Object.Call("containsTileIndex", args).Bool()
+	return self.Object.Call("containsTileIndex", args...).Bool()
 }
 
 // SetImage Set the image associated with this Tileset and update the tile data.
@@ -215,7 +215,7 @@ func (self *Tileset) SetImage(image *Image) {
 
 // SetImageI Set the image associated with this Tileset and update the tile data.
 func (self *Tileset) SetImageI(args ...interface{}) {
-	self.Object.Call("setImage", args)
+	self.Object.Call("setImage", args...)
 }
 
 // SetSpacing Sets tile spacing and margins.
@@ -235,7 +235,7 @@ func (self *Tileset) SetSpacing2O(margin int, spacing int) {
 
 // SetSpacingI Sets tile spacing and margins.
 func (self *Tileset) SetSpacingI(args ...interface{}) {
-	self.Object.Call("setSpacing", args)
+	self.Object.Call("setSpacing", args...)
 }
 
 // UpdateTileData Updates tile coordinates and tileset data.
@@ -245,5 +245,5 @@ func (self *Tileset) UpdateTileData(imageWidth int, imageHeight int) {
 
 // UpdateTileDataI Updates tile coordinates and tileset data.
 func (self *Tileset) UpdateTileDataI(args ...interface{}) {
-	self.Object.Call("updateTileData", args)
+	self.Object.Call("updateTileData", args...)
 }

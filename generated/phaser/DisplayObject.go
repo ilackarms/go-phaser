@@ -48,7 +48,7 @@ func NewDisplayObject() *DisplayObject {
 //
 // It is used internally by the likes of PIXI.Sprite.
 func NewDisplayObjectI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{js.Global.Get("PIXI").Get("PIXI").Get("DisplayObject").New(args)}
+	return &DisplayObject{js.Global.Get("PIXI").Get("PIXI").Get("DisplayObject").New(args...)}
 }
 
 // DisplayObject Binding conversion method to DisplayObject point

@@ -18,7 +18,7 @@ func NewArrayUtils() *ArrayUtils {
 
 // NewArrayUtilsI Utility functions for dealing with Arrays.
 func NewArrayUtilsI(args ...interface{}) *ArrayUtils {
-	return &ArrayUtils{js.Global.Get("Phaser").Get("ArrayUtils").New(args)}
+	return &ArrayUtils{js.Global.Get("Phaser").Get("ArrayUtils").New(args...)}
 }
 
 // ArrayUtils Binding conversion method to ArrayUtils point
@@ -42,7 +42,7 @@ func (self *ArrayUtils) GetRandomItem(objects []interface{}, startIndex int, len
 // Will return null if there are no array items that fall within the specified range
 // or if there is no item for the randomly chosen index.
 func (self *ArrayUtils) GetRandomItemI(args ...interface{}) interface{} {
-	return self.Object.Call("getRandomItem", args)
+	return self.Object.Call("getRandomItem", args...)
 }
 
 // RemoveRandomItem Removes a random object from the given array and returns it.
@@ -58,7 +58,7 @@ func (self *ArrayUtils) RemoveRandomItem(objects []interface{}, startIndex int, 
 // Will return null if there are no array items that fall within the specified range
 // or if there is no item for the randomly chosen index.
 func (self *ArrayUtils) RemoveRandomItemI(args ...interface{}) interface{} {
-	return self.Object.Call("removeRandomItem", args)
+	return self.Object.Call("removeRandomItem", args...)
 }
 
 // Shuffle A standard Fisher-Yates Array shuffle implementation which modifies the array in place.
@@ -74,7 +74,7 @@ func (self *ArrayUtils) Shuffle(array []interface{}) []interface{} {
 
 // ShuffleI A standard Fisher-Yates Array shuffle implementation which modifies the array in place.
 func (self *ArrayUtils) ShuffleI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("shuffle", args)
+	array00 := self.Object.Call("shuffle", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -97,7 +97,7 @@ func (self *ArrayUtils) TransposeMatrix(array [][]interface{}) [][]interface{} {
 
 // TransposeMatrixI Transposes the elements of the given matrix (array of arrays).
 func (self *ArrayUtils) TransposeMatrixI(args ...interface{}) [][]interface{} {
-	array00 := self.Object.Call("transposeMatrix", args)
+	array00 := self.Object.Call("transposeMatrix", args...)
 	length00 := array00.Length()
 	out00 := make([][]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -125,7 +125,7 @@ func (self *ArrayUtils) RotateMatrix(matrix [][]interface{}, direction interface
 //
 // Based on the routine from {@link http://jsfiddle.net/MrPolywhirl/NH42z/}.
 func (self *ArrayUtils) RotateMatrixI(args ...interface{}) [][]interface{} {
-	array00 := self.Object.Call("rotateMatrix", args)
+	array00 := self.Object.Call("rotateMatrix", args...)
 	length00 := array00.Length()
 	out00 := make([][]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -144,7 +144,7 @@ func (self *ArrayUtils) FindClosest(value int, arr []int) int {
 // FindClosestI Snaps a value to the nearest value in an array.
 // The result will always be in the range `[first_value, last_value]`.
 func (self *ArrayUtils) FindClosestI(args ...interface{}) int {
-	return self.Object.Call("findClosest", args).Int()
+	return self.Object.Call("findClosest", args...).Int()
 }
 
 // RotateRight Moves the element from the end of the array to the start, shifting all items in the process.
@@ -166,7 +166,7 @@ func (self *ArrayUtils) RotateRight(array []interface{}) interface{} {
 //
 // See also Phaser.ArrayUtils.rotateLeft.
 func (self *ArrayUtils) RotateRightI(args ...interface{}) interface{} {
-	return self.Object.Call("rotateRight", args)
+	return self.Object.Call("rotateRight", args...)
 }
 
 // RotateLeft Moves the element from the start of the array to the end, shifting all items in the process.
@@ -188,7 +188,7 @@ func (self *ArrayUtils) RotateLeft(array []interface{}) interface{} {
 //
 // See also Phaser.ArrayUtils.rotateRight
 func (self *ArrayUtils) RotateLeftI(args ...interface{}) interface{} {
-	return self.Object.Call("rotateLeft", args)
+	return self.Object.Call("rotateLeft", args...)
 }
 
 // Rotate Moves the element from the start of the array to the end, shifting all items in the process.
@@ -210,7 +210,7 @@ func (self *ArrayUtils) Rotate(array []interface{}) interface{} {
 //
 // See also Phaser.ArrayUtils.rotateRight
 func (self *ArrayUtils) RotateI(args ...interface{}) interface{} {
-	return self.Object.Call("rotate", args)
+	return self.Object.Call("rotate", args...)
 }
 
 // NumberArray Create an array representing the inclusive range of numbers (usually integers) in `[start, end]`.
@@ -229,7 +229,7 @@ func (self *ArrayUtils) NumberArray(start int, end int) []int {
 // NumberArrayI Create an array representing the inclusive range of numbers (usually integers) in `[start, end]`.
 // This is equivalent to `numberArrayStep(start, end, 1)`.
 func (self *ArrayUtils) NumberArrayI(args ...interface{}) []int {
-	array00 := self.Object.Call("numberArray", args)
+	array00 := self.Object.Call("numberArray", args...)
 	length00 := array00.Length()
 	out00 := make([]int, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -298,7 +298,7 @@ func (self *ArrayUtils) NumberArrayStep2O(start int, end int, step int) []interf
 // Certain values for `start` and `end` (eg. NaN/undefined/null) are currently coerced to 0;
 // for forward compatibility make sure to pass in actual numbers.
 func (self *ArrayUtils) NumberArrayStepI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("numberArrayStep", args)
+	array00 := self.Object.Call("numberArrayStep", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {

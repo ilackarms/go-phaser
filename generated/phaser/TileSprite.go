@@ -78,7 +78,7 @@ func NewTileSprite(game *Game, x int, y int, width int, height int, key interfac
 // if your game is running under WebGL please note that each frame of the animation must be a power of two in size, or it will receive
 // additional padding to enforce it to be so.
 func NewTileSpriteI(args ...interface{}) *TileSprite {
-	return &TileSprite{js.Global.Get("Phaser").Get("TileSprite").New(args)}
+	return &TileSprite{js.Global.Get("Phaser").Get("TileSprite").New(args...)}
 }
 
 // TileSprite Binding conversion method to TileSprite point
@@ -1124,7 +1124,7 @@ func (self *TileSprite) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *TileSprite) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // AutoScroll Sets this TileSprite to automatically scroll in the given direction until stopped via TileSprite.stopScroll().
@@ -1140,7 +1140,7 @@ func (self *TileSprite) AutoScroll(x int, y int) {
 // A negative x value will scroll to the left. A positive x value will scroll to the right.
 // A negative y value will scroll up. A positive y value will scroll down.
 func (self *TileSprite) AutoScrollI(args ...interface{}) {
-	self.Object.Call("autoScroll", args)
+	self.Object.Call("autoScroll", args...)
 }
 
 // StopScroll Stops an automatically scrolling TileSprite.
@@ -1150,7 +1150,7 @@ func (self *TileSprite) StopScroll() {
 
 // StopScrollI Stops an automatically scrolling TileSprite.
 func (self *TileSprite) StopScrollI(args ...interface{}) {
-	self.Object.Call("stopScroll", args)
+	self.Object.Call("stopScroll", args...)
 }
 
 // Destroy Destroys the TileSprite. This removes it from its parent group, destroys the event and animation handlers if present
@@ -1168,7 +1168,7 @@ func (self *TileSprite) Destroy1O(destroyChildren bool) {
 // DestroyI Destroys the TileSprite. This removes it from its parent group, destroys the event and animation handlers if present
 // and nulls its reference to game, freeing it up for garbage collection.
 func (self *TileSprite) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Reset Resets the TileSprite. This places the TileSprite at the given x/y world coordinates, resets the tilePosition and then
@@ -1182,7 +1182,7 @@ func (self *TileSprite) Reset(x int, y int) *TileSprite {
 // sets alive, exists, visible and renderable all to true. Also resets the outOfBounds state.
 // If the TileSprite has a physics body that too is reset.
 func (self *TileSprite) ResetI(args ...interface{}) *TileSprite {
-	return &TileSprite{self.Object.Call("reset", args)}
+	return &TileSprite{self.Object.Call("reset", args...)}
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -1192,7 +1192,7 @@ func (self *TileSprite) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *TileSprite) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -1202,7 +1202,7 @@ func (self *TileSprite) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *TileSprite) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -1212,7 +1212,7 @@ func (self *TileSprite) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *TileSprite) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GenerateTilingTexture empty description
@@ -1222,7 +1222,7 @@ func (self *TileSprite) GenerateTilingTexture(forcePowerOfTwo bool, renderSessio
 
 // GenerateTilingTextureI empty description
 func (self *TileSprite) GenerateTilingTextureI(args ...interface{}) {
-	self.Object.Call("generateTilingTexture", args)
+	self.Object.Call("generateTilingTexture", args...)
 }
 
 // GetBounds Returns the framing rectangle of the sprite as a PIXI.Rectangle object
@@ -1232,7 +1232,7 @@ func (self *TileSprite) GetBounds() *Rectangle {
 
 // GetBoundsI Returns the framing rectangle of the sprite as a PIXI.Rectangle object
 func (self *TileSprite) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // SetTexture Sets the texture of the sprite. Be warned that this doesn't remove or destroy the previous
@@ -1253,7 +1253,7 @@ func (self *TileSprite) SetTexture1O(texture *Texture, destroy bool) {
 //
 // texture this Sprite was using.
 func (self *TileSprite) SetTextureI(args ...interface{}) {
-	self.Object.Call("setTexture", args)
+	self.Object.Call("setTexture", args...)
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
@@ -1263,7 +1263,7 @@ func (self *TileSprite) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
 func (self *TileSprite) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -1273,7 +1273,7 @@ func (self *TileSprite) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *TileSprite) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -1283,7 +1283,7 @@ func (self *TileSprite) AddChildAt(child *DisplayObject, index int) *DisplayObje
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *TileSprite) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -1293,7 +1293,7 @@ func (self *TileSprite) SwapChildren(child *DisplayObject, child2 *DisplayObject
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *TileSprite) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -1303,7 +1303,7 @@ func (self *TileSprite) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *TileSprite) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -1313,7 +1313,7 @@ func (self *TileSprite) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *TileSprite) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -1323,7 +1323,7 @@ func (self *TileSprite) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *TileSprite) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -1333,7 +1333,7 @@ func (self *TileSprite) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *TileSprite) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -1343,7 +1343,7 @@ func (self *TileSprite) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *TileSprite) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -1353,7 +1353,7 @@ func (self *TileSprite) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *TileSprite) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -1363,7 +1363,7 @@ func (self *TileSprite) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *TileSprite) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -1377,7 +1377,7 @@ func (self *TileSprite) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *TileSprite) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate Internal method called by the World postUpdate cycle.
@@ -1387,7 +1387,7 @@ func (self *TileSprite) PostUpdate() {
 
 // PostUpdateI Internal method called by the World postUpdate cycle.
 func (self *TileSprite) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Play Plays an Animation.
@@ -1437,7 +1437,7 @@ func (self *TileSprite) Play3O(name string, frameRate int, loop bool, killOnComp
 // If the animation is already playing calling this again won't do anything.
 // If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
 func (self *TileSprite) PlayI(args ...interface{}) *Animation {
-	return &Animation{self.Object.Call("play", args)}
+	return &Animation{self.Object.Call("play", args...)}
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -1607,7 +1607,7 @@ func (self *TileSprite) AlignIn3O(container interface{}, position int, offsetX i
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *TileSprite) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -1782,7 +1782,7 @@ func (self *TileSprite) AlignTo3O(parent interface{}, position int, offsetX int,
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *TileSprite) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // BringToTop Brings this Game Object to the top of its parents display list.
@@ -1800,7 +1800,7 @@ func (self *TileSprite) BringToTop() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TileSprite) BringToTopI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("bringToTop", args)}
+	return &DisplayObject{self.Object.Call("bringToTop", args...)}
 }
 
 // SendToBack Sends this Game Object to the bottom of its parents display list.
@@ -1818,7 +1818,7 @@ func (self *TileSprite) SendToBack() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TileSprite) SendToBackI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("sendToBack", args)}
+	return &DisplayObject{self.Object.Call("sendToBack", args...)}
 }
 
 // MoveUp Moves this Game Object up one place in its parents display list.
@@ -1836,7 +1836,7 @@ func (self *TileSprite) MoveUp() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TileSprite) MoveUpI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveUp", args)}
+	return &DisplayObject{self.Object.Call("moveUp", args...)}
 }
 
 // MoveDown Moves this Game Object down one place in its parents display list.
@@ -1854,7 +1854,7 @@ func (self *TileSprite) MoveDown() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TileSprite) MoveDownI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveDown", args)}
+	return &DisplayObject{self.Object.Call("moveDown", args...)}
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -1881,7 +1881,7 @@ func (self *TileSprite) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *TileSprite) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -1905,7 +1905,7 @@ func (self *TileSprite) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *TileSprite) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // LoadTexture Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
@@ -1985,7 +1985,7 @@ func (self *TileSprite) LoadTexture2O(key interface{}, frame interface{}, stopAn
 //
 // Note: You cannot use a RenderTexture as a texture for a TileSprite.
 func (self *TileSprite) LoadTextureI(args ...interface{}) {
-	self.Object.Call("loadTexture", args)
+	self.Object.Call("loadTexture", args...)
 }
 
 // SetFrame Sets the texture frame the Game Object uses for rendering.
@@ -1999,7 +1999,7 @@ func (self *TileSprite) SetFrame(frame *Frame) {
 //
 // This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
 func (self *TileSprite) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // ResizeFrame Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -2015,7 +2015,7 @@ func (self *TileSprite) ResizeFrame(parent interface{}, width int, height int) {
 // You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
 // it can be useful to adjust the dimensions directly in this way.
 func (self *TileSprite) ResizeFrameI(args ...interface{}) {
-	self.Object.Call("resizeFrame", args)
+	self.Object.Call("resizeFrame", args...)
 }
 
 // ResetFrame Resets the texture frame dimensions that the Game Object uses for rendering.
@@ -2025,7 +2025,7 @@ func (self *TileSprite) ResetFrame() {
 
 // ResetFrameI Resets the texture frame dimensions that the Game Object uses for rendering.
 func (self *TileSprite) ResetFrameI(args ...interface{}) {
-	self.Object.Call("resetFrame", args)
+	self.Object.Call("resetFrame", args...)
 }
 
 // Overlap Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
@@ -2047,5 +2047,5 @@ func (self *TileSprite) Overlap(displayObject interface{}) bool {
 // Therefore it's relatively expensive to use in large quantities, i.e. with lots of Sprites at a high frequency.
 // It should be fine for low-volume testing where physics isn't required.
 func (self *TileSprite) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }

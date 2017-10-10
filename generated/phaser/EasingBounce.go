@@ -18,7 +18,7 @@ func NewEasingBounce() *EasingBounce {
 
 // NewEasingBounceI Bounce easing.
 func NewEasingBounceI(args ...interface{}) *EasingBounce {
-	return &EasingBounce{js.Global.Get("Phaser").Get("Easing").Get("Bounce").New(args)}
+	return &EasingBounce{js.Global.Get("Phaser").Get("Easing").Get("Bounce").New(args...)}
 }
 
 // EasingBounce Binding conversion method to EasingBounce point
@@ -36,7 +36,7 @@ func (self *EasingBounce) In(k int) int {
 
 // InI Bounce ease-in.
 func (self *EasingBounce) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Bounce ease-out.
@@ -46,7 +46,7 @@ func (self *EasingBounce) Out(k int) int {
 
 // OutI Bounce ease-out.
 func (self *EasingBounce) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Bounce ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingBounce) InOut(k int) int {
 
 // InOutI Bounce ease-in/out.
 func (self *EasingBounce) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

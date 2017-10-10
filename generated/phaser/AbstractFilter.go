@@ -24,7 +24,7 @@ func NewAbstractFilter(fragmentSrc []interface{}, uniforms interface{}) *Abstrac
 //
 // If you want to make a custom filter this should be your base class.
 func NewAbstractFilterI(args ...interface{}) *AbstractFilter {
-	return &AbstractFilter{js.Global.Get("PIXI").Get("AbstractFilter").New(args)}
+	return &AbstractFilter{js.Global.Get("PIXI").Get("AbstractFilter").New(args...)}
 }
 
 // AbstractFilter Binding conversion method to AbstractFilter point
@@ -62,5 +62,5 @@ func (self *AbstractFilter) SyncUniforms() {
 
 // SyncUniformsI Syncs the uniforms between the class object and the shaders.
 func (self *AbstractFilter) SyncUniformsI(args ...interface{}) {
-	self.Object.Call("syncUniforms", args)
+	self.Object.Call("syncUniforms", args...)
 }

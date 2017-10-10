@@ -140,7 +140,7 @@ func NewVideo2O(game *Game, key interface{}, url interface{}) *Video {
 // Note: On iOS if you need to detect when the user presses the 'Done' button (before the video ends)
 // then you need to add your own event listener
 func NewVideoI(args ...interface{}) *Video {
-	return &Video{js.Global.Get("Phaser").Get("Video").New(args)}
+	return &Video{js.Global.Get("Phaser").Get("Video").New(args...)}
 }
 
 // Video Binding conversion method to Video point
@@ -494,7 +494,7 @@ func (self *Video) ConnectToMediaStream(video *dom.HTMLVideoElement, stream *Med
 
 // ConnectToMediaStreamI Connects to an external media stream for the webcam, rather than using a local one.
 func (self *Video) ConnectToMediaStreamI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("connectToMediaStream", args)}
+	return &Video{self.Object.Call("connectToMediaStream", args...)}
 }
 
 // StartMediaStream Instead of playing a video file this method allows you to stream video data from an attached webcam.
@@ -569,7 +569,7 @@ func (self *Video) StartMediaStream3O(captureAudio bool, width int, height int) 
 // If not given then as soon as the stream has enough data the video dimensions will be changed to match the webcam device.
 // You can listen for this with the onChangeSource signal.
 func (self *Video) StartMediaStreamI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("startMediaStream", args)}
+	return &Video{self.Object.Call("startMediaStream", args...)}
 }
 
 // GetUserMediaTimeout empty description
@@ -579,7 +579,7 @@ func (self *Video) GetUserMediaTimeout() {
 
 // GetUserMediaTimeoutI empty description
 func (self *Video) GetUserMediaTimeoutI(args ...interface{}) {
-	self.Object.Call("getUserMediaTimeout", args)
+	self.Object.Call("getUserMediaTimeout", args...)
 }
 
 // GetUserMediaError empty description
@@ -589,7 +589,7 @@ func (self *Video) GetUserMediaError() {
 
 // GetUserMediaErrorI empty description
 func (self *Video) GetUserMediaErrorI(args ...interface{}) {
-	self.Object.Call("getUserMediaError", args)
+	self.Object.Call("getUserMediaError", args...)
 }
 
 // GetUserMediaSuccess empty description
@@ -599,7 +599,7 @@ func (self *Video) GetUserMediaSuccess() {
 
 // GetUserMediaSuccessI empty description
 func (self *Video) GetUserMediaSuccessI(args ...interface{}) {
-	self.Object.Call("getUserMediaSuccess", args)
+	self.Object.Call("getUserMediaSuccess", args...)
 }
 
 // CreateVideoFromBlob Creates a new Video element from the given Blob. The Blob must contain the video data in the correct encoded format.
@@ -611,7 +611,7 @@ func (self *Video) CreateVideoFromBlob(blob *Blob) *Video {
 // CreateVideoFromBlobI Creates a new Video element from the given Blob. The Blob must contain the video data in the correct encoded format.
 // This method is typically called by the Phaser.Loader and Phaser.Cache for you, but is exposed publicly for convenience.
 func (self *Video) CreateVideoFromBlobI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("createVideoFromBlob", args)}
+	return &Video{self.Object.Call("createVideoFromBlob", args...)}
 }
 
 // CreateVideoFromURL Creates a new Video element from the given URL.
@@ -626,7 +626,7 @@ func (self *Video) CreateVideoFromURL1O(url string, autoplay bool) *Video {
 
 // CreateVideoFromURLI Creates a new Video element from the given URL.
 func (self *Video) CreateVideoFromURLI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("createVideoFromURL", args)}
+	return &Video{self.Object.Call("createVideoFromURL", args...)}
 }
 
 // UpdateTexture Called automatically if the video source changes and updates the internal texture dimensions.
@@ -656,7 +656,7 @@ func (self *Video) UpdateTexture3O(event interface{}, width int, height int) {
 // UpdateTextureI Called automatically if the video source changes and updates the internal texture dimensions.
 // Then dispatches the onChangeSource signal.
 func (self *Video) UpdateTextureI(args ...interface{}) {
-	self.Object.Call("updateTexture", args)
+	self.Object.Call("updateTexture", args...)
 }
 
 // Complete Called when the video completes playback (reaches and ended state).
@@ -668,7 +668,7 @@ func (self *Video) Complete() {
 // CompleteI Called when the video completes playback (reaches and ended state).
 // Dispatches the Video.onComplete signal.
 func (self *Video) CompleteI(args ...interface{}) {
-	self.Object.Call("complete", args)
+	self.Object.Call("complete", args...)
 }
 
 // Play Starts this video playing if it's not already doing so.
@@ -688,7 +688,7 @@ func (self *Video) Play2O(loop bool, playbackRate int) *Video {
 
 // PlayI Starts this video playing if it's not already doing so.
 func (self *Video) PlayI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("play", args)}
+	return &Video{self.Object.Call("play", args...)}
 }
 
 // PlayHandler Called when the video starts to play. Updates the texture.
@@ -698,7 +698,7 @@ func (self *Video) PlayHandler() {
 
 // PlayHandlerI Called when the video starts to play. Updates the texture.
 func (self *Video) PlayHandlerI(args ...interface{}) {
-	self.Object.Call("playHandler", args)
+	self.Object.Call("playHandler", args...)
 }
 
 // Stop Stops the video playing.
@@ -724,7 +724,7 @@ func (self *Video) Stop() *Video {
 //
 // If you are using a video stream from a webcam then calling Stop will disconnect the MediaStream session and disable the webcam.
 func (self *Video) StopI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("stop", args)}
+	return &Video{self.Object.Call("stop", args...)}
 }
 
 // Add Updates the given Display Objects so they use this Video as their texture.
@@ -736,7 +736,7 @@ func (self *Video) Add(object interface{}) *Video {
 // AddI Updates the given Display Objects so they use this Video as their texture.
 // This will replace any texture they will currently have set.
 func (self *Video) AddI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("add", args)}
+	return &Video{self.Object.Call("add", args...)}
 }
 
 // AddToWorld Creates a new Phaser.Image object, assigns this Video to be its texture, adds it to the world then returns it.
@@ -776,7 +776,7 @@ func (self *Video) AddToWorld6O(x int, y int, anchorX int, anchorY int, scaleX i
 
 // AddToWorldI Creates a new Phaser.Image object, assigns this Video to be its texture, adds it to the world then returns it.
 func (self *Video) AddToWorldI(args ...interface{}) *Image {
-	return &Image{self.Object.Call("addToWorld", args)}
+	return &Image{self.Object.Call("addToWorld", args...)}
 }
 
 // Render If the game is running in WebGL this will push the texture up to the GPU if it's dirty.
@@ -790,7 +790,7 @@ func (self *Video) Render() {
 // This is called automatically if the Video is being used by a Sprite, otherwise you need to remember to call it in your render function.
 // If you wish to suppress this functionality set Video.disableTextureUpload to `true`.
 func (self *Video) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // SetMute Internal handler called automatically by the Video.mute setter.
@@ -800,7 +800,7 @@ func (self *Video) SetMute() {
 
 // SetMuteI Internal handler called automatically by the Video.mute setter.
 func (self *Video) SetMuteI(args ...interface{}) {
-	self.Object.Call("setMute", args)
+	self.Object.Call("setMute", args...)
 }
 
 // UnsetMute Internal handler called automatically by the Video.mute setter.
@@ -810,7 +810,7 @@ func (self *Video) UnsetMute() {
 
 // UnsetMuteI Internal handler called automatically by the Video.mute setter.
 func (self *Video) UnsetMuteI(args ...interface{}) {
-	self.Object.Call("unsetMute", args)
+	self.Object.Call("unsetMute", args...)
 }
 
 // SetPause Internal handler called automatically by the Video.paused setter.
@@ -820,7 +820,7 @@ func (self *Video) SetPause() {
 
 // SetPauseI Internal handler called automatically by the Video.paused setter.
 func (self *Video) SetPauseI(args ...interface{}) {
-	self.Object.Call("setPause", args)
+	self.Object.Call("setPause", args...)
 }
 
 // SetResume Internal handler called automatically by the Video.paused setter.
@@ -830,7 +830,7 @@ func (self *Video) SetResume() {
 
 // SetResumeI Internal handler called automatically by the Video.paused setter.
 func (self *Video) SetResumeI(args ...interface{}) {
-	self.Object.Call("setResume", args)
+	self.Object.Call("setResume", args...)
 }
 
 // ChangeSource On some mobile browsers you cannot play a video until the user has explicitly touched the video to allow it.
@@ -884,7 +884,7 @@ func (self *Video) ChangeSource1O(src string, autoplay bool) *Video {
 // when the new video has downloaded enough content to be able to be played. Previous settings such as the volume and loop state
 // are adopted automatically by the new video.
 func (self *Video) ChangeSourceI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("changeSource", args)}
+	return &Video{self.Object.Call("changeSource", args...)}
 }
 
 // CheckVideoProgress Internal callback that monitors the download progress of a video after changing its source.
@@ -894,7 +894,7 @@ func (self *Video) CheckVideoProgress() {
 
 // CheckVideoProgressI Internal callback that monitors the download progress of a video after changing its source.
 func (self *Video) CheckVideoProgressI(args ...interface{}) {
-	self.Object.Call("checkVideoProgress", args)
+	self.Object.Call("checkVideoProgress", args...)
 }
 
 // SetTouchLock Sets the Input Manager touch callback to be Video.unlock.
@@ -906,7 +906,7 @@ func (self *Video) SetTouchLock() {
 // SetTouchLockI Sets the Input Manager touch callback to be Video.unlock.
 // Required for mobile video unlocking. Mostly just used internally.
 func (self *Video) SetTouchLockI(args ...interface{}) {
-	self.Object.Call("setTouchLock", args)
+	self.Object.Call("setTouchLock", args...)
 }
 
 // Unlock Enables the video on mobile devices, usually after the first touch.
@@ -920,7 +920,7 @@ func (self *Video) Unlock() {
 // If the SoundManager hasn't been unlocked then this will automatically unlock that as well.
 // Only one video can be pending unlock at any one time.
 func (self *Video) UnlockI(args ...interface{}) {
-	self.Object.Call("unlock", args)
+	self.Object.Call("unlock", args...)
 }
 
 // Grab Grabs the current frame from the Video or Video Stream and renders it to the Video.snapshot BitmapData.
@@ -965,7 +965,7 @@ func (self *Video) Grab3O(clear bool, alpha int, blendMode string) *BitmapData {
 //
 // If you need more advanced control over the grabbing them call `Video.snapshot.copy` directly with the same parameters as BitmapData.copy.
 func (self *Video) GrabI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("grab", args)}
+	return &BitmapData{self.Object.Call("grab", args...)}
 }
 
 // RemoveVideoElement Removes the Video element from the DOM by calling parentNode.removeChild on itself.
@@ -977,7 +977,7 @@ func (self *Video) RemoveVideoElement() {
 // RemoveVideoElementI Removes the Video element from the DOM by calling parentNode.removeChild on itself.
 // Also removes the autoplay and src attributes and nulls the reference.
 func (self *Video) RemoveVideoElementI(args ...interface{}) {
-	self.Object.Call("removeVideoElement", args)
+	self.Object.Call("removeVideoElement", args...)
 }
 
 // Destroy Destroys the Video object. This calls `Video.stop` and then `Video.removeVideoElement`.
@@ -989,5 +989,5 @@ func (self *Video) Destroy() {
 // DestroyI Destroys the Video object. This calls `Video.stop` and then `Video.removeVideoElement`.
 // If any Sprites are using this Video as their texture it is up to you to manage those.
 func (self *Video) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

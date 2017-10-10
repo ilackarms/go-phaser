@@ -18,7 +18,7 @@ func NewEasingBack() *EasingBack {
 
 // NewEasingBackI Back easing.
 func NewEasingBackI(args ...interface{}) *EasingBack {
-	return &EasingBack{js.Global.Get("Phaser").Get("Easing").Get("Back").New(args)}
+	return &EasingBack{js.Global.Get("Phaser").Get("Easing").Get("Back").New(args...)}
 }
 
 // EasingBack Binding conversion method to EasingBack point
@@ -36,7 +36,7 @@ func (self *EasingBack) In(k int) int {
 
 // InI Back ease-in.
 func (self *EasingBack) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Back ease-out.
@@ -46,7 +46,7 @@ func (self *EasingBack) Out(k int) int {
 
 // OutI Back ease-out.
 func (self *EasingBack) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Back ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingBack) InOut(k int) int {
 
 // InOutI Back ease-in/out.
 func (self *EasingBack) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

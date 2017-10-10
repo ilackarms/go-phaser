@@ -18,7 +18,7 @@ func NewPointer(game *Game, id int, pointerMode *PointerMode) *Pointer {
 
 // NewPointerI A Pointer object is used by the Mouse, Touch and MSPoint managers and represents a single finger on the touch screen.
 func NewPointerI(args ...interface{}) *Pointer {
-	return &Pointer{js.Global.Get("Phaser").Get("Pointer").New(args)}
+	return &Pointer{js.Global.Get("Phaser").Get("Pointer").New(args...)}
 }
 
 // Pointer Binding conversion method to Pointer point
@@ -664,7 +664,7 @@ func (self *Pointer) ResetButtons() {
 
 // ResetButtonsI Resets the states of all the button booleans.
 func (self *Pointer) ResetButtonsI(args ...interface{}) {
-	self.Object.Call("resetButtons", args)
+	self.Object.Call("resetButtons", args...)
 }
 
 // ProcessButtonsDown Called by updateButtons.
@@ -674,7 +674,7 @@ func (self *Pointer) ProcessButtonsDown(buttons int, event *MouseEvent) {
 
 // ProcessButtonsDownI Called by updateButtons.
 func (self *Pointer) ProcessButtonsDownI(args ...interface{}) {
-	self.Object.Call("processButtonsDown", args)
+	self.Object.Call("processButtonsDown", args...)
 }
 
 // ProcessButtonsUp Called by updateButtons.
@@ -684,7 +684,7 @@ func (self *Pointer) ProcessButtonsUp(buttons int, event *MouseEvent) {
 
 // ProcessButtonsUpI Called by updateButtons.
 func (self *Pointer) ProcessButtonsUpI(args ...interface{}) {
-	self.Object.Call("processButtonsUp", args)
+	self.Object.Call("processButtonsUp", args...)
 }
 
 // UpdateButtons Called when the event.buttons property changes from zero.
@@ -696,7 +696,7 @@ func (self *Pointer) UpdateButtons(event *MouseEvent) {
 // UpdateButtonsI Called when the event.buttons property changes from zero.
 // Contains a button bitmask.
 func (self *Pointer) UpdateButtonsI(args ...interface{}) {
-	self.Object.Call("updateButtons", args)
+	self.Object.Call("updateButtons", args...)
 }
 
 // Start Called when the Pointer is pressed onto the touchscreen.
@@ -706,7 +706,7 @@ func (self *Pointer) Start(event interface{}) {
 
 // StartI Called when the Pointer is pressed onto the touchscreen.
 func (self *Pointer) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Update Called by the Input Manager.
@@ -716,7 +716,7 @@ func (self *Pointer) Update() {
 
 // UpdateI Called by the Input Manager.
 func (self *Pointer) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Move Called when the Pointer is moved.
@@ -731,7 +731,7 @@ func (self *Pointer) Move1O(event interface{}, fromClick bool) {
 
 // MoveI Called when the Pointer is moved.
 func (self *Pointer) MoveI(args ...interface{}) {
-	self.Object.Call("move", args)
+	self.Object.Call("move", args...)
 }
 
 // ProcessInteractiveObjects Process all interactive objects to find out which ones were updated in the recent Pointer move.
@@ -746,7 +746,7 @@ func (self *Pointer) ProcessInteractiveObjects1O(fromClick bool) bool {
 
 // ProcessInteractiveObjectsI Process all interactive objects to find out which ones were updated in the recent Pointer move.
 func (self *Pointer) ProcessInteractiveObjectsI(args ...interface{}) bool {
-	return self.Object.Call("processInteractiveObjects", args).Bool()
+	return self.Object.Call("processInteractiveObjects", args...).Bool()
 }
 
 // SwapTarget This will change the `Pointer.targetObject` object to be the one provided.
@@ -776,7 +776,7 @@ func (self *Pointer) SwapTarget1O(newTarget *InputHandler, silent bool) {
 // Note that even if you set a new Target here, it is still able to be replaced by any other valid
 // target during the next Pointer update.
 func (self *Pointer) SwapTargetI(args ...interface{}) {
-	self.Object.Call("swapTarget", args)
+	self.Object.Call("swapTarget", args...)
 }
 
 // Leave Called when the Pointer leaves the target area.
@@ -786,7 +786,7 @@ func (self *Pointer) Leave(event interface{}) {
 
 // LeaveI Called when the Pointer leaves the target area.
 func (self *Pointer) LeaveI(args ...interface{}) {
-	self.Object.Call("leave", args)
+	self.Object.Call("leave", args...)
 }
 
 // Stop Called when the Pointer leaves the touchscreen.
@@ -796,7 +796,7 @@ func (self *Pointer) Stop(event interface{}) {
 
 // StopI Called when the Pointer leaves the touchscreen.
 func (self *Pointer) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // JustPressed The Pointer is considered justPressed if the time it was pressed onto the touchscreen or clicked is less than justPressedRate.
@@ -817,7 +817,7 @@ func (self *Pointer) JustPressed1O(duration int) bool {
 // Note that calling justPressed doesn't reset the pressed status of the Pointer, it will return `true` for as long as the duration is valid.
 // If you wish to check if the Pointer was pressed down just once then see the Sprite.events.onInputDown event.
 func (self *Pointer) JustPressedI(args ...interface{}) bool {
-	return self.Object.Call("justPressed", args).Bool()
+	return self.Object.Call("justPressed", args...).Bool()
 }
 
 // JustReleased The Pointer is considered justReleased if the time it left the touchscreen is less than justReleasedRate.
@@ -838,7 +838,7 @@ func (self *Pointer) JustReleased1O(duration int) bool {
 // Note that calling justReleased doesn't reset the pressed status of the Pointer, it will return `true` for as long as the duration is valid.
 // If you wish to check if the Pointer was released just once then see the Sprite.events.onInputUp event.
 func (self *Pointer) JustReleasedI(args ...interface{}) bool {
-	return self.Object.Call("justReleased", args).Bool()
+	return self.Object.Call("justReleased", args...).Bool()
 }
 
 // AddClickTrampoline Add a click trampoline to this pointer.
@@ -849,8 +849,9 @@ func (self *Pointer) JustReleasedI(args ...interface{}) bool {
 //
 // This is used internally by the ScaleManager; click trampoline usage is uncommon.
 // Click trampolines can only be added to pointers that are currently down.
-func (self *Pointer) AddClickTrampoline(name string, callback interface{}, callbackContext interface{}, callbackArgs interface{}) {
-	self.Object.Call("addClickTrampoline", name, callback, callbackContext, callbackArgs)
+func (self *Pointer) AddClickTrampoline(name string, callback interface{}, callbackContext interface{}, callbackargs ...interface{}) {
+	callbackargs = append([]interface{}{name, callback, callbackContext}, callbackargs...)
+	self.Object.Call("addClickTrampoline", callbackargs...)
 }
 
 // AddClickTrampolineI Add a click trampoline to this pointer.
@@ -862,7 +863,7 @@ func (self *Pointer) AddClickTrampoline(name string, callback interface{}, callb
 // This is used internally by the ScaleManager; click trampoline usage is uncommon.
 // Click trampolines can only be added to pointers that are currently down.
 func (self *Pointer) AddClickTrampolineI(args ...interface{}) {
-	self.Object.Call("addClickTrampoline", args)
+	self.Object.Call("addClickTrampoline", args...)
 }
 
 // ProcessClickTrampolines Fire all click trampolines for which the pointers are still referring to the registered object.
@@ -872,7 +873,7 @@ func (self *Pointer) ProcessClickTrampolines() {
 
 // ProcessClickTrampolinesI Fire all click trampolines for which the pointers are still referring to the registered object.
 func (self *Pointer) ProcessClickTrampolinesI(args ...interface{}) {
-	self.Object.Call("processClickTrampolines", args)
+	self.Object.Call("processClickTrampolines", args...)
 }
 
 // Reset Resets the Pointer properties. Called by InputManager.reset when you perform a State change.
@@ -882,7 +883,7 @@ func (self *Pointer) Reset() {
 
 // ResetI Resets the Pointer properties. Called by InputManager.reset when you perform a State change.
 func (self *Pointer) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // ResetMovement Resets the movementX and movementY properties. Use in your update handler after retrieving the values.
@@ -892,5 +893,5 @@ func (self *Pointer) ResetMovement() {
 
 // ResetMovementI Resets the movementX and movementY properties. Use in your update handler after retrieving the values.
 func (self *Pointer) ResetMovementI(args ...interface{}) {
-	self.Object.Call("resetMovement", args)
+	self.Object.Call("resetMovement", args...)
 }

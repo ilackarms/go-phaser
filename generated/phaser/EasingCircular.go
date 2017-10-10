@@ -18,7 +18,7 @@ func NewEasingCircular() *EasingCircular {
 
 // NewEasingCircularI Circular easing.
 func NewEasingCircularI(args ...interface{}) *EasingCircular {
-	return &EasingCircular{js.Global.Get("Phaser").Get("Easing").Get("Circular").New(args)}
+	return &EasingCircular{js.Global.Get("Phaser").Get("Easing").Get("Circular").New(args...)}
 }
 
 // EasingCircular Binding conversion method to EasingCircular point
@@ -36,7 +36,7 @@ func (self *EasingCircular) In(k int) int {
 
 // InI Circular ease-in.
 func (self *EasingCircular) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Circular ease-out.
@@ -46,7 +46,7 @@ func (self *EasingCircular) Out(k int) int {
 
 // OutI Circular ease-out.
 func (self *EasingCircular) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Circular ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingCircular) InOut(k int) int {
 
 // InOutI Circular ease-in/out.
 func (self *EasingCircular) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

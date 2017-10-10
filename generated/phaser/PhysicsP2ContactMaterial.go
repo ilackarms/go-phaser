@@ -23,7 +23,7 @@ func NewPhysicsP2ContactMaterial1O(materialA *PhysicsP2Material, materialB *Phys
 
 // NewPhysicsP2ContactMaterialI Defines a physics material
 func NewPhysicsP2ContactMaterialI(args ...interface{}) *PhysicsP2ContactMaterial {
-	return &PhysicsP2ContactMaterial{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("ContactMaterial").New(args)}
+	return &PhysicsP2ContactMaterial{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("ContactMaterial").New(args...)}
 }
 
 // PhysicsP2ContactMaterial Binding conversion method to PhysicsP2ContactMaterial point

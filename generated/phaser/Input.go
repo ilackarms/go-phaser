@@ -23,7 +23,7 @@ func NewInput(game *Game) *Input {
 // NewInputI Phaser.Input is the Input Manager for all types of Input across Phaser, including mouse, keyboard, touch and MSPointer.
 // The Input manager is updated automatically by the core game loop.
 func NewInputI(args ...interface{}) *Input {
-	return &Input{js.Global.Get("Phaser").Get("Input").New(args)}
+	return &Input{js.Global.Get("Phaser").Get("Input").New(args...)}
 }
 
 // Input Binding conversion method to Input point
@@ -659,7 +659,7 @@ func (self *Input) Boot() {
 
 // BootI Starts the Input Manager running.
 func (self *Input) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // Destroy Stops all of the Input Managers from running.
@@ -669,7 +669,7 @@ func (self *Input) Destroy() {
 
 // DestroyI Stops all of the Input Managers from running.
 func (self *Input) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // SetInteractiveCandidateHandler Adds a callback that is fired every time `Pointer.processInteractiveObjects` is called.
@@ -709,7 +709,7 @@ func (self *Input) SetInteractiveCandidateHandler(callback interface{}, context 
 //
 // Your callback MUST return one of the candidates sent to it.
 func (self *Input) SetInteractiveCandidateHandlerI(args ...interface{}) {
-	self.Object.Call("setInteractiveCandidateHandler", args)
+	self.Object.Call("setInteractiveCandidateHandler", args...)
 }
 
 // AddMoveCallback Adds a callback that is fired every time the activePointer receives a DOM move event such as a mousemove or touchmove.
@@ -743,7 +743,7 @@ func (self *Input) AddMoveCallback(callback interface{}, context interface{}) {
 //
 // The callback is added to the Phaser.Input.moveCallbacks array and should be removed with Phaser.Input.deleteMoveCallback.
 func (self *Input) AddMoveCallbackI(args ...interface{}) {
-	self.Object.Call("addMoveCallback", args)
+	self.Object.Call("addMoveCallback", args...)
 }
 
 // DeleteMoveCallback Removes the callback from the Phaser.Input.moveCallbacks array.
@@ -753,7 +753,7 @@ func (self *Input) DeleteMoveCallback(callback interface{}, context interface{})
 
 // DeleteMoveCallbackI Removes the callback from the Phaser.Input.moveCallbacks array.
 func (self *Input) DeleteMoveCallbackI(args ...interface{}) {
-	self.Object.Call("deleteMoveCallback", args)
+	self.Object.Call("deleteMoveCallback", args...)
 }
 
 // AddPointer Add a new Pointer object to the Input Manager.
@@ -767,7 +767,7 @@ func (self *Input) AddPointer() interface{} {
 // By default Input creates 3 pointer objects: `mousePointer` (not include in part of general pointer pool), `pointer1` and `pointer2`.
 // This method adds an additional pointer, up to a maximum of Phaser.Input.MAX_POINTERS (default of 10).
 func (self *Input) AddPointerI(args ...interface{}) interface{} {
-	return self.Object.Call("addPointer", args)
+	return self.Object.Call("addPointer", args...)
 }
 
 // Update Updates the Input Manager. Called by the core Game loop.
@@ -777,7 +777,7 @@ func (self *Input) Update() {
 
 // UpdateI Updates the Input Manager. Called by the core Game loop.
 func (self *Input) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Reset Reset all of the Pointers and Input states.
@@ -804,7 +804,7 @@ func (self *Input) Reset1O(hard bool) {
 // Input.reset is called automatically during a State change or if a game loses focus / visibility.
 // To control control the reset manually set {@link Phaser.InputManager.resetLocked} to `true`.
 func (self *Input) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // ResetSpeed Resets the speed and old position properties.
@@ -814,7 +814,7 @@ func (self *Input) ResetSpeed(x int, y int) {
 
 // ResetSpeedI Resets the speed and old position properties.
 func (self *Input) ResetSpeedI(args ...interface{}) {
-	self.Object.Call("resetSpeed", args)
+	self.Object.Call("resetSpeed", args...)
 }
 
 // StartPointer Find the first free Pointer object and start it, passing in the event data.
@@ -826,7 +826,7 @@ func (self *Input) StartPointer(event interface{}) *Pointer {
 // StartPointerI Find the first free Pointer object and start it, passing in the event data.
 // This is called automatically by Phaser.Touch and Phaser.MSPointer.
 func (self *Input) StartPointerI(args ...interface{}) *Pointer {
-	return &Pointer{self.Object.Call("startPointer", args)}
+	return &Pointer{self.Object.Call("startPointer", args...)}
 }
 
 // UpdatePointer Updates the matching Pointer object, passing in the event data.
@@ -838,7 +838,7 @@ func (self *Input) UpdatePointer(event interface{}) *Pointer {
 // UpdatePointerI Updates the matching Pointer object, passing in the event data.
 // This is called automatically and should not normally need to be invoked.
 func (self *Input) UpdatePointerI(args ...interface{}) *Pointer {
-	return &Pointer{self.Object.Call("updatePointer", args)}
+	return &Pointer{self.Object.Call("updatePointer", args...)}
 }
 
 // StopPointer Stops the matching Pointer object, passing in the event data.
@@ -848,7 +848,7 @@ func (self *Input) StopPointer(event interface{}) *Pointer {
 
 // StopPointerI Stops the matching Pointer object, passing in the event data.
 func (self *Input) StopPointerI(args ...interface{}) *Pointer {
-	return &Pointer{self.Object.Call("stopPointer", args)}
+	return &Pointer{self.Object.Call("stopPointer", args...)}
 }
 
 // GetPointer Get the first Pointer with the given active state.
@@ -863,7 +863,7 @@ func (self *Input) GetPointer1O(isActive bool) *Pointer {
 
 // GetPointerI Get the first Pointer with the given active state.
 func (self *Input) GetPointerI(args ...interface{}) *Pointer {
-	return &Pointer{self.Object.Call("getPointer", args)}
+	return &Pointer{self.Object.Call("getPointer", args...)}
 }
 
 // GetPointerFromIdentifier Get the Pointer object whos `identifier` property matches the given identifier value.
@@ -881,7 +881,7 @@ func (self *Input) GetPointerFromIdentifier(identifier int) *Pointer {
 // Also it can change every time you press the pointer down, and is not fixed once set.
 // Note: Not all browsers set the identifier property and it's not part of the W3C spec, so you may need getPointerFromId instead.
 func (self *Input) GetPointerFromIdentifierI(args ...interface{}) *Pointer {
-	return &Pointer{self.Object.Call("getPointerFromIdentifier", args)}
+	return &Pointer{self.Object.Call("getPointerFromIdentifier", args...)}
 }
 
 // GetPointerFromId Get the Pointer object whos `pointerId` property matches the given value.
@@ -897,7 +897,7 @@ func (self *Input) GetPointerFromId(pointerId int) *Pointer {
 // The pointerId property is not set until the Pointer has been used at least once, as its populated by the DOM event.
 // Also it can change every time you press the pointer down if the browser recycles it.
 func (self *Input) GetPointerFromIdI(args ...interface{}) *Pointer {
-	return &Pointer{self.Object.Call("getPointerFromId", args)}
+	return &Pointer{self.Object.Call("getPointerFromId", args...)}
 }
 
 // GetLocalPosition This will return the local coordinates of the specified displayObject based on the given Pointer.
@@ -907,7 +907,7 @@ func (self *Input) GetLocalPosition(displayObject interface{}, pointer *Pointer)
 
 // GetLocalPositionI This will return the local coordinates of the specified displayObject based on the given Pointer.
 func (self *Input) GetLocalPositionI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("getLocalPosition", args)}
+	return &Point{self.Object.Call("getLocalPosition", args...)}
 }
 
 // HitTest Tests if the pointer hits the given object.
@@ -917,7 +917,7 @@ func (self *Input) HitTest(displayObject *DisplayObject, pointer *Pointer, local
 
 // HitTestI Tests if the pointer hits the given object.
 func (self *Input) HitTestI(args ...interface{}) {
-	self.Object.Call("hitTest", args)
+	self.Object.Call("hitTest", args...)
 }
 
 // OnClickTrampoline Used for click trampolines. See {@link Phaser.Pointer.addClickTrampoline}.
@@ -927,5 +927,5 @@ func (self *Input) OnClickTrampoline() {
 
 // OnClickTrampolineI Used for click trampolines. See {@link Phaser.Pointer.addClickTrampoline}.
 func (self *Input) OnClickTrampolineI(args ...interface{}) {
-	self.Object.Call("onClickTrampoline", args)
+	self.Object.Call("onClickTrampoline", args...)
 }

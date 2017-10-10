@@ -18,7 +18,7 @@ func NewComponentDestroy() *ComponentDestroy {
 
 // NewComponentDestroyI The Destroy component is responsible for destroying a Game Object.
 func NewComponentDestroyI(args ...interface{}) *ComponentDestroy {
-	return &ComponentDestroy{js.Global.Get("Phaser").Get("Component").Get("Destroy").New(args)}
+	return &ComponentDestroy{js.Global.Get("Phaser").Get("Component").Get("Destroy").New(args...)}
 }
 
 // ComponentDestroy Binding conversion method to ComponentDestroy point
@@ -82,5 +82,5 @@ func (self *ComponentDestroy) Destroy2O(destroyChildren bool, destroyTexture boo
 // You can optionally also destroy the BaseTexture this Game Object is using. Be careful if you've
 // more than one Game Object sharing the same BaseTexture.
 func (self *ComponentDestroy) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

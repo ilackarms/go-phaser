@@ -18,7 +18,7 @@ func NewCanvasGraphics() *CanvasGraphics {
 
 // NewCanvasGraphicsI A set of functions used by the canvas renderer to draw the primitive graphics data.
 func NewCanvasGraphicsI(args ...interface{}) *CanvasGraphics {
-	return &CanvasGraphics{js.Global.Get("PIXI").Get("CanvasGraphics").New(args)}
+	return &CanvasGraphics{js.Global.Get("PIXI").Get("CanvasGraphics").New(args...)}
 }
 
 // CanvasGraphics Binding conversion method to CanvasGraphics point

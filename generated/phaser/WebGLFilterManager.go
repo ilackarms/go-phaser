@@ -18,7 +18,7 @@ func NewWebGLFilterManager() *WebGLFilterManager {
 
 // NewWebGLFilterManagerI empty description
 func NewWebGLFilterManagerI(args ...interface{}) *WebGLFilterManager {
-	return &WebGLFilterManager{js.Global.Get("PIXI").Get("WebGLFilterManager").New(args)}
+	return &WebGLFilterManager{js.Global.Get("PIXI").Get("WebGLFilterManager").New(args...)}
 }
 
 // WebGLFilterManager Binding conversion method to WebGLFilterManager point
@@ -72,7 +72,7 @@ func (self *WebGLFilterManager) SetContext(gl *WebGLContext) {
 
 // SetContextI Initialises the context and the properties.
 func (self *WebGLFilterManager) SetContextI(args ...interface{}) {
-	self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args...)
 }
 
 // Begin empty description
@@ -82,7 +82,7 @@ func (self *WebGLFilterManager) Begin(renderSession *RenderSession, buffer *Arra
 
 // BeginI empty description
 func (self *WebGLFilterManager) BeginI(args ...interface{}) {
-	self.Object.Call("begin", args)
+	self.Object.Call("begin", args...)
 }
 
 // PushFilter Applies the filter and adds it to the current filter stack.
@@ -92,7 +92,7 @@ func (self *WebGLFilterManager) PushFilter(filterBlock interface{}) {
 
 // PushFilterI Applies the filter and adds it to the current filter stack.
 func (self *WebGLFilterManager) PushFilterI(args ...interface{}) {
-	self.Object.Call("pushFilter", args)
+	self.Object.Call("pushFilter", args...)
 }
 
 // PopFilter Removes the last filter from the filter stack and doesn't return it.
@@ -102,7 +102,7 @@ func (self *WebGLFilterManager) PopFilter() {
 
 // PopFilterI Removes the last filter from the filter stack and doesn't return it.
 func (self *WebGLFilterManager) PopFilterI(args ...interface{}) {
-	self.Object.Call("popFilter", args)
+	self.Object.Call("popFilter", args...)
 }
 
 // ApplyFilterPass Applies the filter to the specified area.
@@ -112,7 +112,7 @@ func (self *WebGLFilterManager) ApplyFilterPass(filter *AbstractFilter, filterAr
 
 // ApplyFilterPassI Applies the filter to the specified area.
 func (self *WebGLFilterManager) ApplyFilterPassI(args ...interface{}) {
-	self.Object.Call("applyFilterPass", args)
+	self.Object.Call("applyFilterPass", args...)
 }
 
 // InitShaderBuffers Initialises the shader buffers.
@@ -122,7 +122,7 @@ func (self *WebGLFilterManager) InitShaderBuffers() {
 
 // InitShaderBuffersI Initialises the shader buffers.
 func (self *WebGLFilterManager) InitShaderBuffersI(args ...interface{}) {
-	self.Object.Call("initShaderBuffers", args)
+	self.Object.Call("initShaderBuffers", args...)
 }
 
 // Destroy Destroys the filter and removes it from the filter stack.
@@ -132,5 +132,5 @@ func (self *WebGLFilterManager) Destroy() {
 
 // DestroyI Destroys the filter and removes it from the filter stack.
 func (self *WebGLFilterManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

@@ -18,7 +18,7 @@ func NewTilingSprite(texture *Texture, width int, height int) *TilingSprite {
 
 // NewTilingSpriteI A tiling sprite is a fast way of rendering a tiling image
 func NewTilingSpriteI(args ...interface{}) *TilingSprite {
-	return &TilingSprite{js.Global.Get("PIXI").Get("TilingSprite").New(args)}
+	return &TilingSprite{js.Global.Get("PIXI").Get("TilingSprite").New(args...)}
 }
 
 // TilingSprite Binding conversion method to TilingSprite point
@@ -282,7 +282,7 @@ func (self *TilingSprite) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *TilingSprite) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -292,7 +292,7 @@ func (self *TilingSprite) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *TilingSprite) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -302,7 +302,7 @@ func (self *TilingSprite) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *TilingSprite) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GenerateTilingTexture empty description
@@ -312,7 +312,7 @@ func (self *TilingSprite) GenerateTilingTexture(forcePowerOfTwo bool, renderSess
 
 // GenerateTilingTextureI empty description
 func (self *TilingSprite) GenerateTilingTextureI(args ...interface{}) {
-	self.Object.Call("generateTilingTexture", args)
+	self.Object.Call("generateTilingTexture", args...)
 }
 
 // GetBounds Returns the framing rectangle of the sprite as a PIXI.Rectangle object
@@ -322,7 +322,7 @@ func (self *TilingSprite) GetBounds() *Rectangle {
 
 // GetBoundsI Returns the framing rectangle of the sprite as a PIXI.Rectangle object
 func (self *TilingSprite) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // SetTexture Sets the texture of the sprite. Be warned that this doesn't remove or destroy the previous
@@ -343,7 +343,7 @@ func (self *TilingSprite) SetTexture1O(texture *Texture, destroy bool) {
 //
 // texture this Sprite was using.
 func (self *TilingSprite) SetTextureI(args ...interface{}) {
-	self.Object.Call("setTexture", args)
+	self.Object.Call("setTexture", args...)
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
@@ -353,7 +353,7 @@ func (self *TilingSprite) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
 func (self *TilingSprite) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -363,7 +363,7 @@ func (self *TilingSprite) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *TilingSprite) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -373,7 +373,7 @@ func (self *TilingSprite) AddChildAt(child *DisplayObject, index int) *DisplayOb
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *TilingSprite) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -383,7 +383,7 @@ func (self *TilingSprite) SwapChildren(child *DisplayObject, child2 *DisplayObje
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *TilingSprite) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -393,7 +393,7 @@ func (self *TilingSprite) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *TilingSprite) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -403,7 +403,7 @@ func (self *TilingSprite) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *TilingSprite) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -413,7 +413,7 @@ func (self *TilingSprite) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *TilingSprite) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -423,7 +423,7 @@ func (self *TilingSprite) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *TilingSprite) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -433,7 +433,7 @@ func (self *TilingSprite) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *TilingSprite) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -443,7 +443,7 @@ func (self *TilingSprite) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *TilingSprite) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -453,5 +453,5 @@ func (self *TilingSprite) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *TilingSprite) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }

@@ -31,7 +31,7 @@ func NewDevice() *Device {
 
 // NewDeviceI It is not possible to instantiate the Device class manually.
 func NewDeviceI(args ...interface{}) *Device {
-	return &Device{js.Global.Get("Phaser").Get("Device").New(args)}
+	return &Device{js.Global.Get("Phaser").Get("Device").New(args...)}
 }
 
 // Device Binding conversion method to Device point
@@ -895,7 +895,7 @@ func (self *Device) WhenReady2O(handler interface{}, context interface{}, nonPri
 // The handler is invoked when the device is considered "ready", which may be immediately
 // if the device is already "ready". See {@link Phaser.Device#deviceReadyAt deviceReadyAt}.
 func (self *Device) WhenReadyI(args ...interface{}) {
-	self.Object.Call("whenReady", args)
+	self.Object.Call("whenReady", args...)
 }
 
 // _readyCheck Internal method used for checking when the device is ready.
@@ -907,7 +907,7 @@ func (self *Device) _readyCheck() {
 // _readyCheckI Internal method used for checking when the device is ready.
 // This function is removed from Phaser.Device when the device becomes ready.
 func (self *Device) _readyCheckI(args ...interface{}) {
-	self.Object.Call("_readyCheck", args)
+	self.Object.Call("_readyCheck", args...)
 }
 
 // _initialize Internal method to initialize the capability checks.
@@ -919,7 +919,7 @@ func (self *Device) _initialize() {
 // _initializeI Internal method to initialize the capability checks.
 // This function is removed from Phaser.Device once the device is initialized.
 func (self *Device) _initializeI(args ...interface{}) {
-	self.Object.Call("_initialize", args)
+	self.Object.Call("_initialize", args...)
 }
 
 // CanPlayAudio Check whether the host environment can play audio.
@@ -929,7 +929,7 @@ func (self *Device) CanPlayAudio(type_ string) bool {
 
 // CanPlayAudioI Check whether the host environment can play audio.
 func (self *Device) CanPlayAudioI(args ...interface{}) bool {
-	return self.Object.Call("canPlayAudio", args).Bool()
+	return self.Object.Call("canPlayAudio", args...).Bool()
 }
 
 // CanPlayVideo Check whether the host environment can play video files.
@@ -939,7 +939,7 @@ func (self *Device) CanPlayVideo(type_ string) bool {
 
 // CanPlayVideoI Check whether the host environment can play video files.
 func (self *Device) CanPlayVideoI(args ...interface{}) bool {
-	return self.Object.Call("canPlayVideo", args).Bool()
+	return self.Object.Call("canPlayVideo", args...).Bool()
 }
 
 // IsConsoleOpen Check whether the console is open.
@@ -953,7 +953,7 @@ func (self *Device) IsConsoleOpen() {
 // Note that this only works in Firefox with Firebug and earlier versions of Chrome.
 // It used to work in Chrome, but then they removed the ability: {@link http://src.chromium.org/viewvc/blink?view=revision&revision=151136}
 func (self *Device) IsConsoleOpenI(args ...interface{}) {
-	self.Object.Call("isConsoleOpen", args)
+	self.Object.Call("isConsoleOpen", args...)
 }
 
 // IsAndroidStockBrowser Detect if the host is a an Android Stock browser.
@@ -969,5 +969,5 @@ func (self *Device) IsAndroidStockBrowser() {
 //
 // Authors might want to scale down on effects and switch to the CANVAS rendering method on those devices.
 func (self *Device) IsAndroidStockBrowserI(args ...interface{}) {
-	self.Object.Call("isAndroidStockBrowser", args)
+	self.Object.Call("isAndroidStockBrowser", args...)
 }

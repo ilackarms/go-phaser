@@ -21,7 +21,7 @@ func NewStage(game *Game) *Stage {
 // NewStageI The Stage controls root level display objects upon which everything is displayed.
 // It also handles browser visibility handling and the pausing due to loss of focus.
 func NewStageI(args ...interface{}) *Stage {
-	return &Stage{js.Global.Get("Phaser").Get("Stage").New(args)}
+	return &Stage{js.Global.Get("Phaser").Get("Stage").New(args...)}
 }
 
 // Stage Binding conversion method to Stage point
@@ -179,7 +179,7 @@ func (self *Stage) ParseConfig(config interface{}) {
 
 // ParseConfigI Parses a Game configuration object.
 func (self *Stage) ParseConfigI(args ...interface{}) {
-	self.Object.Call("parseConfig", args)
+	self.Object.Call("parseConfig", args...)
 }
 
 // Boot Initialises the stage and adds the event listeners.
@@ -189,7 +189,7 @@ func (self *Stage) Boot() {
 
 // BootI Initialises the stage and adds the event listeners.
 func (self *Stage) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // PreUpdate This is called automatically after the plugins preUpdate and before the State.update.
@@ -201,7 +201,7 @@ func (self *Stage) PreUpdate() {
 // PreUpdateI This is called automatically after the plugins preUpdate and before the State.update.
 // Most objects have preUpdate methods and it's where initial movement and positioning is done.
 func (self *Stage) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update This is called automatically after the State.update, but before particles or plugins update.
@@ -211,7 +211,7 @@ func (self *Stage) Update() {
 
 // UpdateI This is called automatically after the State.update, but before particles or plugins update.
 func (self *Stage) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate This is called automatically before the renderer runs and after the plugins have updated.
@@ -225,7 +225,7 @@ func (self *Stage) PostUpdate() {
 // In postUpdate this is where all the final physics calculations and object positioning happens.
 // The objects are processed in the order of the display list.
 func (self *Stage) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // UpdateTransform Updates the transforms for all objects on the display list.
@@ -237,7 +237,7 @@ func (self *Stage) UpdateTransform() {
 // UpdateTransformI Updates the transforms for all objects on the display list.
 // This overrides the Pixi default as we don't need the interactionManager, but do need the game property check.
 func (self *Stage) UpdateTransformI(args ...interface{}) {
-	self.Object.Call("updateTransform", args)
+	self.Object.Call("updateTransform", args...)
 }
 
 // CheckVisibility Starts a page visibility event listener running, or window.onpagehide/onpageshow if not supported by the browser.
@@ -249,7 +249,7 @@ func (self *Stage) CheckVisibility() {
 // CheckVisibilityI Starts a page visibility event listener running, or window.onpagehide/onpageshow if not supported by the browser.
 // Also listens for window.onblur and window.onfocus.
 func (self *Stage) CheckVisibilityI(args ...interface{}) {
-	self.Object.Call("checkVisibility", args)
+	self.Object.Call("checkVisibility", args...)
 }
 
 // VisibilityChange This method is called when the document visibility is changed.
@@ -259,7 +259,7 @@ func (self *Stage) VisibilityChange(event *Event) {
 
 // VisibilityChangeI This method is called when the document visibility is changed.
 func (self *Stage) VisibilityChangeI(args ...interface{}) {
-	self.Object.Call("visibilityChange", args)
+	self.Object.Call("visibilityChange", args...)
 }
 
 // SetBackgroundColor Sets the background color for the Stage.
@@ -281,7 +281,7 @@ func (self *Stage) SetBackgroundColor(color interface{}) {
 //
 // If you've set your game to be transparent then calls to setBackgroundColor are ignored.
 func (self *Stage) SetBackgroundColorI(args ...interface{}) {
-	self.Object.Call("setBackgroundColor", args)
+	self.Object.Call("setBackgroundColor", args...)
 }
 
 // Destroy Destroys the Stage and removes event listeners.
@@ -291,7 +291,7 @@ func (self *Stage) Destroy() {
 
 // DestroyI Destroys the Stage and removes event listeners.
 func (self *Stage) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // AddChild Adds a child to the container.
@@ -301,7 +301,7 @@ func (self *Stage) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Stage) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -311,7 +311,7 @@ func (self *Stage) AddChildAt(child *DisplayObject, index int) *DisplayObject {
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Stage) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -321,7 +321,7 @@ func (self *Stage) SwapChildren(child *DisplayObject, child2 *DisplayObject) {
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Stage) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -331,7 +331,7 @@ func (self *Stage) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Stage) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -341,7 +341,7 @@ func (self *Stage) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Stage) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -351,7 +351,7 @@ func (self *Stage) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Stage) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -361,7 +361,7 @@ func (self *Stage) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Stage) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -371,7 +371,7 @@ func (self *Stage) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Stage) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -381,7 +381,7 @@ func (self *Stage) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Stage) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // GetBounds Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
@@ -396,7 +396,7 @@ func (self *Stage) GetBounds1O(targetCoordinateSpace interface{}) *Rectangle {
 
 // GetBoundsI Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
 func (self *Stage) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
@@ -406,7 +406,7 @@ func (self *Stage) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 func (self *Stage) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -416,7 +416,7 @@ func (self *Stage) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Stage) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -426,7 +426,7 @@ func (self *Stage) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *Stage) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -436,5 +436,5 @@ func (self *Stage) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *Stage) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }

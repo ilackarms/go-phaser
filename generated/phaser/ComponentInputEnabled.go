@@ -18,7 +18,7 @@ func NewComponentInputEnabled() *ComponentInputEnabled {
 
 // NewComponentInputEnabledI The InputEnabled component allows a Game Object to have its own InputHandler and process input related events.
 func NewComponentInputEnabledI(args ...interface{}) *ComponentInputEnabled {
-	return &ComponentInputEnabled{js.Global.Get("Phaser").Get("Component").Get("InputEnabled").New(args)}
+	return &ComponentInputEnabled{js.Global.Get("Phaser").Get("Component").Get("InputEnabled").New(args...)}
 }
 
 // ComponentInputEnabled Binding conversion method to ComponentInputEnabled point

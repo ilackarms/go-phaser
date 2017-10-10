@@ -33,7 +33,7 @@ func NewLinkedList() *LinkedList {
 // - Items _cannot_ be added to multiple LinkedLists at the same time.
 // - Only objects can be added.
 func NewLinkedListI(args ...interface{}) *LinkedList {
-	return &LinkedList{js.Global.Get("Phaser").Get("LinkedList").New(args)}
+	return &LinkedList{js.Global.Get("Phaser").Get("LinkedList").New(args...)}
 }
 
 // LinkedList Binding conversion method to LinkedList point
@@ -101,7 +101,7 @@ func (self *LinkedList) Add(item interface{}) interface{} {
 
 // AddI Adds a new element to this linked list.
 func (self *LinkedList) AddI(args ...interface{}) interface{} {
-	return self.Object.Call("add", args)
+	return self.Object.Call("add", args...)
 }
 
 // Reset Resets the first, last, next and previous node pointers in this list.
@@ -111,7 +111,7 @@ func (self *LinkedList) Reset() {
 
 // ResetI Resets the first, last, next and previous node pointers in this list.
 func (self *LinkedList) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // Remove Removes the given element from this linked list if it exists.
@@ -121,7 +121,7 @@ func (self *LinkedList) Remove(item interface{}) {
 
 // RemoveI Removes the given element from this linked list if it exists.
 func (self *LinkedList) RemoveI(args ...interface{}) {
-	self.Object.Call("remove", args)
+	self.Object.Call("remove", args...)
 }
 
 // CallAll Calls a function on all members of this list, using the member as the context for the callback.
@@ -133,5 +133,5 @@ func (self *LinkedList) CallAll(callback interface{}) {
 // CallAllI Calls a function on all members of this list, using the member as the context for the callback.
 // The function must exist on the member.
 func (self *LinkedList) CallAllI(args ...interface{}) {
-	self.Object.Call("callAll", args)
+	self.Object.Call("callAll", args...)
 }

@@ -102,7 +102,7 @@ func NewMatrix6O(a int, b int, c int, d int, tx int, ty int) *Matrix {
 // | c | d | ty |
 // | 0 | 0 | 1 |
 func NewMatrixI(args ...interface{}) *Matrix {
-	return &Matrix{js.Global.Get("Phaser").Get("Matrix").New(args)}
+	return &Matrix{js.Global.Get("Phaser").Get("Matrix").New(args...)}
 }
 
 // Matrix Binding conversion method to Matrix point
@@ -208,7 +208,7 @@ func (self *Matrix) FromArray(array []interface{}) *Matrix {
 // tx = array[2]
 // ty = array[5]
 func (self *Matrix) FromArrayI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("fromArray", args)}
+	return &Matrix{self.Object.Call("fromArray", args...)}
 }
 
 // SetTo Sets the values of this Matrix to the given values.
@@ -218,7 +218,7 @@ func (self *Matrix) SetTo(a int, b int, c int, d int, tx int, ty int) *Matrix {
 
 // SetToI Sets the values of this Matrix to the given values.
 func (self *Matrix) SetToI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("setTo", args)}
+	return &Matrix{self.Object.Call("setTo", args...)}
 }
 
 // Clone Creates a new Matrix object based on the values of this Matrix.
@@ -239,7 +239,7 @@ func (self *Matrix) Clone1O(output *Matrix) *Matrix {
 // If you provide the output parameter the values of this Matrix will be copied over to it.
 // If the output parameter is blank a new Matrix object will be created.
 func (self *Matrix) CloneI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("clone", args)}
+	return &Matrix{self.Object.Call("clone", args...)}
 }
 
 // CopyTo Copies the properties from this Matrix to the given Matrix.
@@ -249,7 +249,7 @@ func (self *Matrix) CopyTo(matrix *Matrix) *Matrix {
 
 // CopyToI Copies the properties from this Matrix to the given Matrix.
 func (self *Matrix) CopyToI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("copyTo", args)}
+	return &Matrix{self.Object.Call("copyTo", args...)}
 }
 
 // CopyFrom Copies the properties from the given Matrix into this Matrix.
@@ -259,7 +259,7 @@ func (self *Matrix) CopyFrom(matrix *Matrix) *Matrix {
 
 // CopyFromI Copies the properties from the given Matrix into this Matrix.
 func (self *Matrix) CopyFromI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("copyFrom", args)}
+	return &Matrix{self.Object.Call("copyFrom", args...)}
 }
 
 // ToArray Creates a Float32 Array with values populated from this Matrix object.
@@ -279,7 +279,7 @@ func (self *Matrix) ToArray2O(transpose bool, array *Float32Array) *Float32Array
 
 // ToArrayI Creates a Float32 Array with values populated from this Matrix object.
 func (self *Matrix) ToArrayI(args ...interface{}) *Float32Array {
-	return &Float32Array{self.Object.Call("toArray", args)}
+	return &Float32Array{self.Object.Call("toArray", args...)}
 }
 
 // Apply Get a new position with the current transformation applied.
@@ -300,7 +300,7 @@ func (self *Matrix) Apply1O(pos *Point, newPos *Point) *Point {
 //
 // Can be used to go from a childs coordinate space to the world coordinate space (e.g. rendering)
 func (self *Matrix) ApplyI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("apply", args)}
+	return &Point{self.Object.Call("apply", args...)}
 }
 
 // ApplyInverse Get a new position with the inverse of the current transformation applied.
@@ -321,7 +321,7 @@ func (self *Matrix) ApplyInverse1O(pos *Point, newPos *Point) *Point {
 //
 // Can be used to go from the world coordinate space to a childs coordinate space. (e.g. input)
 func (self *Matrix) ApplyInverseI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("applyInverse", args)}
+	return &Point{self.Object.Call("applyInverse", args...)}
 }
 
 // Translate Translates the matrix on the x and y.
@@ -333,7 +333,7 @@ func (self *Matrix) Translate(x int, y int) *Matrix {
 // TranslateI Translates the matrix on the x and y.
 // This is the same as Matrix.tx += x.
 func (self *Matrix) TranslateI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("translate", args)}
+	return &Matrix{self.Object.Call("translate", args...)}
 }
 
 // Scale Applies a scale transformation to this matrix.
@@ -343,7 +343,7 @@ func (self *Matrix) Scale(x int, y int) *Matrix {
 
 // ScaleI Applies a scale transformation to this matrix.
 func (self *Matrix) ScaleI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("scale", args)}
+	return &Matrix{self.Object.Call("scale", args...)}
 }
 
 // Rotate Applies a rotation transformation to this matrix.
@@ -353,7 +353,7 @@ func (self *Matrix) Rotate(angle int) *Matrix {
 
 // RotateI Applies a rotation transformation to this matrix.
 func (self *Matrix) RotateI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("rotate", args)}
+	return &Matrix{self.Object.Call("rotate", args...)}
 }
 
 // Append Appends the given Matrix to this Matrix.
@@ -363,7 +363,7 @@ func (self *Matrix) Append(matrix *Matrix) *Matrix {
 
 // AppendI Appends the given Matrix to this Matrix.
 func (self *Matrix) AppendI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("append", args)}
+	return &Matrix{self.Object.Call("append", args...)}
 }
 
 // Identity Resets this Matrix to an identity (default) matrix.
@@ -373,5 +373,5 @@ func (self *Matrix) Identity() *Matrix {
 
 // IdentityI Resets this Matrix to an identity (default) matrix.
 func (self *Matrix) IdentityI(args ...interface{}) *Matrix {
-	return &Matrix{self.Object.Call("identity", args)}
+	return &Matrix{self.Object.Call("identity", args...)}
 }

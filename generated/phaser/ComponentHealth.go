@@ -24,7 +24,7 @@ func NewComponentHealth() *ComponentHealth {
 // that can be damaged and reset through game code.
 // Requires the LifeSpan component.
 func NewComponentHealthI(args ...interface{}) *ComponentHealth {
-	return &ComponentHealth{js.Global.Get("Phaser").Get("Component").Get("Health").New(args)}
+	return &ComponentHealth{js.Global.Get("Phaser").Get("Component").Get("Health").New(args...)}
 }
 
 // ComponentHealth Binding conversion method to ComponentHealth point

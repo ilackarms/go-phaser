@@ -18,7 +18,7 @@ func NewWebGLGraphics() *WebGLGraphics {
 
 // NewWebGLGraphicsI A set of functions used by the webGL renderer to draw the primitive graphics data
 func NewWebGLGraphicsI(args ...interface{}) *WebGLGraphics {
-	return &WebGLGraphics{js.Global.Get("PIXI").Get("WebGLGraphics").New(args)}
+	return &WebGLGraphics{js.Global.Get("PIXI").Get("WebGLGraphics").New(args...)}
 }
 
 // WebGLGraphics Binding conversion method to WebGLGraphics point
@@ -36,7 +36,7 @@ func (self *WebGLGraphics) RenderGraphics(graphics *Graphics, renderSession inte
 
 // RenderGraphicsI Renders the graphics object
 func (self *WebGLGraphics) RenderGraphicsI(args ...interface{}) {
-	self.Object.Call("renderGraphics", args)
+	self.Object.Call("renderGraphics", args...)
 }
 
 // UpdateGraphics Updates the graphics object
@@ -46,7 +46,7 @@ func (self *WebGLGraphics) UpdateGraphics(graphicsData *Graphics, gl *WebGLConte
 
 // UpdateGraphicsI Updates the graphics object
 func (self *WebGLGraphics) UpdateGraphicsI(args ...interface{}) {
-	self.Object.Call("updateGraphics", args)
+	self.Object.Call("updateGraphics", args...)
 }
 
 // SwitchMode empty description
@@ -56,7 +56,7 @@ func (self *WebGLGraphics) SwitchMode(webGL *WebGLContext, type_ int) {
 
 // SwitchModeI empty description
 func (self *WebGLGraphics) SwitchModeI(args ...interface{}) {
-	self.Object.Call("switchMode", args)
+	self.Object.Call("switchMode", args...)
 }
 
 // BuildRectangle Builds a rectangle to draw
@@ -66,7 +66,7 @@ func (self *WebGLGraphics) BuildRectangle(graphicsData *Graphics, webGLData inte
 
 // BuildRectangleI Builds a rectangle to draw
 func (self *WebGLGraphics) BuildRectangleI(args ...interface{}) {
-	self.Object.Call("buildRectangle", args)
+	self.Object.Call("buildRectangle", args...)
 }
 
 // BuildRoundedRectangle Builds a rounded rectangle to draw
@@ -76,7 +76,7 @@ func (self *WebGLGraphics) BuildRoundedRectangle(graphicsData *Graphics, webGLDa
 
 // BuildRoundedRectangleI Builds a rounded rectangle to draw
 func (self *WebGLGraphics) BuildRoundedRectangleI(args ...interface{}) {
-	self.Object.Call("buildRoundedRectangle", args)
+	self.Object.Call("buildRoundedRectangle", args...)
 }
 
 // QuadraticBezierCurve Calculate the points for a quadratic bezier curve. (helper function..)
@@ -97,7 +97,7 @@ func (self *WebGLGraphics) QuadraticBezierCurve(fromX int, fromY int, cpX int, c
 //
 // Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
 func (self *WebGLGraphics) QuadraticBezierCurveI(args ...interface{}) []int {
-	array00 := self.Object.Call("quadraticBezierCurve", args)
+	array00 := self.Object.Call("quadraticBezierCurve", args...)
 	length00 := array00.Length()
 	out00 := make([]int, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -114,7 +114,7 @@ func (self *WebGLGraphics) BuildCircle(graphicsData *Graphics, webGLData interfa
 
 // BuildCircleI Builds a circle to draw
 func (self *WebGLGraphics) BuildCircleI(args ...interface{}) {
-	self.Object.Call("buildCircle", args)
+	self.Object.Call("buildCircle", args...)
 }
 
 // BuildLine Builds a line to draw
@@ -124,7 +124,7 @@ func (self *WebGLGraphics) BuildLine(graphicsData *Graphics, webGLData interface
 
 // BuildLineI Builds a line to draw
 func (self *WebGLGraphics) BuildLineI(args ...interface{}) {
-	self.Object.Call("buildLine", args)
+	self.Object.Call("buildLine", args...)
 }
 
 // BuildComplexPoly Builds a complex polygon to draw
@@ -134,7 +134,7 @@ func (self *WebGLGraphics) BuildComplexPoly(graphicsData *Graphics, webGLData in
 
 // BuildComplexPolyI Builds a complex polygon to draw
 func (self *WebGLGraphics) BuildComplexPolyI(args ...interface{}) {
-	self.Object.Call("buildComplexPoly", args)
+	self.Object.Call("buildComplexPoly", args...)
 }
 
 // BuildPoly Builds a polygon to draw
@@ -144,5 +144,5 @@ func (self *WebGLGraphics) BuildPoly(graphicsData *Graphics, webGLData interface
 
 // BuildPolyI Builds a polygon to draw
 func (self *WebGLGraphics) BuildPolyI(args ...interface{}) {
-	self.Object.Call("buildPoly", args)
+	self.Object.Call("buildPoly", args...)
 }

@@ -21,7 +21,7 @@ func NewState() *State {
 // NewStateI This is a base State class which can be extended if you are creating your own game.
 // It provides quick access to common functions such as the camera, cache, input, match, sound and more.
 func NewStateI(args ...interface{}) *State {
-	return &State{js.Global.Get("Phaser").Get("State").New(args)}
+	return &State{js.Global.Get("Phaser").Get("State").New(args...)}
 }
 
 // State Binding conversion method to State point
@@ -233,7 +233,7 @@ func (self *State) Init() {
 // If you need to route the game away to another State you could do so here, or if you need to prepare a set of variables
 // or objects before the preloading starts.
 func (self *State) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // Preload preload is called first. Normally you'd use this to load your game assets (or those needed for the current State)
@@ -247,7 +247,7 @@ func (self *State) Preload() {
 // You shouldn't create any objects in this method that require assets that you're also loading in this method, as
 // they won't yet be available.
 func (self *State) PreloadI(args ...interface{}) {
-	self.Object.Call("preload", args)
+	self.Object.Call("preload", args...)
 }
 
 // LoadUpdate loadUpdate is called during the Loader process. This only happens if you've set one or more assets to load in the preload method.
@@ -257,7 +257,7 @@ func (self *State) LoadUpdate() {
 
 // LoadUpdateI loadUpdate is called during the Loader process. This only happens if you've set one or more assets to load in the preload method.
 func (self *State) LoadUpdateI(args ...interface{}) {
-	self.Object.Call("loadUpdate", args)
+	self.Object.Call("loadUpdate", args...)
 }
 
 // LoadRender loadRender is called during the Loader process. This only happens if you've set one or more assets to load in the preload method.
@@ -269,7 +269,7 @@ func (self *State) LoadRender() {
 // LoadRenderI loadRender is called during the Loader process. This only happens if you've set one or more assets to load in the preload method.
 // The difference between loadRender and render is that any objects you render in this method you must be sure their assets exist.
 func (self *State) LoadRenderI(args ...interface{}) {
-	self.Object.Call("loadRender", args)
+	self.Object.Call("loadRender", args...)
 }
 
 // Create create is called once preload has completed, this includes the loading of any assets from the Loader.
@@ -281,7 +281,7 @@ func (self *State) Create() {
 // CreateI create is called once preload has completed, this includes the loading of any assets from the Loader.
 // If you don't have a preload method then create is the first method called in your State.
 func (self *State) CreateI(args ...interface{}) {
-	self.Object.Call("create", args)
+	self.Object.Call("create", args...)
 }
 
 // Update The update method is left empty for your own use.
@@ -295,7 +295,7 @@ func (self *State) Update() {
 // It is called during the core game loop AFTER debug, physics, plugins and the Stage have had their preUpdate methods called.
 // It is called BEFORE Stage, Tweens, Sounds, Input, Physics, Particles and Plugins have had their postUpdate methods called.
 func (self *State) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PreRender The preRender method is called after all Game Objects have been updated, but before any rendering takes place.
@@ -305,7 +305,7 @@ func (self *State) PreRender() {
 
 // PreRenderI The preRender method is called after all Game Objects have been updated, but before any rendering takes place.
 func (self *State) PreRenderI(args ...interface{}) {
-	self.Object.Call("preRender", args)
+	self.Object.Call("preRender", args...)
 }
 
 // Render Nearly all display objects in Phaser render automatically, you don't need to tell them to render.
@@ -319,7 +319,7 @@ func (self *State) Render() {
 // However the render method is called AFTER the game renderer and plugins have rendered, so you're able to do any
 // final post-processing style effects here. Note that this happens before plugins postRender takes place.
 func (self *State) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // Resize If your game is set to Scalemode RESIZE then each time the browser resizes it will call this function, passing in the new width and height.
@@ -329,7 +329,7 @@ func (self *State) Resize() {
 
 // ResizeI If your game is set to Scalemode RESIZE then each time the browser resizes it will call this function, passing in the new width and height.
 func (self *State) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // Paused This method will be called if the core game loop is paused.
@@ -339,7 +339,7 @@ func (self *State) Paused() {
 
 // PausedI This method will be called if the core game loop is paused.
 func (self *State) PausedI(args ...interface{}) {
-	self.Object.Call("paused", args)
+	self.Object.Call("paused", args...)
 }
 
 // Resumed This method will be called when the core game loop resumes from a paused state.
@@ -349,7 +349,7 @@ func (self *State) Resumed() {
 
 // ResumedI This method will be called when the core game loop resumes from a paused state.
 func (self *State) ResumedI(args ...interface{}) {
-	self.Object.Call("resumed", args)
+	self.Object.Call("resumed", args...)
 }
 
 // PauseUpdate pauseUpdate is called while the game is paused instead of preUpdate, update and postUpdate.
@@ -359,7 +359,7 @@ func (self *State) PauseUpdate() {
 
 // PauseUpdateI pauseUpdate is called while the game is paused instead of preUpdate, update and postUpdate.
 func (self *State) PauseUpdateI(args ...interface{}) {
-	self.Object.Call("pauseUpdate", args)
+	self.Object.Call("pauseUpdate", args...)
 }
 
 // Shutdown This method will be called when the State is shutdown (i.e. you switch to another state from this one).
@@ -369,5 +369,5 @@ func (self *State) Shutdown() {
 
 // ShutdownI This method will be called when the State is shutdown (i.e. you switch to another state from this one).
 func (self *State) ShutdownI(args ...interface{}) {
-	self.Object.Call("shutdown", args)
+	self.Object.Call("shutdown", args...)
 }

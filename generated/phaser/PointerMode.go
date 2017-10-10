@@ -36,7 +36,7 @@ func NewPointerMode() *PointerMode {
 //
 // Values may be added for future mode categorizations.
 func NewPointerModeI(args ...interface{}) *PointerMode {
-	return &PointerMode{js.Global.Get("Phaser").Get("PointerMode").New(args)}
+	return &PointerMode{js.Global.Get("Phaser").Get("PointerMode").New(args...)}
 }
 
 // PointerMode Binding conversion method to PointerMode point

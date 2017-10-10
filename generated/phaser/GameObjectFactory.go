@@ -27,7 +27,7 @@ func NewGameObjectFactory(game *Game) *GameObjectFactory {
 //
 // Created objects are _automatically added_ to the appropriate Manager, World, or manually specified parent Group.
 func NewGameObjectFactoryI(args ...interface{}) *GameObjectFactory {
-	return &GameObjectFactory{js.Global.Get("Phaser").Get("GameObjectFactory").New(args)}
+	return &GameObjectFactory{js.Global.Get("Phaser").Get("GameObjectFactory").New(args...)}
 }
 
 // GameObjectFactory Binding conversion method to GameObjectFactory point
@@ -65,7 +65,7 @@ func (self *GameObjectFactory) Existing(object interface{}) interface{} {
 
 // ExistingI Adds an existing display object to the game world.
 func (self *GameObjectFactory) ExistingI(args ...interface{}) interface{} {
-	return self.Object.Call("existing", args)
+	return self.Object.Call("existing", args...)
 }
 
 // Weapon Weapons provide the ability to easily create a bullet pool and manager.
@@ -155,7 +155,7 @@ func (self *GameObjectFactory) Weapon4O(quantity int, key interface{}, frame int
 // Bullets can have textures and even animations. You can control the speed at which they are fired,
 // the firing rate, the firing angle, and even set things like gravity for them.
 func (self *GameObjectFactory) WeaponI(args ...interface{}) *Weapon {
-	return &Weapon{self.Object.Call("weapon", args)}
+	return &Weapon{self.Object.Call("weapon", args...)}
 }
 
 // Image Create a new `Image` object.
@@ -225,7 +225,7 @@ func (self *GameObjectFactory) Image5O(x int, y int, key interface{}, frame inte
 // It can still rotate, scale, crop and receive input events.
 // This makes it perfect for logos, backgrounds, simple buttons and other non-Sprite graphics.
 func (self *GameObjectFactory) ImageI(args ...interface{}) *Image {
-	return &Image{self.Object.Call("image", args)}
+	return &Image{self.Object.Call("image", args...)}
 }
 
 // Sprite Create a new Sprite with specific position and sprite sheet key.
@@ -288,7 +288,7 @@ func (self *GameObjectFactory) Sprite5O(x int, y int, key interface{}, frame int
 // They also contain additional properties allowing for physics motion (via Sprite.body), input handling (via Sprite.input),
 // events (via Sprite.events), animation (via Sprite.animations), camera culling and more. Please see the Examples for use cases.
 func (self *GameObjectFactory) SpriteI(args ...interface{}) *Sprite {
-	return &Sprite{self.Object.Call("sprite", args)}
+	return &Sprite{self.Object.Call("sprite", args...)}
 }
 
 // Creature Create a new Creature Animation object.
@@ -384,7 +384,7 @@ func (self *GameObjectFactory) Creature4O(x int, y int, key interface{}, group *
 //
 // See the Phaser custom build process for more details.
 func (self *GameObjectFactory) CreatureI(args ...interface{}) *Creature {
-	return &Creature{self.Object.Call("creature", args)}
+	return &Creature{self.Object.Call("creature", args...)}
 }
 
 // Tween Create a tween on a specific object.
@@ -398,7 +398,7 @@ func (self *GameObjectFactory) Tween(object interface{}) *Tween {
 //
 // The object can be any JavaScript object or Phaser object such as Sprite.
 func (self *GameObjectFactory) TweenI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("tween", args)}
+	return &Tween{self.Object.Call("tween", args...)}
 }
 
 // Group A Group is a container for display objects that allows for fast pooling, recycling and collision checks.
@@ -433,7 +433,7 @@ func (self *GameObjectFactory) Group5O(parent interface{}, name string, addToSta
 
 // GroupI A Group is a container for display objects that allows for fast pooling, recycling and collision checks.
 func (self *GameObjectFactory) GroupI(args ...interface{}) *Group {
-	return &Group{self.Object.Call("group", args)}
+	return &Group{self.Object.Call("group", args...)}
 }
 
 // PhysicsGroup A Group is a container for display objects that allows for fast pooling, recycling and collision checks.
@@ -481,7 +481,7 @@ func (self *GameObjectFactory) PhysicsGroup4O(physicsBodyType int, parent interf
 // A Physics Group is the same as an ordinary Group except that is has enableBody turned on by default, so any Sprites it creates
 // are automatically given a physics body.
 func (self *GameObjectFactory) PhysicsGroupI(args ...interface{}) *Group {
-	return &Group{self.Object.Call("physicsGroup", args)}
+	return &Group{self.Object.Call("physicsGroup", args...)}
 }
 
 // SpriteBatch A SpriteBatch is a really fast version of a Phaser Group built solely for speed.
@@ -509,7 +509,7 @@ func (self *GameObjectFactory) SpriteBatch2O(parent interface{}, name string, ad
 // Use when you need a lot of sprites or particles all sharing the same texture.
 // The speed gains are specifically for WebGL. In Canvas mode you won't see any real difference.
 func (self *GameObjectFactory) SpriteBatchI(args ...interface{}) *SpriteBatch {
-	return &SpriteBatch{self.Object.Call("spriteBatch", args)}
+	return &SpriteBatch{self.Object.Call("spriteBatch", args...)}
 }
 
 // Audio Creates a new Sound object.
@@ -534,7 +534,7 @@ func (self *GameObjectFactory) Audio3O(key string, volume int, loop bool, connec
 
 // AudioI Creates a new Sound object.
 func (self *GameObjectFactory) AudioI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("audio", args)}
+	return &Sound{self.Object.Call("audio", args...)}
 }
 
 // Sound Creates a new Sound object.
@@ -559,7 +559,7 @@ func (self *GameObjectFactory) Sound3O(key string, volume int, loop bool, connec
 
 // SoundI Creates a new Sound object.
 func (self *GameObjectFactory) SoundI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("sound", args)}
+	return &Sound{self.Object.Call("sound", args...)}
 }
 
 // AudioSprite Creates a new AudioSprite object.
@@ -569,7 +569,7 @@ func (self *GameObjectFactory) AudioSprite(key string) *AudioSprite {
 
 // AudioSpriteI Creates a new AudioSprite object.
 func (self *GameObjectFactory) AudioSpriteI(args ...interface{}) *AudioSprite {
-	return &AudioSprite{self.Object.Call("audioSprite", args)}
+	return &AudioSprite{self.Object.Call("audioSprite", args...)}
 }
 
 // TileSprite Creates a new TileSprite object.
@@ -589,7 +589,7 @@ func (self *GameObjectFactory) TileSprite2O(x int, y int, width int, height int,
 
 // TileSpriteI Creates a new TileSprite object.
 func (self *GameObjectFactory) TileSpriteI(args ...interface{}) *TileSprite {
-	return &TileSprite{self.Object.Call("tileSprite", args)}
+	return &TileSprite{self.Object.Call("tileSprite", args...)}
 }
 
 // Rope Creates a new Rope object.
@@ -610,7 +610,7 @@ func (self *GameObjectFactory) Rope1O(x int, y int, key interface{}, frame inter
 //
 // Example usage: https://github.com/codevinsky/phaser-rope-demo/blob/master/dist/demo.js
 func (self *GameObjectFactory) RopeI(args ...interface{}) *Rope {
-	return &Rope{self.Object.Call("rope", args)}
+	return &Rope{self.Object.Call("rope", args...)}
 }
 
 // Text Creates a new Text object.
@@ -645,7 +645,7 @@ func (self *GameObjectFactory) Text5O(x int, y int, text string, style interface
 
 // TextI Creates a new Text object.
 func (self *GameObjectFactory) TextI(args ...interface{}) *Text {
-	return &Text{self.Object.Call("text", args)}
+	return &Text{self.Object.Call("text", args...)}
 }
 
 // Button Creates a new Button object.
@@ -705,7 +705,7 @@ func (self *GameObjectFactory) Button10O(x int, y int, key string, callback inte
 
 // ButtonI Creates a new Button object.
 func (self *GameObjectFactory) ButtonI(args ...interface{}) *Button {
-	return &Button{self.Object.Call("button", args)}
+	return &Button{self.Object.Call("button", args...)}
 }
 
 // Graphics Creates a new Graphics object.
@@ -730,7 +730,7 @@ func (self *GameObjectFactory) Graphics3O(x int, y int, group *Group) *Graphics 
 
 // GraphicsI Creates a new Graphics object.
 func (self *GameObjectFactory) GraphicsI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("graphics", args)}
+	return &Graphics{self.Object.Call("graphics", args...)}
 }
 
 // Emitter Create a new Emitter.
@@ -775,7 +775,7 @@ func (self *GameObjectFactory) Emitter3O(x int, y int, maxParticles int) *Partic
 // continuous effects like rain and fire. All it really does is launch Particle objects out
 // at set intervals, and fixes their positions and velocities accordingly.
 func (self *GameObjectFactory) EmitterI(args ...interface{}) *ParticlesArcadeEmitter {
-	return &ParticlesArcadeEmitter{self.Object.Call("emitter", args)}
+	return &ParticlesArcadeEmitter{self.Object.Call("emitter", args...)}
 }
 
 // RetroFont Create a new RetroFont object.
@@ -847,7 +847,7 @@ func (self *GameObjectFactory) RetroFont4O(font string, characterWidth int, char
 // The texture can be asssigned or one or multiple images/sprites, but note that the text the RetroFont uses will be shared across them all,
 // i.e. if you need each Image to have different text in it, then you need to create multiple RetroFont objects.
 func (self *GameObjectFactory) RetroFontI(args ...interface{}) *RetroFont {
-	return &RetroFont{self.Object.Call("retroFont", args)}
+	return &RetroFont{self.Object.Call("retroFont", args...)}
 }
 
 // BitmapText Create a new BitmapText object.
@@ -952,7 +952,7 @@ func (self *GameObjectFactory) BitmapText3O(x int, y int, font string, text stri
 // Glyph Designer (OS X, commercial): http://www.71squared.com/en/glyphdesigner
 // Littera (Web-based, free): http://kvazars.com/littera/
 func (self *GameObjectFactory) BitmapTextI(args ...interface{}) *BitmapText {
-	return &BitmapText{self.Object.Call("bitmapText", args)}
+	return &BitmapText{self.Object.Call("bitmapText", args...)}
 }
 
 // Tilemap Creates a new Phaser.Tilemap object.
@@ -1029,7 +1029,7 @@ func (self *GameObjectFactory) Tilemap5O(key string, tileWidth int, tileHeight i
 // If creating a blank tilemap to be populated later, you can either specify no parameters at all and then use `Tilemap.create` or pass the map and tile dimensions here.
 // Note that all Tilemaps use a base tile size to calculate dimensions from, but that a TilemapLayer may have its own unique tile size that overrides it.
 func (self *GameObjectFactory) TilemapI(args ...interface{}) *Tilemap {
-	return &Tilemap{self.Object.Call("tilemap", args)}
+	return &Tilemap{self.Object.Call("tilemap", args...)}
 }
 
 // RenderTexture A dynamic initially blank canvas to which images can be drawn.
@@ -1059,7 +1059,7 @@ func (self *GameObjectFactory) RenderTexture4O(width int, height int, key string
 
 // RenderTextureI A dynamic initially blank canvas to which images can be drawn.
 func (self *GameObjectFactory) RenderTextureI(args ...interface{}) *RenderTexture {
-	return &RenderTexture{self.Object.Call("renderTexture", args)}
+	return &RenderTexture{self.Object.Call("renderTexture", args...)}
 }
 
 // Video Create a Video object.
@@ -1087,7 +1087,7 @@ func (self *GameObjectFactory) Video2O(key interface{}, url interface{}) *Video 
 //
 // This will return a Phaser.Video object which you can pass to a Sprite to be used as a texture.
 func (self *GameObjectFactory) VideoI(args ...interface{}) *Video {
-	return &Video{self.Object.Call("video", args)}
+	return &Video{self.Object.Call("video", args...)}
 }
 
 // BitmapData Create a BitmapData object.
@@ -1129,17 +1129,18 @@ func (self *GameObjectFactory) BitmapData4O(width int, height int, key string, a
 //
 // A BitmapData object can be manipulated and drawn to like a traditional Canvas object and used to texture Sprites.
 func (self *GameObjectFactory) BitmapDataI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("bitmapData", args)}
+	return &BitmapData{self.Object.Call("bitmapData", args...)}
 }
 
 // Filter A WebGL shader/filter that can be applied to Sprites.
-func (self *GameObjectFactory) Filter(filter string, args interface{}) *Filter {
-	return &Filter{self.Object.Call("filter", filter, args)}
+func (self *GameObjectFactory) Filter(filter string, args ...interface{}) *Filter {
+	args = append([]interface{}{filter}, args...)
+	return &Filter{self.Object.Call("filter", args...)}
 }
 
 // FilterI A WebGL shader/filter that can be applied to Sprites.
 func (self *GameObjectFactory) FilterI(args ...interface{}) *Filter {
-	return &Filter{self.Object.Call("filter", args)}
+	return &Filter{self.Object.Call("filter", args...)}
 }
 
 // Plugin Add a new Plugin into the PluginManager.
@@ -1153,5 +1154,5 @@ func (self *GameObjectFactory) Plugin(plugin interface{}, parameter interface{})
 //
 // The Plugin must have 2 properties: `game` and `parent`. Plugin.game is set to the game reference the PluginManager uses, and parent is set to the PluginManager.
 func (self *GameObjectFactory) PluginI(args ...interface{}) *Plugin {
-	return &Plugin{self.Object.Call("plugin", args)}
+	return &Plugin{self.Object.Call("plugin", args...)}
 }

@@ -33,7 +33,7 @@ func NewPhysicsP2DistanceConstraint3O(world *PhysicsP2, bodyA *P2Body, bodyB *P2
 
 // NewPhysicsP2DistanceConstraintI A constraint that tries to keep the distance between two bodies constant.
 func NewPhysicsP2DistanceConstraintI(args ...interface{}) *PhysicsP2DistanceConstraint {
-	return &PhysicsP2DistanceConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("DistanceConstraint").New(args)}
+	return &PhysicsP2DistanceConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("DistanceConstraint").New(args...)}
 }
 
 // PhysicsP2DistanceConstraint Binding conversion method to PhysicsP2DistanceConstraint point

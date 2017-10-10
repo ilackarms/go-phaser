@@ -18,7 +18,7 @@ func NewComponentAnimation() *ComponentAnimation {
 
 // NewComponentAnimationI The Animation Component provides a `play` method, which is a proxy to the `AnimationManager.play` method.
 func NewComponentAnimationI(args ...interface{}) *ComponentAnimation {
-	return &ComponentAnimation{js.Global.Get("Phaser").Get("Component").Get("Animation").New(args)}
+	return &ComponentAnimation{js.Global.Get("Phaser").Get("Component").Get("Animation").New(args...)}
 }
 
 // ComponentAnimation Binding conversion method to ComponentAnimation point
@@ -76,5 +76,5 @@ func (self *ComponentAnimation) Play3O(name string, frameRate int, loop bool, ki
 // If the animation is already playing calling this again won't do anything.
 // If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
 func (self *ComponentAnimation) PlayI(args ...interface{}) *Animation {
-	return &Animation{self.Object.Call("play", args)}
+	return &Animation{self.Object.Call("play", args...)}
 }

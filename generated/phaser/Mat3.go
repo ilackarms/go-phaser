@@ -18,7 +18,7 @@ func NewMat3() *Mat3 {
 
 // NewMat3I empty description
 func NewMat3I(args ...interface{}) *Mat3 {
-	return &Mat3{js.Global.Get("mat3").New(args)}
+	return &Mat3{js.Global.Get("mat3").New(args...)}
 }
 
 // Mat3 Binding conversion method to Mat3 point

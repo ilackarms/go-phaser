@@ -18,7 +18,7 @@ func NewPlugin(game *Game, parent interface{}) *Plugin {
 
 // NewPluginI This is a base Plugin template to use for any Phaser plugin development.
 func NewPluginI(args ...interface{}) *Plugin {
-	return &Plugin{js.Global.Get("Phaser").Get("Plugin").New(args)}
+	return &Plugin{js.Global.Get("Phaser").Get("Plugin").New(args...)}
 }
 
 // Plugin Binding conversion method to Plugin point
@@ -128,7 +128,7 @@ func (self *Plugin) PreUpdate() {
 // PreUpdateI Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
 // It is only called if active is set to true.
 func (self *Plugin) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
@@ -140,7 +140,7 @@ func (self *Plugin) Update() {
 // UpdateI Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
 // It is only called if active is set to true.
 func (self *Plugin) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Render Render is called right after the Game Renderer completes, but before the State.render.
@@ -152,7 +152,7 @@ func (self *Plugin) Render() {
 // RenderI Render is called right after the Game Renderer completes, but before the State.render.
 // It is only called if visible is set to true.
 func (self *Plugin) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // PostRender Post-render is called after the Game Renderer and State.render have run.
@@ -164,7 +164,7 @@ func (self *Plugin) PostRender() {
 // PostRenderI Post-render is called after the Game Renderer and State.render have run.
 // It is only called if visible is set to true.
 func (self *Plugin) PostRenderI(args ...interface{}) {
-	self.Object.Call("postRender", args)
+	self.Object.Call("postRender", args...)
 }
 
 // Destroy Clear down this Plugin and null out references
@@ -174,5 +174,5 @@ func (self *Plugin) Destroy() {
 
 // DestroyI Clear down this Plugin and null out references
 func (self *Plugin) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

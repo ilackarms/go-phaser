@@ -18,7 +18,7 @@ func NewGraphicsData() *GraphicsData {
 
 // NewGraphicsDataI A GraphicsData object.
 func NewGraphicsDataI(args ...interface{}) *GraphicsData {
-	return &GraphicsData{js.Global.Get("PIXI").Get("GraphicsData").New(args)}
+	return &GraphicsData{js.Global.Get("PIXI").Get("GraphicsData").New(args...)}
 }
 
 // GraphicsData Binding conversion method to GraphicsData point

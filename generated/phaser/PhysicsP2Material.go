@@ -24,7 +24,7 @@ func NewPhysicsP2Material(name string) *PhysicsP2Material {
 //
 // \o/ ~ "Because I'm a Material girl"
 func NewPhysicsP2MaterialI(args ...interface{}) *PhysicsP2Material {
-	return &PhysicsP2Material{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("Material").New(args)}
+	return &PhysicsP2Material{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("Material").New(args...)}
 }
 
 // PhysicsP2Material Binding conversion method to PhysicsP2Material point

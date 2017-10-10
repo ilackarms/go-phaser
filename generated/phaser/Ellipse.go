@@ -38,7 +38,7 @@ func NewEllipse4O(x int, y int, width int, height int) *Ellipse {
 
 // NewEllipseI Creates a Ellipse object. A curve on a plane surrounding two focal points.
 func NewEllipseI(args ...interface{}) *Ellipse {
-	return &Ellipse{js.Global.Get("Phaser").Get("Ellipse").New(args)}
+	return &Ellipse{js.Global.Get("Phaser").Get("Ellipse").New(args...)}
 }
 
 // Ellipse Binding conversion method to Ellipse point
@@ -158,7 +158,7 @@ func (self *Ellipse) SetTo(x int, y int, width int, height int) *Ellipse {
 
 // SetToI Sets the members of the Ellipse to the specified values.
 func (self *Ellipse) SetToI(args ...interface{}) *Ellipse {
-	return &Ellipse{self.Object.Call("setTo", args)}
+	return &Ellipse{self.Object.Call("setTo", args...)}
 }
 
 // GetBounds Returns the framing rectangle of the ellipse as a Phaser.Rectangle object.
@@ -168,7 +168,7 @@ func (self *Ellipse) GetBounds() *Rectangle {
 
 // GetBoundsI Returns the framing rectangle of the ellipse as a Phaser.Rectangle object.
 func (self *Ellipse) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // CopyFrom Copies the x, y, width and height properties from any given object to this Ellipse.
@@ -178,7 +178,7 @@ func (self *Ellipse) CopyFrom(source interface{}) *Ellipse {
 
 // CopyFromI Copies the x, y, width and height properties from any given object to this Ellipse.
 func (self *Ellipse) CopyFromI(args ...interface{}) *Ellipse {
-	return &Ellipse{self.Object.Call("copyFrom", args)}
+	return &Ellipse{self.Object.Call("copyFrom", args...)}
 }
 
 // CopyTo Copies the x, y, width and height properties from this Ellipse to any given object.
@@ -188,7 +188,7 @@ func (self *Ellipse) CopyTo(dest interface{}) interface{} {
 
 // CopyToI Copies the x, y, width and height properties from this Ellipse to any given object.
 func (self *Ellipse) CopyToI(args ...interface{}) interface{} {
-	return self.Object.Call("copyTo", args)
+	return self.Object.Call("copyTo", args...)
 }
 
 // Clone Returns a new Ellipse object with the same values for the x, y, width, and height properties as this Ellipse object.
@@ -198,7 +198,7 @@ func (self *Ellipse) Clone(output *Ellipse) *Ellipse {
 
 // CloneI Returns a new Ellipse object with the same values for the x, y, width, and height properties as this Ellipse object.
 func (self *Ellipse) CloneI(args ...interface{}) *Ellipse {
-	return &Ellipse{self.Object.Call("clone", args)}
+	return &Ellipse{self.Object.Call("clone", args...)}
 }
 
 // Contains Return true if the given x/y coordinates are within this Ellipse object.
@@ -208,7 +208,7 @@ func (self *Ellipse) Contains(x int, y int) bool {
 
 // ContainsI Return true if the given x/y coordinates are within this Ellipse object.
 func (self *Ellipse) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // Random Returns a uniformly distributed random point from anywhere within this Ellipse.
@@ -223,7 +223,7 @@ func (self *Ellipse) Random1O(out interface{}) *Point {
 
 // RandomI Returns a uniformly distributed random point from anywhere within this Ellipse.
 func (self *Ellipse) RandomI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("random", args)}
+	return &Point{self.Object.Call("random", args...)}
 }
 
 // ToString Returns a string representation of this object.
@@ -233,5 +233,5 @@ func (self *Ellipse) ToString() string {
 
 // ToStringI Returns a string representation of this object.
 func (self *Ellipse) ToStringI(args ...interface{}) string {
-	return self.Object.Call("toString", args).String()
+	return self.Object.Call("toString", args...).String()
 }

@@ -32,7 +32,7 @@ func NewCreate(game *Game) *Create {
 //
 // Access this via `Game.create` (`this.game.create` from within a State object)
 func NewCreateI(args ...interface{}) *Create {
-	return &Create{js.Global.Get("Phaser").Get("Create").New(args)}
+	return &Create{js.Global.Get("Phaser").Get("Create").New(args...)}
 }
 
 // Create Binding conversion method to Create point
@@ -271,7 +271,7 @@ func (self *Create) Texture3O(key string, data []interface{}, pixelWidth int, pi
 // The above will create a new texture called `bob`, which will look like a little man wearing a hat. You can then use it
 // for sprites the same way you use any other texture: `game.add.sprite(0, 0, 'bob');`
 func (self *Create) TextureI(args ...interface{}) *Texture {
-	return &Texture{self.Object.Call("texture", args)}
+	return &Texture{self.Object.Call("texture", args...)}
 }
 
 // Grid Creates a grid texture based on the given dimensions.
@@ -281,5 +281,5 @@ func (self *Create) Grid(key string, width int, height int, cellWidth int, cellH
 
 // GridI Creates a grid texture based on the given dimensions.
 func (self *Create) GridI(args ...interface{}) *Texture {
-	return &Texture{self.Object.Call("grid", args)}
+	return &Texture{self.Object.Call("grid", args...)}
 }

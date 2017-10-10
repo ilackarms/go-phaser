@@ -30,7 +30,7 @@ func NewRope(game *Game, x int, y int, key interface{}, frame interface{}, point
 //
 // Please note that Ropes cannot have an input handler.
 func NewRopeI(args ...interface{}) *Rope {
-	return &Rope{js.Global.Get("Phaser").Get("Rope").New(args)}
+	return &Rope{js.Global.Get("Phaser").Get("Rope").New(args...)}
 }
 
 // Rope Binding conversion method to Rope point
@@ -960,7 +960,7 @@ func (self *Rope) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *Rope) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update Override and use this function in your own custom objects to handle any update requirements you may have.
@@ -970,7 +970,7 @@ func (self *Rope) Update() {
 
 // UpdateI Override and use this function in your own custom objects to handle any update requirements you may have.
 func (self *Rope) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Reset Resets the Rope. This places the Rope at the given x/y world coordinates and then
@@ -984,7 +984,7 @@ func (self *Rope) Reset(x int, y int) *Rope {
 // sets alive, exists, visible and renderable all to true. Also resets the outOfBounds state.
 // If the Rope has a physics body that too is reset.
 func (self *Rope) ResetI(args ...interface{}) *Rope {
-	return &Rope{self.Object.Call("reset", args)}
+	return &Rope{self.Object.Call("reset", args...)}
 }
 
 // RenderStripFlat Renders a flat strip
@@ -994,7 +994,7 @@ func (self *Rope) RenderStripFlat(strip *Strip) {
 
 // RenderStripFlatI Renders a flat strip
 func (self *Rope) RenderStripFlatI(args ...interface{}) {
-	self.Object.Call("renderStripFlat", args)
+	self.Object.Call("renderStripFlat", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -1004,7 +1004,7 @@ func (self *Rope) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *Rope) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GetBounds Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
@@ -1014,7 +1014,7 @@ func (self *Rope) GetBounds(matrix *Matrix) *Rectangle {
 
 // GetBoundsI Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
 func (self *Rope) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -1024,7 +1024,7 @@ func (self *Rope) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Rope) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -1034,7 +1034,7 @@ func (self *Rope) AddChildAt(child *DisplayObject, index int) *DisplayObject {
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Rope) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -1044,7 +1044,7 @@ func (self *Rope) SwapChildren(child *DisplayObject, child2 *DisplayObject) {
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Rope) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -1054,7 +1054,7 @@ func (self *Rope) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Rope) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -1064,7 +1064,7 @@ func (self *Rope) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Rope) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -1074,7 +1074,7 @@ func (self *Rope) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Rope) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -1084,7 +1084,7 @@ func (self *Rope) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Rope) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -1094,7 +1094,7 @@ func (self *Rope) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Rope) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -1104,7 +1104,7 @@ func (self *Rope) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Rope) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
@@ -1114,7 +1114,7 @@ func (self *Rope) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 func (self *Rope) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -1124,7 +1124,7 @@ func (self *Rope) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Rope) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -1134,7 +1134,7 @@ func (self *Rope) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *Rope) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -1144,7 +1144,7 @@ func (self *Rope) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *Rope) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // PostUpdate Internal method called by the World postUpdate cycle.
@@ -1154,7 +1154,7 @@ func (self *Rope) PostUpdate() {
 
 // PostUpdateI Internal method called by the World postUpdate cycle.
 func (self *Rope) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Play Plays an Animation.
@@ -1204,7 +1204,7 @@ func (self *Rope) Play3O(name string, frameRate int, loop bool, killOnComplete b
 // If the animation is already playing calling this again won't do anything.
 // If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
 func (self *Rope) PlayI(args ...interface{}) *Animation {
-	return &Animation{self.Object.Call("play", args)}
+	return &Animation{self.Object.Call("play", args...)}
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -1374,7 +1374,7 @@ func (self *Rope) AlignIn3O(container interface{}, position int, offsetX int, of
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *Rope) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -1549,7 +1549,7 @@ func (self *Rope) AlignTo3O(parent interface{}, position int, offsetX int, offse
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *Rope) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // BringToTop Brings this Game Object to the top of its parents display list.
@@ -1567,7 +1567,7 @@ func (self *Rope) BringToTop() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Rope) BringToTopI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("bringToTop", args)}
+	return &DisplayObject{self.Object.Call("bringToTop", args...)}
 }
 
 // SendToBack Sends this Game Object to the bottom of its parents display list.
@@ -1585,7 +1585,7 @@ func (self *Rope) SendToBack() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Rope) SendToBackI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("sendToBack", args)}
+	return &DisplayObject{self.Object.Call("sendToBack", args...)}
 }
 
 // MoveUp Moves this Game Object up one place in its parents display list.
@@ -1603,7 +1603,7 @@ func (self *Rope) MoveUp() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Rope) MoveUpI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveUp", args)}
+	return &DisplayObject{self.Object.Call("moveUp", args...)}
 }
 
 // MoveDown Moves this Game Object down one place in its parents display list.
@@ -1621,7 +1621,7 @@ func (self *Rope) MoveDown() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Rope) MoveDownI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveDown", args)}
+	return &DisplayObject{self.Object.Call("moveDown", args...)}
 }
 
 // Crop Crop allows you to crop the texture being used to display this Game Object.
@@ -1666,7 +1666,7 @@ func (self *Rope) Crop1O(rect *Rectangle, copy bool) {
 // A reference to the rectangle is stored in `cropRect` unless the `copy` parameter is `true`,
 // in which case the values are duplicated to a local object.
 func (self *Rope) CropI(args ...interface{}) {
-	self.Object.Call("crop", args)
+	self.Object.Call("crop", args...)
 }
 
 // UpdateCrop If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -1678,7 +1678,7 @@ func (self *Rope) UpdateCrop() {
 // UpdateCropI If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
 // or the rectangle it references, then you need to update the crop frame by calling this method.
 func (self *Rope) UpdateCropI(args ...interface{}) {
-	self.Object.Call("updateCrop", args)
+	self.Object.Call("updateCrop", args...)
 }
 
 // Destroy Destroys the Game Object. This removes it from its parent group, destroys the input, event and animation handlers if present
@@ -1722,7 +1722,7 @@ func (self *Rope) Destroy2O(destroyChildren bool, destroyTexture bool) {
 // You can optionally also destroy the BaseTexture this Game Object is using. Be careful if you've
 // more than one Game Object sharing the same BaseTexture.
 func (self *Rope) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -1749,7 +1749,7 @@ func (self *Rope) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *Rope) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -1773,7 +1773,7 @@ func (self *Rope) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *Rope) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // LoadTexture Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
@@ -1853,7 +1853,7 @@ func (self *Rope) LoadTexture2O(key interface{}, frame interface{}, stopAnimatio
 //
 // Note: You cannot use a RenderTexture as a texture for a TileSprite.
 func (self *Rope) LoadTextureI(args ...interface{}) {
-	self.Object.Call("loadTexture", args)
+	self.Object.Call("loadTexture", args...)
 }
 
 // SetFrame Sets the texture frame the Game Object uses for rendering.
@@ -1867,7 +1867,7 @@ func (self *Rope) SetFrame(frame *Frame) {
 //
 // This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
 func (self *Rope) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // ResizeFrame Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -1883,7 +1883,7 @@ func (self *Rope) ResizeFrame(parent interface{}, width int, height int) {
 // You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
 // it can be useful to adjust the dimensions directly in this way.
 func (self *Rope) ResizeFrameI(args ...interface{}) {
-	self.Object.Call("resizeFrame", args)
+	self.Object.Call("resizeFrame", args...)
 }
 
 // ResetFrame Resets the texture frame dimensions that the Game Object uses for rendering.
@@ -1893,7 +1893,7 @@ func (self *Rope) ResetFrame() {
 
 // ResetFrameI Resets the texture frame dimensions that the Game Object uses for rendering.
 func (self *Rope) ResetFrameI(args ...interface{}) {
-	self.Object.Call("resetFrame", args)
+	self.Object.Call("resetFrame", args...)
 }
 
 // Overlap Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
@@ -1915,7 +1915,7 @@ func (self *Rope) Overlap(displayObject interface{}) bool {
 // Therefore it's relatively expensive to use in large quantities, i.e. with lots of Sprites at a high frequency.
 // It should be fine for low-volume testing where physics isn't required.
 func (self *Rope) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }
 
 // CheckTransform Adjust scaling limits, if set, to this Game Object.
@@ -1925,7 +1925,7 @@ func (self *Rope) CheckTransform(wt *Matrix) {
 
 // CheckTransformI Adjust scaling limits, if set, to this Game Object.
 func (self *Rope) CheckTransformI(args ...interface{}) {
-	self.Object.Call("checkTransform", args)
+	self.Object.Call("checkTransform", args...)
 }
 
 // SetScaleMinMax Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
@@ -1967,5 +1967,5 @@ func (self *Rope) SetScaleMinMax(minX interface{}, minY interface{}, maxX interf
 //
 // Call `setScaleMinMax(null)` to clear all previously set values.
 func (self *Rope) SetScaleMinMaxI(args ...interface{}) {
-	self.Object.Call("setScaleMinMax", args)
+	self.Object.Call("setScaleMinMax", args...)
 }

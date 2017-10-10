@@ -18,7 +18,7 @@ func NewFrame(index int, x int, y int, width int, height int, name string) *Fram
 
 // NewFrameI A Frame is a single frame of an animation and is part of a FrameData collection.
 func NewFrameI(args ...interface{}) *Frame {
-	return &Frame{js.Global.Get("Phaser").Get("Frame").New(args)}
+	return &Frame{js.Global.Get("Phaser").Get("Frame").New(args...)}
 }
 
 // Frame Binding conversion method to Frame point
@@ -236,7 +236,7 @@ func (self *Frame) Resize(width int, height int) {
 
 // ResizeI Adjusts of all the Frame properties based on the given width and height values.
 func (self *Frame) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // SetTrim If the frame was trimmed when added to the Texture Atlas this records the trim and source data.
@@ -246,7 +246,7 @@ func (self *Frame) SetTrim(trimmed bool, actualWidth int, actualHeight int, dest
 
 // SetTrimI If the frame was trimmed when added to the Texture Atlas this records the trim and source data.
 func (self *Frame) SetTrimI(args ...interface{}) {
-	self.Object.Call("setTrim", args)
+	self.Object.Call("setTrim", args...)
 }
 
 // Clone Clones this Frame into a new Phaser.Frame object and returns it.
@@ -258,7 +258,7 @@ func (self *Frame) Clone() *Frame {
 // CloneI Clones this Frame into a new Phaser.Frame object and returns it.
 // Note that all properties are cloned, including the name, index and UUID.
 func (self *Frame) CloneI(args ...interface{}) *Frame {
-	return &Frame{self.Object.Call("clone", args)}
+	return &Frame{self.Object.Call("clone", args...)}
 }
 
 // GetRect Returns a Rectangle set to the dimensions of this Frame.
@@ -273,5 +273,5 @@ func (self *Frame) GetRect1O(out *Rectangle) *Rectangle {
 
 // GetRectI Returns a Rectangle set to the dimensions of this Frame.
 func (self *Frame) GetRectI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getRect", args)}
+	return &Rectangle{self.Object.Call("getRect", args...)}
 }

@@ -18,7 +18,7 @@ func NewComponentSmoothed() *ComponentSmoothed {
 
 // NewComponentSmoothedI The Smoothed component allows a Game Object to control anti-aliasing of an image based texture.
 func NewComponentSmoothedI(args ...interface{}) *ComponentSmoothed {
-	return &ComponentSmoothed{js.Global.Get("Phaser").Get("Component").Get("Smoothed").New(args)}
+	return &ComponentSmoothed{js.Global.Get("Phaser").Get("Component").Get("Smoothed").New(args...)}
 }
 
 // ComponentSmoothed Binding conversion method to ComponentSmoothed point

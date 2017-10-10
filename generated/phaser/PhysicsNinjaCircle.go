@@ -21,7 +21,7 @@ func NewPhysicsNinjaCircle(body *PhysicsNinjaBody, x int, y int, radius int) *Ph
 // NewPhysicsNinjaCircleI Ninja Physics Circle constructor.
 // Note: This class could be massively optimised and reduced in size. I leave that challenge up to you.
 func NewPhysicsNinjaCircleI(args ...interface{}) *PhysicsNinjaCircle {
-	return &PhysicsNinjaCircle{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("Circle").New(args)}
+	return &PhysicsNinjaCircle{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("Circle").New(args...)}
 }
 
 // PhysicsNinjaCircle Binding conversion method to PhysicsNinjaCircle point
@@ -149,7 +149,7 @@ func (self *PhysicsNinjaCircle) Integrate() {
 
 // IntegrateI Updates this Circles position.
 func (self *PhysicsNinjaCircle) IntegrateI(args ...interface{}) {
-	self.Object.Call("integrate", args)
+	self.Object.Call("integrate", args...)
 }
 
 // ReportCollisionVsWorld Process a world collision and apply the resulting forces.
@@ -159,7 +159,7 @@ func (self *PhysicsNinjaCircle) ReportCollisionVsWorld(px int, py int, dx int, d
 
 // ReportCollisionVsWorldI Process a world collision and apply the resulting forces.
 func (self *PhysicsNinjaCircle) ReportCollisionVsWorldI(args ...interface{}) {
-	self.Object.Call("reportCollisionVsWorld", args)
+	self.Object.Call("reportCollisionVsWorld", args...)
 }
 
 // CollideWorldBounds Collides this Circle against the world bounds.
@@ -169,7 +169,7 @@ func (self *PhysicsNinjaCircle) CollideWorldBounds() {
 
 // CollideWorldBoundsI Collides this Circle against the world bounds.
 func (self *PhysicsNinjaCircle) CollideWorldBoundsI(args ...interface{}) {
-	self.Object.Call("collideWorldBounds", args)
+	self.Object.Call("collideWorldBounds", args...)
 }
 
 // CollideCircleVsTile Collides this Circle with a Tile.
@@ -179,7 +179,7 @@ func (self *PhysicsNinjaCircle) CollideCircleVsTile(t *PhysicsNinjaTile) bool {
 
 // CollideCircleVsTileI Collides this Circle with a Tile.
 func (self *PhysicsNinjaCircle) CollideCircleVsTileI(args ...interface{}) bool {
-	return self.Object.Call("collideCircleVsTile", args).Bool()
+	return self.Object.Call("collideCircleVsTile", args...).Bool()
 }
 
 // ResolveCircleTile Resolves tile collision.
@@ -189,7 +189,7 @@ func (self *PhysicsNinjaCircle) ResolveCircleTile(x int, y int, oH int, oV int, 
 
 // ResolveCircleTileI Resolves tile collision.
 func (self *PhysicsNinjaCircle) ResolveCircleTileI(args ...interface{}) int {
-	return self.Object.Call("resolveCircleTile", args).Int()
+	return self.Object.Call("resolveCircleTile", args...).Int()
 }
 
 // ProjCircle_Full Resolves Full tile collision.
@@ -199,7 +199,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_Full(x int, y int, oH int, oV int, ob
 
 // ProjCircle_FullI Resolves Full tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_FullI(args ...interface{}) int {
-	return self.Object.Call("projCircle_Full", args).Int()
+	return self.Object.Call("projCircle_Full", args...).Int()
 }
 
 // ProjCircle_45Deg Resolves 45 Degree tile collision.
@@ -209,7 +209,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_45Deg(x int, y int, oH int, oV int, o
 
 // ProjCircle_45DegI Resolves 45 Degree tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_45DegI(args ...interface{}) int {
-	return self.Object.Call("projCircle_45Deg", args).Int()
+	return self.Object.Call("projCircle_45Deg", args...).Int()
 }
 
 // ProjCircle_Concave Resolves Concave tile collision.
@@ -219,7 +219,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_Concave(x int, y int, oH int, oV int,
 
 // ProjCircle_ConcaveI Resolves Concave tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_ConcaveI(args ...interface{}) int {
-	return self.Object.Call("projCircle_Concave", args).Int()
+	return self.Object.Call("projCircle_Concave", args...).Int()
 }
 
 // ProjCircle_Convex Resolves Convex tile collision.
@@ -229,7 +229,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_Convex(x int, y int, oH int, oV int, 
 
 // ProjCircle_ConvexI Resolves Convex tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_ConvexI(args ...interface{}) int {
-	return self.Object.Call("projCircle_Convex", args).Int()
+	return self.Object.Call("projCircle_Convex", args...).Int()
 }
 
 // ProjCircle_Half Resolves Half tile collision.
@@ -239,7 +239,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_Half(x int, y int, oH int, oV int, ob
 
 // ProjCircle_HalfI Resolves Half tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_HalfI(args ...interface{}) int {
-	return self.Object.Call("projCircle_Half", args).Int()
+	return self.Object.Call("projCircle_Half", args...).Int()
 }
 
 // ProjCircle_22DegS Resolves 22 Degree tile collision.
@@ -249,7 +249,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_22DegS(x int, y int, oH int, oV int, 
 
 // ProjCircle_22DegSI Resolves 22 Degree tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_22DegSI(args ...interface{}) int {
-	return self.Object.Call("projCircle_22DegS", args).Int()
+	return self.Object.Call("projCircle_22DegS", args...).Int()
 }
 
 // ProjCircle_22DegB Resolves 22 Degree tile collision.
@@ -259,7 +259,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_22DegB(x int, y int, oH int, oV int, 
 
 // ProjCircle_22DegBI Resolves 22 Degree tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_22DegBI(args ...interface{}) int {
-	return self.Object.Call("projCircle_22DegB", args).Int()
+	return self.Object.Call("projCircle_22DegB", args...).Int()
 }
 
 // ProjCircle_67DegS Resolves 67 Degree tile collision.
@@ -269,7 +269,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_67DegS(x int, y int, oH int, oV int, 
 
 // ProjCircle_67DegSI Resolves 67 Degree tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_67DegSI(args ...interface{}) int {
-	return self.Object.Call("projCircle_67DegS", args).Int()
+	return self.Object.Call("projCircle_67DegS", args...).Int()
 }
 
 // ProjCircle_67DegB Resolves 67 Degree tile collision.
@@ -279,7 +279,7 @@ func (self *PhysicsNinjaCircle) ProjCircle_67DegB(x int, y int, oH int, oV int, 
 
 // ProjCircle_67DegBI Resolves 67 Degree tile collision.
 func (self *PhysicsNinjaCircle) ProjCircle_67DegBI(args ...interface{}) int {
-	return self.Object.Call("projCircle_67DegB", args).Int()
+	return self.Object.Call("projCircle_67DegB", args...).Int()
 }
 
 // Destroy Destroys this Circle's reference to Body and System
@@ -289,7 +289,7 @@ func (self *PhysicsNinjaCircle) Destroy() {
 
 // DestroyI Destroys this Circle's reference to Body and System
 func (self *PhysicsNinjaCircle) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Render Render this circle for debugging purposes.
@@ -299,5 +299,5 @@ func (self *PhysicsNinjaCircle) Render(context interface{}, xOffset int, yOffset
 
 // RenderI Render this circle for debugging purposes.
 func (self *PhysicsNinjaCircle) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }

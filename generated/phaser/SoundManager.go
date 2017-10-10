@@ -54,7 +54,7 @@ func NewSoundManager(game *Game) *SoundManager {
 // The solution is to use a lower encoding rate such as 44100 Hz. Sometimes the audio context will
 // be created with a sampleRate of 48000. If this happens and audio distorts you should re-create the context.
 func NewSoundManagerI(args ...interface{}) *SoundManager {
-	return &SoundManager{js.Global.Get("Phaser").Get("SoundManager").New(args)}
+	return &SoundManager{js.Global.Get("Phaser").Get("SoundManager").New(args...)}
 }
 
 // SoundManager Binding conversion method to SoundManager point
@@ -226,7 +226,7 @@ func (self *SoundManager) Boot() {
 
 // BootI Initialises the sound manager.
 func (self *SoundManager) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // SetTouchLock Sets the Input Manager touch callback to be SoundManager.unlock.
@@ -238,7 +238,7 @@ func (self *SoundManager) SetTouchLock() {
 // SetTouchLockI Sets the Input Manager touch callback to be SoundManager.unlock.
 // Required for iOS audio device unlocking. Mostly just used internally.
 func (self *SoundManager) SetTouchLockI(args ...interface{}) {
-	self.Object.Call("setTouchLock", args)
+	self.Object.Call("setTouchLock", args...)
 }
 
 // Unlock Enables the audio, usually after the first touch.
@@ -248,7 +248,7 @@ func (self *SoundManager) Unlock() bool {
 
 // UnlockI Enables the audio, usually after the first touch.
 func (self *SoundManager) UnlockI(args ...interface{}) bool {
-	return self.Object.Call("unlock", args).Bool()
+	return self.Object.Call("unlock", args...).Bool()
 }
 
 // StopAll Stops all the sounds in the game.
@@ -258,7 +258,7 @@ func (self *SoundManager) StopAll() {
 
 // StopAllI Stops all the sounds in the game.
 func (self *SoundManager) StopAllI(args ...interface{}) {
-	self.Object.Call("stopAll", args)
+	self.Object.Call("stopAll", args...)
 }
 
 // PauseAll Pauses all the sounds in the game.
@@ -268,7 +268,7 @@ func (self *SoundManager) PauseAll() {
 
 // PauseAllI Pauses all the sounds in the game.
 func (self *SoundManager) PauseAllI(args ...interface{}) {
-	self.Object.Call("pauseAll", args)
+	self.Object.Call("pauseAll", args...)
 }
 
 // ResumeAll Resumes every sound in the game.
@@ -278,7 +278,7 @@ func (self *SoundManager) ResumeAll() {
 
 // ResumeAllI Resumes every sound in the game.
 func (self *SoundManager) ResumeAllI(args ...interface{}) {
-	self.Object.Call("resumeAll", args)
+	self.Object.Call("resumeAll", args...)
 }
 
 // Decode Decode a sound by its asset key.
@@ -293,7 +293,7 @@ func (self *SoundManager) Decode1O(key string, sound *Sound) {
 
 // DecodeI Decode a sound by its asset key.
 func (self *SoundManager) DecodeI(args ...interface{}) {
-	self.Object.Call("decode", args)
+	self.Object.Call("decode", args...)
 }
 
 // SetDecodedCallback This method allows you to give the SoundManager a list of Sound files, or keys, and a callback.
@@ -309,7 +309,7 @@ func (self *SoundManager) SetDecodedCallback(files interface{}, callback interfa
 // The amount of time spent decoding depends on the codec used and file size.
 // If all of the files given have already decoded the callback is triggered immediately.
 func (self *SoundManager) SetDecodedCallbackI(args ...interface{}) {
-	self.Object.Call("setDecodedCallback", args)
+	self.Object.Call("setDecodedCallback", args...)
 }
 
 // Update Updates every sound in the game, checks for audio unlock on mobile and monitors the decoding watch list.
@@ -319,7 +319,7 @@ func (self *SoundManager) Update() {
 
 // UpdateI Updates every sound in the game, checks for audio unlock on mobile and monitors the decoding watch list.
 func (self *SoundManager) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Add Adds a new Sound into the SoundManager.
@@ -344,7 +344,7 @@ func (self *SoundManager) Add3O(key string, volume int, loop bool, connect bool)
 
 // AddI Adds a new Sound into the SoundManager.
 func (self *SoundManager) AddI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("add", args)}
+	return &Sound{self.Object.Call("add", args...)}
 }
 
 // AddSprite Adds a new AudioSprite into the SoundManager.
@@ -354,7 +354,7 @@ func (self *SoundManager) AddSprite(key string) *AudioSprite {
 
 // AddSpriteI Adds a new AudioSprite into the SoundManager.
 func (self *SoundManager) AddSpriteI(args ...interface{}) *AudioSprite {
-	return &AudioSprite{self.Object.Call("addSprite", args)}
+	return &AudioSprite{self.Object.Call("addSprite", args...)}
 }
 
 // Remove Removes a Sound from the SoundManager. The removed Sound is destroyed before removal.
@@ -364,7 +364,7 @@ func (self *SoundManager) Remove(sound *Sound) bool {
 
 // RemoveI Removes a Sound from the SoundManager. The removed Sound is destroyed before removal.
 func (self *SoundManager) RemoveI(args ...interface{}) bool {
-	return self.Object.Call("remove", args).Bool()
+	return self.Object.Call("remove", args...).Bool()
 }
 
 // RemoveByKey Removes all Sounds from the SoundManager that have an asset key matching the given value.
@@ -376,7 +376,7 @@ func (self *SoundManager) RemoveByKey(key string) int {
 // RemoveByKeyI Removes all Sounds from the SoundManager that have an asset key matching the given value.
 // The removed Sounds are destroyed before removal.
 func (self *SoundManager) RemoveByKeyI(args ...interface{}) int {
-	return self.Object.Call("removeByKey", args).Int()
+	return self.Object.Call("removeByKey", args...).Int()
 }
 
 // Play Adds a new Sound into the SoundManager and starts it playing.
@@ -396,7 +396,7 @@ func (self *SoundManager) Play2O(key string, volume int, loop bool) *Sound {
 
 // PlayI Adds a new Sound into the SoundManager and starts it playing.
 func (self *SoundManager) PlayI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("play", args)}
+	return &Sound{self.Object.Call("play", args...)}
 }
 
 // SetMute Internal mute handler called automatically by the SoundManager.mute setter.
@@ -406,7 +406,7 @@ func (self *SoundManager) SetMute() {
 
 // SetMuteI Internal mute handler called automatically by the SoundManager.mute setter.
 func (self *SoundManager) SetMuteI(args ...interface{}) {
-	self.Object.Call("setMute", args)
+	self.Object.Call("setMute", args...)
 }
 
 // UnsetMute Internal mute handler called automatically by the SoundManager.mute setter.
@@ -416,7 +416,7 @@ func (self *SoundManager) UnsetMute() {
 
 // UnsetMuteI Internal mute handler called automatically by the SoundManager.mute setter.
 func (self *SoundManager) UnsetMuteI(args ...interface{}) {
-	self.Object.Call("unsetMute", args)
+	self.Object.Call("unsetMute", args...)
 }
 
 // Destroy Stops all the sounds in the game, then destroys them and finally clears up any callbacks.
@@ -426,5 +426,5 @@ func (self *SoundManager) Destroy() {
 
 // DestroyI Stops all the sounds in the game, then destroys them and finally clears up any callbacks.
 func (self *SoundManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

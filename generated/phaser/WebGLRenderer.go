@@ -38,7 +38,7 @@ func NewWebGLRenderer(game *PhaserGame) *WebGLRenderer {
 //
 // Don't forget to add the view to your DOM or you will not see anything :)
 func NewWebGLRendererI(args ...interface{}) *WebGLRenderer {
-	return &WebGLRenderer{js.Global.Get("PIXI").Get("WebGLRenderer").New(args)}
+	return &WebGLRenderer{js.Global.Get("PIXI").Get("WebGLRenderer").New(args...)}
 }
 
 // WebGLRenderer Binding conversion method to WebGLRenderer point
@@ -258,7 +258,7 @@ func (self *WebGLRenderer) InitContext() {
 
 // InitContextI empty description
 func (self *WebGLRenderer) InitContextI(args ...interface{}) {
-	self.Object.Call("initContext", args)
+	self.Object.Call("initContext", args...)
 }
 
 // Render Renders the stage to its webGL view
@@ -268,7 +268,7 @@ func (self *WebGLRenderer) Render(stage *Stage) {
 
 // RenderI Renders the stage to its webGL view
 func (self *WebGLRenderer) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // RenderDisplayObject Renders a Display Object.
@@ -278,7 +278,7 @@ func (self *WebGLRenderer) RenderDisplayObject(displayObject *DisplayObject, pro
 
 // RenderDisplayObjectI Renders a Display Object.
 func (self *WebGLRenderer) RenderDisplayObjectI(args ...interface{}) {
-	self.Object.Call("renderDisplayObject", args)
+	self.Object.Call("renderDisplayObject", args...)
 }
 
 // Resize Resizes the webGL view to the specified width and height.
@@ -288,7 +288,7 @@ func (self *WebGLRenderer) Resize(width int, height int) {
 
 // ResizeI Resizes the webGL view to the specified width and height.
 func (self *WebGLRenderer) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // UpdateTexture Updates and Creates a WebGL texture for the renderers context.
@@ -298,7 +298,7 @@ func (self *WebGLRenderer) UpdateTexture(texture *Texture) bool {
 
 // UpdateTextureI Updates and Creates a WebGL texture for the renderers context.
 func (self *WebGLRenderer) UpdateTextureI(args ...interface{}) bool {
-	return self.Object.Call("updateTexture", args).Bool()
+	return self.Object.Call("updateTexture", args...).Bool()
 }
 
 // Destroy Removes everything from the renderer (event listeners, spritebatch, etc...)
@@ -308,7 +308,7 @@ func (self *WebGLRenderer) Destroy() {
 
 // DestroyI Removes everything from the renderer (event listeners, spritebatch, etc...)
 func (self *WebGLRenderer) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // MapBlendModes Maps Pixi blend modes to WebGL blend modes.
@@ -318,5 +318,5 @@ func (self *WebGLRenderer) MapBlendModes() {
 
 // MapBlendModesI Maps Pixi blend modes to WebGL blend modes.
 func (self *WebGLRenderer) MapBlendModesI(args ...interface{}) {
-	self.Object.Call("mapBlendModes", args)
+	self.Object.Call("mapBlendModes", args...)
 }

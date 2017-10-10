@@ -18,7 +18,7 @@ func NewParticlesArcade() *ParticlesArcade {
 
 // NewParticlesArcadeI Arcade Particles is a Particle System integrated with Arcade Physics.
 func NewParticlesArcadeI(args ...interface{}) *ParticlesArcade {
-	return &ParticlesArcade{js.Global.Get("Phaser").Get("Particles").Get("Arcade").New(args)}
+	return &ParticlesArcade{js.Global.Get("Phaser").Get("Particles").Get("Arcade").New(args...)}
 }
 
 // ParticlesArcade Binding conversion method to ParticlesArcade point

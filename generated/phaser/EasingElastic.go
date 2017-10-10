@@ -18,7 +18,7 @@ func NewEasingElastic() *EasingElastic {
 
 // NewEasingElasticI Elastic easing.
 func NewEasingElasticI(args ...interface{}) *EasingElastic {
-	return &EasingElastic{js.Global.Get("Phaser").Get("Easing").Get("Elastic").New(args)}
+	return &EasingElastic{js.Global.Get("Phaser").Get("Easing").Get("Elastic").New(args...)}
 }
 
 // EasingElastic Binding conversion method to EasingElastic point
@@ -36,7 +36,7 @@ func (self *EasingElastic) In(k int) int {
 
 // InI Elastic ease-in.
 func (self *EasingElastic) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Elastic ease-out.
@@ -46,7 +46,7 @@ func (self *EasingElastic) Out(k int) int {
 
 // OutI Elastic ease-out.
 func (self *EasingElastic) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Elastic ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingElastic) InOut(k int) int {
 
 // InOutI Elastic ease-in/out.
 func (self *EasingElastic) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

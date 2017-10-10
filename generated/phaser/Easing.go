@@ -18,7 +18,7 @@ func NewEasing() *Easing {
 
 // NewEasingI A collection of easing methods defining ease-in and ease-out curves.
 func NewEasingI(args ...interface{}) *Easing {
-	return &Easing{js.Global.Get("Phaser").Get("Easing").New(args)}
+	return &Easing{js.Global.Get("Phaser").Get("Easing").New(args...)}
 }
 
 // Easing Binding conversion method to Easing point

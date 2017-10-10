@@ -21,7 +21,7 @@ func NewComponentCrop() *ComponentCrop {
 // NewComponentCropI The Crop component provides the ability to crop a texture based Game Object to a defined rectangle,
 // which can be updated in real-time.
 func NewComponentCropI(args ...interface{}) *ComponentCrop {
-	return &ComponentCrop{js.Global.Get("Phaser").Get("Component").Get("Crop").New(args)}
+	return &ComponentCrop{js.Global.Get("Phaser").Get("Component").Get("Crop").New(args...)}
 }
 
 // ComponentCrop Binding conversion method to ComponentCrop point
@@ -88,7 +88,7 @@ func (self *ComponentCrop) Crop1O(rect *Rectangle, copy bool) {
 // A reference to the rectangle is stored in `cropRect` unless the `copy` parameter is `true`,
 // in which case the values are duplicated to a local object.
 func (self *ComponentCrop) CropI(args ...interface{}) {
-	self.Object.Call("crop", args)
+	self.Object.Call("crop", args...)
 }
 
 // UpdateCrop If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -100,5 +100,5 @@ func (self *ComponentCrop) UpdateCrop() {
 // UpdateCropI If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
 // or the rectangle it references, then you need to update the crop frame by calling this method.
 func (self *ComponentCrop) UpdateCropI(args ...interface{}) {
-	self.Object.Call("updateCrop", args)
+	self.Object.Call("updateCrop", args...)
 }

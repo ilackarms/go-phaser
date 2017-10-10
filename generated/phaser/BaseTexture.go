@@ -18,7 +18,7 @@ func NewBaseTexture(source interface{}, scaleMode int) *BaseTexture {
 
 // NewBaseTextureI A texture stores the information that represents an image. All textures have a base texture.
 func NewBaseTextureI(args ...interface{}) *BaseTexture {
-	return &BaseTexture{js.Global.Get("PIXI").Get("BaseTexture").New(args)}
+	return &BaseTexture{js.Global.Get("PIXI").Get("BaseTexture").New(args...)}
 }
 
 // BaseTexture Binding conversion method to BaseTexture point
@@ -150,7 +150,7 @@ func (self *BaseTexture) ForceLoaded(width int, height int) {
 //
 // Important for when you don't want to modify the source object by forcing in `complete` or dimension properties it may not have.
 func (self *BaseTexture) ForceLoadedI(args ...interface{}) {
-	self.Object.Call("forceLoaded", args)
+	self.Object.Call("forceLoaded", args...)
 }
 
 // Destroy Destroys this base texture
@@ -160,7 +160,7 @@ func (self *BaseTexture) Destroy() {
 
 // DestroyI Destroys this base texture
 func (self *BaseTexture) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // UpdateSourceImage Changes the source image of the texture
@@ -170,7 +170,7 @@ func (self *BaseTexture) UpdateSourceImage(newSrc string) {
 
 // UpdateSourceImageI Changes the source image of the texture
 func (self *BaseTexture) UpdateSourceImageI(args ...interface{}) {
-	self.Object.Call("updateSourceImage", args)
+	self.Object.Call("updateSourceImage", args...)
 }
 
 // Dirty Sets all glTextures to be dirty.
@@ -180,7 +180,7 @@ func (self *BaseTexture) Dirty() {
 
 // DirtyI Sets all glTextures to be dirty.
 func (self *BaseTexture) DirtyI(args ...interface{}) {
-	self.Object.Call("dirty", args)
+	self.Object.Call("dirty", args...)
 }
 
 // UnloadFromGPU Removes the base texture from the GPU, useful for managing resources on the GPU.
@@ -194,7 +194,7 @@ func (self *BaseTexture) UnloadFromGPU() {
 //
 // Atexture is still 100% usable and will simply be reuploaded if there is a sprite on screen that is using it.
 func (self *BaseTexture) UnloadFromGPUI(args ...interface{}) {
-	self.Object.Call("unloadFromGPU", args)
+	self.Object.Call("unloadFromGPU", args...)
 }
 
 // FromCanvas Helper function that creates a base texture from the given canvas element.
@@ -204,5 +204,5 @@ func (self *BaseTexture) FromCanvas(canvas *Canvas, scaleMode int) *BaseTexture 
 
 // FromCanvasI Helper function that creates a base texture from the given canvas element.
 func (self *BaseTexture) FromCanvasI(args ...interface{}) *BaseTexture {
-	return &BaseTexture{self.Object.Call("fromCanvas", args)}
+	return &BaseTexture{self.Object.Call("fromCanvas", args...)}
 }

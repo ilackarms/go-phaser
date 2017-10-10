@@ -43,7 +43,7 @@ func NewPhysicsNinjaTile1O(body *PhysicsNinjaBody, x int, y int, width int, heig
 //
 // Note: This class could be massively optimised and reduced in size. I leave that challenge up to you.
 func NewPhysicsNinjaTileI(args ...interface{}) *PhysicsNinjaTile {
-	return &PhysicsNinjaTile{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("Tile").New(args)}
+	return &PhysicsNinjaTile{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("Tile").New(args...)}
 }
 
 // PhysicsNinjaTile Binding conversion method to PhysicsNinjaTile point
@@ -211,7 +211,7 @@ func (self *PhysicsNinjaTile) Integrate() {
 
 // IntegrateI Updates this objects position.
 func (self *PhysicsNinjaTile) IntegrateI(args ...interface{}) {
-	self.Object.Call("integrate", args)
+	self.Object.Call("integrate", args...)
 }
 
 // CollideWorldBounds Tiles cannot collide with the world bounds, it's up to you to keep them where you want them. But we need this API stub to satisfy the Body.
@@ -221,7 +221,7 @@ func (self *PhysicsNinjaTile) CollideWorldBounds() {
 
 // CollideWorldBoundsI Tiles cannot collide with the world bounds, it's up to you to keep them where you want them. But we need this API stub to satisfy the Body.
 func (self *PhysicsNinjaTile) CollideWorldBoundsI(args ...interface{}) {
-	self.Object.Call("collideWorldBounds", args)
+	self.Object.Call("collideWorldBounds", args...)
 }
 
 // ReportCollisionVsWorld Process a world collision and apply the resulting forces.
@@ -231,7 +231,7 @@ func (self *PhysicsNinjaTile) ReportCollisionVsWorld(px int, py int, dx int, dy 
 
 // ReportCollisionVsWorldI Process a world collision and apply the resulting forces.
 func (self *PhysicsNinjaTile) ReportCollisionVsWorldI(args ...interface{}) {
-	self.Object.Call("reportCollisionVsWorld", args)
+	self.Object.Call("reportCollisionVsWorld", args...)
 }
 
 // SetType Tiles cannot collide with the world bounds, it's up to you to keep them where you want them. But we need this API stub to satisfy the Body.
@@ -241,7 +241,7 @@ func (self *PhysicsNinjaTile) SetType(id int) {
 
 // SetTypeI Tiles cannot collide with the world bounds, it's up to you to keep them where you want them. But we need this API stub to satisfy the Body.
 func (self *PhysicsNinjaTile) SetTypeI(args ...interface{}) {
-	self.Object.Call("setType", args)
+	self.Object.Call("setType", args...)
 }
 
 // Clear Sets this tile to be empty.
@@ -251,7 +251,7 @@ func (self *PhysicsNinjaTile) Clear() {
 
 // ClearI Sets this tile to be empty.
 func (self *PhysicsNinjaTile) ClearI(args ...interface{}) {
-	self.Object.Call("clear", args)
+	self.Object.Call("clear", args...)
 }
 
 // Destroy Destroys this Tiles reference to Body and System.
@@ -261,7 +261,7 @@ func (self *PhysicsNinjaTile) Destroy() {
 
 // DestroyI Destroys this Tiles reference to Body and System.
 func (self *PhysicsNinjaTile) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // UpdateType This converts a tile from implicitly-defined (via id), to explicit (via properties).
@@ -273,5 +273,5 @@ func (self *PhysicsNinjaTile) UpdateType() {
 // UpdateTypeI This converts a tile from implicitly-defined (via id), to explicit (via properties).
 // Don't call directly, instead of setType.
 func (self *PhysicsNinjaTile) UpdateTypeI(args ...interface{}) {
-	self.Object.Call("updateType", args)
+	self.Object.Call("updateType", args...)
 }

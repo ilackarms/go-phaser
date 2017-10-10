@@ -24,7 +24,7 @@ func NewComponentInWorld() *ComponentInWorld {
 // An object is considered as being "in bounds" so long as its own bounds intersects at any point with the World bounds.
 // If the AutoCull component is enabled on the Game Object then it will check the Game Object against the Camera bounds as well.
 func NewComponentInWorldI(args ...interface{}) *ComponentInWorld {
-	return &ComponentInWorld{js.Global.Get("Phaser").Get("Component").Get("InWorld").New(args)}
+	return &ComponentInWorld{js.Global.Get("Phaser").Get("Component").Get("InWorld").New(args...)}
 }
 
 // ComponentInWorld Binding conversion method to ComponentInWorld point
@@ -108,5 +108,5 @@ func (self *ComponentInWorld) PreUpdate() {
 // PreUpdateI The InWorld component preUpdate handler.
 // Called automatically by the Game Object.
 func (self *ComponentInWorld) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }

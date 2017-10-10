@@ -18,7 +18,7 @@ func NewPixiFastShader(gl *WebGLContext) *PixiFastShader {
 
 // NewPixiFastShaderI empty description
 func NewPixiFastShaderI(args ...interface{}) *PixiFastShader {
-	return &PixiFastShader{js.Global.Get("PIXI").Get("PixiFastShader").New(args)}
+	return &PixiFastShader{js.Global.Get("PIXI").Get("PixiFastShader").New(args...)}
 }
 
 // PixiFastShader Binding conversion method to PixiFastShader point
@@ -98,7 +98,7 @@ func (self *PixiFastShader) Init() {
 
 // InitI Initialises the shader.
 func (self *PixiFastShader) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // Destroy Destroys the shader.
@@ -108,5 +108,5 @@ func (self *PixiFastShader) Destroy() {
 
 // DestroyI Destroys the shader.
 func (self *PixiFastShader) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

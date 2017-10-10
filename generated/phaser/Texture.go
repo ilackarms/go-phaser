@@ -38,7 +38,7 @@ func NewTexture2O(baseTexture *BaseTexture, frame *Rectangle, crop *Rectangle, t
 //
 // to the display list directly. Instead use it as the texture for a PIXI.Sprite. If no frame is provided then the whole image is used.
 func NewTextureI(args ...interface{}) *Texture {
-	return &Texture{js.Global.Get("PIXI").Get("Texture").New(args)}
+	return &Texture{js.Global.Get("PIXI").Get("Texture").New(args...)}
 }
 
 // Texture Binding conversion method to Texture point
@@ -170,7 +170,7 @@ func (self *Texture) OnBaseTextureLoaded() {
 
 // OnBaseTextureLoadedI Called when the base texture is loaded
 func (self *Texture) OnBaseTextureLoadedI(args ...interface{}) {
-	self.Object.Call("onBaseTextureLoaded", args)
+	self.Object.Call("onBaseTextureLoaded", args...)
 }
 
 // Destroy Destroys this texture
@@ -180,7 +180,7 @@ func (self *Texture) Destroy(destroyBase bool) {
 
 // DestroyI Destroys this texture
 func (self *Texture) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // SetFrame Specifies the region of the baseTexture that this texture will use.
@@ -190,7 +190,7 @@ func (self *Texture) SetFrame(frame *Rectangle) {
 
 // SetFrameI Specifies the region of the baseTexture that this texture will use.
 func (self *Texture) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // _updateUvs Updates the internal WebGL UV cache.
@@ -200,7 +200,7 @@ func (self *Texture) _updateUvs() {
 
 // _updateUvsI Updates the internal WebGL UV cache.
 func (self *Texture) _updateUvsI(args ...interface{}) {
-	self.Object.Call("_updateUvs", args)
+	self.Object.Call("_updateUvs", args...)
 }
 
 // FromCanvas Helper function that creates a new a Texture based on the given canvas element.
@@ -210,5 +210,5 @@ func (self *Texture) FromCanvas(canvas *Canvas, scaleMode int) *Texture {
 
 // FromCanvasI Helper function that creates a new a Texture based on the given canvas element.
 func (self *Texture) FromCanvasI(args ...interface{}) *Texture {
-	return &Texture{self.Object.Call("fromCanvas", args)}
+	return &Texture{self.Object.Call("fromCanvas", args...)}
 }

@@ -18,7 +18,7 @@ func NewUtils() *Utils {
 
 // NewUtilsI empty description
 func NewUtilsI(args ...interface{}) *Utils {
-	return &Utils{js.Global.Get("Phaser").Get("Utils").New(args)}
+	return &Utils{js.Global.Get("Phaser").Get("Utils").New(args...)}
 }
 
 // Utils Binding conversion method to Utils point
@@ -38,7 +38,7 @@ func (self *Utils) ReverseString(string string) string {
 // ReverseStringI Takes the given string and reverses it, returning the reversed string.
 // For example if given the string `Atari 520ST` it would return `TS025 iratA`.
 func (self *Utils) ReverseStringI(args ...interface{}) string {
-	return self.Object.Call("reverseString", args).String()
+	return self.Object.Call("reverseString", args...).String()
 }
 
 // GetProperty Gets an objects property by string.
@@ -48,7 +48,7 @@ func (self *Utils) GetProperty(obj interface{}, prop string) interface{} {
 
 // GetPropertyI Gets an objects property by string.
 func (self *Utils) GetPropertyI(args ...interface{}) interface{} {
-	return self.Object.Call("getProperty", args)
+	return self.Object.Call("getProperty", args...)
 }
 
 // SetProperty Sets an objects property by string.
@@ -58,7 +58,7 @@ func (self *Utils) SetProperty(obj interface{}, prop string) interface{} {
 
 // SetPropertyI Sets an objects property by string.
 func (self *Utils) SetPropertyI(args ...interface{}) interface{} {
-	return self.Object.Call("setProperty", args)
+	return self.Object.Call("setProperty", args...)
 }
 
 // ChanceRoll Generate a random bool result based on the chance value.
@@ -74,7 +74,7 @@ func (self *Utils) ChanceRoll(chance int) bool {
 // Returns true or false based on the chance value (default 50%). For example if you wanted a player to have a 30% chance
 // of getting a bonus, call chanceRoll(30) - true means the chance passed, false means it failed.
 func (self *Utils) ChanceRollI(args ...interface{}) bool {
-	return self.Object.Call("chanceRoll", args).Bool()
+	return self.Object.Call("chanceRoll", args...).Bool()
 }
 
 // RandomChoice Choose between one of two values randomly.
@@ -84,7 +84,7 @@ func (self *Utils) RandomChoice(choice1 interface{}, choice2 interface{}) interf
 
 // RandomChoiceI Choose between one of two values randomly.
 func (self *Utils) RandomChoiceI(args ...interface{}) interface{} {
-	return self.Object.Call("randomChoice", args)
+	return self.Object.Call("randomChoice", args...)
 }
 
 // ParseDimension Get a unit dimension from a string.
@@ -94,7 +94,7 @@ func (self *Utils) ParseDimension(size interface{}, dimension int) int {
 
 // ParseDimensionI Get a unit dimension from a string.
 func (self *Utils) ParseDimensionI(args ...interface{}) int {
-	return self.Object.Call("parseDimension", args).Int()
+	return self.Object.Call("parseDimension", args...).Int()
 }
 
 // Pad Takes the given string and pads it out, to the length required, using the character
@@ -204,7 +204,7 @@ func (self *Utils) Pad3O(str string, len int, pad string, dir int) string {
 //
 // Would return: `**c64**`
 func (self *Utils) PadI(args ...interface{}) string {
-	return self.Object.Call("pad", args).String()
+	return self.Object.Call("pad", args...).String()
 }
 
 // IsPlainObject This is a slightly modified version of jQuery.isPlainObject.
@@ -216,7 +216,7 @@ func (self *Utils) IsPlainObject(obj interface{}) bool {
 // IsPlainObjectI This is a slightly modified version of jQuery.isPlainObject.
 // A plain object is an object whose internal class property is [object Object].
 func (self *Utils) IsPlainObjectI(args ...interface{}) bool {
-	return self.Object.Call("isPlainObject", args).Bool()
+	return self.Object.Call("isPlainObject", args...).Bool()
 }
 
 // Extend This is a slightly modified version of http://api.jquery.com/jQuery.extend/
@@ -226,7 +226,7 @@ func (self *Utils) Extend(deep bool, target interface{}) interface{} {
 
 // ExtendI This is a slightly modified version of http://api.jquery.com/jQuery.extend/
 func (self *Utils) ExtendI(args ...interface{}) interface{} {
-	return self.Object.Call("extend", args)
+	return self.Object.Call("extend", args...)
 }
 
 // MixinPrototype Mixes in an existing mixin object with the target.
@@ -253,7 +253,7 @@ func (self *Utils) MixinPrototype1O(target interface{}, mixin interface{}, repla
 // _except_ if they also define a `clone` method - if a clone method is defined that is called instead and
 // the result is assigned directly.
 func (self *Utils) MixinPrototypeI(args ...interface{}) {
-	self.Object.Call("mixinPrototype", args)
+	self.Object.Call("mixinPrototype", args...)
 }
 
 // Mixin Mixes the source object into the destination object, returning the newly modified destination object.
@@ -265,5 +265,5 @@ func (self *Utils) Mixin(from interface{}, to interface{}) interface{} {
 // MixinI Mixes the source object into the destination object, returning the newly modified destination object.
 // Based on original code by @mudcube
 func (self *Utils) MixinI(args ...interface{}) interface{} {
-	return self.Object.Call("mixin", args)
+	return self.Object.Call("mixin", args...)
 }

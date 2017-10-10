@@ -53,7 +53,7 @@ func NewRetroFont5O(game *Game, key string, characterWidth int, characterHeight 
 // NewRetroFontI A Retro Font is similar to a BitmapFont, in that it uses a texture to render the text. However unlike a BitmapFont every character in a RetroFont
 // is the same size. This makes it similar to a sprite sheet. You typically find font sheets like this from old 8/16-bit games and demos.
 func NewRetroFontI(args ...interface{}) *RetroFont {
-	return &RetroFont{js.Global.Get("Phaser").Get("RetroFont").New(args)}
+	return &RetroFont{js.Global.Get("Phaser").Get("RetroFont").New(args...)}
 }
 
 // RetroFont Binding conversion method to RetroFont point
@@ -565,7 +565,7 @@ func (self *RetroFont) SetFixedWidth1O(width int, lineAlignment string) {
 // SetFixedWidthI If you need this RetroFont to have a fixed width and custom alignment you can set the width here.
 // If text is wider than the width specified it will be cropped off.
 func (self *RetroFont) SetFixedWidthI(args ...interface{}) {
-	self.Object.Call("setFixedWidth", args)
+	self.Object.Call("setFixedWidth", args...)
 }
 
 // SetText A helper function that quickly sets lots of variables at once, and then updates the text.
@@ -600,7 +600,7 @@ func (self *RetroFont) SetText5O(content string, multiLine bool, characterSpacin
 
 // SetTextI A helper function that quickly sets lots of variables at once, and then updates the text.
 func (self *RetroFont) SetTextI(args ...interface{}) {
-	self.Object.Call("setText", args)
+	self.Object.Call("setText", args...)
 }
 
 // BuildRetroFontText Updates the texture with the new text.
@@ -610,7 +610,7 @@ func (self *RetroFont) BuildRetroFontText() {
 
 // BuildRetroFontTextI Updates the texture with the new text.
 func (self *RetroFont) BuildRetroFontTextI(args ...interface{}) {
-	self.Object.Call("buildRetroFontText", args)
+	self.Object.Call("buildRetroFontText", args...)
 }
 
 // PasteLine Internal function that takes a single line of text (2nd parameter) and pastes it into the BitmapData at the given coordinates.
@@ -622,7 +622,7 @@ func (self *RetroFont) PasteLine(line string, x int, y int, customSpacingX int) 
 // PasteLineI Internal function that takes a single line of text (2nd parameter) and pastes it into the BitmapData at the given coordinates.
 // Used by getLine and getMultiLine
 func (self *RetroFont) PasteLineI(args ...interface{}) {
-	self.Object.Call("pasteLine", args)
+	self.Object.Call("pasteLine", args...)
 }
 
 // GetLongestLine Works out the longest line of text in _text and returns its length
@@ -632,7 +632,7 @@ func (self *RetroFont) GetLongestLine() int {
 
 // GetLongestLineI Works out the longest line of text in _text and returns its length
 func (self *RetroFont) GetLongestLineI(args ...interface{}) int {
-	return self.Object.Call("getLongestLine", args).Int()
+	return self.Object.Call("getLongestLine", args...).Int()
 }
 
 // RemoveUnsupportedCharacters Internal helper function that removes all unsupported characters from the _text String, leaving only characters contained in the font set.
@@ -647,7 +647,7 @@ func (self *RetroFont) RemoveUnsupportedCharacters1O(stripCR bool) string {
 
 // RemoveUnsupportedCharactersI Internal helper function that removes all unsupported characters from the _text String, leaving only characters contained in the font set.
 func (self *RetroFont) RemoveUnsupportedCharactersI(args ...interface{}) string {
-	return self.Object.Call("removeUnsupportedCharacters", args).String()
+	return self.Object.Call("removeUnsupportedCharacters", args...).String()
 }
 
 // UpdateOffset Updates the x and/or y offset that the font is rendered from. This updates all of the texture frames, so be careful how often it is called.
@@ -675,7 +675,7 @@ func (self *RetroFont) UpdateOffset2O(xOffset int, yOffset int) {
 // Note that the values given for the x and y properties are either ADDED to or SUBTRACTED from (if negative) the existing offsetX/Y values of the characters.
 // So if the current offsetY is 8 and you want it to start rendering from y16 you would call updateOffset(0, 8) to add 8 to the current y offset.
 func (self *RetroFont) UpdateOffsetI(args ...interface{}) {
-	self.Object.Call("updateOffset", args)
+	self.Object.Call("updateOffset", args...)
 }
 
 // RenderXY This function will draw the display object to the RenderTexture at the given coordinates.
@@ -702,7 +702,7 @@ func (self *RetroFont) RenderXY1O(displayObject interface{}, x int, y int, clear
 //
 // If you don't want those then use RenderTexture.renderRawXY instead.
 func (self *RetroFont) RenderXYI(args ...interface{}) {
-	self.Object.Call("renderXY", args)
+	self.Object.Call("renderXY", args...)
 }
 
 // RenderRawXY This function will draw the display object to the RenderTexture at the given coordinates.
@@ -729,7 +729,7 @@ func (self *RetroFont) RenderRawXY1O(displayObject interface{}, x int, y int, cl
 //
 // If you need those then use RenderTexture.renderXY instead.
 func (self *RetroFont) RenderRawXYI(args ...interface{}) {
-	self.Object.Call("renderRawXY", args)
+	self.Object.Call("renderRawXY", args...)
 }
 
 // Render This function will draw the display object to the RenderTexture.
@@ -777,7 +777,7 @@ func (self *RetroFont) Render2O(displayObject interface{}, matrix *Matrix, clear
 // If you wish for the displayObject to be rendered taking its current scale, rotation and translation into account then either
 // pass `null`, leave it undefined or pass `displayObject.worldTransform` as the matrix value.
 func (self *RetroFont) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // Resize Resizes the RenderTexture.
@@ -787,7 +787,7 @@ func (self *RetroFont) Resize(width int, height int, updateBase bool) {
 
 // ResizeI Resizes the RenderTexture.
 func (self *RetroFont) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // Clear Clears the RenderTexture.
@@ -797,7 +797,7 @@ func (self *RetroFont) Clear() {
 
 // ClearI Clears the RenderTexture.
 func (self *RetroFont) ClearI(args ...interface{}) {
-	self.Object.Call("clear", args)
+	self.Object.Call("clear", args...)
 }
 
 // RenderWebGL This function will draw the display object to the texture.
@@ -817,7 +817,7 @@ func (self *RetroFont) RenderWebGL2O(displayObject *DisplayObject, matrix *Matri
 
 // RenderWebGLI This function will draw the display object to the texture.
 func (self *RetroFont) RenderWebGLI(args ...interface{}) {
-	self.Object.Call("renderWebGL", args)
+	self.Object.Call("renderWebGL", args...)
 }
 
 // RenderCanvas This function will draw the display object to the texture.
@@ -837,7 +837,7 @@ func (self *RetroFont) RenderCanvas2O(displayObject *DisplayObject, matrix *Matr
 
 // RenderCanvasI This function will draw the display object to the texture.
 func (self *RetroFont) RenderCanvasI(args ...interface{}) {
-	self.Object.Call("renderCanvas", args)
+	self.Object.Call("renderCanvas", args...)
 }
 
 // GetImage Will return a HTML Image of the texture
@@ -847,7 +847,7 @@ func (self *RetroFont) GetImage() *Image {
 
 // GetImageI Will return a HTML Image of the texture
 func (self *RetroFont) GetImageI(args ...interface{}) *Image {
-	return &Image{self.Object.Call("getImage", args)}
+	return &Image{self.Object.Call("getImage", args...)}
 }
 
 // GetBase64 Will return a base64 encoded string of this texture. It works by calling RenderTexture.getCanvas and then running toDataURL on that.
@@ -857,7 +857,7 @@ func (self *RetroFont) GetBase64() string {
 
 // GetBase64I Will return a base64 encoded string of this texture. It works by calling RenderTexture.getCanvas and then running toDataURL on that.
 func (self *RetroFont) GetBase64I(args ...interface{}) string {
-	return self.Object.Call("getBase64", args).String()
+	return self.Object.Call("getBase64", args...).String()
 }
 
 // GetCanvas Creates a Canvas element, renders this RenderTexture to it and then returns it.
@@ -867,7 +867,7 @@ func (self *RetroFont) GetCanvas() *dom.HTMLCanvasElement {
 
 // GetCanvasI Creates a Canvas element, renders this RenderTexture to it and then returns it.
 func (self *RetroFont) GetCanvasI(args ...interface{}) *dom.HTMLCanvasElement {
-	return WrapHTMLCanvasElement(self.Object.Call("getCanvas", args))
+	return WrapHTMLCanvasElement(self.Object.Call("getCanvas", args...))
 }
 
 // OnBaseTextureLoaded Called when the base texture is loaded
@@ -877,7 +877,7 @@ func (self *RetroFont) OnBaseTextureLoaded() {
 
 // OnBaseTextureLoadedI Called when the base texture is loaded
 func (self *RetroFont) OnBaseTextureLoadedI(args ...interface{}) {
-	self.Object.Call("onBaseTextureLoaded", args)
+	self.Object.Call("onBaseTextureLoaded", args...)
 }
 
 // Destroy Destroys this texture
@@ -887,7 +887,7 @@ func (self *RetroFont) Destroy(destroyBase bool) {
 
 // DestroyI Destroys this texture
 func (self *RetroFont) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // SetFrame Specifies the region of the baseTexture that this texture will use.
@@ -897,7 +897,7 @@ func (self *RetroFont) SetFrame(frame *Rectangle) {
 
 // SetFrameI Specifies the region of the baseTexture that this texture will use.
 func (self *RetroFont) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // _updateUvs Updates the internal WebGL UV cache.
@@ -907,5 +907,5 @@ func (self *RetroFont) _updateUvs() {
 
 // _updateUvsI Updates the internal WebGL UV cache.
 func (self *RetroFont) _updateUvsI(args ...interface{}) {
-	self.Object.Call("_updateUvs", args)
+	self.Object.Call("_updateUvs", args...)
 }

@@ -18,7 +18,7 @@ func NewStripShader(gl *WebGLContext) *StripShader {
 
 // NewStripShaderI empty description
 func NewStripShaderI(args ...interface{}) *StripShader {
-	return &StripShader{js.Global.Get("PIXI").Get("StripShader").New(args)}
+	return &StripShader{js.Global.Get("PIXI").Get("StripShader").New(args...)}
 }
 
 // StripShader Binding conversion method to StripShader point
@@ -88,7 +88,7 @@ func (self *StripShader) Init() {
 
 // InitI Initialises the shader.
 func (self *StripShader) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // Destroy Destroys the shader.
@@ -98,5 +98,5 @@ func (self *StripShader) Destroy() {
 
 // DestroyI Destroys the shader.
 func (self *StripShader) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

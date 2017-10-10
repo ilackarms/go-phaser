@@ -18,7 +18,7 @@ func NewEasingQuartic() *EasingQuartic {
 
 // NewEasingQuarticI Quartic easing.
 func NewEasingQuarticI(args ...interface{}) *EasingQuartic {
-	return &EasingQuartic{js.Global.Get("Phaser").Get("Easing").Get("Quartic").New(args)}
+	return &EasingQuartic{js.Global.Get("Phaser").Get("Easing").Get("Quartic").New(args...)}
 }
 
 // EasingQuartic Binding conversion method to EasingQuartic point
@@ -36,7 +36,7 @@ func (self *EasingQuartic) In(k int) int {
 
 // InI Quartic ease-in.
 func (self *EasingQuartic) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Quartic ease-out.
@@ -46,7 +46,7 @@ func (self *EasingQuartic) Out(k int) int {
 
 // OutI Quartic ease-out.
 func (self *EasingQuartic) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Quartic ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingQuartic) InOut(k int) int {
 
 // InOutI Quartic ease-in/out.
 func (self *EasingQuartic) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

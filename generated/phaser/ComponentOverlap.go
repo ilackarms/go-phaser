@@ -18,7 +18,7 @@ func NewComponentOverlap() *ComponentOverlap {
 
 // NewComponentOverlapI The Overlap component allows a Game Object to check if it overlaps with the bounds of another Game Object.
 func NewComponentOverlapI(args ...interface{}) *ComponentOverlap {
-	return &ComponentOverlap{js.Global.Get("Phaser").Get("Component").Get("Overlap").New(args)}
+	return &ComponentOverlap{js.Global.Get("Phaser").Get("Component").Get("Overlap").New(args...)}
 }
 
 // ComponentOverlap Binding conversion method to ComponentOverlap point
@@ -48,5 +48,5 @@ func (self *ComponentOverlap) Overlap(displayObject interface{}) bool {
 // Therefore it's relatively expensive to use in large quantities, i.e. with lots of Sprites at a high frequency.
 // It should be fine for low-volume testing where physics isn't required.
 func (self *ComponentOverlap) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }

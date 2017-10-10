@@ -18,7 +18,7 @@ func NewTile(layer interface{}, index int, x int, y int, width int, height int) 
 
 // NewTileI A Tile is a representation of a single tile within the Tilemap.
 func NewTileI(args ...interface{}) *Tile {
-	return &Tile{js.Global.Get("Phaser").Get("Tile").New(args)}
+	return &Tile{js.Global.Get("Phaser").Get("Tile").New(args...)}
 }
 
 // Tile Binding conversion method to Tile point
@@ -346,7 +346,7 @@ func (self *Tile) ContainsPoint(x int, y int) bool {
 
 // ContainsPointI Check if the given x and y world coordinates are within this Tile.
 func (self *Tile) ContainsPointI(args ...interface{}) bool {
-	return self.Object.Call("containsPoint", args).Bool()
+	return self.Object.Call("containsPoint", args...).Bool()
 }
 
 // Intersects Check for intersection with this tile.
@@ -356,7 +356,7 @@ func (self *Tile) Intersects(x int, y int, right int, bottom int) {
 
 // IntersectsI Check for intersection with this tile.
 func (self *Tile) IntersectsI(args ...interface{}) {
-	self.Object.Call("intersects", args)
+	self.Object.Call("intersects", args...)
 }
 
 // SetCollisionCallback Set a callback to be called when this tile is hit by an object.
@@ -368,7 +368,7 @@ func (self *Tile) SetCollisionCallback(callback interface{}, context interface{}
 // SetCollisionCallbackI Set a callback to be called when this tile is hit by an object.
 // The callback must true true for collision processing to take place.
 func (self *Tile) SetCollisionCallbackI(args ...interface{}) {
-	self.Object.Call("setCollisionCallback", args)
+	self.Object.Call("setCollisionCallback", args...)
 }
 
 // Destroy Clean up memory.
@@ -378,7 +378,7 @@ func (self *Tile) Destroy() {
 
 // DestroyI Clean up memory.
 func (self *Tile) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // SetCollision Sets the collision flags for each side of this tile and updates the interesting faces list.
@@ -388,7 +388,7 @@ func (self *Tile) SetCollision(left bool, right bool, up bool, down bool) {
 
 // SetCollisionI Sets the collision flags for each side of this tile and updates the interesting faces list.
 func (self *Tile) SetCollisionI(args ...interface{}) {
-	self.Object.Call("setCollision", args)
+	self.Object.Call("setCollision", args...)
 }
 
 // ResetCollision Reset collision status flags.
@@ -398,7 +398,7 @@ func (self *Tile) ResetCollision() {
 
 // ResetCollisionI Reset collision status flags.
 func (self *Tile) ResetCollisionI(args ...interface{}) {
-	self.Object.Call("resetCollision", args)
+	self.Object.Call("resetCollision", args...)
 }
 
 // IsInteresting Is this tile interesting?
@@ -408,7 +408,7 @@ func (self *Tile) IsInteresting(collides bool, faces bool) bool {
 
 // IsInterestingI Is this tile interesting?
 func (self *Tile) IsInterestingI(args ...interface{}) bool {
-	return self.Object.Call("isInteresting", args).Bool()
+	return self.Object.Call("isInteresting", args...).Bool()
 }
 
 // Copy Copies the tile data and properties from the given tile to this tile.
@@ -418,5 +418,5 @@ func (self *Tile) Copy(tile *Tile) {
 
 // CopyI Copies the tile data and properties from the given tile to this tile.
 func (self *Tile) CopyI(args ...interface{}) {
-	self.Object.Call("copy", args)
+	self.Object.Call("copy", args...)
 }

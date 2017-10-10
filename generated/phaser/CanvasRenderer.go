@@ -26,7 +26,7 @@ func NewCanvasRenderer(game *PhaserGame) *CanvasRenderer {
 //
 // Don't forget to add the CanvasRenderer.view to your DOM or you will not see anything :)
 func NewCanvasRendererI(args ...interface{}) *CanvasRenderer {
-	return &CanvasRenderer{js.Global.Get("PIXI").Get("CanvasRenderer").New(args)}
+	return &CanvasRenderer{js.Global.Get("PIXI").Get("CanvasRenderer").New(args...)}
 }
 
 // CanvasRenderer Binding conversion method to CanvasRenderer point
@@ -196,7 +196,7 @@ func (self *CanvasRenderer) Render(root interface{}) {
 
 // RenderI Renders the DisplayObjectContainer, usually the Phaser.Stage, to this canvas view.
 func (self *CanvasRenderer) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // Destroy Removes everything from the renderer and optionally removes the Canvas DOM element.
@@ -211,7 +211,7 @@ func (self *CanvasRenderer) Destroy1O(removeView bool) {
 
 // DestroyI Removes everything from the renderer and optionally removes the Canvas DOM element.
 func (self *CanvasRenderer) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Resize Resizes the canvas view to the specified width and height
@@ -221,7 +221,7 @@ func (self *CanvasRenderer) Resize(width int, height int) {
 
 // ResizeI Resizes the canvas view to the specified width and height
 func (self *CanvasRenderer) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // RenderDisplayObject Renders a display object
@@ -236,7 +236,7 @@ func (self *CanvasRenderer) RenderDisplayObject1O(displayObject *DisplayObject, 
 
 // RenderDisplayObjectI Renders a display object
 func (self *CanvasRenderer) RenderDisplayObjectI(args ...interface{}) {
-	self.Object.Call("renderDisplayObject", args)
+	self.Object.Call("renderDisplayObject", args...)
 }
 
 // MapBlendModes Maps Pixi blend modes to canvas blend modes.
@@ -246,5 +246,5 @@ func (self *CanvasRenderer) MapBlendModes() {
 
 // MapBlendModesI Maps Pixi blend modes to canvas blend modes.
 func (self *CanvasRenderer) MapBlendModesI(args ...interface{}) {
-	self.Object.Call("mapBlendModes", args)
+	self.Object.Call("mapBlendModes", args...)
 }

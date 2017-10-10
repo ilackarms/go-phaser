@@ -28,7 +28,7 @@ func NewPhysicsP2GearConstraint2O(world *PhysicsP2, bodyA *P2Body, bodyB *P2Body
 
 // NewPhysicsP2GearConstraintI Connects two bodies at given offset points, letting them rotate relative to each other around this point.
 func NewPhysicsP2GearConstraintI(args ...interface{}) *PhysicsP2GearConstraint {
-	return &PhysicsP2GearConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("GearConstraint").New(args)}
+	return &PhysicsP2GearConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("GearConstraint").New(args...)}
 }
 
 // PhysicsP2GearConstraint Binding conversion method to PhysicsP2GearConstraint point

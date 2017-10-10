@@ -33,7 +33,7 @@ func NewDOM() *DOM {
 // Some code originally derived from {@link https://github.com/ryanve/verge verge}.
 // Some parts were inspired by the research of Ryan Van Etten, released under MIT License 2013.
 func NewDOMI(args ...interface{}) *DOM {
-	return &DOM{js.Global.Get("Phaser").Get("DOM").New(args)}
+	return &DOM{js.Global.Get("Phaser").Get("DOM").New(args...)}
 }
 
 // DOM Binding conversion method to DOM point
@@ -156,7 +156,7 @@ func (self *DOM) GetOffset1O(element *DOMElement, point *Point) *Point {
 //
 // The value may vary slightly as the page is scrolled due to rounding errors.
 func (self *DOM) GetOffsetI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("getOffset", args)}
+	return &Point{self.Object.Call("getOffset", args...)}
 }
 
 // GetBounds A cross-browser element.getBoundingClientRect method with optional cushion.
@@ -186,7 +186,7 @@ func (self *DOM) GetBounds1O(element interface{}, cushion int) interface{} {
 // The cushion parameter is an amount of pixels (+/-) to cushion the element.
 // It adjusts the measurements such that it is possible to detect when an element is near the viewport.
 func (self *DOM) GetBoundsI(args ...interface{}) interface{} {
-	return self.Object.Call("getBounds", args)
+	return self.Object.Call("getBounds", args...)
 }
 
 // Calibrate Calibrates element coordinates for `inLayoutViewport` checks.
@@ -201,7 +201,7 @@ func (self *DOM) Calibrate1O(coords interface{}, cushion int) interface{} {
 
 // CalibrateI Calibrates element coordinates for `inLayoutViewport` checks.
 func (self *DOM) CalibrateI(args ...interface{}) interface{} {
-	return self.Object.Call("calibrate", args)
+	return self.Object.Call("calibrate", args...)
 }
 
 // GetAspectRatio Get the Visual viewport aspect ratio (or the aspect ratio of an object or element)
@@ -216,7 +216,7 @@ func (self *DOM) GetAspectRatio1O(object interface{}) int {
 
 // GetAspectRatioI Get the Visual viewport aspect ratio (or the aspect ratio of an object or element)
 func (self *DOM) GetAspectRatioI(args ...interface{}) int {
-	return self.Object.Call("getAspectRatio", args).Int()
+	return self.Object.Call("getAspectRatio", args...).Int()
 }
 
 // InLayoutViewport Tests if the given DOM element is within the Layout viewport.
@@ -246,7 +246,7 @@ func (self *DOM) InLayoutViewport1O(element interface{}, cushion int) bool {
 // inLayoutViewport(element, 100) is `true` if the element is in the viewport or 100px near it.
 // inLayoutViewport(element, -100) is `true` if the element is in the viewport or at least 100px near it.
 func (self *DOM) InLayoutViewportI(args ...interface{}) bool {
-	return self.Object.Call("inLayoutViewport", args).Bool()
+	return self.Object.Call("inLayoutViewport", args...).Bool()
 }
 
 // GetScreenOrientation Returns the device screen orientation.
@@ -315,5 +315,5 @@ func (self *DOM) GetScreenOrientation1O(primaryFallback string) {
 // - http://stackoverflow.com/questions/4917664/detect-viewport-orientation
 // - http://www.matthewgifford.com/blog/2011/12/22/a-misconception-about-window-orientation
 func (self *DOM) GetScreenOrientationI(args ...interface{}) {
-	self.Object.Call("getScreenOrientation", args)
+	self.Object.Call("getScreenOrientation", args...)
 }

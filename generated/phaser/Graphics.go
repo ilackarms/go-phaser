@@ -138,7 +138,7 @@ func NewGraphics2O(game *Game, x int, y int) *Graphics {
 // As you can tell, Graphics objects are a bit of a trade-off. While they are extremely useful, you need to be careful
 // in their complexity and quantity of them in your game.
 func NewGraphicsI(args ...interface{}) *Graphics {
-	return &Graphics{js.Global.Get("Phaser").Get("Graphics").New(args)}
+	return &Graphics{js.Global.Get("Phaser").Get("Graphics").New(args...)}
 }
 
 // Graphics Binding conversion method to Graphics point
@@ -956,7 +956,7 @@ func (self *Graphics) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *Graphics) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // PostUpdate Automatically called by World
@@ -966,7 +966,7 @@ func (self *Graphics) PostUpdate() {
 
 // PostUpdateI Automatically called by World
 func (self *Graphics) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Destroy Destroy this Graphics instance.
@@ -981,7 +981,7 @@ func (self *Graphics) Destroy1O(destroyChildren bool) {
 
 // DestroyI Destroy this Graphics instance.
 func (self *Graphics) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // LineStyle Specifies the line style used for subsequent calls to Graphics methods such as the lineTo() method or the drawCircle() method.
@@ -991,7 +991,7 @@ func (self *Graphics) LineStyle(lineWidth int, color int, alpha int) *Graphics {
 
 // LineStyleI Specifies the line style used for subsequent calls to Graphics methods such as the lineTo() method or the drawCircle() method.
 func (self *Graphics) LineStyleI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("lineStyle", args)}
+	return &Graphics{self.Object.Call("lineStyle", args...)}
 }
 
 // MoveTo Moves the current drawing position to x, y.
@@ -1001,7 +1001,7 @@ func (self *Graphics) MoveTo(x int, y int) *Graphics {
 
 // MoveToI Moves the current drawing position to x, y.
 func (self *Graphics) MoveToI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("moveTo", args)}
+	return &Graphics{self.Object.Call("moveTo", args...)}
 }
 
 // LineTo Draws a line using the current line style from the current drawing position to (x, y);
@@ -1015,7 +1015,7 @@ func (self *Graphics) LineTo(x int, y int) *Graphics {
 //
 // The current drawing position is then set to (x, y).
 func (self *Graphics) LineToI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("lineTo", args)}
+	return &Graphics{self.Object.Call("lineTo", args...)}
 }
 
 // QuadraticCurveTo Calculate the points for a quadratic bezier curve and then draws it.
@@ -1029,7 +1029,7 @@ func (self *Graphics) QuadraticCurveTo(cpX int, cpY int, toX int, toY int) *Grap
 //
 // Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
 func (self *Graphics) QuadraticCurveToI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("quadraticCurveTo", args)}
+	return &Graphics{self.Object.Call("quadraticCurveTo", args...)}
 }
 
 // BezierCurveTo Calculate the points for a bezier curve and then draws it.
@@ -1039,7 +1039,7 @@ func (self *Graphics) BezierCurveTo(cpX int, cpY int, cpX2 int, cpY2 int, toX in
 
 // BezierCurveToI Calculate the points for a bezier curve and then draws it.
 func (self *Graphics) BezierCurveToI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("bezierCurveTo", args)}
+	return &Graphics{self.Object.Call("bezierCurveTo", args...)}
 }
 
 // Arc The arc method creates an arc/curve (used to create circles, or parts of circles).
@@ -1049,7 +1049,7 @@ func (self *Graphics) Arc(cx int, cy int, radius int, startAngle int, endAngle i
 
 // ArcI The arc method creates an arc/curve (used to create circles, or parts of circles).
 func (self *Graphics) ArcI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("arc", args)}
+	return &Graphics{self.Object.Call("arc", args...)}
 }
 
 // BeginFill Specifies a simple one-color fill that subsequent calls to other Graphics methods
@@ -1063,7 +1063,7 @@ func (self *Graphics) BeginFill(color int, alpha int) *Graphics {
 //
 // (such as lineTo() or drawCircle()) use when drawing.
 func (self *Graphics) BeginFillI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("beginFill", args)}
+	return &Graphics{self.Object.Call("beginFill", args...)}
 }
 
 // EndFill Applies a fill to the lines and shapes that were added since the last call to the beginFill() method.
@@ -1073,7 +1073,7 @@ func (self *Graphics) EndFill() *Graphics {
 
 // EndFillI Applies a fill to the lines and shapes that were added since the last call to the beginFill() method.
 func (self *Graphics) EndFillI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("endFill", args)}
+	return &Graphics{self.Object.Call("endFill", args...)}
 }
 
 // DrawRect empty description
@@ -1083,7 +1083,7 @@ func (self *Graphics) DrawRect(x int, y int, width int, height int) *Graphics {
 
 // DrawRectI empty description
 func (self *Graphics) DrawRectI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("drawRect", args)}
+	return &Graphics{self.Object.Call("drawRect", args...)}
 }
 
 // DrawRoundedRect empty description
@@ -1093,7 +1093,7 @@ func (self *Graphics) DrawRoundedRect(x int, y int, width int, height int, radiu
 
 // DrawRoundedRectI empty description
 func (self *Graphics) DrawRoundedRectI(args ...interface{}) {
-	self.Object.Call("drawRoundedRect", args)
+	self.Object.Call("drawRoundedRect", args...)
 }
 
 // DrawCircle Draws a circle.
@@ -1103,7 +1103,7 @@ func (self *Graphics) DrawCircle(x int, y int, diameter int) *Graphics {
 
 // DrawCircleI Draws a circle.
 func (self *Graphics) DrawCircleI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("drawCircle", args)}
+	return &Graphics{self.Object.Call("drawCircle", args...)}
 }
 
 // DrawEllipse Draws an ellipse.
@@ -1113,7 +1113,7 @@ func (self *Graphics) DrawEllipse(x int, y int, width int, height int) *Graphics
 
 // DrawEllipseI Draws an ellipse.
 func (self *Graphics) DrawEllipseI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("drawEllipse", args)}
+	return &Graphics{self.Object.Call("drawEllipse", args...)}
 }
 
 // DrawPolygon Draws a polygon using the given path.
@@ -1123,7 +1123,7 @@ func (self *Graphics) DrawPolygon(path interface{}) *Graphics {
 
 // DrawPolygonI Draws a polygon using the given path.
 func (self *Graphics) DrawPolygonI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("drawPolygon", args)}
+	return &Graphics{self.Object.Call("drawPolygon", args...)}
 }
 
 // Clear Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
@@ -1133,7 +1133,7 @@ func (self *Graphics) Clear() *Graphics {
 
 // ClearI Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
 func (self *Graphics) ClearI(args ...interface{}) *Graphics {
-	return &Graphics{self.Object.Call("clear", args)}
+	return &Graphics{self.Object.Call("clear", args...)}
 }
 
 // GenerateTexture Useful function that returns a texture of the graphics object that can then be used to create sprites
@@ -1168,7 +1168,7 @@ func (self *Graphics) GenerateTexture3O(resolution int, scaleMode int, padding i
 //
 // This can be quite useful if your geometry is complicated and needs to be reused multiple times.
 func (self *Graphics) GenerateTextureI(args ...interface{}) *Texture {
-	return &Texture{self.Object.Call("generateTexture", args)}
+	return &Texture{self.Object.Call("generateTexture", args...)}
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -1178,7 +1178,7 @@ func (self *Graphics) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *Graphics) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -1188,7 +1188,7 @@ func (self *Graphics) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *Graphics) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // GetBounds Retrieves the bounds of the graphic shape as a rectangle object
@@ -1198,7 +1198,7 @@ func (self *Graphics) GetBounds() *Rectangle {
 
 // GetBoundsI Retrieves the bounds of the graphic shape as a rectangle object
 func (self *Graphics) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the graphic shape as a rectangle. The calculation takes all visible children into consideration.
@@ -1208,7 +1208,7 @@ func (self *Graphics) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the graphic shape as a rectangle. The calculation takes all visible children into consideration.
 func (self *Graphics) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // UpdateLocalBounds Update the bounds of the object
@@ -1218,7 +1218,7 @@ func (self *Graphics) UpdateLocalBounds() {
 
 // UpdateLocalBoundsI Update the bounds of the object
 func (self *Graphics) UpdateLocalBoundsI(args ...interface{}) {
-	self.Object.Call("updateLocalBounds", args)
+	self.Object.Call("updateLocalBounds", args...)
 }
 
 // _generateCachedSprite Generates the cached sprite when the sprite has cacheAsBitmap = true
@@ -1228,7 +1228,7 @@ func (self *Graphics) _generateCachedSprite() {
 
 // _generateCachedSpriteI Generates the cached sprite when the sprite has cacheAsBitmap = true
 func (self *Graphics) _generateCachedSpriteI(args ...interface{}) {
-	self.Object.Call("_generateCachedSprite", args)
+	self.Object.Call("_generateCachedSprite", args...)
 }
 
 // UpdateCachedSpriteTexture Updates texture size based on canvas size
@@ -1238,7 +1238,7 @@ func (self *Graphics) UpdateCachedSpriteTexture() {
 
 // UpdateCachedSpriteTextureI Updates texture size based on canvas size
 func (self *Graphics) UpdateCachedSpriteTextureI(args ...interface{}) {
-	self.Object.Call("updateCachedSpriteTexture", args)
+	self.Object.Call("updateCachedSpriteTexture", args...)
 }
 
 // DestroyCachedSprite Destroys a previous cached sprite.
@@ -1248,7 +1248,7 @@ func (self *Graphics) DestroyCachedSprite() {
 
 // DestroyCachedSpriteI Destroys a previous cached sprite.
 func (self *Graphics) DestroyCachedSpriteI(args ...interface{}) {
-	self.Object.Call("destroyCachedSprite", args)
+	self.Object.Call("destroyCachedSprite", args...)
 }
 
 // DrawShape Draws the given shape to this Graphics object. Can be any of Circle, Rectangle, Ellipse, Line or Polygon.
@@ -1258,7 +1258,7 @@ func (self *Graphics) DrawShape(shape interface{}) *GraphicsData {
 
 // DrawShapeI Draws the given shape to this Graphics object. Can be any of Circle, Rectangle, Ellipse, Line or Polygon.
 func (self *Graphics) DrawShapeI(args ...interface{}) *GraphicsData {
-	return &GraphicsData{self.Object.Call("drawShape", args)}
+	return &GraphicsData{self.Object.Call("drawShape", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -1268,7 +1268,7 @@ func (self *Graphics) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Graphics) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -1278,7 +1278,7 @@ func (self *Graphics) AddChildAt(child *DisplayObject, index int) *DisplayObject
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Graphics) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -1288,7 +1288,7 @@ func (self *Graphics) SwapChildren(child *DisplayObject, child2 *DisplayObject) 
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Graphics) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -1298,7 +1298,7 @@ func (self *Graphics) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Graphics) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -1308,7 +1308,7 @@ func (self *Graphics) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Graphics) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -1318,7 +1318,7 @@ func (self *Graphics) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Graphics) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -1328,7 +1328,7 @@ func (self *Graphics) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Graphics) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -1338,7 +1338,7 @@ func (self *Graphics) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Graphics) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -1348,7 +1348,7 @@ func (self *Graphics) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Graphics) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -1358,7 +1358,7 @@ func (self *Graphics) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Graphics) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -1372,7 +1372,7 @@ func (self *Graphics) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *Graphics) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -1542,7 +1542,7 @@ func (self *Graphics) AlignIn3O(container interface{}, position int, offsetX int
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *Graphics) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -1717,7 +1717,7 @@ func (self *Graphics) AlignTo3O(parent interface{}, position int, offsetX int, o
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *Graphics) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -1744,7 +1744,7 @@ func (self *Graphics) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *Graphics) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -1768,7 +1768,7 @@ func (self *Graphics) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *Graphics) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // Reset Resets the Game Object.
@@ -1804,5 +1804,5 @@ func (self *Graphics) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *Graphics) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }

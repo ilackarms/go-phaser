@@ -66,7 +66,7 @@ func NewEvents(sprite *Sprite) *Events {
 // The Input-related events will only be dispatched if the Sprite has had `inputEnabled` set to `true`
 // and the Animation-related events only apply to game objects with animations like {@link Phaser.Sprite}.
 func NewEventsI(args ...interface{}) *Events {
-	return &Events{js.Global.Get("Phaser").Get("Events").New(args)}
+	return &Events{js.Global.Get("Phaser").Get("Events").New(args...)}
 }
 
 // Events Binding conversion method to Events point
@@ -426,5 +426,5 @@ func (self *Events) Destroy() {
 
 // DestroyI Removes all events.
 func (self *Events) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

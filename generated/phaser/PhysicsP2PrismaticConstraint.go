@@ -43,7 +43,7 @@ func NewPhysicsP2PrismaticConstraint5O(world *PhysicsP2, bodyA *P2Body, bodyB *P
 
 // NewPhysicsP2PrismaticConstraintI Connects two bodies at given offset points, letting them rotate relative to each other around this point.
 func NewPhysicsP2PrismaticConstraintI(args ...interface{}) *PhysicsP2PrismaticConstraint {
-	return &PhysicsP2PrismaticConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("PrismaticConstraint").New(args)}
+	return &PhysicsP2PrismaticConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("PrismaticConstraint").New(args...)}
 }
 
 // PhysicsP2PrismaticConstraint Binding conversion method to PhysicsP2PrismaticConstraint point

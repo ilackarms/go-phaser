@@ -18,7 +18,7 @@ func NewPhysicsArcadeTilemapCollision() *PhysicsArcadeTilemapCollision {
 
 // NewPhysicsArcadeTilemapCollisionI The Arcade Physics Tile map collision methods.
 func NewPhysicsArcadeTilemapCollisionI(args ...interface{}) *PhysicsArcadeTilemapCollision {
-	return &PhysicsArcadeTilemapCollision{js.Global.Get("Phaser").Get("Physics").Get("Arcade").Get("TilemapCollision").New(args)}
+	return &PhysicsArcadeTilemapCollision{js.Global.Get("Phaser").Get("Physics").Get("Arcade").Get("TilemapCollision").New(args...)}
 }
 
 // PhysicsArcadeTilemapCollision Binding conversion method to PhysicsArcadeTilemapCollision point

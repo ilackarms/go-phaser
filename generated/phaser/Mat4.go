@@ -18,7 +18,7 @@ func NewMat4() *Mat4 {
 
 // NewMat4I empty description
 func NewMat4I(args ...interface{}) *Mat4 {
-	return &Mat4{js.Global.Get("mat4").New(args)}
+	return &Mat4{js.Global.Get("mat4").New(args...)}
 }
 
 // Mat4 Binding conversion method to Mat4 point

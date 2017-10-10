@@ -90,7 +90,7 @@ func NewTime(game *Game) *Time {
 //
 //   This time is independent of Phaser and always progresses, regardless of if Phaser is paused.
 func NewTimeI(args ...interface{}) *Time {
-	return &Time{js.Global.Get("Phaser").Get("Time").New(args)}
+	return &Time{js.Global.Get("Phaser").Get("Time").New(args...)}
 }
 
 // Time Binding conversion method to Time point
@@ -432,7 +432,7 @@ func (self *Time) Boot() {
 
 // BootI Called automatically by Phaser.Game after boot. Should not be called directly.
 func (self *Time) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // Add Adds an existing Phaser.Timer object to the Timer pool.
@@ -442,7 +442,7 @@ func (self *Time) Add(timer *Timer) *Timer {
 
 // AddI Adds an existing Phaser.Timer object to the Timer pool.
 func (self *Time) AddI(args ...interface{}) *Timer {
-	return &Timer{self.Object.Call("add", args)}
+	return &Timer{self.Object.Call("add", args...)}
 }
 
 // Create Creates a new stand-alone Phaser.Timer object.
@@ -457,7 +457,7 @@ func (self *Time) Create1O(autoDestroy bool) *Timer {
 
 // CreateI Creates a new stand-alone Phaser.Timer object.
 func (self *Time) CreateI(args ...interface{}) *Timer {
-	return &Timer{self.Object.Call("create", args)}
+	return &Timer{self.Object.Call("create", args...)}
 }
 
 // RemoveAll Remove all Timer objects, regardless of their state and clears all Timers from the {@link Phaser.Time#events events} timer.
@@ -467,7 +467,7 @@ func (self *Time) RemoveAll() {
 
 // RemoveAllI Remove all Timer objects, regardless of their state and clears all Timers from the {@link Phaser.Time#events events} timer.
 func (self *Time) RemoveAllI(args ...interface{}) {
-	self.Object.Call("removeAll", args)
+	self.Object.Call("removeAll", args...)
 }
 
 // Refresh Refreshes the Time.time and Time.elapsedMS properties from the system clock.
@@ -477,7 +477,7 @@ func (self *Time) Refresh() {
 
 // RefreshI Refreshes the Time.time and Time.elapsedMS properties from the system clock.
 func (self *Time) RefreshI(args ...interface{}) {
-	self.Object.Call("refresh", args)
+	self.Object.Call("refresh", args...)
 }
 
 // Update Updates the game clock and if enabled the advanced timing data. This is called automatically by Phaser.Game.
@@ -487,7 +487,7 @@ func (self *Time) Update(time int) {
 
 // UpdateI Updates the game clock and if enabled the advanced timing data. This is called automatically by Phaser.Game.
 func (self *Time) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // UpdateTimers Handles the updating of the Phaser.Timers (if any)
@@ -499,7 +499,7 @@ func (self *Time) UpdateTimers() {
 // UpdateTimersI Handles the updating of the Phaser.Timers (if any)
 // Called automatically by Time.update.
 func (self *Time) UpdateTimersI(args ...interface{}) {
-	self.Object.Call("updateTimers", args)
+	self.Object.Call("updateTimers", args...)
 }
 
 // UpdateAdvancedTiming Handles the updating of the advanced timing values (if enabled)
@@ -511,7 +511,7 @@ func (self *Time) UpdateAdvancedTiming() {
 // UpdateAdvancedTimingI Handles the updating of the advanced timing values (if enabled)
 // Called automatically by Time.update.
 func (self *Time) UpdateAdvancedTimingI(args ...interface{}) {
-	self.Object.Call("updateAdvancedTiming", args)
+	self.Object.Call("updateAdvancedTiming", args...)
 }
 
 // GamePaused Called when the game enters a paused state.
@@ -521,7 +521,7 @@ func (self *Time) GamePaused() {
 
 // GamePausedI Called when the game enters a paused state.
 func (self *Time) GamePausedI(args ...interface{}) {
-	self.Object.Call("gamePaused", args)
+	self.Object.Call("gamePaused", args...)
 }
 
 // GameResumed Called when the game resumes from a paused state.
@@ -531,7 +531,7 @@ func (self *Time) GameResumed() {
 
 // GameResumedI Called when the game resumes from a paused state.
 func (self *Time) GameResumedI(args ...interface{}) {
-	self.Object.Call("gameResumed", args)
+	self.Object.Call("gameResumed", args...)
 }
 
 // TotalElapsedSeconds The number of seconds that have elapsed since the game was started.
@@ -541,7 +541,7 @@ func (self *Time) TotalElapsedSeconds() int {
 
 // TotalElapsedSecondsI The number of seconds that have elapsed since the game was started.
 func (self *Time) TotalElapsedSecondsI(args ...interface{}) int {
-	return self.Object.Call("totalElapsedSeconds", args).Int()
+	return self.Object.Call("totalElapsedSeconds", args...).Int()
 }
 
 // ElapsedSince How long has passed since the given time.
@@ -551,7 +551,7 @@ func (self *Time) ElapsedSince(since int) int {
 
 // ElapsedSinceI How long has passed since the given time.
 func (self *Time) ElapsedSinceI(args ...interface{}) int {
-	return self.Object.Call("elapsedSince", args).Int()
+	return self.Object.Call("elapsedSince", args...).Int()
 }
 
 // ElapsedSecondsSince How long has passed since the given time (in seconds).
@@ -561,7 +561,7 @@ func (self *Time) ElapsedSecondsSince(since int) int {
 
 // ElapsedSecondsSinceI How long has passed since the given time (in seconds).
 func (self *Time) ElapsedSecondsSinceI(args ...interface{}) int {
-	return self.Object.Call("elapsedSecondsSince", args).Int()
+	return self.Object.Call("elapsedSecondsSince", args...).Int()
 }
 
 // Reset Resets the private _started value to now and removes all currently running Timers.
@@ -571,5 +571,5 @@ func (self *Time) Reset() {
 
 // ResetI Resets the private _started value to now and removes all currently running Timers.
 func (self *Time) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }

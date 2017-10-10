@@ -18,7 +18,7 @@ func NewComplexPrimitiveShader(gl *WebGLContext) *ComplexPrimitiveShader {
 
 // NewComplexPrimitiveShaderI empty description
 func NewComplexPrimitiveShaderI(args ...interface{}) *ComplexPrimitiveShader {
-	return &ComplexPrimitiveShader{js.Global.Get("PIXI").Get("ComplexPrimitiveShader").New(args)}
+	return &ComplexPrimitiveShader{js.Global.Get("PIXI").Get("ComplexPrimitiveShader").New(args...)}
 }
 
 // ComplexPrimitiveShader Binding conversion method to ComplexPrimitiveShader point
@@ -88,7 +88,7 @@ func (self *ComplexPrimitiveShader) Init() {
 
 // InitI Initialises the shader.
 func (self *ComplexPrimitiveShader) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // Destroy Destroys the shader.
@@ -98,5 +98,5 @@ func (self *ComplexPrimitiveShader) Destroy() {
 
 // DestroyI Destroys the shader.
 func (self *ComplexPrimitiveShader) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

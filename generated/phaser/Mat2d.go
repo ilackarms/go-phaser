@@ -51,7 +51,7 @@ func NewMat2d() *Mat2d {
 // </pre>
 // The last row is ignored so the array is shorter and operations are faster.
 func NewMat2dI(args ...interface{}) *Mat2d {
-	return &Mat2d{js.Global.Get("mat2d").New(args)}
+	return &Mat2d{js.Global.Get("mat2d").New(args...)}
 }
 
 // Mat2d Binding conversion method to Mat2d point

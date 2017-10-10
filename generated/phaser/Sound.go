@@ -28,7 +28,7 @@ func NewSound2O(game *Game, key string, volume int, loop bool) *Sound {
 
 // NewSoundI The Sound class constructor.
 func NewSoundI(args ...interface{}) *Sound {
-	return &Sound{js.Global.Get("Phaser").Get("Sound").New(args)}
+	return &Sound{js.Global.Get("Phaser").Get("Sound").New(args...)}
 }
 
 // Sound Binding conversion method to Sound point
@@ -456,7 +456,7 @@ func (self *Sound) SoundHasUnlocked(key string) {
 
 // SoundHasUnlockedI Called automatically when this sound is unlocked.
 func (self *Sound) SoundHasUnlockedI(args ...interface{}) {
-	self.Object.Call("soundHasUnlocked", args)
+	self.Object.Call("soundHasUnlocked", args...)
 }
 
 // AddMarker Adds a marker into the current Sound. A marker is represented by a unique key and a start time and duration.
@@ -486,7 +486,7 @@ func (self *Sound) AddMarker3O(name string, start int, duration int, volume int,
 // AddMarkerI Adds a marker into the current Sound. A marker is represented by a unique key and a start time and duration.
 // This allows you to bundle multiple sounds together into a single audio file and use markers to jump between them for playback.
 func (self *Sound) AddMarkerI(args ...interface{}) {
-	self.Object.Call("addMarker", args)
+	self.Object.Call("addMarker", args...)
 }
 
 // RemoveMarker Removes a marker from the sound.
@@ -496,7 +496,7 @@ func (self *Sound) RemoveMarker(name string) {
 
 // RemoveMarkerI Removes a marker from the sound.
 func (self *Sound) RemoveMarkerI(args ...interface{}) {
-	self.Object.Call("removeMarker", args)
+	self.Object.Call("removeMarker", args...)
 }
 
 // OnEndedHandler Called automatically by the AudioContext when the sound stops playing.
@@ -508,7 +508,7 @@ func (self *Sound) OnEndedHandler() {
 // OnEndedHandlerI Called automatically by the AudioContext when the sound stops playing.
 // Doesn't get called if the sound is set to loop or is a section of an Audio Sprite.
 func (self *Sound) OnEndedHandlerI(args ...interface{}) {
-	self.Object.Call("onEndedHandler", args)
+	self.Object.Call("onEndedHandler", args...)
 }
 
 // Update Called automatically by Phaser.SoundManager.
@@ -518,7 +518,7 @@ func (self *Sound) Update() {
 
 // UpdateI Called automatically by Phaser.SoundManager.
 func (self *Sound) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // LoopFull Loops this entire sound. If you need to loop a section of it then use Sound.play and the marker and loop parameters.
@@ -533,7 +533,7 @@ func (self *Sound) LoopFull1O(volume int) *Sound {
 
 // LoopFullI Loops this entire sound. If you need to loop a section of it then use Sound.play and the marker and loop parameters.
 func (self *Sound) LoopFullI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("loopFull", args)}
+	return &Sound{self.Object.Call("loopFull", args...)}
 }
 
 // Play Play this sound, or a marked section of it.
@@ -568,7 +568,7 @@ func (self *Sound) Play5O(marker string, position int, volume int, loop bool, fo
 
 // PlayI Play this sound, or a marked section of it.
 func (self *Sound) PlayI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("play", args)}
+	return &Sound{self.Object.Call("play", args...)}
 }
 
 // Restart Restart the sound, or a marked section of it.
@@ -598,7 +598,7 @@ func (self *Sound) Restart4O(marker string, position int, volume int, loop bool)
 
 // RestartI Restart the sound, or a marked section of it.
 func (self *Sound) RestartI(args ...interface{}) {
-	self.Object.Call("restart", args)
+	self.Object.Call("restart", args...)
 }
 
 // Pause Pauses the sound.
@@ -608,7 +608,7 @@ func (self *Sound) Pause() {
 
 // PauseI Pauses the sound.
 func (self *Sound) PauseI(args ...interface{}) {
-	self.Object.Call("pause", args)
+	self.Object.Call("pause", args...)
 }
 
 // Resume Resumes the sound.
@@ -618,7 +618,7 @@ func (self *Sound) Resume() {
 
 // ResumeI Resumes the sound.
 func (self *Sound) ResumeI(args ...interface{}) {
-	self.Object.Call("resume", args)
+	self.Object.Call("resume", args...)
 }
 
 // Stop Stop playing this sound.
@@ -628,7 +628,7 @@ func (self *Sound) Stop() {
 
 // StopI Stop playing this sound.
 func (self *Sound) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // FadeIn Starts this sound playing (or restarts it if already doing so) and sets the volume to zero.
@@ -673,7 +673,7 @@ func (self *Sound) FadeIn3O(duration int, loop bool, marker string) {
 // At the end of the fade Sound.onFadeComplete is dispatched with this Sound object as the first parameter,
 // and the final volume (1) as the second parameter.
 func (self *Sound) FadeInI(args ...interface{}) {
-	self.Object.Call("fadeIn", args)
+	self.Object.Call("fadeIn", args...)
 }
 
 // FadeOut Decreases the volume of this Sound from its current value to 0 over the duration specified.
@@ -694,7 +694,7 @@ func (self *Sound) FadeOut1O(duration int) {
 // At the end of the fade Sound.onFadeComplete is dispatched with this Sound object as the first parameter,
 // and the final volume (0) as the second parameter.
 func (self *Sound) FadeOutI(args ...interface{}) {
-	self.Object.Call("fadeOut", args)
+	self.Object.Call("fadeOut", args...)
 }
 
 // FadeTo Fades the volume of this Sound from its current value to the given volume over the duration specified.
@@ -722,7 +722,7 @@ func (self *Sound) FadeTo2O(duration int, volume int) {
 // At the end of the fade Sound.onFadeComplete is dispatched with this Sound object as the first parameter,
 // and the final volume (volume) as the second parameter.
 func (self *Sound) FadeToI(args ...interface{}) {
-	self.Object.Call("fadeTo", args)
+	self.Object.Call("fadeTo", args...)
 }
 
 // FadeComplete Internal handler for Sound.fadeIn, Sound.fadeOut and Sound.fadeTo.
@@ -732,7 +732,7 @@ func (self *Sound) FadeComplete() {
 
 // FadeCompleteI Internal handler for Sound.fadeIn, Sound.fadeOut and Sound.fadeTo.
 func (self *Sound) FadeCompleteI(args ...interface{}) {
-	self.Object.Call("fadeComplete", args)
+	self.Object.Call("fadeComplete", args...)
 }
 
 // UpdateGlobalVolume Called automatically by SoundManager.volume.
@@ -750,7 +750,7 @@ func (self *Sound) UpdateGlobalVolume(globalVolume float64) {
 //
 // You should not normally call this directly.
 func (self *Sound) UpdateGlobalVolumeI(args ...interface{}) {
-	self.Object.Call("updateGlobalVolume", args)
+	self.Object.Call("updateGlobalVolume", args...)
 }
 
 // Destroy Destroys this sound and all associated events and removes it from the SoundManager.
@@ -765,5 +765,5 @@ func (self *Sound) Destroy1O(remove bool) {
 
 // DestroyI Destroys this sound and all associated events and removes it from the SoundManager.
 func (self *Sound) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

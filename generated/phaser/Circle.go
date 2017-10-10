@@ -39,7 +39,7 @@ func NewCircle3O(x int, y int, diameter int) *Circle {
 // NewCircleI Creates a new Circle object with the center coordinate specified by the x and y parameters and the diameter specified by the diameter parameter.
 // If you call this function without parameters, a circle with x, y, diameter and radius properties set to 0 is created.
 func NewCircleI(args ...interface{}) *Circle {
-	return &Circle{js.Global.Get("Phaser").Get("Circle").New(args)}
+	return &Circle{js.Global.Get("Phaser").Get("Circle").New(args...)}
 }
 
 // Circle Binding conversion method to Circle point
@@ -169,7 +169,7 @@ func (self *Circle) Circumference() int {
 
 // CircumferenceI The circumference of the circle.
 func (self *Circle) CircumferenceI(args ...interface{}) int {
-	return self.Object.Call("circumference", args).Int()
+	return self.Object.Call("circumference", args...).Int()
 }
 
 // Random Returns a uniformly distributed random point from anywhere within this Circle.
@@ -184,7 +184,7 @@ func (self *Circle) Random1O(out interface{}) *Point {
 
 // RandomI Returns a uniformly distributed random point from anywhere within this Circle.
 func (self *Circle) RandomI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("random", args)}
+	return &Point{self.Object.Call("random", args...)}
 }
 
 // GetBounds Returns the framing rectangle of the circle as a Phaser.Rectangle object.
@@ -194,7 +194,7 @@ func (self *Circle) GetBounds() *Rectangle {
 
 // GetBoundsI Returns the framing rectangle of the circle as a Phaser.Rectangle object.
 func (self *Circle) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // SetTo Sets the members of Circle to the specified values.
@@ -204,7 +204,7 @@ func (self *Circle) SetTo(x int, y int, diameter int) *Circle {
 
 // SetToI Sets the members of Circle to the specified values.
 func (self *Circle) SetToI(args ...interface{}) *Circle {
-	return &Circle{self.Object.Call("setTo", args)}
+	return &Circle{self.Object.Call("setTo", args...)}
 }
 
 // CopyFrom Copies the x, y and diameter properties from any given object to this Circle.
@@ -214,7 +214,7 @@ func (self *Circle) CopyFrom(source interface{}) *Circle {
 
 // CopyFromI Copies the x, y and diameter properties from any given object to this Circle.
 func (self *Circle) CopyFromI(args ...interface{}) *Circle {
-	return &Circle{self.Object.Call("copyFrom", args)}
+	return &Circle{self.Object.Call("copyFrom", args...)}
 }
 
 // CopyTo Copies the x, y and diameter properties from this Circle to any given object.
@@ -224,7 +224,7 @@ func (self *Circle) CopyTo(dest interface{}) interface{} {
 
 // CopyToI Copies the x, y and diameter properties from this Circle to any given object.
 func (self *Circle) CopyToI(args ...interface{}) interface{} {
-	return self.Object.Call("copyTo", args)
+	return self.Object.Call("copyTo", args...)
 }
 
 // Distance Returns the distance from the center of the Circle object to the given object
@@ -242,7 +242,7 @@ func (self *Circle) Distance1O(dest interface{}, round bool) int {
 // DistanceI Returns the distance from the center of the Circle object to the given object
 // (can be Circle, Point or anything with x/y properties)
 func (self *Circle) DistanceI(args ...interface{}) int {
-	return self.Object.Call("distance", args).Int()
+	return self.Object.Call("distance", args...).Int()
 }
 
 // Clone Returns a new Circle object with the same values for the x, y, width, and height properties as this Circle object.
@@ -252,7 +252,7 @@ func (self *Circle) Clone(output *Circle) *Circle {
 
 // CloneI Returns a new Circle object with the same values for the x, y, width, and height properties as this Circle object.
 func (self *Circle) CloneI(args ...interface{}) *Circle {
-	return &Circle{self.Object.Call("clone", args)}
+	return &Circle{self.Object.Call("clone", args...)}
 }
 
 // Contains Return true if the given x/y coordinates are within this Circle object.
@@ -262,7 +262,7 @@ func (self *Circle) Contains(x int, y int) bool {
 
 // ContainsI Return true if the given x/y coordinates are within this Circle object.
 func (self *Circle) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // CircumferencePoint Returns a Point object containing the coordinates of a point on the circumference of the Circle based on the given angle.
@@ -282,7 +282,7 @@ func (self *Circle) CircumferencePoint2O(angle int, asDegrees bool, out *Point) 
 
 // CircumferencePointI Returns a Point object containing the coordinates of a point on the circumference of the Circle based on the given angle.
 func (self *Circle) CircumferencePointI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("circumferencePoint", args)}
+	return &Point{self.Object.Call("circumferencePoint", args...)}
 }
 
 // Offset Adjusts the location of the Circle object, as determined by its center coordinate, by the specified amounts.
@@ -292,7 +292,7 @@ func (self *Circle) Offset(dx int, dy int) *Circle {
 
 // OffsetI Adjusts the location of the Circle object, as determined by its center coordinate, by the specified amounts.
 func (self *Circle) OffsetI(args ...interface{}) *Circle {
-	return &Circle{self.Object.Call("offset", args)}
+	return &Circle{self.Object.Call("offset", args...)}
 }
 
 // OffsetPoint Adjusts the location of the Circle object using a Point object as a parameter. This method is similar to the Circle.offset() method, except that it takes a Point object as a parameter.
@@ -302,7 +302,7 @@ func (self *Circle) OffsetPoint(point *Point) *Circle {
 
 // OffsetPointI Adjusts the location of the Circle object using a Point object as a parameter. This method is similar to the Circle.offset() method, except that it takes a Point object as a parameter.
 func (self *Circle) OffsetPointI(args ...interface{}) *Circle {
-	return &Circle{self.Object.Call("offsetPoint", args)}
+	return &Circle{self.Object.Call("offsetPoint", args...)}
 }
 
 // ToString Returns a string representation of this object.
@@ -312,7 +312,7 @@ func (self *Circle) ToString() string {
 
 // ToStringI Returns a string representation of this object.
 func (self *Circle) ToStringI(args ...interface{}) string {
-	return self.Object.Call("toString", args).String()
+	return self.Object.Call("toString", args...).String()
 }
 
 // Equals Determines whether the two Circle objects match. This method compares the x, y and diameter properties.
@@ -322,7 +322,7 @@ func (self *Circle) Equals(a *Circle, b *Circle) bool {
 
 // EqualsI Determines whether the two Circle objects match. This method compares the x, y and diameter properties.
 func (self *Circle) EqualsI(args ...interface{}) bool {
-	return self.Object.Call("equals", args).Bool()
+	return self.Object.Call("equals", args...).Bool()
 }
 
 // Intersects Determines whether the two Circle objects intersect.
@@ -334,7 +334,7 @@ func (self *Circle) Intersects(a *Circle, b *Circle) bool {
 // IntersectsI Determines whether the two Circle objects intersect.
 // This method checks the radius distances between the two Circle objects to see if they intersect.
 func (self *Circle) IntersectsI(args ...interface{}) bool {
-	return self.Object.Call("intersects", args).Bool()
+	return self.Object.Call("intersects", args...).Bool()
 }
 
 // IntersectsRectangle Checks if the given Circle and Rectangle objects intersect.
@@ -344,5 +344,5 @@ func (self *Circle) IntersectsRectangle(c *Circle, r *Rectangle) bool {
 
 // IntersectsRectangleI Checks if the given Circle and Rectangle objects intersect.
 func (self *Circle) IntersectsRectangleI(args ...interface{}) bool {
-	return self.Object.Call("intersectsRectangle", args).Bool()
+	return self.Object.Call("intersectsRectangle", args...).Bool()
 }

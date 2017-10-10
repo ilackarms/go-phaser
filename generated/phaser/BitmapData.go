@@ -71,7 +71,7 @@ func NewBitmapData3O(game *Game, key string, width int, height int, skipPool boo
 // live on the display list, they are NOT automatically cleared when you change State. Therefore you _must_ call BitmapData.destroy
 // in your State's shutdown method if you wish to free-up the resources the BitmapData used, it will not happen for you.
 func NewBitmapDataI(args ...interface{}) *BitmapData {
-	return &BitmapData{js.Global.Get("Phaser").Get("BitmapData").New(args)}
+	return &BitmapData{js.Global.Get("Phaser").Get("BitmapData").New(args...)}
 }
 
 // BitmapData Binding conversion method to BitmapData point
@@ -286,7 +286,7 @@ func (self *BitmapData) Move1O(x int, y int, wrap bool) *BitmapData {
 //
 // The image will wrap-around the edges on all sides if the wrap argument is true (the default).
 func (self *BitmapData) MoveI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("move", args)}
+	return &BitmapData{self.Object.Call("move", args...)}
 }
 
 // MoveH Shifts the contents of this BitmapData horizontally.
@@ -307,7 +307,7 @@ func (self *BitmapData) MoveH1O(distance int, wrap bool) *BitmapData {
 //
 // The image will wrap-around the sides if the wrap argument is true (the default).
 func (self *BitmapData) MoveHI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("moveH", args)}
+	return &BitmapData{self.Object.Call("moveH", args...)}
 }
 
 // MoveV Shifts the contents of this BitmapData vertically.
@@ -328,7 +328,7 @@ func (self *BitmapData) MoveV1O(distance int, wrap bool) *BitmapData {
 //
 // The image will wrap-around the sides if the wrap argument is true (the default).
 func (self *BitmapData) MoveVI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("moveV", args)}
+	return &BitmapData{self.Object.Call("moveV", args...)}
 }
 
 // Add Updates the given objects so that they use this BitmapData as their texture.
@@ -340,7 +340,7 @@ func (self *BitmapData) Add(object interface{}) *BitmapData {
 // AddI Updates the given objects so that they use this BitmapData as their texture.
 // This will replace any texture they will currently have set.
 func (self *BitmapData) AddI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("add", args)}
+	return &BitmapData{self.Object.Call("add", args...)}
 }
 
 // Load Takes the given Game Object, resizes this BitmapData to match it and then draws it into this BitmapDatas canvas, ready for further processing.
@@ -356,7 +356,7 @@ func (self *BitmapData) Load(source interface{}) *BitmapData {
 // If the source object uses a texture as part of a Texture Atlas or Sprite Sheet, only the current frame will be used for sizing.
 // If a string is given it will assume it's a cache key and look in Phaser.Cache for an image key matching the string.
 func (self *BitmapData) LoadI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("load", args)}
+	return &BitmapData{self.Object.Call("load", args...)}
 }
 
 // Cls Clears the BitmapData context using a clearRect.
@@ -366,7 +366,7 @@ func (self *BitmapData) Cls() {
 
 // ClsI Clears the BitmapData context using a clearRect.
 func (self *BitmapData) ClsI(args ...interface{}) {
-	self.Object.Call("cls", args)
+	self.Object.Call("cls", args...)
 }
 
 // Clear Clears the BitmapData context using a clearRect.
@@ -432,7 +432,7 @@ func (self *BitmapData) Clear4O(x int, y int, width int, height int) *BitmapData
 // You may need to call BitmapData.update after this in order to clear out the pixel data,
 // but Phaser will not do this automatically for you.
 func (self *BitmapData) ClearI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("clear", args)}
+	return &BitmapData{self.Object.Call("clear", args...)}
 }
 
 // Fill Fills the BitmapData with the given color.
@@ -447,7 +447,7 @@ func (self *BitmapData) Fill1O(r int, g int, b int, a int) *BitmapData {
 
 // FillI Fills the BitmapData with the given color.
 func (self *BitmapData) FillI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("fill", args)}
+	return &BitmapData{self.Object.Call("fill", args...)}
 }
 
 // GenerateTexture Creates a new Image element by converting this BitmapDatas canvas into a dataURL.
@@ -491,7 +491,7 @@ func (self *BitmapData) GenerateTexture(key string) *Texture {
 //
 // `game.add.sprite(0, 0, 'ball');`
 func (self *BitmapData) GenerateTextureI(args ...interface{}) *Texture {
-	return &Texture{self.Object.Call("generateTexture", args)}
+	return &Texture{self.Object.Call("generateTexture", args...)}
 }
 
 // Resize Resizes the BitmapData. This changes the size of the underlying canvas and refreshes the buffer.
@@ -501,7 +501,7 @@ func (self *BitmapData) Resize(width int, height int) *BitmapData {
 
 // ResizeI Resizes the BitmapData. This changes the size of the underlying canvas and refreshes the buffer.
 func (self *BitmapData) ResizeI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("resize", args)}
+	return &BitmapData{self.Object.Call("resize", args...)}
 }
 
 // Update This re-creates the BitmapData.imageData from the current context.
@@ -555,7 +555,7 @@ func (self *BitmapData) Update4O(x int, y int, width int, height int) *BitmapDat
 //
 // Warning: This is a very expensive operation, so use it sparingly.
 func (self *BitmapData) UpdateI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("update", args)}
+	return &BitmapData{self.Object.Call("update", args...)}
 }
 
 // ProcessPixelRGB Scans through the area specified in this BitmapData and sends a color object for every pixel to the given callback.
@@ -627,7 +627,7 @@ func (self *BitmapData) ProcessPixelRGB4O(callback interface{}, callbackContext 
 // The callback must return either `false`, in which case no change will be made to the pixel, or a new color object.
 // If a new color object is returned the pixel will be set to the r, g, b and a color values given within it.
 func (self *BitmapData) ProcessPixelRGBI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("processPixelRGB", args)}
+	return &BitmapData{self.Object.Call("processPixelRGB", args...)}
 }
 
 // ProcessPixel Scans through the area specified in this BitmapData and sends the color for every pixel to the given callback along with its x and y coordinates.
@@ -681,7 +681,7 @@ func (self *BitmapData) ProcessPixel4O(callback interface{}, callbackContext int
 // It is expected that your callback will deal with endianess. If you'd rather Phaser did it then use processPixelRGB instead.
 // The callback will also be sent the pixels x and y coordinates respectively.
 func (self *BitmapData) ProcessPixelI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("processPixel", args)}
+	return &BitmapData{self.Object.Call("processPixel", args...)}
 }
 
 // ReplaceRGB Replaces all pixels matching one color with another. The color values are given as two sets of RGBA values.
@@ -699,7 +699,7 @@ func (self *BitmapData) ReplaceRGB1O(r1 int, g1 int, b1 int, a1 int, r2 int, g2 
 // ReplaceRGBI Replaces all pixels matching one color with another. The color values are given as two sets of RGBA values.
 // An optional region parameter controls if the replacement happens in just a specific area of the BitmapData or the entire thing.
 func (self *BitmapData) ReplaceRGBI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("replaceRGB", args)}
+	return &BitmapData{self.Object.Call("replaceRGB", args...)}
 }
 
 // SetHSL Sets the hue, saturation and lightness values on every pixel in the given region, or the whole BitmapData if no region was specified.
@@ -729,7 +729,7 @@ func (self *BitmapData) SetHSL4O(h int, s int, l int, region *Rectangle) *Bitmap
 
 // SetHSLI Sets the hue, saturation and lightness values on every pixel in the given region, or the whole BitmapData if no region was specified.
 func (self *BitmapData) SetHSLI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("setHSL", args)}
+	return &BitmapData{self.Object.Call("setHSL", args...)}
 }
 
 // ShiftHSL Shifts any or all of the hue, saturation and lightness values on every pixel in the given region, or the whole BitmapData if no region was specified.
@@ -771,7 +771,7 @@ func (self *BitmapData) ShiftHSL4O(h int, s int, l int, region *Rectangle) *Bitm
 // Shifting will add the given value onto the current h, s and l values, not replace them.
 // The hue is wrapped to keep it within the range 0 to 1. Saturation and lightness are clamped to not exceed 1.
 func (self *BitmapData) ShiftHSLI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("shiftHSL", args)}
+	return &BitmapData{self.Object.Call("shiftHSL", args...)}
 }
 
 // SetPixel32 Sets the color of the given pixel to the specified red, green, blue and alpha values.
@@ -786,7 +786,7 @@ func (self *BitmapData) SetPixel321O(x int, y int, red int, green int, blue int,
 
 // SetPixel32I Sets the color of the given pixel to the specified red, green, blue and alpha values.
 func (self *BitmapData) SetPixel32I(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("setPixel32", args)}
+	return &BitmapData{self.Object.Call("setPixel32", args...)}
 }
 
 // SetPixel Sets the color of the given pixel to the specified red, green and blue values.
@@ -801,7 +801,7 @@ func (self *BitmapData) SetPixel1O(x int, y int, red int, green int, blue int, i
 
 // SetPixelI Sets the color of the given pixel to the specified red, green and blue values.
 func (self *BitmapData) SetPixelI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("setPixel", args)}
+	return &BitmapData{self.Object.Call("setPixel", args...)}
 }
 
 // GetPixel Get the color of a specific pixel in the context into a color object.
@@ -822,7 +822,7 @@ func (self *BitmapData) GetPixel1O(x int, y int, out interface{}) interface{} {
 // If you have drawn anything to the BitmapData since it was created you must call BitmapData.update to refresh the array buffer,
 // otherwise this may return out of date color values, or worse - throw a run-time error as it tries to access an array element that doesn't exist.
 func (self *BitmapData) GetPixelI(args ...interface{}) interface{} {
-	return self.Object.Call("getPixel", args)
+	return self.Object.Call("getPixel", args...)
 }
 
 // GetPixel32 Get the color of a specific pixel including its alpha value.
@@ -838,7 +838,7 @@ func (self *BitmapData) GetPixel32(x int, y int) int {
 // otherwise this may return out of date color values, or worse - throw a run-time error as it tries to access an array element that doesn't exist.
 // Note that on little-endian systems the format is 0xAABBGGRR and on big-endian the format is 0xRRGGBBAA.
 func (self *BitmapData) GetPixel32I(args ...interface{}) int {
-	return self.Object.Call("getPixel32", args).Int()
+	return self.Object.Call("getPixel32", args...).Int()
 }
 
 // GetPixelRGB Get the color of a specific pixel including its alpha value as a color object containing r,g,b,a and rgba properties.
@@ -873,7 +873,7 @@ func (self *BitmapData) GetPixelRGB3O(x int, y int, out interface{}, hsl bool, h
 // If you have drawn anything to the BitmapData since it was created you must call BitmapData.update to refresh the array buffer,
 // otherwise this may return out of date color values, or worse - throw a run-time error as it tries to access an array element that doesn't exist.
 func (self *BitmapData) GetPixelRGBI(args ...interface{}) interface{} {
-	return self.Object.Call("getPixelRGB", args)
+	return self.Object.Call("getPixelRGB", args...)
 }
 
 // GetPixels Gets all the pixels from the region specified by the given Rectangle object.
@@ -883,7 +883,7 @@ func (self *BitmapData) GetPixels(rect *Rectangle) *ImageData {
 
 // GetPixelsI Gets all the pixels from the region specified by the given Rectangle object.
 func (self *BitmapData) GetPixelsI(args ...interface{}) *ImageData {
-	return &ImageData{self.Object.Call("getPixels", args)}
+	return &ImageData{self.Object.Call("getPixels", args...)}
 }
 
 // GetFirstPixel Scans the BitmapData, pixel by pixel, until it encounters a pixel that isn't transparent (i.e. has an alpha value > 0).
@@ -922,7 +922,7 @@ func (self *BitmapData) GetFirstPixel1O(direction int) interface{} {
 // 2 = left to right
 // 3 = right to left
 func (self *BitmapData) GetFirstPixelI(args ...interface{}) interface{} {
-	return self.Object.Call("getFirstPixel", args)
+	return self.Object.Call("getFirstPixel", args...)
 }
 
 // GetBounds Scans the BitmapData and calculates the bounds. This is a rectangle that defines the extent of all non-transparent pixels.
@@ -940,7 +940,7 @@ func (self *BitmapData) GetBounds1O(rect *Rectangle) *Rectangle {
 // GetBoundsI Scans the BitmapData and calculates the bounds. This is a rectangle that defines the extent of all non-transparent pixels.
 // The rectangle returned will extend from the top-left of the image to the bottom-right, excluding transparent pixels.
 func (self *BitmapData) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // AddToWorld Creates a new Phaser.Image object, assigns this BitmapData to be its texture, adds it to the world then returns it.
@@ -980,7 +980,7 @@ func (self *BitmapData) AddToWorld6O(x int, y int, anchorX int, anchorY int, sca
 
 // AddToWorldI Creates a new Phaser.Image object, assigns this BitmapData to be its texture, adds it to the world then returns it.
 func (self *BitmapData) AddToWorldI(args ...interface{}) *Image {
-	return &Image{self.Object.Call("addToWorld", args)}
+	return &Image{self.Object.Call("addToWorld", args...)}
 }
 
 // Copy Copies a rectangular area from the source object to this BitmapData. If you give `null` as the source it will copy from itself.
@@ -1303,7 +1303,7 @@ func (self *BitmapData) Copy17O(source interface{}, x int, y int, width int, hei
 // You may prefer to use `copyTransform` if you're simply trying to draw a Sprite to this BitmapData,
 // and don't wish to translate, scale or rotate it from its original values.
 func (self *BitmapData) CopyI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("copy", args)}
+	return &BitmapData{self.Object.Call("copy", args...)}
 }
 
 // CopyTransform Draws the given `source` Game Object to this BitmapData, using its `worldTransform` property to set the
@@ -1348,7 +1348,7 @@ func (self *BitmapData) CopyTransform3O(source interface{}, blendMode string, ro
 //
 // You can optionally specify Blend Mode and Round Pixels arguments.
 func (self *BitmapData) CopyTransformI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("copyTransform", args)}
+	return &BitmapData{self.Object.Call("copyTransform", args...)}
 }
 
 // CopyRect Copies the area defined by the Rectangle parameter from the source image to this BitmapData at the given location.
@@ -1373,7 +1373,7 @@ func (self *BitmapData) CopyRect3O(source interface{}, area *Rectangle, x int, y
 
 // CopyRectI Copies the area defined by the Rectangle parameter from the source image to this BitmapData at the given location.
 func (self *BitmapData) CopyRectI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("copyRect", args)}
+	return &BitmapData{self.Object.Call("copyRect", args...)}
 }
 
 // Draw Draws the given Phaser.Sprite, Phaser.Image or Phaser.Text to this BitmapData at the coordinates specified.
@@ -1477,7 +1477,7 @@ func (self *BitmapData) Draw6O(source interface{}, x int, y int, width int, heig
 // otherwise the objects are likely to render incorrectly, if at all.
 // You can trigger an update yourself by calling `stage.updateTransform()` before calling `draw`.
 func (self *BitmapData) DrawI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("draw", args)}
+	return &BitmapData{self.Object.Call("draw", args...)}
 }
 
 // DrawGroup Draws the immediate children of a Phaser.Group to this BitmapData.
@@ -1541,7 +1541,7 @@ func (self *BitmapData) DrawGroup2O(group *Group, blendMode string, roundPx bool
 // otherwise the objects are likely to render incorrectly, if at all.
 // You can trigger an update yourself by calling `stage.updateTransform()` before calling `drawGroup`.
 func (self *BitmapData) DrawGroupI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("drawGroup", args)}
+	return &BitmapData{self.Object.Call("drawGroup", args...)}
 }
 
 // DrawGroupProxy A proxy for drawGroup that handles child iteration for more complex Game Objects.
@@ -1561,7 +1561,7 @@ func (self *BitmapData) DrawGroupProxy2O(child interface{}, blendMode string, ro
 
 // DrawGroupProxyI A proxy for drawGroup that handles child iteration for more complex Game Objects.
 func (self *BitmapData) DrawGroupProxyI(args ...interface{}) {
-	self.Object.Call("drawGroupProxy", args)
+	self.Object.Call("drawGroupProxy", args...)
 }
 
 // DrawFull Draws the Game Object or Group to this BitmapData and then recursively iterates through all of its children.
@@ -1637,7 +1637,7 @@ func (self *BitmapData) DrawFull2O(parent interface{}, blendMode string, roundPx
 // has taken place before doing so, otherwise all of the objects will render with incorrect positions and scales. You can
 // trigger an update yourself by calling `stage.updateTransform()` before calling `drawFull`.
 func (self *BitmapData) DrawFullI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("drawFull", args)}
+	return &BitmapData{self.Object.Call("drawFull", args...)}
 }
 
 // Shadow Sets the shadow properties of this BitmapDatas context which will affect all draw operations made to it.
@@ -1672,7 +1672,7 @@ func (self *BitmapData) Shadow3O(color string, blur int, x int, y int) *BitmapDa
 // You can cancel an existing shadow by calling this method and passing no parameters.
 // Note: At the time of writing (October 2014) Chrome still doesn't support shadowBlur used with drawImage.
 func (self *BitmapData) ShadowI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("shadow", args)}
+	return &BitmapData{self.Object.Call("shadow", args...)}
 }
 
 // AlphaMask Draws the image onto this BitmapData using an image as an alpha mask.
@@ -1697,7 +1697,7 @@ func (self *BitmapData) AlphaMask3O(source interface{}, mask interface{}, source
 
 // AlphaMaskI Draws the image onto this BitmapData using an image as an alpha mask.
 func (self *BitmapData) AlphaMaskI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("alphaMask", args)}
+	return &BitmapData{self.Object.Call("alphaMask", args...)}
 }
 
 // Extract Scans this BitmapData for all pixels matching the given r,g,b values and then draws them into the given destination BitmapData.
@@ -1781,7 +1781,7 @@ func (self *BitmapData) Extract5O(destination *BitmapData, r int, g int, b int, 
 // If not given it will be written as the same color it was extracted. You can provide one or more alternative colors, allowing you to tint
 // the color during extraction.
 func (self *BitmapData) ExtractI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("extract", args)}
+	return &BitmapData{self.Object.Call("extract", args...)}
 }
 
 // Rect Draws a filled Rectangle to the BitmapData at the given x, y coordinates and width / height in size.
@@ -1796,7 +1796,7 @@ func (self *BitmapData) Rect1O(x int, y int, width int, height int, fillStyle st
 
 // RectI Draws a filled Rectangle to the BitmapData at the given x, y coordinates and width / height in size.
 func (self *BitmapData) RectI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("rect", args)}
+	return &BitmapData{self.Object.Call("rect", args...)}
 }
 
 // Text Draws text to the BitmapData in the given font and color.
@@ -1831,7 +1831,7 @@ func (self *BitmapData) Text3O(text string, x int, y int, font string, color str
 // The default font is 14px Courier, so useful for quickly drawing debug text.
 // If you need to do a lot of font work to this BitmapData we'd recommend implementing your own text draw method.
 func (self *BitmapData) TextI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("text", args)}
+	return &BitmapData{self.Object.Call("text", args...)}
 }
 
 // Circle Draws a filled Circle to the BitmapData at the given x, y coordinates and radius in size.
@@ -1846,7 +1846,7 @@ func (self *BitmapData) Circle1O(x int, y int, radius int, fillStyle string) *Bi
 
 // CircleI Draws a filled Circle to the BitmapData at the given x, y coordinates and radius in size.
 func (self *BitmapData) CircleI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("circle", args)}
+	return &BitmapData{self.Object.Call("circle", args...)}
 }
 
 // Line Draws a line between the coordinates given in the color and thickness specified.
@@ -1866,7 +1866,7 @@ func (self *BitmapData) Line2O(x1 int, y1 int, x2 int, y2 int, color string, wid
 
 // LineI Draws a line between the coordinates given in the color and thickness specified.
 func (self *BitmapData) LineI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("line", args)}
+	return &BitmapData{self.Object.Call("line", args...)}
 }
 
 // TextureLine Takes the given Line object and image and renders it to this BitmapData as a repeating texture line.
@@ -1881,7 +1881,7 @@ func (self *BitmapData) TextureLine1O(line *Line, image interface{}, repeat stri
 
 // TextureLineI Takes the given Line object and image and renders it to this BitmapData as a repeating texture line.
 func (self *BitmapData) TextureLineI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("textureLine", args)}
+	return &BitmapData{self.Object.Call("textureLine", args...)}
 }
 
 // Render If the game is running in WebGL this will push the texture up to the GPU if it's dirty.
@@ -1895,7 +1895,7 @@ func (self *BitmapData) Render() *BitmapData {
 // This is called automatically if the BitmapData is being used by a Sprite, otherwise you need to remember to call it in your render function.
 // If you wish to suppress this functionality set BitmapData.disableTextureUpload to `true`.
 func (self *BitmapData) RenderI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("render", args)}
+	return &BitmapData{self.Object.Call("render", args...)}
 }
 
 // Destroy Destroys this BitmapData and puts the canvas it was using back into the canvas pool for re-use.
@@ -1905,7 +1905,7 @@ func (self *BitmapData) Destroy() {
 
 // DestroyI Destroys this BitmapData and puts the canvas it was using back into the canvas pool for re-use.
 func (self *BitmapData) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // BlendReset Resets the blend mode (effectively sets it to 'source-over')
@@ -1915,7 +1915,7 @@ func (self *BitmapData) BlendReset() *BitmapData {
 
 // BlendResetI Resets the blend mode (effectively sets it to 'source-over')
 func (self *BitmapData) BlendResetI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendReset", args)}
+	return &BitmapData{self.Object.Call("blendReset", args...)}
 }
 
 // BlendSourceOver Sets the blend mode to 'source-over'
@@ -1925,7 +1925,7 @@ func (self *BitmapData) BlendSourceOver() *BitmapData {
 
 // BlendSourceOverI Sets the blend mode to 'source-over'
 func (self *BitmapData) BlendSourceOverI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendSourceOver", args)}
+	return &BitmapData{self.Object.Call("blendSourceOver", args...)}
 }
 
 // BlendSourceIn Sets the blend mode to 'source-in'
@@ -1935,7 +1935,7 @@ func (self *BitmapData) BlendSourceIn() *BitmapData {
 
 // BlendSourceInI Sets the blend mode to 'source-in'
 func (self *BitmapData) BlendSourceInI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendSourceIn", args)}
+	return &BitmapData{self.Object.Call("blendSourceIn", args...)}
 }
 
 // BlendSourceOut Sets the blend mode to 'source-out'
@@ -1945,7 +1945,7 @@ func (self *BitmapData) BlendSourceOut() *BitmapData {
 
 // BlendSourceOutI Sets the blend mode to 'source-out'
 func (self *BitmapData) BlendSourceOutI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendSourceOut", args)}
+	return &BitmapData{self.Object.Call("blendSourceOut", args...)}
 }
 
 // BlendSourceAtop Sets the blend mode to 'source-atop'
@@ -1955,7 +1955,7 @@ func (self *BitmapData) BlendSourceAtop() *BitmapData {
 
 // BlendSourceAtopI Sets the blend mode to 'source-atop'
 func (self *BitmapData) BlendSourceAtopI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendSourceAtop", args)}
+	return &BitmapData{self.Object.Call("blendSourceAtop", args...)}
 }
 
 // BlendDestinationOver Sets the blend mode to 'destination-over'
@@ -1965,7 +1965,7 @@ func (self *BitmapData) BlendDestinationOver() *BitmapData {
 
 // BlendDestinationOverI Sets the blend mode to 'destination-over'
 func (self *BitmapData) BlendDestinationOverI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendDestinationOver", args)}
+	return &BitmapData{self.Object.Call("blendDestinationOver", args...)}
 }
 
 // BlendDestinationIn Sets the blend mode to 'destination-in'
@@ -1975,7 +1975,7 @@ func (self *BitmapData) BlendDestinationIn() *BitmapData {
 
 // BlendDestinationInI Sets the blend mode to 'destination-in'
 func (self *BitmapData) BlendDestinationInI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendDestinationIn", args)}
+	return &BitmapData{self.Object.Call("blendDestinationIn", args...)}
 }
 
 // BlendDestinationOut Sets the blend mode to 'destination-out'
@@ -1985,7 +1985,7 @@ func (self *BitmapData) BlendDestinationOut() *BitmapData {
 
 // BlendDestinationOutI Sets the blend mode to 'destination-out'
 func (self *BitmapData) BlendDestinationOutI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendDestinationOut", args)}
+	return &BitmapData{self.Object.Call("blendDestinationOut", args...)}
 }
 
 // BlendDestinationAtop Sets the blend mode to 'destination-atop'
@@ -1995,7 +1995,7 @@ func (self *BitmapData) BlendDestinationAtop() *BitmapData {
 
 // BlendDestinationAtopI Sets the blend mode to 'destination-atop'
 func (self *BitmapData) BlendDestinationAtopI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendDestinationAtop", args)}
+	return &BitmapData{self.Object.Call("blendDestinationAtop", args...)}
 }
 
 // BlendXor Sets the blend mode to 'xor'
@@ -2005,7 +2005,7 @@ func (self *BitmapData) BlendXor() *BitmapData {
 
 // BlendXorI Sets the blend mode to 'xor'
 func (self *BitmapData) BlendXorI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendXor", args)}
+	return &BitmapData{self.Object.Call("blendXor", args...)}
 }
 
 // BlendAdd Sets the blend mode to 'lighter'
@@ -2015,7 +2015,7 @@ func (self *BitmapData) BlendAdd() *BitmapData {
 
 // BlendAddI Sets the blend mode to 'lighter'
 func (self *BitmapData) BlendAddI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendAdd", args)}
+	return &BitmapData{self.Object.Call("blendAdd", args...)}
 }
 
 // BlendMultiply Sets the blend mode to 'multiply'
@@ -2025,7 +2025,7 @@ func (self *BitmapData) BlendMultiply() *BitmapData {
 
 // BlendMultiplyI Sets the blend mode to 'multiply'
 func (self *BitmapData) BlendMultiplyI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendMultiply", args)}
+	return &BitmapData{self.Object.Call("blendMultiply", args...)}
 }
 
 // BlendScreen Sets the blend mode to 'screen'
@@ -2035,7 +2035,7 @@ func (self *BitmapData) BlendScreen() *BitmapData {
 
 // BlendScreenI Sets the blend mode to 'screen'
 func (self *BitmapData) BlendScreenI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendScreen", args)}
+	return &BitmapData{self.Object.Call("blendScreen", args...)}
 }
 
 // BlendOverlay Sets the blend mode to 'overlay'
@@ -2045,7 +2045,7 @@ func (self *BitmapData) BlendOverlay() *BitmapData {
 
 // BlendOverlayI Sets the blend mode to 'overlay'
 func (self *BitmapData) BlendOverlayI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendOverlay", args)}
+	return &BitmapData{self.Object.Call("blendOverlay", args...)}
 }
 
 // BlendDarken Sets the blend mode to 'darken'
@@ -2055,7 +2055,7 @@ func (self *BitmapData) BlendDarken() *BitmapData {
 
 // BlendDarkenI Sets the blend mode to 'darken'
 func (self *BitmapData) BlendDarkenI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendDarken", args)}
+	return &BitmapData{self.Object.Call("blendDarken", args...)}
 }
 
 // BlendLighten Sets the blend mode to 'lighten'
@@ -2065,7 +2065,7 @@ func (self *BitmapData) BlendLighten() *BitmapData {
 
 // BlendLightenI Sets the blend mode to 'lighten'
 func (self *BitmapData) BlendLightenI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendLighten", args)}
+	return &BitmapData{self.Object.Call("blendLighten", args...)}
 }
 
 // BlendColorDodge Sets the blend mode to 'color-dodge'
@@ -2075,7 +2075,7 @@ func (self *BitmapData) BlendColorDodge() *BitmapData {
 
 // BlendColorDodgeI Sets the blend mode to 'color-dodge'
 func (self *BitmapData) BlendColorDodgeI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendColorDodge", args)}
+	return &BitmapData{self.Object.Call("blendColorDodge", args...)}
 }
 
 // BlendColorBurn Sets the blend mode to 'color-burn'
@@ -2085,7 +2085,7 @@ func (self *BitmapData) BlendColorBurn() *BitmapData {
 
 // BlendColorBurnI Sets the blend mode to 'color-burn'
 func (self *BitmapData) BlendColorBurnI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendColorBurn", args)}
+	return &BitmapData{self.Object.Call("blendColorBurn", args...)}
 }
 
 // BlendHardLight Sets the blend mode to 'hard-light'
@@ -2095,7 +2095,7 @@ func (self *BitmapData) BlendHardLight() *BitmapData {
 
 // BlendHardLightI Sets the blend mode to 'hard-light'
 func (self *BitmapData) BlendHardLightI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendHardLight", args)}
+	return &BitmapData{self.Object.Call("blendHardLight", args...)}
 }
 
 // BlendSoftLight Sets the blend mode to 'soft-light'
@@ -2105,7 +2105,7 @@ func (self *BitmapData) BlendSoftLight() *BitmapData {
 
 // BlendSoftLightI Sets the blend mode to 'soft-light'
 func (self *BitmapData) BlendSoftLightI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendSoftLight", args)}
+	return &BitmapData{self.Object.Call("blendSoftLight", args...)}
 }
 
 // BlendDifference Sets the blend mode to 'difference'
@@ -2115,7 +2115,7 @@ func (self *BitmapData) BlendDifference() *BitmapData {
 
 // BlendDifferenceI Sets the blend mode to 'difference'
 func (self *BitmapData) BlendDifferenceI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendDifference", args)}
+	return &BitmapData{self.Object.Call("blendDifference", args...)}
 }
 
 // BlendExclusion Sets the blend mode to 'exclusion'
@@ -2125,7 +2125,7 @@ func (self *BitmapData) BlendExclusion() *BitmapData {
 
 // BlendExclusionI Sets the blend mode to 'exclusion'
 func (self *BitmapData) BlendExclusionI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendExclusion", args)}
+	return &BitmapData{self.Object.Call("blendExclusion", args...)}
 }
 
 // BlendHue Sets the blend mode to 'hue'
@@ -2135,7 +2135,7 @@ func (self *BitmapData) BlendHue() *BitmapData {
 
 // BlendHueI Sets the blend mode to 'hue'
 func (self *BitmapData) BlendHueI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendHue", args)}
+	return &BitmapData{self.Object.Call("blendHue", args...)}
 }
 
 // BlendSaturation Sets the blend mode to 'saturation'
@@ -2145,7 +2145,7 @@ func (self *BitmapData) BlendSaturation() *BitmapData {
 
 // BlendSaturationI Sets the blend mode to 'saturation'
 func (self *BitmapData) BlendSaturationI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendSaturation", args)}
+	return &BitmapData{self.Object.Call("blendSaturation", args...)}
 }
 
 // BlendColor Sets the blend mode to 'color'
@@ -2155,7 +2155,7 @@ func (self *BitmapData) BlendColor() *BitmapData {
 
 // BlendColorI Sets the blend mode to 'color'
 func (self *BitmapData) BlendColorI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendColor", args)}
+	return &BitmapData{self.Object.Call("blendColor", args...)}
 }
 
 // BlendLuminosity Sets the blend mode to 'luminosity'
@@ -2165,7 +2165,7 @@ func (self *BitmapData) BlendLuminosity() *BitmapData {
 
 // BlendLuminosityI Sets the blend mode to 'luminosity'
 func (self *BitmapData) BlendLuminosityI(args ...interface{}) *BitmapData {
-	return &BitmapData{self.Object.Call("blendLuminosity", args)}
+	return &BitmapData{self.Object.Call("blendLuminosity", args...)}
 }
 
 // GetTransform Gets a JavaScript object that has 6 properties set that are used by BitmapData in a transform.
@@ -2175,5 +2175,5 @@ func (self *BitmapData) GetTransform(translateX int, translateY int, scaleX int,
 
 // GetTransformI Gets a JavaScript object that has 6 properties set that are used by BitmapData in a transform.
 func (self *BitmapData) GetTransformI(args ...interface{}) interface{} {
-	return self.Object.Call("getTransform", args)
+	return self.Object.Call("getTransform", args...)
 }

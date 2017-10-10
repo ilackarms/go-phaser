@@ -18,7 +18,7 @@ func NewPluginManager(game *Game) *PluginManager {
 
 // NewPluginManagerI The Plugin Manager is responsible for the loading, running and unloading of Phaser Plugins.
 func NewPluginManagerI(args ...interface{}) *PluginManager {
-	return &PluginManager{js.Global.Get("Phaser").Get("PluginManager").New(args)}
+	return &PluginManager{js.Global.Get("Phaser").Get("PluginManager").New(args...)}
 }
 
 // PluginManager Binding conversion method to PluginManager point
@@ -64,7 +64,7 @@ func (self *PluginManager) Add(plugin interface{}, parameter interface{}) *Plugi
 // AddI Add a new Plugin into the PluginManager.
 // The Plugin must have 2 properties: game and parent. Plugin.game is set to the game reference the PluginManager uses, and parent is set to the PluginManager.
 func (self *PluginManager) AddI(args ...interface{}) *Plugin {
-	return &Plugin{self.Object.Call("add", args)}
+	return &Plugin{self.Object.Call("add", args...)}
 }
 
 // Remove Remove a Plugin from the PluginManager. It calls Plugin.destroy on the plugin before removing it from the manager.
@@ -79,7 +79,7 @@ func (self *PluginManager) Remove1O(plugin *Plugin, destroy bool) {
 
 // RemoveI Remove a Plugin from the PluginManager. It calls Plugin.destroy on the plugin before removing it from the manager.
 func (self *PluginManager) RemoveI(args ...interface{}) {
-	self.Object.Call("remove", args)
+	self.Object.Call("remove", args...)
 }
 
 // RemoveAll Remove all Plugins from the PluginManager. It calls Plugin.destroy on every plugin before removing it from the manager.
@@ -89,7 +89,7 @@ func (self *PluginManager) RemoveAll() {
 
 // RemoveAllI Remove all Plugins from the PluginManager. It calls Plugin.destroy on every plugin before removing it from the manager.
 func (self *PluginManager) RemoveAllI(args ...interface{}) {
-	self.Object.Call("removeAll", args)
+	self.Object.Call("removeAll", args...)
 }
 
 // PreUpdate Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
@@ -101,7 +101,7 @@ func (self *PluginManager) PreUpdate() {
 // PreUpdateI Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
 // It only calls plugins who have active=true.
 func (self *PluginManager) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
@@ -113,7 +113,7 @@ func (self *PluginManager) Update() {
 // UpdateI Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
 // It only calls plugins who have active=true.
 func (self *PluginManager) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate PostUpdate is the last thing to be called before the world render.
@@ -127,7 +127,7 @@ func (self *PluginManager) PostUpdate() {
 // In particular, it is called after the world postUpdate, which means the camera has been adjusted.
 // It only calls plugins who have active=true.
 func (self *PluginManager) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Render Render is called right after the Game Renderer completes, but before the State.render.
@@ -139,7 +139,7 @@ func (self *PluginManager) Render() {
 // RenderI Render is called right after the Game Renderer completes, but before the State.render.
 // It only calls plugins who have visible=true.
 func (self *PluginManager) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // PostRender Post-render is called after the Game Renderer and State.render have run.
@@ -151,7 +151,7 @@ func (self *PluginManager) PostRender() {
 // PostRenderI Post-render is called after the Game Renderer and State.render have run.
 // It only calls plugins who have visible=true.
 func (self *PluginManager) PostRenderI(args ...interface{}) {
-	self.Object.Call("postRender", args)
+	self.Object.Call("postRender", args...)
 }
 
 // Destroy Clear down this PluginManager, calls destroy on every plugin and nulls out references.
@@ -161,5 +161,5 @@ func (self *PluginManager) Destroy() {
 
 // DestroyI Clear down this PluginManager, calls destroy on every plugin and nulls out references.
 func (self *PluginManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

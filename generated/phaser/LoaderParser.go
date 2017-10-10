@@ -18,7 +18,7 @@ func NewLoaderParser() *LoaderParser {
 
 // NewLoaderParserI Phaser.LoaderParser parses data objects from Phaser.Loader that need more preparation before they can be inserted into the Cache.
 func NewLoaderParserI(args ...interface{}) *LoaderParser {
-	return &LoaderParser{js.Global.Get("Phaser").Get("LoaderParser").New(args)}
+	return &LoaderParser{js.Global.Get("Phaser").Get("LoaderParser").New(args...)}
 }
 
 // LoaderParser Binding conversion method to LoaderParser point
@@ -46,7 +46,7 @@ func (self *LoaderParser) BitmapFont2O(xml interface{}, baseTexture *BaseTexture
 
 // BitmapFontI Alias for xmlBitmapFont, for backwards compatibility.
 func (self *LoaderParser) BitmapFontI(args ...interface{}) interface{} {
-	return self.Object.Call("bitmapFont", args)
+	return self.Object.Call("bitmapFont", args...)
 }
 
 // XmlBitmapFont Parse a Bitmap Font from an XML file.
@@ -66,7 +66,7 @@ func (self *LoaderParser) XmlBitmapFont2O(xml interface{}, baseTexture *BaseText
 
 // XmlBitmapFontI Parse a Bitmap Font from an XML file.
 func (self *LoaderParser) XmlBitmapFontI(args ...interface{}) interface{} {
-	return self.Object.Call("xmlBitmapFont", args)
+	return self.Object.Call("xmlBitmapFont", args...)
 }
 
 // JsonBitmapFont Parse a Bitmap Font from a JSON file.
@@ -86,7 +86,7 @@ func (self *LoaderParser) JsonBitmapFont2O(json interface{}, baseTexture *BaseTe
 
 // JsonBitmapFontI Parse a Bitmap Font from a JSON file.
 func (self *LoaderParser) JsonBitmapFontI(args ...interface{}) interface{} {
-	return self.Object.Call("jsonBitmapFont", args)
+	return self.Object.Call("jsonBitmapFont", args...)
 }
 
 // FinalizeBitmapFont Finalize Bitmap Font parsing.
@@ -96,5 +96,5 @@ func (self *LoaderParser) FinalizeBitmapFont(baseTexture *BaseTexture, bitmapFon
 
 // FinalizeBitmapFontI Finalize Bitmap Font parsing.
 func (self *LoaderParser) FinalizeBitmapFontI(args ...interface{}) interface{} {
-	return self.Object.Call("finalizeBitmapFont", args)
+	return self.Object.Call("finalizeBitmapFont", args...)
 }

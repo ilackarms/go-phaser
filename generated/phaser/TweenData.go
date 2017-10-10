@@ -24,7 +24,7 @@ func NewTweenData(parent *Tween) *TweenData {
 // starting and ending values, the ease function, interpolation and duration. The Tween acts as a timeline manager for
 // TweenData objects and can contain multiple TweenData objects.
 func NewTweenDataI(args ...interface{}) *TweenData {
-	return &TweenData{js.Global.Get("Phaser").Get("TweenData").New(args)}
+	return &TweenData{js.Global.Get("Phaser").Get("TweenData").New(args...)}
 }
 
 // TweenData Binding conversion method to TweenData point
@@ -314,7 +314,7 @@ func (self *TweenData) To5O(properties interface{}, duration int, ease interface
 // ToI Sets this tween to be a `to` tween on the properties given. A `to` tween starts at the current value and tweens to the destination value given.
 // For example a Sprite with an `x` coordinate of 100 could be tweened to `x` 200 by giving a properties object of `{ x: 200 }`.
 func (self *TweenData) ToI(args ...interface{}) *TweenData {
-	return &TweenData{self.Object.Call("to", args)}
+	return &TweenData{self.Object.Call("to", args...)}
 }
 
 // From Sets this tween to be a `from` tween on the properties given. A `from` tween sets the target to the destination value and tweens to its current value.
@@ -356,7 +356,7 @@ func (self *TweenData) From5O(properties interface{}, duration int, ease interfa
 // FromI Sets this tween to be a `from` tween on the properties given. A `from` tween sets the target to the destination value and tweens to its current value.
 // For example a Sprite with an `x` coordinate of 100 tweened from `x` 500 would be set to `x` 500 and then tweened to `x` 100 by giving a properties object of `{ x: 500 }`.
 func (self *TweenData) FromI(args ...interface{}) *TweenData {
-	return &TweenData{self.Object.Call("from", args)}
+	return &TweenData{self.Object.Call("from", args...)}
 }
 
 // Start Starts the Tween running.
@@ -366,7 +366,7 @@ func (self *TweenData) Start() *TweenData {
 
 // StartI Starts the Tween running.
 func (self *TweenData) StartI(args ...interface{}) *TweenData {
-	return &TweenData{self.Object.Call("start", args)}
+	return &TweenData{self.Object.Call("start", args...)}
 }
 
 // LoadValues Loads the values from the target object into this Tween.
@@ -376,7 +376,7 @@ func (self *TweenData) LoadValues() *TweenData {
 
 // LoadValuesI Loads the values from the target object into this Tween.
 func (self *TweenData) LoadValuesI(args ...interface{}) *TweenData {
-	return &TweenData{self.Object.Call("loadValues", args)}
+	return &TweenData{self.Object.Call("loadValues", args...)}
 }
 
 // Update Updates this Tween. This is called automatically by Phaser.Tween.
@@ -386,7 +386,7 @@ func (self *TweenData) Update(time int) int {
 
 // UpdateI Updates this Tween. This is called automatically by Phaser.Tween.
 func (self *TweenData) UpdateI(args ...interface{}) int {
-	return self.Object.Call("update", args).Int()
+	return self.Object.Call("update", args...).Int()
 }
 
 // GenerateData This will generate an array populated with the tweened object values from start to end.
@@ -419,7 +419,7 @@ func (self *TweenData) GenerateData1O(frameRate int) []interface{} {
 // It works by running the tween simulation at the given frame rate based on the values set-up in Tween.to and Tween.from.
 // Just one play through of the tween data is returned, including yoyo if set.
 func (self *TweenData) GenerateDataI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("generateData", args)
+	array00 := self.Object.Call("generateData", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -435,5 +435,5 @@ func (self *TweenData) Repeat() int {
 
 // RepeatI Checks if this Tween is meant to repeat or yoyo and handles doing so.
 func (self *TweenData) RepeatI(args ...interface{}) int {
-	return self.Object.Call("repeat", args).Int()
+	return self.Object.Call("repeat", args...).Int()
 }

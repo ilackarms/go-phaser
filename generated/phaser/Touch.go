@@ -24,7 +24,7 @@ func NewTouch(game *Game) *Touch {
 //
 // You should not normally access this class directly, but instead use a Phaser.Pointer object which normalises all game input for you.
 func NewTouchI(args ...interface{}) *Touch {
-	return &Touch{js.Global.Get("Phaser").Get("Touch").New(args)}
+	return &Touch{js.Global.Get("Phaser").Get("Touch").New(args...)}
 }
 
 // Touch Binding conversion method to Touch point
@@ -172,7 +172,7 @@ func (self *Touch) Start() {
 
 // StartI Starts the event listeners running.
 func (self *Touch) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // ConsumeTouchMove Consumes all touchmove events on the document (only enable this if you know you need it!).
@@ -182,7 +182,7 @@ func (self *Touch) ConsumeTouchMove() {
 
 // ConsumeTouchMoveI Consumes all touchmove events on the document (only enable this if you know you need it!).
 func (self *Touch) ConsumeTouchMoveI(args ...interface{}) {
-	self.Object.Call("consumeTouchMove", args)
+	self.Object.Call("consumeTouchMove", args...)
 }
 
 // AddTouchLockCallback Adds a callback that is fired when a browser touchstart or touchend event is received.
@@ -215,7 +215,7 @@ func (self *Touch) AddTouchLockCallback1O(callback interface{}, context interfac
 //
 // The callback is added to the Phaser.Touch.touchLockCallbacks array and should be removed with Phaser.Touch.removeTouchLockCallback.
 func (self *Touch) AddTouchLockCallbackI(args ...interface{}) {
-	self.Object.Call("addTouchLockCallback", args)
+	self.Object.Call("addTouchLockCallback", args...)
 }
 
 // RemoveTouchLockCallback Removes the callback at the defined index from the Phaser.Touch.touchLockCallbacks array
@@ -225,7 +225,7 @@ func (self *Touch) RemoveTouchLockCallback(callback interface{}, context interfa
 
 // RemoveTouchLockCallbackI Removes the callback at the defined index from the Phaser.Touch.touchLockCallbacks array
 func (self *Touch) RemoveTouchLockCallbackI(args ...interface{}) bool {
-	return self.Object.Call("removeTouchLockCallback", args).Bool()
+	return self.Object.Call("removeTouchLockCallback", args...).Bool()
 }
 
 // OnTouchStart The internal method that handles the touchstart event from the browser.
@@ -235,7 +235,7 @@ func (self *Touch) OnTouchStart(event *TouchEvent) {
 
 // OnTouchStartI The internal method that handles the touchstart event from the browser.
 func (self *Touch) OnTouchStartI(args ...interface{}) {
-	self.Object.Call("onTouchStart", args)
+	self.Object.Call("onTouchStart", args...)
 }
 
 // OnTouchCancel Touch cancel - touches that were disrupted (perhaps by moving into a plugin or browser chrome).
@@ -247,7 +247,7 @@ func (self *Touch) OnTouchCancel(event *TouchEvent) {
 // OnTouchCancelI Touch cancel - touches that were disrupted (perhaps by moving into a plugin or browser chrome).
 // Occurs for example on iOS when you put down 4 fingers and the app selector UI appears.
 func (self *Touch) OnTouchCancelI(args ...interface{}) {
-	self.Object.Call("onTouchCancel", args)
+	self.Object.Call("onTouchCancel", args...)
 }
 
 // OnTouchEnter For touch enter and leave its a list of the touch points that have entered or left the target.
@@ -259,7 +259,7 @@ func (self *Touch) OnTouchEnter(event *TouchEvent) {
 // OnTouchEnterI For touch enter and leave its a list of the touch points that have entered or left the target.
 // Doesn't appear to be supported by most browsers on a canvas element yet.
 func (self *Touch) OnTouchEnterI(args ...interface{}) {
-	self.Object.Call("onTouchEnter", args)
+	self.Object.Call("onTouchEnter", args...)
 }
 
 // OnTouchLeave For touch enter and leave its a list of the touch points that have entered or left the target.
@@ -271,7 +271,7 @@ func (self *Touch) OnTouchLeave(event *TouchEvent) {
 // OnTouchLeaveI For touch enter and leave its a list of the touch points that have entered or left the target.
 // Doesn't appear to be supported by most browsers on a canvas element yet.
 func (self *Touch) OnTouchLeaveI(args ...interface{}) {
-	self.Object.Call("onTouchLeave", args)
+	self.Object.Call("onTouchLeave", args...)
 }
 
 // OnTouchMove The handler for the touchmove events.
@@ -281,7 +281,7 @@ func (self *Touch) OnTouchMove(event *TouchEvent) {
 
 // OnTouchMoveI The handler for the touchmove events.
 func (self *Touch) OnTouchMoveI(args ...interface{}) {
-	self.Object.Call("onTouchMove", args)
+	self.Object.Call("onTouchMove", args...)
 }
 
 // OnTouchEnd The handler for the touchend events.
@@ -291,7 +291,7 @@ func (self *Touch) OnTouchEnd(event *TouchEvent) {
 
 // OnTouchEndI The handler for the touchend events.
 func (self *Touch) OnTouchEndI(args ...interface{}) {
-	self.Object.Call("onTouchEnd", args)
+	self.Object.Call("onTouchEnd", args...)
 }
 
 // Stop Stop the event listeners.
@@ -301,5 +301,5 @@ func (self *Touch) Stop() {
 
 // StopI Stop the event listeners.
 func (self *Touch) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }

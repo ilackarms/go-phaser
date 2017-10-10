@@ -43,7 +43,7 @@ func NewArraySet1O(list []interface{}) *ArraySet {
 //
 // This used primarily by the Input subsystem.
 func NewArraySetI(args ...interface{}) *ArraySet {
-	return &ArraySet{js.Global.Get("Phaser").Get("ArraySet").New(args)}
+	return &ArraySet{js.Global.Get("Phaser").Get("ArraySet").New(args...)}
 }
 
 // ArraySet Binding conversion method to ArraySet point
@@ -119,7 +119,7 @@ func (self *ArraySet) Add(item interface{}) interface{} {
 // AddI Adds a new element to the end of the list.
 // If the item already exists in the list it is not moved.
 func (self *ArraySet) AddI(args ...interface{}) interface{} {
-	return self.Object.Call("add", args)
+	return self.Object.Call("add", args...)
 }
 
 // GetIndex Gets the index of the item in the list, or -1 if it isn't in the list.
@@ -129,7 +129,7 @@ func (self *ArraySet) GetIndex(item interface{}) int {
 
 // GetIndexI Gets the index of the item in the list, or -1 if it isn't in the list.
 func (self *ArraySet) GetIndexI(args ...interface{}) int {
-	return self.Object.Call("getIndex", args).Int()
+	return self.Object.Call("getIndex", args...).Int()
 }
 
 // GetByKey Gets an item from the set based on the property strictly equaling the value given.
@@ -141,7 +141,7 @@ func (self *ArraySet) GetByKey(property string, value interface{}) interface{} {
 // GetByKeyI Gets an item from the set based on the property strictly equaling the value given.
 // Returns null if not found.
 func (self *ArraySet) GetByKeyI(args ...interface{}) interface{} {
-	return self.Object.Call("getByKey", args)
+	return self.Object.Call("getByKey", args...)
 }
 
 // Exists Checks for the item within this list.
@@ -151,7 +151,7 @@ func (self *ArraySet) Exists(item interface{}) bool {
 
 // ExistsI Checks for the item within this list.
 func (self *ArraySet) ExistsI(args ...interface{}) bool {
-	return self.Object.Call("exists", args).Bool()
+	return self.Object.Call("exists", args...).Bool()
 }
 
 // Reset Removes all the items.
@@ -161,7 +161,7 @@ func (self *ArraySet) Reset() {
 
 // ResetI Removes all the items.
 func (self *ArraySet) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // Remove Removes the given element from this list if it exists.
@@ -171,7 +171,7 @@ func (self *ArraySet) Remove(item interface{}) interface{} {
 
 // RemoveI Removes the given element from this list if it exists.
 func (self *ArraySet) RemoveI(args ...interface{}) interface{} {
-	return self.Object.Call("remove", args)
+	return self.Object.Call("remove", args...)
 }
 
 // SetAll Sets the property `key` to the given value on all members of this list.
@@ -181,7 +181,7 @@ func (self *ArraySet) SetAll(key interface{}, value interface{}) {
 
 // SetAllI Sets the property `key` to the given value on all members of this list.
 func (self *ArraySet) SetAllI(args ...interface{}) {
-	self.Object.Call("setAll", args)
+	self.Object.Call("setAll", args...)
 }
 
 // CallAll Calls a function on all members of this list, using the member as the context for the callback.
@@ -197,7 +197,7 @@ func (self *ArraySet) CallAll(key string, parameter interface{}) {
 // If the `key` property is present it must be a function.
 // The function is invoked using the item as the context.
 func (self *ArraySet) CallAllI(args ...interface{}) {
-	self.Object.Call("callAll", args)
+	self.Object.Call("callAll", args...)
 }
 
 // RemoveAll Removes every member from this ArraySet and optionally destroys it.
@@ -212,5 +212,5 @@ func (self *ArraySet) RemoveAll1O(destroy bool) {
 
 // RemoveAllI Removes every member from this ArraySet and optionally destroys it.
 func (self *ArraySet) RemoveAllI(args ...interface{}) {
-	self.Object.Call("removeAll", args)
+	self.Object.Call("removeAll", args...)
 }

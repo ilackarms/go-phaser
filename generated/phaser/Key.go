@@ -18,7 +18,7 @@ func NewKey(game *Game, keycode int) *Key {
 
 // NewKeyI If you need more fine-grained control over the handling of specific keys you can create and use Phaser.Key objects.
 func NewKeyI(args ...interface{}) *Key {
-	return &Key{js.Global.Get("Phaser").Get("Key").New(args)}
+	return &Key{js.Global.Get("Phaser").Get("Key").New(args...)}
 }
 
 // Key Binding conversion method to Key point
@@ -198,7 +198,7 @@ func (self *Key) Update() {
 
 // UpdateI Called automatically by Phaser.Keyboard.
 func (self *Key) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // ProcessKeyDown Called automatically by Phaser.Keyboard.
@@ -208,7 +208,7 @@ func (self *Key) ProcessKeyDown(event *KeyboardEvent) {
 
 // ProcessKeyDownI Called automatically by Phaser.Keyboard.
 func (self *Key) ProcessKeyDownI(args ...interface{}) {
-	self.Object.Call("processKeyDown", args)
+	self.Object.Call("processKeyDown", args...)
 }
 
 // ProcessKeyUp Called automatically by Phaser.Keyboard.
@@ -218,7 +218,7 @@ func (self *Key) ProcessKeyUp(event *KeyboardEvent) {
 
 // ProcessKeyUpI Called automatically by Phaser.Keyboard.
 func (self *Key) ProcessKeyUpI(args ...interface{}) {
-	self.Object.Call("processKeyUp", args)
+	self.Object.Call("processKeyUp", args...)
 }
 
 // Reset Resets the state of this Key.
@@ -242,7 +242,7 @@ func (self *Key) Reset1O(hard bool) {
 // This sets isDown to false, isUp to true, resets the time to be the current time, and _enables_ the key.
 // In addition, if it is a "hard reset", it clears clears any callbacks associated with the onDown and onUp events and removes the onHoldCallback.
 func (self *Key) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // DownDuration Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
@@ -260,7 +260,7 @@ func (self *Key) DownDuration1O(duration int) bool {
 // DownDurationI Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
 // or was pressed down longer ago than then given duration.
 func (self *Key) DownDurationI(args ...interface{}) bool {
-	return self.Object.Call("downDuration", args).Bool()
+	return self.Object.Call("downDuration", args...).Bool()
 }
 
 // UpDuration Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
@@ -278,5 +278,5 @@ func (self *Key) UpDuration1O(duration int) bool {
 // UpDurationI Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
 // or was pressed down longer ago than then given duration.
 func (self *Key) UpDurationI(args ...interface{}) bool {
-	return self.Object.Call("upDuration", args).Bool()
+	return self.Object.Call("upDuration", args...).Bool()
 }

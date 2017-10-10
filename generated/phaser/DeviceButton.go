@@ -63,7 +63,7 @@ func NewDeviceButton(parent interface{}, buttonCode int) *DeviceButton {
 // - On Linux (GTK), the 4th button and the 5th button are not supported.
 // - On Mac OS X 10.5 there is no platform API for implementing any advanced buttons.
 func NewDeviceButtonI(args ...interface{}) *DeviceButton {
-	return &DeviceButton{js.Global.Get("Phaser").Get("DeviceButton").New(args)}
+	return &DeviceButton{js.Global.Get("Phaser").Get("DeviceButton").New(args...)}
 }
 
 // DeviceButton Binding conversion method to DeviceButton point
@@ -287,7 +287,7 @@ func (self *DeviceButton) Start2O(event interface{}, value int) {
 // StartI Called automatically by Phaser.Pointer and Phaser.SinglePad.
 // Handles the button down state.
 func (self *DeviceButton) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Stop Called automatically by Phaser.Pointer and Phaser.SinglePad.
@@ -311,7 +311,7 @@ func (self *DeviceButton) Stop2O(event interface{}, value int) {
 // StopI Called automatically by Phaser.Pointer and Phaser.SinglePad.
 // Handles the button up state.
 func (self *DeviceButton) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // PadFloat Called automatically by Phaser.SinglePad.
@@ -321,7 +321,7 @@ func (self *DeviceButton) PadFloat(value int) {
 
 // PadFloatI Called automatically by Phaser.SinglePad.
 func (self *DeviceButton) PadFloatI(args ...interface{}) {
-	self.Object.Call("padFloat", args)
+	self.Object.Call("padFloat", args...)
 }
 
 // JustPressed Returns the "just pressed" state of this button.
@@ -339,7 +339,7 @@ func (self *DeviceButton) JustPressed1O(duration int) bool {
 // JustPressedI Returns the "just pressed" state of this button.
 // Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
 func (self *DeviceButton) JustPressedI(args ...interface{}) bool {
-	return self.Object.Call("justPressed", args).Bool()
+	return self.Object.Call("justPressed", args...).Bool()
 }
 
 // JustReleased Returns the "just released" state of this button.
@@ -357,7 +357,7 @@ func (self *DeviceButton) JustReleased1O(duration int) bool {
 // JustReleasedI Returns the "just released" state of this button.
 // Just released is considered as being true if the button was released within the duration given (default 250ms).
 func (self *DeviceButton) JustReleasedI(args ...interface{}) bool {
-	return self.Object.Call("justReleased", args).Bool()
+	return self.Object.Call("justReleased", args...).Bool()
 }
 
 // Reset Resets this DeviceButton, changing it to an isUp state and resetting the duration and repeats counters.
@@ -367,7 +367,7 @@ func (self *DeviceButton) Reset() {
 
 // ResetI Resets this DeviceButton, changing it to an isUp state and resetting the duration and repeats counters.
 func (self *DeviceButton) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // Destroy Destroys this DeviceButton, this disposes of the onDown, onUp and onFloat signals
@@ -379,5 +379,5 @@ func (self *DeviceButton) Destroy() {
 // DestroyI Destroys this DeviceButton, this disposes of the onDown, onUp and onFloat signals
 // and clears the parent and game references.
 func (self *DeviceButton) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

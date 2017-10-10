@@ -21,7 +21,7 @@ func NewComponentAutoCull() *ComponentAutoCull {
 // NewComponentAutoCullI The AutoCull Component is responsible for providing methods that check if a Game Object is within the bounds of the World Camera.
 // It is used by the InWorld component.
 func NewComponentAutoCullI(args ...interface{}) *ComponentAutoCull {
-	return &ComponentAutoCull{js.Global.Get("Phaser").Get("Component").Get("AutoCull").New(args)}
+	return &ComponentAutoCull{js.Global.Get("Phaser").Get("Component").Get("AutoCull").New(args...)}
 }
 
 // ComponentAutoCull Binding conversion method to ComponentAutoCull point

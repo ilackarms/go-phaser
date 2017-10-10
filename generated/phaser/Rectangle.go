@@ -21,7 +21,7 @@ func NewRectangle(x int, y int, width int, height int) *Rectangle {
 // NewRectangleI Creates a new Rectangle object with the top-left corner specified by the x and y parameters and with the specified width and height parameters.
 // If you call this function without parameters, a Rectangle with x, y, width, and height properties set to 0 is created.
 func NewRectangleI(args ...interface{}) *Rectangle {
-	return &Rectangle{js.Global.Get("Phaser").Get("Rectangle").New(args)}
+	return &Rectangle{js.Global.Get("Phaser").Get("Rectangle").New(args...)}
 }
 
 // Rectangle Binding conversion method to Rectangle point
@@ -263,7 +263,7 @@ func (self *Rectangle) Offset(dx int, dy int) *Rectangle {
 
 // OffsetI Adjusts the location of the Rectangle object, as determined by its top-left corner, by the specified amounts.
 func (self *Rectangle) OffsetI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("offset", args)}
+	return &Rectangle{self.Object.Call("offset", args...)}
 }
 
 // OffsetPoint Adjusts the location of the Rectangle object using a Point object as a parameter. This method is similar to the Rectangle.offset() method, except that it takes a Point object as a parameter.
@@ -273,7 +273,7 @@ func (self *Rectangle) OffsetPoint(point *Point) *Rectangle {
 
 // OffsetPointI Adjusts the location of the Rectangle object using a Point object as a parameter. This method is similar to the Rectangle.offset() method, except that it takes a Point object as a parameter.
 func (self *Rectangle) OffsetPointI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("offsetPoint", args)}
+	return &Rectangle{self.Object.Call("offsetPoint", args...)}
 }
 
 // SetTo Sets the members of Rectangle to the specified values.
@@ -283,7 +283,7 @@ func (self *Rectangle) SetTo(x int, y int, width int, height int) *Rectangle {
 
 // SetToI Sets the members of Rectangle to the specified values.
 func (self *Rectangle) SetToI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("setTo", args)}
+	return &Rectangle{self.Object.Call("setTo", args...)}
 }
 
 // Scale Scales the width and height of this Rectangle by the given amounts.
@@ -298,7 +298,7 @@ func (self *Rectangle) Scale1O(x int, y int) *Rectangle {
 
 // ScaleI Scales the width and height of this Rectangle by the given amounts.
 func (self *Rectangle) ScaleI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("scale", args)}
+	return &Rectangle{self.Object.Call("scale", args...)}
 }
 
 // CenterOn Centers this Rectangle so that the center coordinates match the given x and y values.
@@ -308,7 +308,7 @@ func (self *Rectangle) CenterOn(x int, y int) *Rectangle {
 
 // CenterOnI Centers this Rectangle so that the center coordinates match the given x and y values.
 func (self *Rectangle) CenterOnI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("centerOn", args)}
+	return &Rectangle{self.Object.Call("centerOn", args...)}
 }
 
 // Floor Runs Math.floor() on both the x and y values of this Rectangle.
@@ -318,7 +318,7 @@ func (self *Rectangle) Floor() {
 
 // FloorI Runs Math.floor() on both the x and y values of this Rectangle.
 func (self *Rectangle) FloorI(args ...interface{}) {
-	self.Object.Call("floor", args)
+	self.Object.Call("floor", args...)
 }
 
 // FloorAll Runs Math.floor() on the x, y, width and height values of this Rectangle.
@@ -328,7 +328,7 @@ func (self *Rectangle) FloorAll() {
 
 // FloorAllI Runs Math.floor() on the x, y, width and height values of this Rectangle.
 func (self *Rectangle) FloorAllI(args ...interface{}) {
-	self.Object.Call("floorAll", args)
+	self.Object.Call("floorAll", args...)
 }
 
 // Ceil Runs Math.ceil() on both the x and y values of this Rectangle.
@@ -338,7 +338,7 @@ func (self *Rectangle) Ceil() {
 
 // CeilI Runs Math.ceil() on both the x and y values of this Rectangle.
 func (self *Rectangle) CeilI(args ...interface{}) {
-	self.Object.Call("ceil", args)
+	self.Object.Call("ceil", args...)
 }
 
 // CeilAll Runs Math.ceil() on the x, y, width and height values of this Rectangle.
@@ -348,7 +348,7 @@ func (self *Rectangle) CeilAll() {
 
 // CeilAllI Runs Math.ceil() on the x, y, width and height values of this Rectangle.
 func (self *Rectangle) CeilAllI(args ...interface{}) {
-	self.Object.Call("ceilAll", args)
+	self.Object.Call("ceilAll", args...)
 }
 
 // CopyFrom Copies the x, y, width and height properties from any given object to this Rectangle.
@@ -358,7 +358,7 @@ func (self *Rectangle) CopyFrom(source interface{}) *Rectangle {
 
 // CopyFromI Copies the x, y, width and height properties from any given object to this Rectangle.
 func (self *Rectangle) CopyFromI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("copyFrom", args)}
+	return &Rectangle{self.Object.Call("copyFrom", args...)}
 }
 
 // CopyTo Copies the x, y, width and height properties from this Rectangle to any given object.
@@ -368,7 +368,7 @@ func (self *Rectangle) CopyTo(source interface{}) interface{} {
 
 // CopyToI Copies the x, y, width and height properties from this Rectangle to any given object.
 func (self *Rectangle) CopyToI(args ...interface{}) interface{} {
-	return self.Object.Call("copyTo", args)
+	return self.Object.Call("copyTo", args...)
 }
 
 // Inflate Increases the size of the Rectangle object by the specified amounts. The center point of the Rectangle object stays the same, and its size increases to the left and right by the dx value, and to the top and the bottom by the dy value.
@@ -378,7 +378,7 @@ func (self *Rectangle) Inflate(dx int, dy int) *Rectangle {
 
 // InflateI Increases the size of the Rectangle object by the specified amounts. The center point of the Rectangle object stays the same, and its size increases to the left and right by the dx value, and to the top and the bottom by the dy value.
 func (self *Rectangle) InflateI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("inflate", args)}
+	return &Rectangle{self.Object.Call("inflate", args...)}
 }
 
 // Size The size of the Rectangle object, expressed as a Point object with the values of the width and height properties.
@@ -393,7 +393,7 @@ func (self *Rectangle) Size1O(output *Point) *Point {
 
 // SizeI The size of the Rectangle object, expressed as a Point object with the values of the width and height properties.
 func (self *Rectangle) SizeI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("size", args)}
+	return &Point{self.Object.Call("size", args...)}
 }
 
 // Resize Resize the Rectangle by providing a new width and height.
@@ -405,7 +405,7 @@ func (self *Rectangle) Resize(width int, height int) *Rectangle {
 // ResizeI Resize the Rectangle by providing a new width and height.
 // The x and y positions remain unchanged.
 func (self *Rectangle) ResizeI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("resize", args)}
+	return &Rectangle{self.Object.Call("resize", args...)}
 }
 
 // Clone Returns a new Rectangle object with the same values for the x, y, width, and height properties as the original Rectangle object.
@@ -420,7 +420,7 @@ func (self *Rectangle) Clone1O(output *Rectangle) *Rectangle {
 
 // CloneI Returns a new Rectangle object with the same values for the x, y, width, and height properties as the original Rectangle object.
 func (self *Rectangle) CloneI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("clone", args)}
+	return &Rectangle{self.Object.Call("clone", args...)}
 }
 
 // Contains Determines whether the specified coordinates are contained within the region defined by this Rectangle object.
@@ -430,7 +430,7 @@ func (self *Rectangle) Contains(x int, y int) bool {
 
 // ContainsI Determines whether the specified coordinates are contained within the region defined by this Rectangle object.
 func (self *Rectangle) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // ContainsRect Determines whether the first Rectangle object is fully contained within the second Rectangle object.
@@ -442,7 +442,7 @@ func (self *Rectangle) ContainsRect(b *Rectangle) bool {
 // ContainsRectI Determines whether the first Rectangle object is fully contained within the second Rectangle object.
 // A Rectangle object is said to contain another if the second Rectangle object falls entirely within the boundaries of the first.
 func (self *Rectangle) ContainsRectI(args ...interface{}) bool {
-	return self.Object.Call("containsRect", args).Bool()
+	return self.Object.Call("containsRect", args...).Bool()
 }
 
 // Equals Determines whether the two Rectangles are equal.
@@ -454,7 +454,7 @@ func (self *Rectangle) Equals(b *Rectangle) bool {
 // EqualsI Determines whether the two Rectangles are equal.
 // This method compares the x, y, width and height properties of each Rectangle.
 func (self *Rectangle) EqualsI(args ...interface{}) bool {
-	return self.Object.Call("equals", args).Bool()
+	return self.Object.Call("equals", args...).Bool()
 }
 
 // Intersection If the Rectangle object specified in the toIntersect parameter intersects with this Rectangle object, returns the area of intersection as a Rectangle object. If the Rectangles do not intersect, this method returns an empty Rectangle object with its properties set to 0.
@@ -464,7 +464,7 @@ func (self *Rectangle) Intersection(b *Rectangle, out *Rectangle) *Rectangle {
 
 // IntersectionI If the Rectangle object specified in the toIntersect parameter intersects with this Rectangle object, returns the area of intersection as a Rectangle object. If the Rectangles do not intersect, this method returns an empty Rectangle object with its properties set to 0.
 func (self *Rectangle) IntersectionI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("intersection", args)}
+	return &Rectangle{self.Object.Call("intersection", args...)}
 }
 
 // Intersects Determines whether this Rectangle and another given Rectangle intersect with each other.
@@ -476,7 +476,7 @@ func (self *Rectangle) Intersects(b *Rectangle) bool {
 // IntersectsI Determines whether this Rectangle and another given Rectangle intersect with each other.
 // This method checks the x, y, width, and height properties of the two Rectangles.
 func (self *Rectangle) IntersectsI(args ...interface{}) bool {
-	return self.Object.Call("intersects", args).Bool()
+	return self.Object.Call("intersects", args...).Bool()
 }
 
 // IntersectsRaw Determines whether the coordinates given intersects (overlaps) with this Rectangle.
@@ -486,7 +486,7 @@ func (self *Rectangle) IntersectsRaw(left int, right int, top int, bottom int, t
 
 // IntersectsRawI Determines whether the coordinates given intersects (overlaps) with this Rectangle.
 func (self *Rectangle) IntersectsRawI(args ...interface{}) bool {
-	return self.Object.Call("intersectsRaw", args).Bool()
+	return self.Object.Call("intersectsRaw", args...).Bool()
 }
 
 // Union Adds two Rectangles together to create a new Rectangle object, by filling in the horizontal and vertical space between the two Rectangles.
@@ -501,7 +501,7 @@ func (self *Rectangle) Union1O(b *Rectangle, out *Rectangle) *Rectangle {
 
 // UnionI Adds two Rectangles together to create a new Rectangle object, by filling in the horizontal and vertical space between the two Rectangles.
 func (self *Rectangle) UnionI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("union", args)}
+	return &Rectangle{self.Object.Call("union", args...)}
 }
 
 // Random Returns a uniformly distributed random point from anywhere within this Rectangle.
@@ -516,7 +516,7 @@ func (self *Rectangle) Random1O(out interface{}) *Point {
 
 // RandomI Returns a uniformly distributed random point from anywhere within this Rectangle.
 func (self *Rectangle) RandomI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("random", args)}
+	return &Point{self.Object.Call("random", args...)}
 }
 
 // GetPoint Returns a point based on the given position constant, which can be one of:
@@ -564,7 +564,7 @@ func (self *Rectangle) GetPoint2O(position int, out *Point) *Point {
 // This method returns the same values as calling Rectangle.bottomLeft, etc, but those
 // calls always create a new Point object, where-as this one allows you to use your own.
 func (self *Rectangle) GetPointI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("getPoint", args)}
+	return &Point{self.Object.Call("getPoint", args...)}
 }
 
 // ToString Returns a string representation of this object.
@@ -574,7 +574,7 @@ func (self *Rectangle) ToString() string {
 
 // ToStringI Returns a string representation of this object.
 func (self *Rectangle) ToStringI(args ...interface{}) string {
-	return self.Object.Call("toString", args).String()
+	return self.Object.Call("toString", args...).String()
 }
 
 // InflatePoint Increases the size of the Rectangle object. This method is similar to the Rectangle.inflate() method except it takes a Point object as a parameter.
@@ -584,7 +584,7 @@ func (self *Rectangle) InflatePoint(a *Rectangle, point *Point) *Rectangle {
 
 // InflatePointI Increases the size of the Rectangle object. This method is similar to the Rectangle.inflate() method except it takes a Point object as a parameter.
 func (self *Rectangle) InflatePointI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("inflatePoint", args)}
+	return &Rectangle{self.Object.Call("inflatePoint", args...)}
 }
 
 // ContainsRaw Determines whether the specified coordinates are contained within the region defined by the given raw values.
@@ -594,7 +594,7 @@ func (self *Rectangle) ContainsRaw(rx int, ry int, rw int, rh int, x int, y int)
 
 // ContainsRawI Determines whether the specified coordinates are contained within the region defined by the given raw values.
 func (self *Rectangle) ContainsRawI(args ...interface{}) bool {
-	return self.Object.Call("containsRaw", args).Bool()
+	return self.Object.Call("containsRaw", args...).Bool()
 }
 
 // ContainsPoint Determines whether the specified point is contained within the rectangular region defined by this Rectangle object. This method is similar to the Rectangle.contains() method, except that it takes a Point object as a parameter.
@@ -604,7 +604,7 @@ func (self *Rectangle) ContainsPoint(a *Rectangle, point *Point) bool {
 
 // ContainsPointI Determines whether the specified point is contained within the rectangular region defined by this Rectangle object. This method is similar to the Rectangle.contains() method, except that it takes a Point object as a parameter.
 func (self *Rectangle) ContainsPointI(args ...interface{}) bool {
-	return self.Object.Call("containsPoint", args).Bool()
+	return self.Object.Call("containsPoint", args...).Bool()
 }
 
 // SameDimensions Determines if the two objects (either Rectangles or Rectangle-like) have the same width and height values under strict equality.
@@ -614,7 +614,7 @@ func (self *Rectangle) SameDimensions(a interface{}, b interface{}) bool {
 
 // SameDimensionsI Determines if the two objects (either Rectangles or Rectangle-like) have the same width and height values under strict equality.
 func (self *Rectangle) SameDimensionsI(args ...interface{}) bool {
-	return self.Object.Call("sameDimensions", args).Bool()
+	return self.Object.Call("sameDimensions", args...).Bool()
 }
 
 // Aabb Calculates the Axis Aligned Bounding Box (or aabb) from an array of points.
@@ -629,5 +629,5 @@ func (self *Rectangle) Aabb1O(points []Point, out *Rectangle) *Rectangle {
 
 // AabbI Calculates the Axis Aligned Bounding Box (or aabb) from an array of points.
 func (self *Rectangle) AabbI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("aabb", args)}
+	return &Rectangle{self.Object.Call("aabb", args...)}
 }

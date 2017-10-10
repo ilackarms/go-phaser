@@ -23,7 +23,7 @@ func NewRequestAnimationFrame1O(game *Game, forceSetTimeOut bool) *RequestAnimat
 
 // NewRequestAnimationFrameI Abstracts away the use of RAF or setTimeOut for the core game update loop.
 func NewRequestAnimationFrameI(args ...interface{}) *RequestAnimationFrame {
-	return &RequestAnimationFrame{js.Global.Get("Phaser").Get("RequestAnimationFrame").New(args)}
+	return &RequestAnimationFrame{js.Global.Get("Phaser").Get("RequestAnimationFrame").New(args...)}
 }
 
 // RequestAnimationFrame Binding conversion method to RequestAnimationFrame point
@@ -71,7 +71,7 @@ func (self *RequestAnimationFrame) Start() {
 
 // StartI Starts the requestAnimationFrame running or setTimeout if unavailable in browser
 func (self *RequestAnimationFrame) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // UpdateRAF The update method for the requestAnimationFrame
@@ -81,7 +81,7 @@ func (self *RequestAnimationFrame) UpdateRAF() {
 
 // UpdateRAFI The update method for the requestAnimationFrame
 func (self *RequestAnimationFrame) UpdateRAFI(args ...interface{}) {
-	self.Object.Call("updateRAF", args)
+	self.Object.Call("updateRAF", args...)
 }
 
 // UpdateSetTimeout The update method for the setTimeout.
@@ -91,7 +91,7 @@ func (self *RequestAnimationFrame) UpdateSetTimeout() {
 
 // UpdateSetTimeoutI The update method for the setTimeout.
 func (self *RequestAnimationFrame) UpdateSetTimeoutI(args ...interface{}) {
-	self.Object.Call("updateSetTimeout", args)
+	self.Object.Call("updateSetTimeout", args...)
 }
 
 // Stop Stops the requestAnimationFrame from running.
@@ -101,7 +101,7 @@ func (self *RequestAnimationFrame) Stop() {
 
 // StopI Stops the requestAnimationFrame from running.
 func (self *RequestAnimationFrame) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // IsSetTimeOut Is the browser using setTimeout?
@@ -111,7 +111,7 @@ func (self *RequestAnimationFrame) IsSetTimeOut() bool {
 
 // IsSetTimeOutI Is the browser using setTimeout?
 func (self *RequestAnimationFrame) IsSetTimeOutI(args ...interface{}) bool {
-	return self.Object.Call("isSetTimeOut", args).Bool()
+	return self.Object.Call("isSetTimeOut", args...).Bool()
 }
 
 // IsRAF Is the browser using requestAnimationFrame?
@@ -121,5 +121,5 @@ func (self *RequestAnimationFrame) IsRAF() bool {
 
 // IsRAFI Is the browser using requestAnimationFrame?
 func (self *RequestAnimationFrame) IsRAFI(args ...interface{}) bool {
-	return self.Object.Call("isRAF", args).Bool()
+	return self.Object.Call("isRAF", args...).Bool()
 }

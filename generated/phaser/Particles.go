@@ -18,7 +18,7 @@ func NewParticles(game *Game) *Particles {
 
 // NewParticlesI Phaser.Particles is the Particle Manager for the game. It is called during the game update loop and in turn updates any Emitters attached to it.
 func NewParticlesI(args ...interface{}) *Particles {
-	return &Particles{js.Global.Get("Phaser").Get("Particles").New(args)}
+	return &Particles{js.Global.Get("Phaser").Get("Particles").New(args...)}
 }
 
 // Particles Binding conversion method to Particles point
@@ -66,7 +66,7 @@ func (self *Particles) Add(emitter *Emitter) *Emitter {
 
 // AddI Adds a new Particle Emitter to the Particle Manager.
 func (self *Particles) AddI(args ...interface{}) *Emitter {
-	return &Emitter{self.Object.Call("add", args)}
+	return &Emitter{self.Object.Call("add", args...)}
 }
 
 // Remove Removes an existing Particle Emitter from the Particle Manager.
@@ -76,7 +76,7 @@ func (self *Particles) Remove(emitter *Emitter) {
 
 // RemoveI Removes an existing Particle Emitter from the Particle Manager.
 func (self *Particles) RemoveI(args ...interface{}) {
-	self.Object.Call("remove", args)
+	self.Object.Call("remove", args...)
 }
 
 // Update Called by the core game loop. Updates all Emitters who have their exists value set to true.
@@ -86,5 +86,5 @@ func (self *Particles) Update() {
 
 // UpdateI Called by the core game loop. Updates all Emitters who have their exists value set to true.
 func (self *Particles) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }

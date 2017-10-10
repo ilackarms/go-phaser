@@ -59,7 +59,7 @@ func NewImageCollection5O(name string, firstgid int, width int, height int, marg
 //
 // Image Collections are normally created automatically when Tiled data is loaded.
 func NewImageCollectionI(args ...interface{}) *ImageCollection {
-	return &ImageCollection{js.Global.Get("Phaser").Get("ImageCollection").New(args)}
+	return &ImageCollection{js.Global.Get("Phaser").Get("ImageCollection").New(args...)}
 }
 
 // ImageCollection Binding conversion method to ImageCollection point
@@ -179,7 +179,7 @@ func (self *ImageCollection) ContainsImageIndex(imageIndex int) bool {
 
 // ContainsImageIndexI Returns true if and only if this image collection contains the given image index.
 func (self *ImageCollection) ContainsImageIndexI(args ...interface{}) bool {
-	return self.Object.Call("containsImageIndex", args).Bool()
+	return self.Object.Call("containsImageIndex", args...).Bool()
 }
 
 // AddImage Add an image to this Image Collection.
@@ -189,5 +189,5 @@ func (self *ImageCollection) AddImage(gid int, image string) {
 
 // AddImageI Add an image to this Image Collection.
 func (self *ImageCollection) AddImageI(args ...interface{}) {
-	self.Object.Call("addImage", args)
+	self.Object.Call("addImage", args...)
 }

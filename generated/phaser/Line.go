@@ -38,7 +38,7 @@ func NewLine4O(x1 int, y1 int, x2 int, y2 int) *Line {
 
 // NewLineI Creates a new Line object with a start and an end point.
 func NewLineI(args ...interface{}) *Line {
-	return &Line{js.Global.Get("Phaser").Get("Line").New(args)}
+	return &Line{js.Global.Get("Phaser").Get("Line").New(args...)}
 }
 
 // Line Binding conversion method to Line point
@@ -256,7 +256,7 @@ func (self *Line) SetTo4O(x1 int, y1 int, x2 int, y2 int) *Line {
 
 // SetToI Sets the components of the Line to the specified values.
 func (self *Line) SetToI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("setTo", args)}
+	return &Line{self.Object.Call("setTo", args...)}
 }
 
 // FromSprite Sets the line to match the x/y coordinates of the two given sprites.
@@ -274,7 +274,7 @@ func (self *Line) FromSprite1O(startSprite *Sprite, endSprite *Sprite, useCenter
 // FromSpriteI Sets the line to match the x/y coordinates of the two given sprites.
 // Can optionally be calculated from their center coordinates.
 func (self *Line) FromSpriteI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("fromSprite", args)}
+	return &Line{self.Object.Call("fromSprite", args...)}
 }
 
 // FromAngle Sets this line to start at the given `x` and `y` coordinates and for the segment to extend at `angle` for the given `length`.
@@ -284,7 +284,7 @@ func (self *Line) FromAngle(x int, y int, angle int, length int) *Line {
 
 // FromAngleI Sets this line to start at the given `x` and `y` coordinates and for the segment to extend at `angle` for the given `length`.
 func (self *Line) FromAngleI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("fromAngle", args)}
+	return &Line{self.Object.Call("fromAngle", args...)}
 }
 
 // Rotate Rotates the line by the amount specified in `angle`.
@@ -314,7 +314,7 @@ func (self *Line) Rotate1O(angle int, asDegrees bool) *Line {
 //
 // If you wish to rotate the ends of the Line then see Line.start.rotate or Line.end.rotate.
 func (self *Line) RotateI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("rotate", args)}
+	return &Line{self.Object.Call("rotate", args...)}
 }
 
 // RotateAround Rotates the line by the amount specified in `angle`.
@@ -335,7 +335,7 @@ func (self *Line) RotateAround1O(x int, y int, angle int, asDegrees bool) *Line 
 //
 // Rotation takes place around the coordinates given.
 func (self *Line) RotateAroundI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("rotateAround", args)}
+	return &Line{self.Object.Call("rotateAround", args...)}
 }
 
 // Intersects Checks for intersection between this line and another Line.
@@ -363,7 +363,7 @@ func (self *Line) Intersects2O(line *Line, asSegment bool, result *Point) *Point
 // If asSegment is true it will check for segment intersection. If asSegment is false it will check for line intersection.
 // Returns the intersection segment of AB and EF as a Point, or null if there is no intersection.
 func (self *Line) IntersectsI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("intersects", args)}
+	return &Point{self.Object.Call("intersects", args...)}
 }
 
 // Reflect Returns the reflected angle between two lines.
@@ -375,7 +375,7 @@ func (self *Line) Reflect(line *Line) int {
 // ReflectI Returns the reflected angle between two lines.
 // This is the outgoing angle based on the angle of this line and the normalAngle of the given line.
 func (self *Line) ReflectI(args ...interface{}) int {
-	return self.Object.Call("reflect", args).Int()
+	return self.Object.Call("reflect", args...).Int()
 }
 
 // MidPoint Returns a Point object where the x and y values correspond to the center (or midpoint) of the Line segment.
@@ -390,7 +390,7 @@ func (self *Line) MidPoint1O(out *Point) *Point {
 
 // MidPointI Returns a Point object where the x and y values correspond to the center (or midpoint) of the Line segment.
 func (self *Line) MidPointI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("midPoint", args)}
+	return &Point{self.Object.Call("midPoint", args...)}
 }
 
 // CenterOn Centers this Line on the given coordinates.
@@ -406,7 +406,7 @@ func (self *Line) CenterOn(x int, y int) *Line {
 // The line is centered by positioning the start and end points so that the lines midpoint matches
 // the coordinates given.
 func (self *Line) CenterOnI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("centerOn", args)}
+	return &Line{self.Object.Call("centerOn", args...)}
 }
 
 // PointOnLine Tests if the given coordinates fall on this line. See pointOnSegment to test against just the line segment.
@@ -416,7 +416,7 @@ func (self *Line) PointOnLine(x int, y int) bool {
 
 // PointOnLineI Tests if the given coordinates fall on this line. See pointOnSegment to test against just the line segment.
 func (self *Line) PointOnLineI(args ...interface{}) bool {
-	return self.Object.Call("pointOnLine", args).Bool()
+	return self.Object.Call("pointOnLine", args...).Bool()
 }
 
 // PointOnSegment Tests if the given coordinates fall on this line and within the segment. See pointOnLine to test against just the line.
@@ -426,7 +426,7 @@ func (self *Line) PointOnSegment(x int, y int) bool {
 
 // PointOnSegmentI Tests if the given coordinates fall on this line and within the segment. See pointOnLine to test against just the line.
 func (self *Line) PointOnSegmentI(args ...interface{}) bool {
-	return self.Object.Call("pointOnSegment", args).Bool()
+	return self.Object.Call("pointOnSegment", args...).Bool()
 }
 
 // Random Picks a random point from anywhere on the Line segment and returns it.
@@ -441,7 +441,7 @@ func (self *Line) Random1O(out interface{}) *Point {
 
 // RandomI Picks a random point from anywhere on the Line segment and returns it.
 func (self *Line) RandomI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("random", args)}
+	return &Point{self.Object.Call("random", args...)}
 }
 
 // CoordinatesOnLine Using Bresenham's line algorithm this will return an array of all coordinates on this line.
@@ -483,7 +483,7 @@ func (self *Line) CoordinatesOnLine2O(stepRate int, results []interface{}) []int
 // CoordinatesOnLineI Using Bresenham's line algorithm this will return an array of all coordinates on this line.
 // The start and end points are rounded before this runs as the algorithm works on integers.
 func (self *Line) CoordinatesOnLineI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("coordinatesOnLine", args)
+	array00 := self.Object.Call("coordinatesOnLine", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -499,7 +499,7 @@ func (self *Line) Clone(output *Line) *Line {
 
 // CloneI Returns a new Line object with the same values for the start and end properties as this Line object.
 func (self *Line) CloneI(args ...interface{}) *Line {
-	return &Line{self.Object.Call("clone", args)}
+	return &Line{self.Object.Call("clone", args...)}
 }
 
 // IntersectsPoints Checks for intersection between two lines as defined by the given start and end points.
@@ -531,7 +531,7 @@ func (self *Line) IntersectsPoints2O(a *Point, b *Point, e *Point, f *Point, asS
 // Returns the intersection segment of AB and EF as a Point, or null if there is no intersection.
 // Adapted from code by Keith Hair
 func (self *Line) IntersectsPointsI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("intersectsPoints", args)}
+	return &Point{self.Object.Call("intersectsPoints", args...)}
 }
 
 // IntersectsRectangle Checks for intersection between the Line and a Rectangle shape, or a rectangle-like
@@ -557,5 +557,5 @@ func (self *Line) IntersectsRectangle(line *Line, rect interface{}) bool {
 //
 // The for the purposes of this function rectangles are considered 'solid'.
 func (self *Line) IntersectsRectangleI(args ...interface{}) bool {
-	return self.Object.Call("intersectsRectangle", args).Bool()
+	return self.Object.Call("intersectsRectangle", args...).Bool()
 }

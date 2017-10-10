@@ -18,7 +18,7 @@ func NewGlMatrix() *GlMatrix {
 
 // NewGlMatrixI empty description
 func NewGlMatrixI(args ...interface{}) *GlMatrix {
-	return &GlMatrix{js.Global.Get("glMatrix").New(args)}
+	return &GlMatrix{js.Global.Get("glMatrix").New(args...)}
 }
 
 // GlMatrix Binding conversion method to GlMatrix point

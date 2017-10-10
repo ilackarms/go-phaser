@@ -195,7 +195,7 @@ func NewButton9O(game *Game, x int, y int, key string, callback interface{}, cal
 //
 // Frames can be specified as either an integer (the frame ID) or a string (the frame name); the same values that can be used with a Sprite constructor.
 func NewButtonI(args ...interface{}) *Button {
-	return &Button{js.Global.Get("Phaser").Get("Button").New(args)}
+	return &Button{js.Global.Get("Phaser").Get("Button").New(args...)}
 }
 
 // Button Binding conversion method to Button point
@@ -1209,7 +1209,7 @@ func (self *Button) ClearFrames() {
 
 // ClearFramesI Clears all of the frames set on this Button.
 func (self *Button) ClearFramesI(args ...interface{}) {
-	self.Object.Call("clearFrames", args)
+	self.Object.Call("clearFrames", args...)
 }
 
 // RemovedFromWorld Called when this Button is removed from the World.
@@ -1219,7 +1219,7 @@ func (self *Button) RemovedFromWorld() {
 
 // RemovedFromWorldI Called when this Button is removed from the World.
 func (self *Button) RemovedFromWorldI(args ...interface{}) {
-	self.Object.Call("removedFromWorld", args)
+	self.Object.Call("removedFromWorld", args...)
 }
 
 // SetStateFrame Set the frame name/ID for the given state.
@@ -1229,7 +1229,7 @@ func (self *Button) SetStateFrame(state interface{}, frame interface{}, switchIm
 
 // SetStateFrameI Set the frame name/ID for the given state.
 func (self *Button) SetStateFrameI(args ...interface{}) {
-	self.Object.Call("setStateFrame", args)
+	self.Object.Call("setStateFrame", args...)
 }
 
 // ChangeStateFrame Change the frame to that of the given state, _if_ the state has a frame assigned _and_ if the frames are not currently "frozen".
@@ -1239,7 +1239,7 @@ func (self *Button) ChangeStateFrame(state interface{}) bool {
 
 // ChangeStateFrameI Change the frame to that of the given state, _if_ the state has a frame assigned _and_ if the frames are not currently "frozen".
 func (self *Button) ChangeStateFrameI(args ...interface{}) bool {
-	return self.Object.Call("changeStateFrame", args).Bool()
+	return self.Object.Call("changeStateFrame", args...).Bool()
 }
 
 // SetFrames Used to manually set the frames that will be used for the different states of the Button.
@@ -1281,7 +1281,7 @@ func (self *Button) SetFrames4O(overFrame interface{}, outFrame interface{}, dow
 //
 // Frames can be specified as either an integer (the frame ID) or a string (the frame name); these are the same values that can be used with a Sprite constructor.
 func (self *Button) SetFramesI(args ...interface{}) {
-	self.Object.Call("setFrames", args)
+	self.Object.Call("setFrames", args...)
 }
 
 // SetStateSound Set the sound/marker for the given state.
@@ -1301,7 +1301,7 @@ func (self *Button) SetStateSound2O(state interface{}, sound interface{}, marker
 
 // SetStateSoundI Set the sound/marker for the given state.
 func (self *Button) SetStateSoundI(args ...interface{}) {
-	self.Object.Call("setStateSound", args)
+	self.Object.Call("setStateSound", args...)
 }
 
 // PlayStateSound Play the sound for the given state, _if_ the state has a sound assigned.
@@ -1311,7 +1311,7 @@ func (self *Button) PlayStateSound(state interface{}) bool {
 
 // PlayStateSoundI Play the sound for the given state, _if_ the state has a sound assigned.
 func (self *Button) PlayStateSoundI(args ...interface{}) bool {
-	return self.Object.Call("playStateSound", args).Bool()
+	return self.Object.Call("playStateSound", args...).Bool()
 }
 
 // SetSounds Sets the sounds to be played whenever this Button is interacted with. Sounds can be either full Sound objects, or markers pointing to a section of a Sound object.
@@ -1391,7 +1391,7 @@ func (self *Button) SetSounds8O(overSound interface{}, overMarker string, downSo
 //
 // Call this function with no parameters to reset all sounds on this Button.
 func (self *Button) SetSoundsI(args ...interface{}) {
-	self.Object.Call("setSounds", args)
+	self.Object.Call("setSounds", args...)
 }
 
 // SetOverSound The Sound to be played when a Pointer moves over this Button.
@@ -1406,7 +1406,7 @@ func (self *Button) SetOverSound1O(sound interface{}, marker string) {
 
 // SetOverSoundI The Sound to be played when a Pointer moves over this Button.
 func (self *Button) SetOverSoundI(args ...interface{}) {
-	self.Object.Call("setOverSound", args)
+	self.Object.Call("setOverSound", args...)
 }
 
 // SetOutSound The Sound to be played when a Pointer moves out of this Button.
@@ -1421,7 +1421,7 @@ func (self *Button) SetOutSound1O(sound interface{}, marker string) {
 
 // SetOutSoundI The Sound to be played when a Pointer moves out of this Button.
 func (self *Button) SetOutSoundI(args ...interface{}) {
-	self.Object.Call("setOutSound", args)
+	self.Object.Call("setOutSound", args...)
 }
 
 // SetDownSound The Sound to be played when a Pointer presses down on this Button.
@@ -1436,7 +1436,7 @@ func (self *Button) SetDownSound1O(sound interface{}, marker string) {
 
 // SetDownSoundI The Sound to be played when a Pointer presses down on this Button.
 func (self *Button) SetDownSoundI(args ...interface{}) {
-	self.Object.Call("setDownSound", args)
+	self.Object.Call("setDownSound", args...)
 }
 
 // SetUpSound The Sound to be played when a Pointer has pressed down and is released from this Button.
@@ -1451,7 +1451,7 @@ func (self *Button) SetUpSound1O(sound interface{}, marker string) {
 
 // SetUpSoundI The Sound to be played when a Pointer has pressed down and is released from this Button.
 func (self *Button) SetUpSoundI(args ...interface{}) {
-	self.Object.Call("setUpSound", args)
+	self.Object.Call("setUpSound", args...)
 }
 
 // OnInputOverHandler Internal function that handles input events.
@@ -1461,7 +1461,7 @@ func (self *Button) OnInputOverHandler(sprite *Button, pointer *Pointer) {
 
 // OnInputOverHandlerI Internal function that handles input events.
 func (self *Button) OnInputOverHandlerI(args ...interface{}) {
-	self.Object.Call("onInputOverHandler", args)
+	self.Object.Call("onInputOverHandler", args...)
 }
 
 // OnInputOutHandler Internal function that handles input events.
@@ -1471,7 +1471,7 @@ func (self *Button) OnInputOutHandler(sprite *Button, pointer *Pointer) {
 
 // OnInputOutHandlerI Internal function that handles input events.
 func (self *Button) OnInputOutHandlerI(args ...interface{}) {
-	self.Object.Call("onInputOutHandler", args)
+	self.Object.Call("onInputOutHandler", args...)
 }
 
 // OnInputDownHandler Internal function that handles input events.
@@ -1481,7 +1481,7 @@ func (self *Button) OnInputDownHandler(sprite *Button, pointer *Pointer) {
 
 // OnInputDownHandlerI Internal function that handles input events.
 func (self *Button) OnInputDownHandlerI(args ...interface{}) {
-	self.Object.Call("onInputDownHandler", args)
+	self.Object.Call("onInputDownHandler", args...)
 }
 
 // OnInputUpHandler Internal function that handles input events.
@@ -1491,7 +1491,7 @@ func (self *Button) OnInputUpHandler(sprite *Button, pointer *Pointer) {
 
 // OnInputUpHandlerI Internal function that handles input events.
 func (self *Button) OnInputUpHandlerI(args ...interface{}) {
-	self.Object.Call("onInputUpHandler", args)
+	self.Object.Call("onInputUpHandler", args...)
 }
 
 // PreUpdate Automatically called by World.preUpdate.
@@ -1501,7 +1501,7 @@ func (self *Button) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *Button) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // SetTexture Sets the texture of the sprite. Be warned that this doesn't remove or destroy the previous
@@ -1522,7 +1522,7 @@ func (self *Button) SetTexture1O(texture *Texture, destroy bool) {
 //
 // texture this Sprite was using.
 func (self *Button) SetTextureI(args ...interface{}) {
-	self.Object.Call("setTexture", args)
+	self.Object.Call("setTexture", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -1532,7 +1532,7 @@ func (self *Button) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *Button) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GetBounds Returns the bounds of the Sprite as a rectangle.
@@ -1574,7 +1574,7 @@ func (self *Button) GetBounds(matrix *Matrix) *Rectangle {
 //
 // on the root most object in this Sprites display list first.
 func (self *Button) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
@@ -1584,7 +1584,7 @@ func (self *Button) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
 func (self *Button) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -1599,7 +1599,7 @@ func (self *Button) _renderWebGL1O(renderSession *RenderSession, matrix *Matrix)
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *Button) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -1614,7 +1614,7 @@ func (self *Button) _renderCanvas1O(renderSession *RenderSession, matrix *Matrix
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *Button) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // AddChild Adds a child to the container.
@@ -1624,7 +1624,7 @@ func (self *Button) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Button) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -1634,7 +1634,7 @@ func (self *Button) AddChildAt(child *DisplayObject, index int) *DisplayObject {
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Button) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -1644,7 +1644,7 @@ func (self *Button) SwapChildren(child *DisplayObject, child2 *DisplayObject) {
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Button) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -1654,7 +1654,7 @@ func (self *Button) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Button) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -1664,7 +1664,7 @@ func (self *Button) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Button) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -1674,7 +1674,7 @@ func (self *Button) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Button) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -1684,7 +1684,7 @@ func (self *Button) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Button) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -1694,7 +1694,7 @@ func (self *Button) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Button) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -1704,7 +1704,7 @@ func (self *Button) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Button) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -1714,7 +1714,7 @@ func (self *Button) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Button) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -1728,7 +1728,7 @@ func (self *Button) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *Button) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate Internal method called by the World postUpdate cycle.
@@ -1738,7 +1738,7 @@ func (self *Button) PostUpdate() {
 
 // PostUpdateI Internal method called by the World postUpdate cycle.
 func (self *Button) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Play Plays an Animation.
@@ -1788,7 +1788,7 @@ func (self *Button) Play3O(name string, frameRate int, loop bool, killOnComplete
 // If the animation is already playing calling this again won't do anything.
 // If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
 func (self *Button) PlayI(args ...interface{}) *Animation {
-	return &Animation{self.Object.Call("play", args)}
+	return &Animation{self.Object.Call("play", args...)}
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -1958,7 +1958,7 @@ func (self *Button) AlignIn3O(container interface{}, position int, offsetX int, 
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *Button) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -2133,7 +2133,7 @@ func (self *Button) AlignTo3O(parent interface{}, position int, offsetX int, off
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *Button) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // BringToTop Brings this Game Object to the top of its parents display list.
@@ -2151,7 +2151,7 @@ func (self *Button) BringToTop() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Button) BringToTopI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("bringToTop", args)}
+	return &DisplayObject{self.Object.Call("bringToTop", args...)}
 }
 
 // SendToBack Sends this Game Object to the bottom of its parents display list.
@@ -2169,7 +2169,7 @@ func (self *Button) SendToBack() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Button) SendToBackI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("sendToBack", args)}
+	return &DisplayObject{self.Object.Call("sendToBack", args...)}
 }
 
 // MoveUp Moves this Game Object up one place in its parents display list.
@@ -2187,7 +2187,7 @@ func (self *Button) MoveUp() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Button) MoveUpI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveUp", args)}
+	return &DisplayObject{self.Object.Call("moveUp", args...)}
 }
 
 // MoveDown Moves this Game Object down one place in its parents display list.
@@ -2205,7 +2205,7 @@ func (self *Button) MoveDown() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Button) MoveDownI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveDown", args)}
+	return &DisplayObject{self.Object.Call("moveDown", args...)}
 }
 
 // Crop Crop allows you to crop the texture being used to display this Game Object.
@@ -2250,7 +2250,7 @@ func (self *Button) Crop1O(rect *Rectangle, copy bool) {
 // A reference to the rectangle is stored in `cropRect` unless the `copy` parameter is `true`,
 // in which case the values are duplicated to a local object.
 func (self *Button) CropI(args ...interface{}) {
-	self.Object.Call("crop", args)
+	self.Object.Call("crop", args...)
 }
 
 // UpdateCrop If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -2262,7 +2262,7 @@ func (self *Button) UpdateCrop() {
 // UpdateCropI If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
 // or the rectangle it references, then you need to update the crop frame by calling this method.
 func (self *Button) UpdateCropI(args ...interface{}) {
-	self.Object.Call("updateCrop", args)
+	self.Object.Call("updateCrop", args...)
 }
 
 // Destroy Destroys the Game Object. This removes it from its parent group, destroys the input, event and animation handlers if present
@@ -2306,7 +2306,7 @@ func (self *Button) Destroy2O(destroyChildren bool, destroyTexture bool) {
 // You can optionally also destroy the BaseTexture this Game Object is using. Be careful if you've
 // more than one Game Object sharing the same BaseTexture.
 func (self *Button) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -2333,7 +2333,7 @@ func (self *Button) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *Button) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -2357,7 +2357,7 @@ func (self *Button) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *Button) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // LoadTexture Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
@@ -2437,7 +2437,7 @@ func (self *Button) LoadTexture2O(key interface{}, frame interface{}, stopAnimat
 //
 // Note: You cannot use a RenderTexture as a texture for a TileSprite.
 func (self *Button) LoadTextureI(args ...interface{}) {
-	self.Object.Call("loadTexture", args)
+	self.Object.Call("loadTexture", args...)
 }
 
 // SetFrame Sets the texture frame the Game Object uses for rendering.
@@ -2451,7 +2451,7 @@ func (self *Button) SetFrame(frame *Frame) {
 //
 // This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
 func (self *Button) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // ResizeFrame Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -2467,7 +2467,7 @@ func (self *Button) ResizeFrame(parent interface{}, width int, height int) {
 // You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
 // it can be useful to adjust the dimensions directly in this way.
 func (self *Button) ResizeFrameI(args ...interface{}) {
-	self.Object.Call("resizeFrame", args)
+	self.Object.Call("resizeFrame", args...)
 }
 
 // ResetFrame Resets the texture frame dimensions that the Game Object uses for rendering.
@@ -2477,7 +2477,7 @@ func (self *Button) ResetFrame() {
 
 // ResetFrameI Resets the texture frame dimensions that the Game Object uses for rendering.
 func (self *Button) ResetFrameI(args ...interface{}) {
-	self.Object.Call("resetFrame", args)
+	self.Object.Call("resetFrame", args...)
 }
 
 // Overlap Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
@@ -2499,7 +2499,7 @@ func (self *Button) Overlap(displayObject interface{}) bool {
 // Therefore it's relatively expensive to use in large quantities, i.e. with lots of Sprites at a high frequency.
 // It should be fine for low-volume testing where physics isn't required.
 func (self *Button) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }
 
 // Reset Resets the Game Object.
@@ -2535,7 +2535,7 @@ func (self *Button) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *Button) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }
 
 // CheckTransform Adjust scaling limits, if set, to this Game Object.
@@ -2545,7 +2545,7 @@ func (self *Button) CheckTransform(wt *Matrix) {
 
 // CheckTransformI Adjust scaling limits, if set, to this Game Object.
 func (self *Button) CheckTransformI(args ...interface{}) {
-	self.Object.Call("checkTransform", args)
+	self.Object.Call("checkTransform", args...)
 }
 
 // SetScaleMinMax Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
@@ -2587,5 +2587,5 @@ func (self *Button) SetScaleMinMax(minX interface{}, minY interface{}, maxX inte
 //
 // Call `setScaleMinMax(null)` to clear all previously set values.
 func (self *Button) SetScaleMinMaxI(args ...interface{}) {
-	self.Object.Call("setScaleMinMax", args)
+	self.Object.Call("setScaleMinMax", args...)
 }

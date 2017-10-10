@@ -39,7 +39,7 @@ func NewGamepad(game *Game) *Gamepad {
 // via prefs flags (about:config, search gamepad). The browsers map the same controllers differently.
 // This class has constants for Windows 7 Chrome mapping of XBOX 360 controller.
 func NewGamepadI(args ...interface{}) *Gamepad {
-	return &Gamepad{js.Global.Get("Phaser").Get("Gamepad").New(args)}
+	return &Gamepad{js.Global.Get("Phaser").Get("Gamepad").New(args...)}
 }
 
 // Gamepad Binding conversion method to Gamepad point
@@ -217,7 +217,7 @@ func (self *Gamepad) AddCallbacks(context interface{}, callbacks interface{}) {
 
 // AddCallbacksI Add callbacks to the main Gamepad handler to handle connect/disconnect/button down/button up/axis change/float value buttons.
 func (self *Gamepad) AddCallbacksI(args ...interface{}) {
-	self.Object.Call("addCallbacks", args)
+	self.Object.Call("addCallbacks", args...)
 }
 
 // Start Starts the Gamepad event handling.
@@ -229,7 +229,7 @@ func (self *Gamepad) Start() {
 // StartI Starts the Gamepad event handling.
 // This MUST be called manually before Phaser will start polling the Gamepad API.
 func (self *Gamepad) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Update Main gamepad update loop. Should not be called manually.
@@ -239,7 +239,7 @@ func (self *Gamepad) Update() {
 
 // UpdateI Main gamepad update loop. Should not be called manually.
 func (self *Gamepad) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // _pollGamepads Updating connected gamepads (for Google Chrome). Should not be called manually.
@@ -249,7 +249,7 @@ func (self *Gamepad) _pollGamepads() {
 
 // _pollGamepadsI Updating connected gamepads (for Google Chrome). Should not be called manually.
 func (self *Gamepad) _pollGamepadsI(args ...interface{}) {
-	self.Object.Call("_pollGamepads", args)
+	self.Object.Call("_pollGamepads", args...)
 }
 
 // SetDeadZones Sets the deadZone variable for all four gamepads
@@ -259,7 +259,7 @@ func (self *Gamepad) SetDeadZones() {
 
 // SetDeadZonesI Sets the deadZone variable for all four gamepads
 func (self *Gamepad) SetDeadZonesI(args ...interface{}) {
-	self.Object.Call("setDeadZones", args)
+	self.Object.Call("setDeadZones", args...)
 }
 
 // Stop Stops the Gamepad event handling.
@@ -269,7 +269,7 @@ func (self *Gamepad) Stop() {
 
 // StopI Stops the Gamepad event handling.
 func (self *Gamepad) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Reset Reset all buttons/axes of all gamepads
@@ -279,7 +279,7 @@ func (self *Gamepad) Reset() {
 
 // ResetI Reset all buttons/axes of all gamepads
 func (self *Gamepad) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // JustPressed Returns the "just pressed" state of a button from ANY gamepad connected. Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
@@ -294,7 +294,7 @@ func (self *Gamepad) JustPressed1O(buttonCode int, duration int) bool {
 
 // JustPressedI Returns the "just pressed" state of a button from ANY gamepad connected. Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
 func (self *Gamepad) JustPressedI(args ...interface{}) bool {
-	return self.Object.Call("justPressed", args).Bool()
+	return self.Object.Call("justPressed", args...).Bool()
 }
 
 // IsDown Returns true if the button is currently pressed down, on ANY gamepad.
@@ -304,7 +304,7 @@ func (self *Gamepad) IsDown(buttonCode int) bool {
 
 // IsDownI Returns true if the button is currently pressed down, on ANY gamepad.
 func (self *Gamepad) IsDownI(args ...interface{}) bool {
-	return self.Object.Call("isDown", args).Bool()
+	return self.Object.Call("isDown", args...).Bool()
 }
 
 // Destroy Destroys this object and the associated event listeners.
@@ -314,5 +314,5 @@ func (self *Gamepad) Destroy() {
 
 // DestroyI Destroys this object and the associated event listeners.
 func (self *Gamepad) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

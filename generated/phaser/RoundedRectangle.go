@@ -51,7 +51,7 @@ func NewRoundedRectangle5O(x int, y int, width int, height int, radius int) *Rou
 // NewRoundedRectangleI The Rounded Rectangle object is an area defined by its position and has nice rounded corners,
 // as indicated by its top-left corner point (x, y) and by its width and its height.
 func NewRoundedRectangleI(args ...interface{}) *RoundedRectangle {
-	return &RoundedRectangle{js.Global.Get("Phaser").Get("RoundedRectangle").New(args)}
+	return &RoundedRectangle{js.Global.Get("Phaser").Get("RoundedRectangle").New(args...)}
 }
 
 // RoundedRectangle Binding conversion method to RoundedRectangle point
@@ -131,7 +131,7 @@ func (self *RoundedRectangle) Clone() *RoundedRectangle {
 // CloneI Returns a new RoundedRectangle object with the same values for the x, y, width, height and
 // radius properties as this RoundedRectangle object.
 func (self *RoundedRectangle) CloneI(args ...interface{}) *RoundedRectangle {
-	return &RoundedRectangle{self.Object.Call("clone", args)}
+	return &RoundedRectangle{self.Object.Call("clone", args...)}
 }
 
 // Contains Determines whether the specified coordinates are contained within the region defined by this Rounded Rectangle object.
@@ -141,5 +141,5 @@ func (self *RoundedRectangle) Contains(x int, y int) bool {
 
 // ContainsI Determines whether the specified coordinates are contained within the region defined by this Rounded Rectangle object.
 func (self *RoundedRectangle) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }

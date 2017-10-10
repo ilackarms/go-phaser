@@ -24,7 +24,7 @@ func NewMath() *Math {
 //
 // These are normally accessed through `game.math`.
 func NewMathI(args ...interface{}) *Math {
-	return &Math{js.Global.Get("Phaser").Get("Math").New(args)}
+	return &Math{js.Global.Get("Phaser").Get("Math").New(args...)}
 }
 
 // Math Binding conversion method to Math point
@@ -52,7 +52,7 @@ func (self *Math) Between(min int, max int) int {
 
 // BetweenI Returns a number between the `min` and `max` values.
 func (self *Math) BetweenI(args ...interface{}) int {
-	return self.Object.Call("between", args).Int()
+	return self.Object.Call("between", args...).Int()
 }
 
 // FuzzyEqual Two number are fuzzyEqual if their difference is less than epsilon.
@@ -67,7 +67,7 @@ func (self *Math) FuzzyEqual1O(a int, b int, epsilon int) bool {
 
 // FuzzyEqualI Two number are fuzzyEqual if their difference is less than epsilon.
 func (self *Math) FuzzyEqualI(args ...interface{}) bool {
-	return self.Object.Call("fuzzyEqual", args).Bool()
+	return self.Object.Call("fuzzyEqual", args...).Bool()
 }
 
 // FuzzyLessThan `a` is fuzzyLessThan `b` if it is less than b + epsilon.
@@ -82,7 +82,7 @@ func (self *Math) FuzzyLessThan1O(a int, b int, epsilon int) bool {
 
 // FuzzyLessThanI `a` is fuzzyLessThan `b` if it is less than b + epsilon.
 func (self *Math) FuzzyLessThanI(args ...interface{}) bool {
-	return self.Object.Call("fuzzyLessThan", args).Bool()
+	return self.Object.Call("fuzzyLessThan", args...).Bool()
 }
 
 // FuzzyGreaterThan `a` is fuzzyGreaterThan `b` if it is more than b - epsilon.
@@ -97,7 +97,7 @@ func (self *Math) FuzzyGreaterThan1O(a int, b int, epsilon int) bool {
 
 // FuzzyGreaterThanI `a` is fuzzyGreaterThan `b` if it is more than b - epsilon.
 func (self *Math) FuzzyGreaterThanI(args ...interface{}) bool {
-	return self.Object.Call("fuzzyGreaterThan", args).Bool()
+	return self.Object.Call("fuzzyGreaterThan", args...).Bool()
 }
 
 // FuzzyCeil Applies a fuzzy ceil to the given value.
@@ -112,7 +112,7 @@ func (self *Math) FuzzyCeil1O(val int, epsilon int) int {
 
 // FuzzyCeilI Applies a fuzzy ceil to the given value.
 func (self *Math) FuzzyCeilI(args ...interface{}) int {
-	return self.Object.Call("fuzzyCeil", args).Int()
+	return self.Object.Call("fuzzyCeil", args...).Int()
 }
 
 // FuzzyFloor Applies a fuzzy floor to the given value.
@@ -127,7 +127,7 @@ func (self *Math) FuzzyFloor1O(val int, epsilon int) int {
 
 // FuzzyFloorI Applies a fuzzy floor to the given value.
 func (self *Math) FuzzyFloorI(args ...interface{}) int {
-	return self.Object.Call("fuzzyFloor", args).Int()
+	return self.Object.Call("fuzzyFloor", args...).Int()
 }
 
 // Average Averages all values passed to the function and returns the result.
@@ -137,7 +137,7 @@ func (self *Math) Average() int {
 
 // AverageI Averages all values passed to the function and returns the result.
 func (self *Math) AverageI(args ...interface{}) int {
-	return self.Object.Call("average", args).Int()
+	return self.Object.Call("average", args...).Int()
 }
 
 // Shear empty description
@@ -147,7 +147,7 @@ func (self *Math) Shear(n int) int {
 
 // ShearI empty description
 func (self *Math) ShearI(args ...interface{}) int {
-	return self.Object.Call("shear", args).Int()
+	return self.Object.Call("shear", args...).Int()
 }
 
 // SnapTo Snap a value to nearest grid slice, using rounding.
@@ -168,7 +168,7 @@ func (self *Math) SnapTo1O(input int, gap int, start int) int {
 //
 // Example: if you have an interval gap of 5 and a position of 12... you will snap to 10 whereas 14 will snap to 15.
 func (self *Math) SnapToI(args ...interface{}) int {
-	return self.Object.Call("snapTo", args).Int()
+	return self.Object.Call("snapTo", args...).Int()
 }
 
 // SnapToFloor Snap a value to nearest grid slice, using floor.
@@ -192,7 +192,7 @@ func (self *Math) SnapToFloor1O(input int, gap int, start int) int {
 // Example: if you have an interval gap of 5 and a position of 12... you will snap to 10.
 // As will 14 snap to 10... but 16 will snap to 15.
 func (self *Math) SnapToFloorI(args ...interface{}) int {
-	return self.Object.Call("snapToFloor", args).Int()
+	return self.Object.Call("snapToFloor", args...).Int()
 }
 
 // SnapToCeil Snap a value to nearest grid slice, using ceil.
@@ -216,7 +216,7 @@ func (self *Math) SnapToCeil1O(input int, gap int, start int) int {
 // Example: if you have an interval gap of 5 and a position of 12... you will snap to 15.
 // As will 14 will snap to 15... but 16 will snap to 20.
 func (self *Math) SnapToCeilI(args ...interface{}) int {
-	return self.Object.Call("snapToCeil", args).Int()
+	return self.Object.Call("snapToCeil", args...).Int()
 }
 
 // RoundTo Round to some place comparative to a `base`, default is 10 for decimal place.
@@ -340,7 +340,7 @@ func (self *Math) RoundTo2O(value int, place int, base int) int {
 // Note what occurs when we round to the 3rd space (8ths place), 100100000, this is to be assumed
 // because we are rounding 100011.1011011011011011 which rounds up.
 func (self *Math) RoundToI(args ...interface{}) int {
-	return self.Object.Call("roundTo", args).Int()
+	return self.Object.Call("roundTo", args...).Int()
 }
 
 // FloorTo Floors to some place comparative to a `base`, default is 10 for decimal place.
@@ -364,7 +364,7 @@ func (self *Math) FloorTo2O(value int, place int, base int) int {
 // FloorToI Floors to some place comparative to a `base`, default is 10 for decimal place.
 // The `place` is represented by the power applied to `base` to get that place.
 func (self *Math) FloorToI(args ...interface{}) int {
-	return self.Object.Call("floorTo", args).Int()
+	return self.Object.Call("floorTo", args...).Int()
 }
 
 // CeilTo Ceils to some place comparative to a `base`, default is 10 for decimal place.
@@ -388,7 +388,7 @@ func (self *Math) CeilTo2O(value int, place int, base int) int {
 // CeilToI Ceils to some place comparative to a `base`, default is 10 for decimal place.
 // The `place` is represented by the power applied to `base` to get that place.
 func (self *Math) CeilToI(args ...interface{}) int {
-	return self.Object.Call("ceilTo", args).Int()
+	return self.Object.Call("ceilTo", args...).Int()
 }
 
 // RotateToAngle Rotates currentAngle towards targetAngle, taking the shortest rotation distance.
@@ -406,7 +406,7 @@ func (self *Math) RotateToAngle1O(currentAngle int, targetAngle int, lerp int) i
 // RotateToAngleI Rotates currentAngle towards targetAngle, taking the shortest rotation distance.
 // The lerp argument is the amount to rotate by in this call.
 func (self *Math) RotateToAngleI(args ...interface{}) int {
-	return self.Object.Call("rotateToAngle", args).Int()
+	return self.Object.Call("rotateToAngle", args...).Int()
 }
 
 // GetShortestAngle Gets the shortest angle between `angle1` and `angle2`.
@@ -430,7 +430,7 @@ func (self *Math) GetShortestAngle(angle1 int, angle2 int) int {
 // greater than 0 then it's a counter-clockwise rotation, if < 0 then it's
 // a clockwise rotation.
 func (self *Math) GetShortestAngleI(args ...interface{}) int {
-	return self.Object.Call("getShortestAngle", args).Int()
+	return self.Object.Call("getShortestAngle", args...).Int()
 }
 
 // AngleBetween Find the angle of a segment from (x1, y1) -> (x2, y2).
@@ -440,7 +440,7 @@ func (self *Math) AngleBetween(x1 int, y1 int, x2 int, y2 int) int {
 
 // AngleBetweenI Find the angle of a segment from (x1, y1) -> (x2, y2).
 func (self *Math) AngleBetweenI(args ...interface{}) int {
-	return self.Object.Call("angleBetween", args).Int()
+	return self.Object.Call("angleBetween", args...).Int()
 }
 
 // AngleBetweenY Find the angle of a segment from (x1, y1) -> (x2, y2).
@@ -456,7 +456,7 @@ func (self *Math) AngleBetweenY(x1 int, y1 int, x2 int, y2 int) int {
 // The difference between this method and Math.angleBetween is that this assumes the y coordinate travels
 // down the screen.
 func (self *Math) AngleBetweenYI(args ...interface{}) int {
-	return self.Object.Call("angleBetweenY", args).Int()
+	return self.Object.Call("angleBetweenY", args...).Int()
 }
 
 // AngleBetweenPoints Find the angle of a segment from (point1.x, point1.y) -> (point2.x, point2.y).
@@ -466,7 +466,7 @@ func (self *Math) AngleBetweenPoints(point1 *Point, point2 *Point) int {
 
 // AngleBetweenPointsI Find the angle of a segment from (point1.x, point1.y) -> (point2.x, point2.y).
 func (self *Math) AngleBetweenPointsI(args ...interface{}) int {
-	return self.Object.Call("angleBetweenPoints", args).Int()
+	return self.Object.Call("angleBetweenPoints", args...).Int()
 }
 
 // AngleBetweenPointsY Find the angle of a segment from (point1.x, point1.y) -> (point2.x, point2.y).
@@ -476,7 +476,7 @@ func (self *Math) AngleBetweenPointsY(point1 *Point, point2 *Point) int {
 
 // AngleBetweenPointsYI Find the angle of a segment from (point1.x, point1.y) -> (point2.x, point2.y).
 func (self *Math) AngleBetweenPointsYI(args ...interface{}) int {
-	return self.Object.Call("angleBetweenPointsY", args).Int()
+	return self.Object.Call("angleBetweenPointsY", args...).Int()
 }
 
 // ReverseAngle Reverses an angle.
@@ -486,7 +486,7 @@ func (self *Math) ReverseAngle(angleRad int) int {
 
 // ReverseAngleI Reverses an angle.
 func (self *Math) ReverseAngleI(args ...interface{}) int {
-	return self.Object.Call("reverseAngle", args).Int()
+	return self.Object.Call("reverseAngle", args...).Int()
 }
 
 // NormalizeAngle Normalizes an angle to the [0,2pi) range.
@@ -496,7 +496,7 @@ func (self *Math) NormalizeAngle(angleRad int) int {
 
 // NormalizeAngleI Normalizes an angle to the [0,2pi) range.
 func (self *Math) NormalizeAngleI(args ...interface{}) int {
-	return self.Object.Call("normalizeAngle", args).Int()
+	return self.Object.Call("normalizeAngle", args...).Int()
 }
 
 // MaxAdd Adds the given amount to the value, but never lets the value go over the specified maximum.
@@ -506,7 +506,7 @@ func (self *Math) MaxAdd(value int, amount int, max int) int {
 
 // MaxAddI Adds the given amount to the value, but never lets the value go over the specified maximum.
 func (self *Math) MaxAddI(args ...interface{}) int {
-	return self.Object.Call("maxAdd", args).Int()
+	return self.Object.Call("maxAdd", args...).Int()
 }
 
 // MinSub Subtracts the given amount from the value, but never lets the value go below the specified minimum.
@@ -516,7 +516,7 @@ func (self *Math) MinSub(value int, amount int, min int) int {
 
 // MinSubI Subtracts the given amount from the value, but never lets the value go below the specified minimum.
 func (self *Math) MinSubI(args ...interface{}) int {
-	return self.Object.Call("minSub", args).Int()
+	return self.Object.Call("minSub", args...).Int()
 }
 
 // Wrap Ensures that the value always stays between min and max, by wrapping the value around.
@@ -530,7 +530,7 @@ func (self *Math) Wrap(value int, min int, max int) int {
 //
 // If `max` is not larger than `min` the result is 0.
 func (self *Math) WrapI(args ...interface{}) int {
-	return self.Object.Call("wrap", args).Int()
+	return self.Object.Call("wrap", args...).Int()
 }
 
 // WrapValue Adds value to amount and ensures that the result always stays between 0 and max, by wrapping the value around.
@@ -544,7 +544,7 @@ func (self *Math) WrapValue(value int, amount int, max int) int {
 //
 // Values _must_ be positive integers, and are passed through Math.abs. See {@link Phaser.Math#wrap} for an alternative.
 func (self *Math) WrapValueI(args ...interface{}) int {
-	return self.Object.Call("wrapValue", args).Int()
+	return self.Object.Call("wrapValue", args...).Int()
 }
 
 // IsOdd Returns true if the number given is odd.
@@ -554,7 +554,7 @@ func (self *Math) IsOdd(n int) bool {
 
 // IsOddI Returns true if the number given is odd.
 func (self *Math) IsOddI(args ...interface{}) bool {
-	return self.Object.Call("isOdd", args).Bool()
+	return self.Object.Call("isOdd", args...).Bool()
 }
 
 // IsEven Returns true if the number given is even.
@@ -564,7 +564,7 @@ func (self *Math) IsEven(n int) bool {
 
 // IsEvenI Returns true if the number given is even.
 func (self *Math) IsEvenI(args ...interface{}) bool {
-	return self.Object.Call("isEven", args).Bool()
+	return self.Object.Call("isEven", args...).Bool()
 }
 
 // Min Variation of Math.min that can be passed either an array of numbers or the numbers as parameters.
@@ -578,7 +578,7 @@ func (self *Math) Min() int {
 //
 // Prefer the standard `Math.min` function when appropriate.
 func (self *Math) MinI(args ...interface{}) int {
-	return self.Object.Call("min", args).Int()
+	return self.Object.Call("min", args...).Int()
 }
 
 // Max Variation of Math.max that can be passed either an array of numbers or the numbers as parameters.
@@ -592,7 +592,7 @@ func (self *Math) Max() int {
 //
 // Prefer the standard `Math.max` function when appropriate.
 func (self *Math) MaxI(args ...interface{}) int {
-	return self.Object.Call("max", args).Int()
+	return self.Object.Call("max", args...).Int()
 }
 
 // MinProperty Variation of Math.min that can be passed a property and either an array of objects or the objects as parameters.
@@ -604,7 +604,7 @@ func (self *Math) MinProperty() int {
 // MinPropertyI Variation of Math.min that can be passed a property and either an array of objects or the objects as parameters.
 // It will find the lowest matching property value from the given objects.
 func (self *Math) MinPropertyI(args ...interface{}) int {
-	return self.Object.Call("minProperty", args).Int()
+	return self.Object.Call("minProperty", args...).Int()
 }
 
 // MaxProperty Variation of Math.max that can be passed a property and either an array of objects or the objects as parameters.
@@ -616,7 +616,7 @@ func (self *Math) MaxProperty() int {
 // MaxPropertyI Variation of Math.max that can be passed a property and either an array of objects or the objects as parameters.
 // It will find the largest matching property value from the given objects.
 func (self *Math) MaxPropertyI(args ...interface{}) int {
-	return self.Object.Call("maxProperty", args).Int()
+	return self.Object.Call("maxProperty", args...).Int()
 }
 
 // WrapAngle Keeps an angle value between -180 and +180; or -PI and PI if radians.
@@ -631,7 +631,7 @@ func (self *Math) WrapAngle1O(angle int, radians bool) int {
 
 // WrapAngleI Keeps an angle value between -180 and +180; or -PI and PI if radians.
 func (self *Math) WrapAngleI(args ...interface{}) int {
-	return self.Object.Call("wrapAngle", args).Int()
+	return self.Object.Call("wrapAngle", args...).Int()
 }
 
 // LinearInterpolation A Linear Interpolation Method, mostly used by Phaser.Tween.
@@ -641,7 +641,7 @@ func (self *Math) LinearInterpolation(v []interface{}, k int) int {
 
 // LinearInterpolationI A Linear Interpolation Method, mostly used by Phaser.Tween.
 func (self *Math) LinearInterpolationI(args ...interface{}) int {
-	return self.Object.Call("linearInterpolation", args).Int()
+	return self.Object.Call("linearInterpolation", args...).Int()
 }
 
 // BezierInterpolation A Bezier Interpolation Method, mostly used by Phaser.Tween.
@@ -651,7 +651,7 @@ func (self *Math) BezierInterpolation(v []interface{}, k int) int {
 
 // BezierInterpolationI A Bezier Interpolation Method, mostly used by Phaser.Tween.
 func (self *Math) BezierInterpolationI(args ...interface{}) int {
-	return self.Object.Call("bezierInterpolation", args).Int()
+	return self.Object.Call("bezierInterpolation", args...).Int()
 }
 
 // CatmullRomInterpolation A Catmull Rom Interpolation Method, mostly used by Phaser.Tween.
@@ -661,7 +661,7 @@ func (self *Math) CatmullRomInterpolation(v []interface{}, k int) int {
 
 // CatmullRomInterpolationI A Catmull Rom Interpolation Method, mostly used by Phaser.Tween.
 func (self *Math) CatmullRomInterpolationI(args ...interface{}) int {
-	return self.Object.Call("catmullRomInterpolation", args).Int()
+	return self.Object.Call("catmullRomInterpolation", args...).Int()
 }
 
 // Linear Calculates a linear (interpolation) value over t.
@@ -671,7 +671,7 @@ func (self *Math) Linear(p0 int, p1 int, t int) int {
 
 // LinearI Calculates a linear (interpolation) value over t.
 func (self *Math) LinearI(args ...interface{}) int {
-	return self.Object.Call("linear", args).Int()
+	return self.Object.Call("linear", args...).Int()
 }
 
 // Bernstein empty description
@@ -681,7 +681,7 @@ func (self *Math) Bernstein(n int, i int) int {
 
 // BernsteinI empty description
 func (self *Math) BernsteinI(args ...interface{}) int {
-	return self.Object.Call("bernstein", args).Int()
+	return self.Object.Call("bernstein", args...).Int()
 }
 
 // Factorial empty description
@@ -691,7 +691,7 @@ func (self *Math) Factorial(value int) int {
 
 // FactorialI empty description
 func (self *Math) FactorialI(args ...interface{}) int {
-	return self.Object.Call("factorial", args).Int()
+	return self.Object.Call("factorial", args...).Int()
 }
 
 // CatmullRom Calculates a catmum rom value.
@@ -701,7 +701,7 @@ func (self *Math) CatmullRom(p0 int, p1 int, p2 int, p3 int, t int) int {
 
 // CatmullRomI Calculates a catmum rom value.
 func (self *Math) CatmullRomI(args ...interface{}) int {
-	return self.Object.Call("catmullRom", args).Int()
+	return self.Object.Call("catmullRom", args...).Int()
 }
 
 // Difference The absolute difference between two values.
@@ -711,7 +711,7 @@ func (self *Math) Difference(a int, b int) int {
 
 // DifferenceI The absolute difference between two values.
 func (self *Math) DifferenceI(args ...interface{}) int {
-	return self.Object.Call("difference", args).Int()
+	return self.Object.Call("difference", args...).Int()
 }
 
 // RoundAwayFromZero Round to the next whole number _away_ from zero.
@@ -721,7 +721,7 @@ func (self *Math) RoundAwayFromZero(value int) int {
 
 // RoundAwayFromZeroI Round to the next whole number _away_ from zero.
 func (self *Math) RoundAwayFromZeroI(args ...interface{}) int {
-	return self.Object.Call("roundAwayFromZero", args).Int()
+	return self.Object.Call("roundAwayFromZero", args...).Int()
 }
 
 // SinCosGenerator Generate a sine and cosine table simultaneously and extremely quickly.
@@ -737,7 +737,7 @@ func (self *Math) SinCosGenerator(length int, sinAmplitude int, cosAmplitude int
 // This generator is fast enough to be used in real-time.
 // Code based on research by Franky of scene.at
 func (self *Math) SinCosGeneratorI(args ...interface{}) interface{} {
-	return self.Object.Call("sinCosGenerator", args)
+	return self.Object.Call("sinCosGenerator", args...)
 }
 
 // Distance Returns the euclidian distance between the two given set of coordinates.
@@ -747,7 +747,7 @@ func (self *Math) Distance(x1 int, y1 int, x2 int, y2 int) int {
 
 // DistanceI Returns the euclidian distance between the two given set of coordinates.
 func (self *Math) DistanceI(args ...interface{}) int {
-	return self.Object.Call("distance", args).Int()
+	return self.Object.Call("distance", args...).Int()
 }
 
 // DistanceSq Returns the euclidean distance squared between the two given set of
@@ -759,7 +759,7 @@ func (self *Math) DistanceSq(x1 int, y1 int, x2 int, y2 int) int {
 // DistanceSqI Returns the euclidean distance squared between the two given set of
 // coordinates (cuts out a square root operation before returning).
 func (self *Math) DistanceSqI(args ...interface{}) int {
-	return self.Object.Call("distanceSq", args).Int()
+	return self.Object.Call("distanceSq", args...).Int()
 }
 
 // DistancePow Returns the distance between the two given set of coordinates at the power given.
@@ -774,7 +774,7 @@ func (self *Math) DistancePow1O(x1 int, y1 int, x2 int, y2 int, pow int) int {
 
 // DistancePowI Returns the distance between the two given set of coordinates at the power given.
 func (self *Math) DistancePowI(args ...interface{}) int {
-	return self.Object.Call("distancePow", args).Int()
+	return self.Object.Call("distancePow", args...).Int()
 }
 
 // Clamp Force a value within the boundaries by clamping it to the range `min`, `max`.
@@ -784,7 +784,7 @@ func (self *Math) Clamp(v float64, min float64, max float64) int {
 
 // ClampI Force a value within the boundaries by clamping it to the range `min`, `max`.
 func (self *Math) ClampI(args ...interface{}) int {
-	return self.Object.Call("clamp", args).Int()
+	return self.Object.Call("clamp", args...).Int()
 }
 
 // ClampBottom Clamp `x` to the range `[a, Infinity)`.
@@ -796,7 +796,7 @@ func (self *Math) ClampBottom(x int, a int) int {
 // ClampBottomI Clamp `x` to the range `[a, Infinity)`.
 // Roughly the same as `Math.max(x, a)`, except for NaN handling.
 func (self *Math) ClampBottomI(args ...interface{}) int {
-	return self.Object.Call("clampBottom", args).Int()
+	return self.Object.Call("clampBottom", args...).Int()
 }
 
 // Within Checks if two values are within the given tolerance of each other.
@@ -806,7 +806,7 @@ func (self *Math) Within(a int, b int, tolerance int) bool {
 
 // WithinI Checks if two values are within the given tolerance of each other.
 func (self *Math) WithinI(args ...interface{}) bool {
-	return self.Object.Call("within", args).Bool()
+	return self.Object.Call("within", args...).Bool()
 }
 
 // MapLinear Linear mapping from range <a1, a2> to range <b1, b2>
@@ -816,7 +816,7 @@ func (self *Math) MapLinear(x int, a1 int, a2 int, b1 int, b2 int) int {
 
 // MapLinearI Linear mapping from range <a1, a2> to range <b1, b2>
 func (self *Math) MapLinearI(args ...interface{}) int {
-	return self.Object.Call("mapLinear", args).Int()
+	return self.Object.Call("mapLinear", args...).Int()
 }
 
 // Smoothstep Smoothstep function as detailed at http://en.wikipedia.org/wiki/Smoothstep
@@ -826,7 +826,7 @@ func (self *Math) Smoothstep(x float64, min float64, max float64) float64 {
 
 // SmoothstepI Smoothstep function as detailed at http://en.wikipedia.org/wiki/Smoothstep
 func (self *Math) SmoothstepI(args ...interface{}) float64 {
-	return self.Object.Call("smoothstep", args).Float()
+	return self.Object.Call("smoothstep", args...).Float()
 }
 
 // Smootherstep Smootherstep function as detailed at http://en.wikipedia.org/wiki/Smoothstep
@@ -836,7 +836,7 @@ func (self *Math) Smootherstep(x float64, min float64, max float64) float64 {
 
 // SmootherstepI Smootherstep function as detailed at http://en.wikipedia.org/wiki/Smoothstep
 func (self *Math) SmootherstepI(args ...interface{}) float64 {
-	return self.Object.Call("smootherstep", args).Float()
+	return self.Object.Call("smootherstep", args...).Float()
 }
 
 // Sign A value representing the sign of the value: -1 for negative, +1 for positive, 0 if value is 0.
@@ -850,7 +850,7 @@ func (self *Math) Sign(x int) int {
 //
 // This works differently from `Math.sign` for values of NaN and -0, etc.
 func (self *Math) SignI(args ...interface{}) int {
-	return self.Object.Call("sign", args).Int()
+	return self.Object.Call("sign", args...).Int()
 }
 
 // Percent Work out what percentage value `a` is of value `b` using the given base.
@@ -865,7 +865,7 @@ func (self *Math) Percent1O(a int, b int, base int) int {
 
 // PercentI Work out what percentage value `a` is of value `b` using the given base.
 func (self *Math) PercentI(args ...interface{}) int {
-	return self.Object.Call("percent", args).Int()
+	return self.Object.Call("percent", args...).Int()
 }
 
 // DegToRad Convert degrees to radians.
@@ -875,7 +875,7 @@ func (self *Math) DegToRad(degrees int) int {
 
 // DegToRadI Convert degrees to radians.
 func (self *Math) DegToRadI(args ...interface{}) int {
-	return self.Object.Call("degToRad", args).Int()
+	return self.Object.Call("degToRad", args...).Int()
 }
 
 // RadToDeg Convert radians to degrees.
@@ -885,5 +885,5 @@ func (self *Math) RadToDeg(radians int) int {
 
 // RadToDegI Convert radians to degrees.
 func (self *Math) RadToDegI(args ...interface{}) int {
-	return self.Object.Call("radToDeg", args).Int()
+	return self.Object.Call("radToDeg", args...).Int()
 }

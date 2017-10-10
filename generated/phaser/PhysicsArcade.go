@@ -18,7 +18,7 @@ func NewPhysicsArcade(game *Game) *PhysicsArcade {
 
 // NewPhysicsArcadeI The Arcade Physics world. Contains Arcade Physics related collision, overlap and motion methods.
 func NewPhysicsArcadeI(args ...interface{}) *PhysicsArcade {
-	return &PhysicsArcade{js.Global.Get("Phaser").Get("Physics").Get("Arcade").New(args)}
+	return &PhysicsArcade{js.Global.Get("Phaser").Get("Physics").Get("Arcade").New(args...)}
 }
 
 // PhysicsArcade Binding conversion method to PhysicsArcade point
@@ -218,7 +218,7 @@ func (self *PhysicsArcade) SetBounds(x int, y int, width int, height int) {
 
 // SetBoundsI Updates the size of this physics world.
 func (self *PhysicsArcade) SetBoundsI(args ...interface{}) {
-	self.Object.Call("setBounds", args)
+	self.Object.Call("setBounds", args...)
 }
 
 // SetBoundsToWorld Updates the size of this physics world to match the size of the game world.
@@ -228,7 +228,7 @@ func (self *PhysicsArcade) SetBoundsToWorld() {
 
 // SetBoundsToWorldI Updates the size of this physics world to match the size of the game world.
 func (self *PhysicsArcade) SetBoundsToWorldI(args ...interface{}) {
-	self.Object.Call("setBoundsToWorld", args)
+	self.Object.Call("setBoundsToWorld", args...)
 }
 
 // Enable This will create an Arcade Physics body on the given game object or array of game objects.
@@ -246,7 +246,7 @@ func (self *PhysicsArcade) Enable1O(object interface{}, children bool) {
 // EnableI This will create an Arcade Physics body on the given game object or array of game objects.
 // A game object can only have 1 physics body active at any one time, and it can't be changed until the object is destroyed.
 func (self *PhysicsArcade) EnableI(args ...interface{}) {
-	self.Object.Call("enable", args)
+	self.Object.Call("enable", args...)
 }
 
 // EnableBody Creates an Arcade Physics body on the given game object.
@@ -264,7 +264,7 @@ func (self *PhysicsArcade) EnableBody(object interface{}) {
 //
 // When you add an Arcade Physics body to an object it will automatically add the object into its parent Groups hash array.
 func (self *PhysicsArcade) EnableBodyI(args ...interface{}) {
-	self.Object.Call("enableBody", args)
+	self.Object.Call("enableBody", args...)
 }
 
 // UpdateMotion Called automatically by a Physics body, it updates all motion related values on the Body unless `World.isPaused` is `true`.
@@ -274,7 +274,7 @@ func (self *PhysicsArcade) UpdateMotion(The *PhysicsArcadeBody) {
 
 // UpdateMotionI Called automatically by a Physics body, it updates all motion related values on the Body unless `World.isPaused` is `true`.
 func (self *PhysicsArcade) UpdateMotionI(args ...interface{}) {
-	self.Object.Call("updateMotion", args)
+	self.Object.Call("updateMotion", args...)
 }
 
 // ComputeVelocity A tween-like function that takes a starting velocity and some other factors and returns an altered velocity.
@@ -292,7 +292,7 @@ func (self *PhysicsArcade) ComputeVelocity1O(axis int, body *PhysicsArcadeBody, 
 // ComputeVelocityI A tween-like function that takes a starting velocity and some other factors and returns an altered velocity.
 // Based on a function in Flixel by @ADAMATOMIC
 func (self *PhysicsArcade) ComputeVelocityI(args ...interface{}) int {
-	return self.Object.Call("computeVelocity", args).Int()
+	return self.Object.Call("computeVelocity", args...).Int()
 }
 
 // Overlap Checks for overlaps between two game objects. The objects can be Sprites, Groups or Emitters.
@@ -342,7 +342,7 @@ func (self *PhysicsArcade) Overlap3O(object1 interface{}, object2 interface{}, o
 // If two arrays are passed, the contents of the first parameter will be tested against all contents of the 2nd parameter.
 // NOTE: This function is not recursive, and will not test against children of objects passed (i.e. Groups within Groups).
 func (self *PhysicsArcade) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }
 
 // Collide Checks for collision between two game objects. You can perform Sprite vs. Sprite, Sprite vs. Group, Group vs. Group, Sprite vs. Tilemap Layer or Group vs. Tilemap Layer collisions.
@@ -402,7 +402,7 @@ func (self *PhysicsArcade) Collide3O(object1 interface{}, object2 interface{}, c
 // The collideCallback is an optional function that is only called if two sprites collide. If a processCallback has been set then it needs to return true for collideCallback to be called.
 // NOTE: This function is not recursive, and will not test against children of objects passed (i.e. Groups or Tilemaps within other Groups).
 func (self *PhysicsArcade) CollideI(args ...interface{}) bool {
-	return self.Object.Call("collide", args).Bool()
+	return self.Object.Call("collide", args...).Bool()
 }
 
 // SortLeftRight A Sort function for sorting two bodies based on a LEFT to RIGHT sort direction.
@@ -416,7 +416,7 @@ func (self *PhysicsArcade) SortLeftRight(a *Sprite, b *Sprite) int {
 //
 // This is called automatically by World.sort
 func (self *PhysicsArcade) SortLeftRightI(args ...interface{}) int {
-	return self.Object.Call("sortLeftRight", args).Int()
+	return self.Object.Call("sortLeftRight", args...).Int()
 }
 
 // SortRightLeft A Sort function for sorting two bodies based on a RIGHT to LEFT sort direction.
@@ -430,7 +430,7 @@ func (self *PhysicsArcade) SortRightLeft(a *Sprite, b *Sprite) int {
 //
 // This is called automatically by World.sort
 func (self *PhysicsArcade) SortRightLeftI(args ...interface{}) int {
-	return self.Object.Call("sortRightLeft", args).Int()
+	return self.Object.Call("sortRightLeft", args...).Int()
 }
 
 // SortTopBottom A Sort function for sorting two bodies based on a TOP to BOTTOM sort direction.
@@ -444,7 +444,7 @@ func (self *PhysicsArcade) SortTopBottom(a *Sprite, b *Sprite) int {
 //
 // This is called automatically by World.sort
 func (self *PhysicsArcade) SortTopBottomI(args ...interface{}) int {
-	return self.Object.Call("sortTopBottom", args).Int()
+	return self.Object.Call("sortTopBottom", args...).Int()
 }
 
 // SortBottomTop A Sort function for sorting two bodies based on a BOTTOM to TOP sort direction.
@@ -458,7 +458,7 @@ func (self *PhysicsArcade) SortBottomTop(a *Sprite, b *Sprite) int {
 //
 // This is called automatically by World.sort
 func (self *PhysicsArcade) SortBottomTopI(args ...interface{}) int {
-	return self.Object.Call("sortBottomTop", args).Int()
+	return self.Object.Call("sortBottomTop", args...).Int()
 }
 
 // Sort This method will sort a Groups hash array.
@@ -491,7 +491,7 @@ func (self *PhysicsArcade) Sort1O(group *Group, sortDirection int) {
 //
 // By changing Group.physicsSortDirection you can customise each Group to sort in a different order.
 func (self *PhysicsArcade) SortI(args ...interface{}) {
-	self.Object.Call("sort", args)
+	self.Object.Call("sort", args...)
 }
 
 // CollideHandler Internal collision handler.
@@ -501,7 +501,7 @@ func (self *PhysicsArcade) CollideHandler(object1 interface{}, object2 interface
 
 // CollideHandlerI Internal collision handler.
 func (self *PhysicsArcade) CollideHandlerI(args ...interface{}) {
-	self.Object.Call("collideHandler", args)
+	self.Object.Call("collideHandler", args...)
 }
 
 // CollideSpriteVsSprite An internal function. Use Phaser.Physics.Arcade.collide instead.
@@ -511,7 +511,7 @@ func (self *PhysicsArcade) CollideSpriteVsSprite(sprite1 *Sprite, sprite2 *Sprit
 
 // CollideSpriteVsSpriteI An internal function. Use Phaser.Physics.Arcade.collide instead.
 func (self *PhysicsArcade) CollideSpriteVsSpriteI(args ...interface{}) bool {
-	return self.Object.Call("collideSpriteVsSprite", args).Bool()
+	return self.Object.Call("collideSpriteVsSprite", args...).Bool()
 }
 
 // CollideSpriteVsGroup An internal function. Use Phaser.Physics.Arcade.collide instead.
@@ -521,7 +521,7 @@ func (self *PhysicsArcade) CollideSpriteVsGroup(sprite *Sprite, group *Group, co
 
 // CollideSpriteVsGroupI An internal function. Use Phaser.Physics.Arcade.collide instead.
 func (self *PhysicsArcade) CollideSpriteVsGroupI(args ...interface{}) {
-	self.Object.Call("collideSpriteVsGroup", args)
+	self.Object.Call("collideSpriteVsGroup", args...)
 }
 
 // CollideGroupVsSelf An internal function. Use Phaser.Physics.Arcade.collide instead.
@@ -531,7 +531,7 @@ func (self *PhysicsArcade) CollideGroupVsSelf(group *Group, collideCallback inte
 
 // CollideGroupVsSelfI An internal function. Use Phaser.Physics.Arcade.collide instead.
 func (self *PhysicsArcade) CollideGroupVsSelfI(args ...interface{}) bool {
-	return self.Object.Call("collideGroupVsSelf", args).Bool()
+	return self.Object.Call("collideGroupVsSelf", args...).Bool()
 }
 
 // CollideGroupVsGroup An internal function. Use Phaser.Physics.Arcade.collide instead.
@@ -541,7 +541,7 @@ func (self *PhysicsArcade) CollideGroupVsGroup(group1 *Group, group2 *Group, col
 
 // CollideGroupVsGroupI An internal function. Use Phaser.Physics.Arcade.collide instead.
 func (self *PhysicsArcade) CollideGroupVsGroupI(args ...interface{}) {
-	self.Object.Call("collideGroupVsGroup", args)
+	self.Object.Call("collideGroupVsGroup", args...)
 }
 
 // Separate The core separation function to separate two physics bodies.
@@ -551,7 +551,7 @@ func (self *PhysicsArcade) Separate(body1 *PhysicsArcadeBody, body2 *PhysicsArca
 
 // SeparateI The core separation function to separate two physics bodies.
 func (self *PhysicsArcade) SeparateI(args ...interface{}) bool {
-	return self.Object.Call("separate", args).Bool()
+	return self.Object.Call("separate", args...).Bool()
 }
 
 // Intersects Check for intersection against two bodies.
@@ -561,7 +561,7 @@ func (self *PhysicsArcade) Intersects(body1 *PhysicsArcadeBody, body2 *PhysicsAr
 
 // IntersectsI Check for intersection against two bodies.
 func (self *PhysicsArcade) IntersectsI(args ...interface{}) bool {
-	return self.Object.Call("intersects", args).Bool()
+	return self.Object.Call("intersects", args...).Bool()
 }
 
 // CircleBodyIntersects Checks to see if a circular Body intersects with a Rectangular Body.
@@ -571,7 +571,7 @@ func (self *PhysicsArcade) CircleBodyIntersects(circle *PhysicsArcadeBody, body 
 
 // CircleBodyIntersectsI Checks to see if a circular Body intersects with a Rectangular Body.
 func (self *PhysicsArcade) CircleBodyIntersectsI(args ...interface{}) bool {
-	return self.Object.Call("circleBodyIntersects", args).Bool()
+	return self.Object.Call("circleBodyIntersects", args...).Bool()
 }
 
 // SeparateCircle The core separation function to separate two circular physics bodies.
@@ -581,7 +581,7 @@ func (self *PhysicsArcade) SeparateCircle(body1 *PhysicsArcadeBody, body2 *Physi
 
 // SeparateCircleI The core separation function to separate two circular physics bodies.
 func (self *PhysicsArcade) SeparateCircleI(args ...interface{}) bool {
-	return self.Object.Call("separateCircle", args).Bool()
+	return self.Object.Call("separateCircle", args...).Bool()
 }
 
 // GetOverlapX Calculates the horizontal overlap between two Bodies and sets their properties accordingly, including:
@@ -593,7 +593,7 @@ func (self *PhysicsArcade) GetOverlapX(body1 *PhysicsArcadeBody, body2 *PhysicsA
 // GetOverlapXI Calculates the horizontal overlap between two Bodies and sets their properties accordingly, including:
 // `touching.left`, `touching.right` and `overlapX`.
 func (self *PhysicsArcade) GetOverlapXI(args ...interface{}) float64 {
-	return self.Object.Call("getOverlapX", args).Float()
+	return self.Object.Call("getOverlapX", args...).Float()
 }
 
 // GetOverlapY Calculates the vertical overlap between two Bodies and sets their properties accordingly, including:
@@ -605,7 +605,7 @@ func (self *PhysicsArcade) GetOverlapY(body1 *PhysicsArcadeBody, body2 *PhysicsA
 // GetOverlapYI Calculates the vertical overlap between two Bodies and sets their properties accordingly, including:
 // `touching.up`, `touching.down` and `overlapY`.
 func (self *PhysicsArcade) GetOverlapYI(args ...interface{}) float64 {
-	return self.Object.Call("getOverlapY", args).Float()
+	return self.Object.Call("getOverlapY", args...).Float()
 }
 
 // SeparateX The core separation function to separate two physics bodies on the x axis.
@@ -615,7 +615,7 @@ func (self *PhysicsArcade) SeparateX(body1 *PhysicsArcadeBody, body2 *PhysicsArc
 
 // SeparateXI The core separation function to separate two physics bodies on the x axis.
 func (self *PhysicsArcade) SeparateXI(args ...interface{}) bool {
-	return self.Object.Call("separateX", args).Bool()
+	return self.Object.Call("separateX", args...).Bool()
 }
 
 // SeparateY The core separation function to separate two physics bodies on the y axis.
@@ -625,7 +625,7 @@ func (self *PhysicsArcade) SeparateY(body1 *PhysicsArcadeBody, body2 *PhysicsArc
 
 // SeparateYI The core separation function to separate two physics bodies on the y axis.
 func (self *PhysicsArcade) SeparateYI(args ...interface{}) bool {
-	return self.Object.Call("separateY", args).Bool()
+	return self.Object.Call("separateY", args...).Bool()
 }
 
 // GetObjectsUnderPointer Given a Group and a Pointer this will check to see which Group children overlap with the Pointer coordinates.
@@ -674,7 +674,7 @@ func (self *PhysicsArcade) GetObjectsUnderPointer2O(pointer *Pointer, group *Gro
 // Each child will be sent to the given callback for further processing.
 // Note that the children are not checked for depth order, but simply if they overlap the Pointer or not.
 func (self *PhysicsArcade) GetObjectsUnderPointerI(args ...interface{}) []DisplayObject {
-	array00 := self.Object.Call("getObjectsUnderPointer", args)
+	array00 := self.Object.Call("getObjectsUnderPointer", args...)
 	length00 := array00.Length()
 	out00 := make([]DisplayObject, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -744,7 +744,7 @@ func (self *PhysicsArcade) GetObjectsAtLocation3O(x int, y int, group *Group, ca
 // Each child will be sent to the given callback for further processing.
 // Note that the children are not checked for depth order, but simply if they overlap the coordinate or not.
 func (self *PhysicsArcade) GetObjectsAtLocationI(args ...interface{}) []DisplayObject {
-	array00 := self.Object.Call("getObjectsAtLocation", args)
+	array00 := self.Object.Call("getObjectsAtLocation", args...)
 	length00 := array00.Length()
 	out00 := make([]DisplayObject, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -791,7 +791,7 @@ func (self *PhysicsArcade) MoveToObject2O(displayObject interface{}, destination
 // Note: The display object doesn't stop moving once it reaches the destination coordinates.
 // Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
 func (self *PhysicsArcade) MoveToObjectI(args ...interface{}) int {
-	return self.Object.Call("moveToObject", args).Int()
+	return self.Object.Call("moveToObject", args...).Int()
 }
 
 // MoveToPointer Move the given display object towards the pointer at a steady velocity. If no pointer is given it will use Phaser.Input.activePointer.
@@ -836,7 +836,7 @@ func (self *PhysicsArcade) MoveToPointer3O(displayObject interface{}, speed int,
 // Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
 // Note: The display object doesn't stop moving once it reaches the destination coordinates.
 func (self *PhysicsArcade) MoveToPointerI(args ...interface{}) int {
-	return self.Object.Call("moveToPointer", args).Int()
+	return self.Object.Call("moveToPointer", args...).Int()
 }
 
 // MoveToXY Move the given display object towards the x/y coordinates at a steady velocity.
@@ -876,7 +876,7 @@ func (self *PhysicsArcade) MoveToXY2O(displayObject interface{}, x int, y int, s
 // Note: The display object doesn't stop moving once it reaches the destination coordinates.
 // Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
 func (self *PhysicsArcade) MoveToXYI(args ...interface{}) int {
-	return self.Object.Call("moveToXY", args).Int()
+	return self.Object.Call("moveToXY", args...).Int()
 }
 
 // VelocityFromAngle Given the angle (in degrees) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
@@ -900,7 +900,7 @@ func (self *PhysicsArcade) VelocityFromAngle2O(angle int, speed int, point inter
 // VelocityFromAngleI Given the angle (in degrees) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
 // One way to use this is: velocityFromAngle(angle, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
 func (self *PhysicsArcade) VelocityFromAngleI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("velocityFromAngle", args)}
+	return &Point{self.Object.Call("velocityFromAngle", args...)}
 }
 
 // VelocityFromRotation Given the rotation (in radians) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
@@ -924,7 +924,7 @@ func (self *PhysicsArcade) VelocityFromRotation2O(rotation int, speed int, point
 // VelocityFromRotationI Given the rotation (in radians) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
 // One way to use this is: velocityFromRotation(rotation, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
 func (self *PhysicsArcade) VelocityFromRotationI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("velocityFromRotation", args)}
+	return &Point{self.Object.Call("velocityFromRotation", args...)}
 }
 
 // AccelerationFromRotation Given the rotation (in radians) and speed calculate the acceleration and return it as a Point object, or set it to the given point object.
@@ -948,7 +948,7 @@ func (self *PhysicsArcade) AccelerationFromRotation2O(rotation int, speed int, p
 // AccelerationFromRotationI Given the rotation (in radians) and speed calculate the acceleration and return it as a Point object, or set it to the given point object.
 // One way to use this is: accelerationFromRotation(rotation, 200, sprite.acceleration) which will set the values directly to the sprites acceleration and not create a new Point object.
 func (self *PhysicsArcade) AccelerationFromRotationI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("accelerationFromRotation", args)}
+	return &Point{self.Object.Call("accelerationFromRotation", args...)}
 }
 
 // AccelerateToObject Sets the acceleration.x/y property on the display object so it will move towards the target at the given speed (in pixels per second sq.)
@@ -988,7 +988,7 @@ func (self *PhysicsArcade) AccelerateToObject3O(displayObject interface{}, desti
 // Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
 // Note: The display object doesn't stop moving once it reaches the destination coordinates.
 func (self *PhysicsArcade) AccelerateToObjectI(args ...interface{}) int {
-	return self.Object.Call("accelerateToObject", args).Int()
+	return self.Object.Call("accelerateToObject", args...).Int()
 }
 
 // AccelerateToPointer Sets the acceleration.x/y property on the display object so it will move towards the target at the given speed (in pixels per second sq.)
@@ -1036,7 +1036,7 @@ func (self *PhysicsArcade) AccelerateToPointer4O(displayObject interface{}, poin
 // Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
 // Note: The display object doesn't stop moving once it reaches the destination coordinates.
 func (self *PhysicsArcade) AccelerateToPointerI(args ...interface{}) int {
-	return self.Object.Call("accelerateToPointer", args).Int()
+	return self.Object.Call("accelerateToPointer", args...).Int()
 }
 
 // AccelerateToXY Sets the acceleration.x/y property on the display object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
@@ -1076,7 +1076,7 @@ func (self *PhysicsArcade) AccelerateToXY3O(displayObject interface{}, x int, y 
 // Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
 // Note: The display object doesn't stop moving once it reaches the destination coordinates.
 func (self *PhysicsArcade) AccelerateToXYI(args ...interface{}) int {
-	return self.Object.Call("accelerateToXY", args).Int()
+	return self.Object.Call("accelerateToXY", args...).Int()
 }
 
 // DistanceBetween Find the distance between two display objects (like Sprites).
@@ -1103,7 +1103,7 @@ func (self *PhysicsArcade) DistanceBetween1O(source interface{}, target interfac
 // instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
 // or parent Game Object.
 func (self *PhysicsArcade) DistanceBetweenI(args ...interface{}) int {
-	return self.Object.Call("distanceBetween", args).Int()
+	return self.Object.Call("distanceBetween", args...).Int()
 }
 
 // DistanceToXY Find the distance between a display object (like a Sprite) and the given x/y coordinates.
@@ -1136,7 +1136,7 @@ func (self *PhysicsArcade) DistanceToXY1O(displayObject interface{}, x int, y in
 // instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
 // or parent Game Object.
 func (self *PhysicsArcade) DistanceToXYI(args ...interface{}) int {
-	return self.Object.Call("distanceToXY", args).Int()
+	return self.Object.Call("distanceToXY", args...).Int()
 }
 
 // DistanceToPointer Find the distance between a display object (like a Sprite) and a Pointer. If no Pointer is given the Input.activePointer is used.
@@ -1180,7 +1180,7 @@ func (self *PhysicsArcade) DistanceToPointer2O(displayObject interface{}, pointe
 // instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
 // or parent Game Object.
 func (self *PhysicsArcade) DistanceToPointerI(args ...interface{}) int {
-	return self.Object.Call("distanceToPointer", args).Int()
+	return self.Object.Call("distanceToPointer", args...).Int()
 }
 
 // AngleBetween Find the angle in radians between two display objects (like Sprites).
@@ -1207,7 +1207,7 @@ func (self *PhysicsArcade) AngleBetween1O(source interface{}, target interface{}
 // instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
 // or parent Game Object.
 func (self *PhysicsArcade) AngleBetweenI(args ...interface{}) int {
-	return self.Object.Call("angleBetween", args).Int()
+	return self.Object.Call("angleBetween", args...).Int()
 }
 
 // AngleBetweenCenters Find the angle in radians between centers of two display objects (like Sprites).
@@ -1217,7 +1217,7 @@ func (self *PhysicsArcade) AngleBetweenCenters(source interface{}, target interf
 
 // AngleBetweenCentersI Find the angle in radians between centers of two display objects (like Sprites).
 func (self *PhysicsArcade) AngleBetweenCentersI(args ...interface{}) int {
-	return self.Object.Call("angleBetweenCenters", args).Int()
+	return self.Object.Call("angleBetweenCenters", args...).Int()
 }
 
 // AngleToXY Find the angle in radians between a display object (like a Sprite) and the given x/y coordinate.
@@ -1244,7 +1244,7 @@ func (self *PhysicsArcade) AngleToXY1O(displayObject interface{}, x int, y int, 
 // instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
 // or parent Game Object.
 func (self *PhysicsArcade) AngleToXYI(args ...interface{}) int {
-	return self.Object.Call("angleToXY", args).Int()
+	return self.Object.Call("angleToXY", args...).Int()
 }
 
 // AngleToPointer Find the angle in radians between a display object (like a Sprite) and a Pointer, taking their x/y and center into account.
@@ -1280,7 +1280,7 @@ func (self *PhysicsArcade) AngleToPointer2O(displayObject interface{}, pointer *
 // instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
 // or parent Game Object.
 func (self *PhysicsArcade) AngleToPointerI(args ...interface{}) int {
-	return self.Object.Call("angleToPointer", args).Int()
+	return self.Object.Call("angleToPointer", args...).Int()
 }
 
 // WorldAngleToPointer Find the angle in radians between a display object (like a Sprite) and a Pointer,
@@ -1298,5 +1298,5 @@ func (self *PhysicsArcade) WorldAngleToPointer1O(displayObject interface{}, poin
 // WorldAngleToPointerI Find the angle in radians between a display object (like a Sprite) and a Pointer,
 // taking their x/y and center into account relative to the world.
 func (self *PhysicsArcade) WorldAngleToPointerI(args ...interface{}) int {
-	return self.Object.Call("worldAngleToPointer", args).Int()
+	return self.Object.Call("worldAngleToPointer", args...).Int()
 }

@@ -21,7 +21,7 @@ func NewComponentPhysicsBody() *ComponentPhysicsBody {
 // NewComponentPhysicsBodyI The PhysicsBody component manages the Game Objects physics body and physics enabling.
 // It also overrides the x and y properties, ensuring that any manual adjustment of them is reflected in the physics body itself.
 func NewComponentPhysicsBodyI(args ...interface{}) *ComponentPhysicsBody {
-	return &ComponentPhysicsBody{js.Global.Get("Phaser").Get("Component").Get("PhysicsBody").New(args)}
+	return &ComponentPhysicsBody{js.Global.Get("Phaser").Get("Component").Get("PhysicsBody").New(args...)}
 }
 
 // ComponentPhysicsBody Binding conversion method to ComponentPhysicsBody point
@@ -97,7 +97,7 @@ func (self *ComponentPhysicsBody) PreUpdate() {
 // PreUpdateI The PhysicsBody component preUpdate handler.
 // Called automatically by the Game Object.
 func (self *ComponentPhysicsBody) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // PostUpdate The PhysicsBody component postUpdate handler.
@@ -109,5 +109,5 @@ func (self *ComponentPhysicsBody) PostUpdate() {
 // PostUpdateI The PhysicsBody component postUpdate handler.
 // Called automatically by the Game Object.
 func (self *ComponentPhysicsBody) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }

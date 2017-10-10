@@ -30,7 +30,7 @@ func NewTween(target interface{}, game *Game, manager *TweenManager) *Tween {
 // by calling Tween.to multiple times on the same Tween. Additional tweens specified in this way become "child" tweens and
 // are played through in sequence. You can use Tween.timeScale and Tween.reverse to control the playback of this Tween and all of its children.
 func NewTweenI(args ...interface{}) *Tween {
-	return &Tween{js.Global.Get("Phaser").Get("Tween").New(args)}
+	return &Tween{js.Global.Get("Phaser").Get("Tween").New(args...)}
 }
 
 // Tween Binding conversion method to Tween point
@@ -342,7 +342,7 @@ func (self *Tween) To6O(properties interface{}, duration int, ease interface{}, 
 // The ease function allows you define the rate of change. You can pass either a function such as Phaser.Easing.Circular.Out or a string such as "Circ".
 // ".easeIn", ".easeOut" and "easeInOut" variants are all supported for all ease types.
 func (self *Tween) ToI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("to", args)}
+	return &Tween{self.Object.Call("to", args...)}
 }
 
 // From Sets this tween to be a `from` tween on the properties given. A `from` tween sets the target to the destination value and tweens to its current value.
@@ -406,7 +406,7 @@ func (self *Tween) From6O(properties interface{}, duration int, ease interface{}
 // The ease function allows you define the rate of change. You can pass either a function such as Phaser.Easing.Circular.Out or a string such as "Circ".
 // ".easeIn", ".easeOut" and "easeInOut" variants are all supported for all ease types.
 func (self *Tween) FromI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("from", args)}
+	return &Tween{self.Object.Call("from", args...)}
 }
 
 // Start Starts the tween running. Can also be called by the autoStart parameter of `Tween.to` or `Tween.from`.
@@ -427,7 +427,7 @@ func (self *Tween) Start1O(index int) *Tween {
 // This sets the `Tween.isRunning` property to `true` and dispatches a `Tween.onStart` signal.
 // If the Tween has a delay set then nothing will start tweening until the delay has expired.
 func (self *Tween) StartI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("start", args)}
+	return &Tween{self.Object.Call("start", args...)}
 }
 
 // Stop Stops the tween if running and flags it for deletion from the TweenManager.
@@ -448,7 +448,7 @@ func (self *Tween) Stop1O(complete bool) *Tween {
 // If called directly the `Tween.onComplete` signal is not dispatched and no chained tweens are started unless the complete parameter is set to `true`.
 // If you just wish to pause a tween then use Tween.pause instead.
 func (self *Tween) StopI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("stop", args)}
+	return &Tween{self.Object.Call("stop", args...)}
 }
 
 // UpdateTweenData Updates either a single TweenData or all TweenData objects properties to the given value.
@@ -469,7 +469,7 @@ func (self *Tween) UpdateTweenData1O(property string, value interface{}, index i
 // Used internally by methods like Tween.delay, Tween.yoyo, etc. but can also be called directly if you know which property you want to tweak.
 // The property is not checked, so if you pass an invalid one you'll generate a run-time error.
 func (self *Tween) UpdateTweenDataI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("updateTweenData", args)}
+	return &Tween{self.Object.Call("updateTweenData", args...)}
 }
 
 // Delay Sets the delay in milliseconds before this tween will start. If there are child tweens it sets the delay before the first child starts.
@@ -493,7 +493,7 @@ func (self *Tween) Delay1O(duration int, index int) *Tween {
 // If you have not yet called `Tween.to` or `Tween.from` at least once then this method will do nothing, as there are no tweens to delay.
 // If you have child tweens and pass -1 as the index value it sets the delay across all of them.
 func (self *Tween) DelayI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("delay", args)}
+	return &Tween{self.Object.Call("delay", args...)}
 }
 
 // Repeat Sets the number of times this tween will repeat.
@@ -525,7 +525,7 @@ func (self *Tween) Repeat2O(total int, repeat int, index int) *Tween {
 // If you have child tweens and pass -1 as the index value it sets the number of times they'll repeat across all of them.
 // If you wish to define how many times this Tween and all children will repeat see Tween.repeatAll.
 func (self *Tween) RepeatI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("repeat", args)}
+	return &Tween{self.Object.Call("repeat", args...)}
 }
 
 // RepeatDelay Sets the delay in milliseconds before this tween will repeat itself.
@@ -549,7 +549,7 @@ func (self *Tween) RepeatDelay1O(duration int, index int) *Tween {
 // If you have not yet called `Tween.to` or `Tween.from` at least once then this method will do nothing, as there are no tweens to set repeatDelay on.
 // If you have child tweens and pass -1 as the index value it sets the repeatDelay across all of them.
 func (self *Tween) RepeatDelayI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("repeatDelay", args)}
+	return &Tween{self.Object.Call("repeatDelay", args...)}
 }
 
 // Yoyo A Tween that has yoyo set to true will run through from its starting values to its end values and then play back in reverse from end to start.
@@ -585,7 +585,7 @@ func (self *Tween) Yoyo2O(enable bool, yoyoDelay int, index int) *Tween {
 // If you have child tweens and pass -1 as the index value it sets the yoyo property across all of them.
 // If you wish to yoyo this Tween and all of its children then see Tween.yoyoAll.
 func (self *Tween) YoyoI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("yoyo", args)}
+	return &Tween{self.Object.Call("yoyo", args...)}
 }
 
 // YoyoDelay Sets the delay in milliseconds before this tween will run a yoyo (only applies if yoyo is enabled).
@@ -609,7 +609,7 @@ func (self *Tween) YoyoDelay1O(duration int, index int) *Tween {
 // If you have not yet called `Tween.to` or `Tween.from` at least once then this method will do nothing, as there are no tweens to set repeatDelay on.
 // If you have child tweens and pass -1 as the index value it sets the repeatDelay across all of them.
 func (self *Tween) YoyoDelayI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("yoyoDelay", args)}
+	return &Tween{self.Object.Call("yoyoDelay", args...)}
 }
 
 // Easing Set easing function this tween will use, i.e. Phaser.Easing.Linear.None.
@@ -633,7 +633,7 @@ func (self *Tween) Easing1O(ease interface{}, index int) *Tween {
 // ".easeIn", ".easeOut" and "easeInOut" variants are all supported for all ease types.
 // If you have child tweens and pass -1 as the index value it sets the easing function defined here across all of them.
 func (self *Tween) EasingI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("easing", args)}
+	return &Tween{self.Object.Call("easing", args...)}
 }
 
 // Interpolation Sets the interpolation function the tween will use. By default it uses Phaser.Math.linearInterpolation.
@@ -665,7 +665,7 @@ func (self *Tween) Interpolation2O(interpolation interface{}, context interface{
 // The interpolation function is only used if the target properties is an array.
 // If you have child tweens and pass -1 as the index value and it will set the interpolation function across all of them.
 func (self *Tween) InterpolationI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("interpolation", args)}
+	return &Tween{self.Object.Call("interpolation", args...)}
 }
 
 // RepeatAll Set how many times this tween and all of its children will repeat.
@@ -683,7 +683,7 @@ func (self *Tween) RepeatAll1O(total int) *Tween {
 // RepeatAllI Set how many times this tween and all of its children will repeat.
 // A tween (A) with 3 children (B,C,D) with a `repeatAll` value of 2 would play as: ABCDABCD before completing.
 func (self *Tween) RepeatAllI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("repeatAll", args)}
+	return &Tween{self.Object.Call("repeatAll", args...)}
 }
 
 // Chain This method allows you to chain tweens together. Any tween chained to this tween will have its `Tween.start` method called
@@ -707,7 +707,7 @@ func (self *Tween) Chain(tweens *Tween) *Tween {
 // For example if this is Tween A and you pass in B, C and D then B will be chained to A, C will be chained to B and D will be chained to C.
 // Any previously chained tweens that may have been set will be overwritten.
 func (self *Tween) ChainI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("chain", args)}
+	return &Tween{self.Object.Call("chain", args...)}
 }
 
 // Loop Enables the looping of this tween. The tween will loop forever, and onComplete will never fire.
@@ -752,7 +752,7 @@ func (self *Tween) Loop1O(value bool) *Tween {
 // .to({ y: 0 }, 1000, Phaser.Easing.Linear.None)
 // .loop();
 func (self *Tween) LoopI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("loop", args)}
+	return &Tween{self.Object.Call("loop", args...)}
 }
 
 // OnUpdateCallback Sets a callback to be fired each time this tween updates.
@@ -762,7 +762,7 @@ func (self *Tween) OnUpdateCallback(callback interface{}, callbackContext interf
 
 // OnUpdateCallbackI Sets a callback to be fired each time this tween updates.
 func (self *Tween) OnUpdateCallbackI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("onUpdateCallback", args)}
+	return &Tween{self.Object.Call("onUpdateCallback", args...)}
 }
 
 // Pause Pauses the tween. Resume playback with Tween.resume.
@@ -772,7 +772,7 @@ func (self *Tween) Pause() {
 
 // PauseI Pauses the tween. Resume playback with Tween.resume.
 func (self *Tween) PauseI(args ...interface{}) {
-	self.Object.Call("pause", args)
+	self.Object.Call("pause", args...)
 }
 
 // _pause This is called by the core Game loop. Do not call it directly, instead use Tween.pause.
@@ -782,7 +782,7 @@ func (self *Tween) _pause() {
 
 // _pauseI This is called by the core Game loop. Do not call it directly, instead use Tween.pause.
 func (self *Tween) _pauseI(args ...interface{}) {
-	self.Object.Call("_pause", args)
+	self.Object.Call("_pause", args...)
 }
 
 // Resume Resumes a paused tween.
@@ -792,7 +792,7 @@ func (self *Tween) Resume() {
 
 // ResumeI Resumes a paused tween.
 func (self *Tween) ResumeI(args ...interface{}) {
-	self.Object.Call("resume", args)
+	self.Object.Call("resume", args...)
 }
 
 // _resume This is called by the core Game loop. Do not call it directly, instead use Tween.pause.
@@ -802,7 +802,7 @@ func (self *Tween) _resume() {
 
 // _resumeI This is called by the core Game loop. Do not call it directly, instead use Tween.pause.
 func (self *Tween) _resumeI(args ...interface{}) {
-	self.Object.Call("_resume", args)
+	self.Object.Call("_resume", args...)
 }
 
 // Update Core tween update function called by the TweenManager. Does not need to be invoked directly.
@@ -812,7 +812,7 @@ func (self *Tween) Update(time int) bool {
 
 // UpdateI Core tween update function called by the TweenManager. Does not need to be invoked directly.
 func (self *Tween) UpdateI(args ...interface{}) bool {
-	return self.Object.Call("update", args).Bool()
+	return self.Object.Call("update", args...).Bool()
 }
 
 // GenerateData This will generate an array populated with the tweened object values from start to end.
@@ -862,7 +862,7 @@ func (self *Tween) GenerateData2O(frameRate int, data []interface{}) []interface
 // It ignores delay and repeat counts and any chained tweens, but does include child tweens.
 // Just one play through of the tween data is returned, including yoyo if set.
 func (self *Tween) GenerateDataI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("generateData", args)
+	array00 := self.Object.Call("generateData", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {

@@ -23,7 +23,7 @@ func NewStateManager1O(game *Game, pendingState interface{}) *StateManager {
 
 // NewStateManagerI The State Manager is responsible for loading, setting up and switching game states.
 func NewStateManagerI(args ...interface{}) *StateManager {
-	return &StateManager{js.Global.Get("Phaser").Get("StateManager").New(args)}
+	return &StateManager{js.Global.Get("Phaser").Get("StateManager").New(args...)}
 }
 
 // StateManager Binding conversion method to StateManager point
@@ -235,7 +235,7 @@ func (self *StateManager) Boot() {
 
 // BootI The Boot handler is called by Phaser.Game when it first starts up.
 func (self *StateManager) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // Add Adds a new State into the StateManager. You must give each State a unique key by which you'll identify it.
@@ -256,7 +256,7 @@ func (self *StateManager) Add1O(key string, state interface{}, autoStart bool) {
 // The State can be either a Phaser.State object (or an object that extends it), a plain JavaScript object or a function.
 // If a function is given a new state object will be created by calling it.
 func (self *StateManager) AddI(args ...interface{}) {
-	self.Object.Call("add", args)
+	self.Object.Call("add", args...)
 }
 
 // Remove Delete the given state.
@@ -266,7 +266,7 @@ func (self *StateManager) Remove(key string) {
 
 // RemoveI Delete the given state.
 func (self *StateManager) RemoveI(args ...interface{}) {
-	self.Object.Call("remove", args)
+	self.Object.Call("remove", args...)
 }
 
 // Start Start the given State. If a State is already running then State.shutDown will be called (if it exists) before switching to the new State.
@@ -276,7 +276,7 @@ func (self *StateManager) Start(key string, clearWorld bool, clearCache bool, pa
 
 // StartI Start the given State. If a State is already running then State.shutDown will be called (if it exists) before switching to the new State.
 func (self *StateManager) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Restart Restarts the current State. State.shutDown will be called (if it exists) before the State is restarted.
@@ -286,7 +286,7 @@ func (self *StateManager) Restart(clearWorld bool, clearCache bool, parameter in
 
 // RestartI Restarts the current State. State.shutDown will be called (if it exists) before the State is restarted.
 func (self *StateManager) RestartI(args ...interface{}) {
-	self.Object.Call("restart", args)
+	self.Object.Call("restart", args...)
 }
 
 // Dummy Used by onInit and onShutdown when those functions don't exist on the state
@@ -296,7 +296,7 @@ func (self *StateManager) Dummy() {
 
 // DummyI Used by onInit and onShutdown when those functions don't exist on the state
 func (self *StateManager) DummyI(args ...interface{}) {
-	self.Object.Call("dummy", args)
+	self.Object.Call("dummy", args...)
 }
 
 // PreUpdate preUpdate is called right at the start of the game loop. It is responsible for changing to a new state that was requested previously.
@@ -306,7 +306,7 @@ func (self *StateManager) PreUpdate() {
 
 // PreUpdateI preUpdate is called right at the start of the game loop. It is responsible for changing to a new state that was requested previously.
 func (self *StateManager) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // ClearCurrentState This method clears the current State, calling its shutdown callback. The process also removes any active tweens,
@@ -318,7 +318,7 @@ func (self *StateManager) ClearCurrentState() {
 // ClearCurrentStateI This method clears the current State, calling its shutdown callback. The process also removes any active tweens,
 // resets the camera, resets input, clears physics, removes timers and if set clears the world and cache too.
 func (self *StateManager) ClearCurrentStateI(args ...interface{}) {
-	self.Object.Call("clearCurrentState", args)
+	self.Object.Call("clearCurrentState", args...)
 }
 
 // CheckState Checks if a given phaser state is valid. A State is considered valid if it has at least one of the core functions: preload, create, update or render.
@@ -328,7 +328,7 @@ func (self *StateManager) CheckState(key string) bool {
 
 // CheckStateI Checks if a given phaser state is valid. A State is considered valid if it has at least one of the core functions: preload, create, update or render.
 func (self *StateManager) CheckStateI(args ...interface{}) bool {
-	return self.Object.Call("checkState", args).Bool()
+	return self.Object.Call("checkState", args...).Bool()
 }
 
 // Link Links game properties to the State given by the key.
@@ -338,7 +338,7 @@ func (self *StateManager) Link(key string) {
 
 // LinkI Links game properties to the State given by the key.
 func (self *StateManager) LinkI(args ...interface{}) {
-	self.Object.Call("link", args)
+	self.Object.Call("link", args...)
 }
 
 // Unlink Nulls all State level Phaser properties, including a reference to Game.
@@ -348,7 +348,7 @@ func (self *StateManager) Unlink(key string) {
 
 // UnlinkI Nulls all State level Phaser properties, including a reference to Game.
 func (self *StateManager) UnlinkI(args ...interface{}) {
-	self.Object.Call("unlink", args)
+	self.Object.Call("unlink", args...)
 }
 
 // SetCurrentState Sets the current State. Should not be called directly (use StateManager.start)
@@ -358,7 +358,7 @@ func (self *StateManager) SetCurrentState(key string) {
 
 // SetCurrentStateI Sets the current State. Should not be called directly (use StateManager.start)
 func (self *StateManager) SetCurrentStateI(args ...interface{}) {
-	self.Object.Call("setCurrentState", args)
+	self.Object.Call("setCurrentState", args...)
 }
 
 // GetCurrentState Gets the current State.
@@ -368,7 +368,7 @@ func (self *StateManager) GetCurrentState() *State {
 
 // GetCurrentStateI Gets the current State.
 func (self *StateManager) GetCurrentStateI(args ...interface{}) *State {
-	return &State{self.Object.Call("getCurrentState", args)}
+	return &State{self.Object.Call("getCurrentState", args...)}
 }
 
 // LoadComplete empty description
@@ -378,7 +378,7 @@ func (self *StateManager) LoadComplete() {
 
 // LoadCompleteI empty description
 func (self *StateManager) LoadCompleteI(args ...interface{}) {
-	self.Object.Call("loadComplete", args)
+	self.Object.Call("loadComplete", args...)
 }
 
 // Pause empty description
@@ -388,7 +388,7 @@ func (self *StateManager) Pause() {
 
 // PauseI empty description
 func (self *StateManager) PauseI(args ...interface{}) {
-	self.Object.Call("pause", args)
+	self.Object.Call("pause", args...)
 }
 
 // Resume empty description
@@ -398,7 +398,7 @@ func (self *StateManager) Resume() {
 
 // ResumeI empty description
 func (self *StateManager) ResumeI(args ...interface{}) {
-	self.Object.Call("resume", args)
+	self.Object.Call("resume", args...)
 }
 
 // Update empty description
@@ -408,7 +408,7 @@ func (self *StateManager) Update() {
 
 // UpdateI empty description
 func (self *StateManager) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PauseUpdate empty description
@@ -418,7 +418,7 @@ func (self *StateManager) PauseUpdate() {
 
 // PauseUpdateI empty description
 func (self *StateManager) PauseUpdateI(args ...interface{}) {
-	self.Object.Call("pauseUpdate", args)
+	self.Object.Call("pauseUpdate", args...)
 }
 
 // PreRender empty description
@@ -428,7 +428,7 @@ func (self *StateManager) PreRender(elapsedTime int) {
 
 // PreRenderI empty description
 func (self *StateManager) PreRenderI(args ...interface{}) {
-	self.Object.Call("preRender", args)
+	self.Object.Call("preRender", args...)
 }
 
 // Resize empty description
@@ -438,7 +438,7 @@ func (self *StateManager) Resize() {
 
 // ResizeI empty description
 func (self *StateManager) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // Render empty description
@@ -448,7 +448,7 @@ func (self *StateManager) Render() {
 
 // RenderI empty description
 func (self *StateManager) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // Destroy Removes all StateManager callback references to the State object, nulls the game reference and clears the States object.
@@ -460,5 +460,5 @@ func (self *StateManager) Destroy() {
 // DestroyI Removes all StateManager callback references to the State object, nulls the game reference and clears the States object.
 // You don't recover from this without rebuilding the Phaser instance again.
 func (self *StateManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

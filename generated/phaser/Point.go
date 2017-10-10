@@ -43,7 +43,7 @@ func NewPoint2O(x int, y int) *Point {
 // `var myPoint = new Phaser.Point();`
 // You can also use them as 2D Vectors and you'll find different vector related methods in this class.
 func NewPointI(args ...interface{}) *Point {
-	return &Point{js.Global.Get("Phaser").Get("Point").New(args)}
+	return &Point{js.Global.Get("Phaser").Get("Point").New(args...)}
 }
 
 // Point Binding conversion method to Point point
@@ -91,7 +91,7 @@ func (self *Point) CopyFrom(source interface{}) *Point {
 
 // CopyFromI Copies the x and y properties from any given object to this Point.
 func (self *Point) CopyFromI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("copyFrom", args)}
+	return &Point{self.Object.Call("copyFrom", args...)}
 }
 
 // Invert Inverts the x and y values of this Point
@@ -101,7 +101,7 @@ func (self *Point) Invert() *Point {
 
 // InvertI Inverts the x and y values of this Point
 func (self *Point) InvertI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("invert", args)}
+	return &Point{self.Object.Call("invert", args...)}
 }
 
 // SetTo Sets the `x` and `y` values of this Point object to the given values.
@@ -122,7 +122,7 @@ func (self *Point) SetTo1O(x int, y int) *Point {
 // If you omit the `y` value then the `x` value will be applied to both, for example:
 // `Point.setTo(2)` is the same as `Point.setTo(2, 2)`
 func (self *Point) SetToI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("setTo", args)}
+	return &Point{self.Object.Call("setTo", args...)}
 }
 
 // Set Sets the `x` and `y` values of this Point object to the given values.
@@ -143,7 +143,7 @@ func (self *Point) Set1O(x int, y int) *Point {
 // If you omit the `y` value then the `x` value will be applied to both, for example:
 // `Point.set(2)` is the same as `Point.set(2, 2)`
 func (self *Point) SetI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("set", args)}
+	return &Point{self.Object.Call("set", args...)}
 }
 
 // Add Adds the given x and y values to this Point.
@@ -153,7 +153,7 @@ func (self *Point) Add(x int, y int) *Point {
 
 // AddI Adds the given x and y values to this Point.
 func (self *Point) AddI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("add", args)}
+	return &Point{self.Object.Call("add", args...)}
 }
 
 // Subtract Subtracts the given x and y values from this Point.
@@ -163,7 +163,7 @@ func (self *Point) Subtract(x int, y int) *Point {
 
 // SubtractI Subtracts the given x and y values from this Point.
 func (self *Point) SubtractI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("subtract", args)}
+	return &Point{self.Object.Call("subtract", args...)}
 }
 
 // Multiply Multiplies Point.x and Point.y by the given x and y values. Sometimes known as `Scale`.
@@ -173,7 +173,7 @@ func (self *Point) Multiply(x int, y int) *Point {
 
 // MultiplyI Multiplies Point.x and Point.y by the given x and y values. Sometimes known as `Scale`.
 func (self *Point) MultiplyI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("multiply", args)}
+	return &Point{self.Object.Call("multiply", args...)}
 }
 
 // Divide Divides Point.x and Point.y by the given x and y values.
@@ -183,7 +183,7 @@ func (self *Point) Divide(x int, y int) *Point {
 
 // DivideI Divides Point.x and Point.y by the given x and y values.
 func (self *Point) DivideI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("divide", args)}
+	return &Point{self.Object.Call("divide", args...)}
 }
 
 // ClampX Clamps the x value of this Point to be between the given min and max.
@@ -193,7 +193,7 @@ func (self *Point) ClampX(min int, max int) *Point {
 
 // ClampXI Clamps the x value of this Point to be between the given min and max.
 func (self *Point) ClampXI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("clampX", args)}
+	return &Point{self.Object.Call("clampX", args...)}
 }
 
 // ClampY Clamps the y value of this Point to be between the given min and max
@@ -203,7 +203,7 @@ func (self *Point) ClampY(min int, max int) *Point {
 
 // ClampYI Clamps the y value of this Point to be between the given min and max
 func (self *Point) ClampYI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("clampY", args)}
+	return &Point{self.Object.Call("clampY", args...)}
 }
 
 // Clamp Clamps this Point object values to be between the given min and max.
@@ -213,7 +213,7 @@ func (self *Point) Clamp(min int, max int) *Point {
 
 // ClampI Clamps this Point object values to be between the given min and max.
 func (self *Point) ClampI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("clamp", args)}
+	return &Point{self.Object.Call("clamp", args...)}
 }
 
 // Clone Creates a copy of the given Point.
@@ -228,7 +228,7 @@ func (self *Point) Clone1O(output *Point) *Point {
 
 // CloneI Creates a copy of the given Point.
 func (self *Point) CloneI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("clone", args)}
+	return &Point{self.Object.Call("clone", args...)}
 }
 
 // CopyTo Copies the x and y properties from this Point to any given object.
@@ -238,7 +238,7 @@ func (self *Point) CopyTo(dest interface{}) interface{} {
 
 // CopyToI Copies the x and y properties from this Point to any given object.
 func (self *Point) CopyToI(args ...interface{}) interface{} {
-	return self.Object.Call("copyTo", args)
+	return self.Object.Call("copyTo", args...)
 }
 
 // Distance Returns the distance of this Point object to the given object (can be a Circle, Point or anything with x/y properties)
@@ -253,7 +253,7 @@ func (self *Point) Distance1O(dest interface{}, round bool) int {
 
 // DistanceI Returns the distance of this Point object to the given object (can be a Circle, Point or anything with x/y properties)
 func (self *Point) DistanceI(args ...interface{}) int {
-	return self.Object.Call("distance", args).Int()
+	return self.Object.Call("distance", args...).Int()
 }
 
 // Equals Determines whether the given objects x/y values are equal to this Point object.
@@ -263,7 +263,7 @@ func (self *Point) Equals(a interface{}) bool {
 
 // EqualsI Determines whether the given objects x/y values are equal to this Point object.
 func (self *Point) EqualsI(args ...interface{}) bool {
-	return self.Object.Call("equals", args).Bool()
+	return self.Object.Call("equals", args...).Bool()
 }
 
 // Angle Returns the angle between this Point object and another object with public x and y properties.
@@ -278,7 +278,7 @@ func (self *Point) Angle1O(a interface{}, asDegrees bool) int {
 
 // AngleI Returns the angle between this Point object and another object with public x and y properties.
 func (self *Point) AngleI(args ...interface{}) int {
-	return self.Object.Call("angle", args).Int()
+	return self.Object.Call("angle", args...).Int()
 }
 
 // Rotate Rotates this Point around the x/y coordinates given to the desired angle.
@@ -298,7 +298,7 @@ func (self *Point) Rotate2O(x int, y int, angle int, asDegrees bool, distance in
 
 // RotateI Rotates this Point around the x/y coordinates given to the desired angle.
 func (self *Point) RotateI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("rotate", args)}
+	return &Point{self.Object.Call("rotate", args...)}
 }
 
 // GetMagnitude Calculates the length of the Point object.
@@ -308,7 +308,7 @@ func (self *Point) GetMagnitude() int {
 
 // GetMagnitudeI Calculates the length of the Point object.
 func (self *Point) GetMagnitudeI(args ...interface{}) int {
-	return self.Object.Call("getMagnitude", args).Int()
+	return self.Object.Call("getMagnitude", args...).Int()
 }
 
 // GetMagnitudeSq Calculates the length squared of the Point object.
@@ -318,7 +318,7 @@ func (self *Point) GetMagnitudeSq() int {
 
 // GetMagnitudeSqI Calculates the length squared of the Point object.
 func (self *Point) GetMagnitudeSqI(args ...interface{}) int {
-	return self.Object.Call("getMagnitudeSq", args).Int()
+	return self.Object.Call("getMagnitudeSq", args...).Int()
 }
 
 // SetMagnitude Alters the length of the Point without changing the direction.
@@ -328,7 +328,7 @@ func (self *Point) SetMagnitude(magnitude int) *Point {
 
 // SetMagnitudeI Alters the length of the Point without changing the direction.
 func (self *Point) SetMagnitudeI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("setMagnitude", args)}
+	return &Point{self.Object.Call("setMagnitude", args...)}
 }
 
 // Normalize Alters the Point object so that its length is 1, but it retains the same direction.
@@ -338,7 +338,7 @@ func (self *Point) Normalize() *Point {
 
 // NormalizeI Alters the Point object so that its length is 1, but it retains the same direction.
 func (self *Point) NormalizeI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("normalize", args)}
+	return &Point{self.Object.Call("normalize", args...)}
 }
 
 // IsZero Determine if this point is at 0,0.
@@ -348,7 +348,7 @@ func (self *Point) IsZero() bool {
 
 // IsZeroI Determine if this point is at 0,0.
 func (self *Point) IsZeroI(args ...interface{}) bool {
-	return self.Object.Call("isZero", args).Bool()
+	return self.Object.Call("isZero", args...).Bool()
 }
 
 // Dot The dot product of this and another Point object.
@@ -358,7 +358,7 @@ func (self *Point) Dot(a *Point) int {
 
 // DotI The dot product of this and another Point object.
 func (self *Point) DotI(args ...interface{}) int {
-	return self.Object.Call("dot", args).Int()
+	return self.Object.Call("dot", args...).Int()
 }
 
 // Cross The cross product of this and another Point object.
@@ -368,7 +368,7 @@ func (self *Point) Cross(a *Point) int {
 
 // CrossI The cross product of this and another Point object.
 func (self *Point) CrossI(args ...interface{}) int {
-	return self.Object.Call("cross", args).Int()
+	return self.Object.Call("cross", args...).Int()
 }
 
 // Perp Make this Point perpendicular (90 degrees rotation)
@@ -378,7 +378,7 @@ func (self *Point) Perp() *Point {
 
 // PerpI Make this Point perpendicular (90 degrees rotation)
 func (self *Point) PerpI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("perp", args)}
+	return &Point{self.Object.Call("perp", args...)}
 }
 
 // Rperp Make this Point perpendicular (-90 degrees rotation)
@@ -388,7 +388,7 @@ func (self *Point) Rperp() *Point {
 
 // RperpI Make this Point perpendicular (-90 degrees rotation)
 func (self *Point) RperpI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("rperp", args)}
+	return &Point{self.Object.Call("rperp", args...)}
 }
 
 // NormalRightHand Right-hand normalize (make unit length) this Point.
@@ -398,7 +398,7 @@ func (self *Point) NormalRightHand() *Point {
 
 // NormalRightHandI Right-hand normalize (make unit length) this Point.
 func (self *Point) NormalRightHandI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("normalRightHand", args)}
+	return &Point{self.Object.Call("normalRightHand", args...)}
 }
 
 // Floor Math.floor() both the x and y properties of this Point.
@@ -408,7 +408,7 @@ func (self *Point) Floor() *Point {
 
 // FloorI Math.floor() both the x and y properties of this Point.
 func (self *Point) FloorI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("floor", args)}
+	return &Point{self.Object.Call("floor", args...)}
 }
 
 // Ceil Math.ceil() both the x and y properties of this Point.
@@ -418,7 +418,7 @@ func (self *Point) Ceil() *Point {
 
 // CeilI Math.ceil() both the x and y properties of this Point.
 func (self *Point) CeilI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("ceil", args)}
+	return &Point{self.Object.Call("ceil", args...)}
 }
 
 // ToString Returns a string representation of this object.
@@ -428,7 +428,7 @@ func (self *Point) ToString() string {
 
 // ToStringI Returns a string representation of this object.
 func (self *Point) ToStringI(args ...interface{}) string {
-	return self.Object.Call("toString", args).String()
+	return self.Object.Call("toString", args...).String()
 }
 
 // Negative Creates a negative Point.
@@ -443,7 +443,7 @@ func (self *Point) Negative1O(a *Point, out *Point) *Point {
 
 // NegativeI Creates a negative Point.
 func (self *Point) NegativeI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("negative", args)}
+	return &Point{self.Object.Call("negative", args...)}
 }
 
 // MultiplyAdd Adds two 2D Points together and multiplies the result by the given scalar.
@@ -458,7 +458,7 @@ func (self *Point) MultiplyAdd1O(a *Point, b *Point, s int, out *Point) *Point {
 
 // MultiplyAddI Adds two 2D Points together and multiplies the result by the given scalar.
 func (self *Point) MultiplyAddI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("multiplyAdd", args)}
+	return &Point{self.Object.Call("multiplyAdd", args...)}
 }
 
 // Interpolate Interpolates the two given Points, based on the `f` value (between 0 and 1) and returns a new Point.
@@ -473,7 +473,7 @@ func (self *Point) Interpolate1O(a *Point, b *Point, f int, out *Point) *Point {
 
 // InterpolateI Interpolates the two given Points, based on the `f` value (between 0 and 1) and returns a new Point.
 func (self *Point) InterpolateI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("interpolate", args)}
+	return &Point{self.Object.Call("interpolate", args...)}
 }
 
 // Project Project two Points onto another Point.
@@ -488,7 +488,7 @@ func (self *Point) Project1O(a *Point, b *Point, out *Point) *Point {
 
 // ProjectI Project two Points onto another Point.
 func (self *Point) ProjectI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("project", args)}
+	return &Point{self.Object.Call("project", args...)}
 }
 
 // ProjectUnit Project two Points onto a Point of unit length.
@@ -503,7 +503,7 @@ func (self *Point) ProjectUnit1O(a *Point, b *Point, out *Point) *Point {
 
 // ProjectUnitI Project two Points onto a Point of unit length.
 func (self *Point) ProjectUnitI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("projectUnit", args)}
+	return &Point{self.Object.Call("projectUnit", args...)}
 }
 
 // Centroid Calculates centroid (or midpoint) from an array of points. If only one point is provided, that point is returned.
@@ -518,7 +518,7 @@ func (self *Point) Centroid1O(points []Point, out *Point) *Point {
 
 // CentroidI Calculates centroid (or midpoint) from an array of points. If only one point is provided, that point is returned.
 func (self *Point) CentroidI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("centroid", args)}
+	return &Point{self.Object.Call("centroid", args...)}
 }
 
 // Parse Parses an object for x and/or y properties and returns a new Phaser.Point with matching values.
@@ -542,5 +542,5 @@ func (self *Point) Parse2O(obj interface{}, xProp string, yProp string) *Point {
 // ParseI Parses an object for x and/or y properties and returns a new Phaser.Point with matching values.
 // If the object doesn't contain those properties a Point with x/y of zero will be returned.
 func (self *Point) ParseI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("parse", args)}
+	return &Point{self.Object.Call("parse", args...)}
 }

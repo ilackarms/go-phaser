@@ -18,7 +18,7 @@ func NewMat2() *Mat2 {
 
 // NewMat2I empty description
 func NewMat2I(args ...interface{}) *Mat2 {
-	return &Mat2{js.Global.Get("mat2").New(args)}
+	return &Mat2{js.Global.Get("mat2").New(args...)}
 }
 
 // Mat2 Binding conversion method to Mat2 point

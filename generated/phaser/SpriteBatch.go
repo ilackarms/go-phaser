@@ -53,7 +53,7 @@ func NewSpriteBatch2O(game *Game, parent interface{}, name string, addToStage bo
 //
 // Please note that any Sprite that is part of a SpriteBatch will not have its bounds updated, so will fail checks such as outOfBounds.
 func NewSpriteBatchI(args ...interface{}) *SpriteBatch {
-	return &SpriteBatch{js.Global.Get("Phaser").Get("SpriteBatch").New(args)}
+	return &SpriteBatch{js.Global.Get("Phaser").Get("SpriteBatch").New(args...)}
 }
 
 // SpriteBatch Binding conversion method to SpriteBatch point
@@ -879,7 +879,7 @@ func (self *SpriteBatch) AlignIn3O(container interface{}, position int, offsetX 
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *SpriteBatch) AlignInI(args ...interface{}) *Group {
-	return &Group{self.Object.Call("alignIn", args)}
+	return &Group{self.Object.Call("alignIn", args...)}
 }
 
 // AlignTo Aligns this Group to the side of another Game Object, or Rectangle, known as the
@@ -1054,7 +1054,7 @@ func (self *SpriteBatch) AlignTo3O(parent interface{}, position int, offsetX int
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *SpriteBatch) AlignToI(args ...interface{}) *Group {
-	return &Group{self.Object.Call("alignTo", args)}
+	return &Group{self.Object.Call("alignTo", args...)}
 }
 
 // Add Adds an existing object as the top child in this group.
@@ -1126,7 +1126,7 @@ func (self *SpriteBatch) Add2O(child *DisplayObject, silent bool, index int) *Di
 //
 // Use {@link Phaser.Group#addAt addAt} to control where a child is added. Use {@link Phaser.Group#create create} to create and add a new child.
 func (self *SpriteBatch) AddI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("add", args)}
+	return &DisplayObject{self.Object.Call("add", args...)}
 }
 
 // AddAt Adds an existing object to this group.
@@ -1170,7 +1170,7 @@ func (self *SpriteBatch) AddAt2O(child *DisplayObject, index int, silent bool) *
 //
 // If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 func (self *SpriteBatch) AddAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addAt", args)}
+	return &DisplayObject{self.Object.Call("addAt", args...)}
 }
 
 // AddToHash Adds a child of this Group into the hash array.
@@ -1182,7 +1182,7 @@ func (self *SpriteBatch) AddToHash(child *DisplayObject) bool {
 // AddToHashI Adds a child of this Group into the hash array.
 // This call will return false if the child is not a child of this Group, or is already in the hash.
 func (self *SpriteBatch) AddToHashI(args ...interface{}) bool {
-	return self.Object.Call("addToHash", args).Bool()
+	return self.Object.Call("addToHash", args...).Bool()
 }
 
 // RemoveFromHash Removes a child of this Group from the hash array.
@@ -1194,7 +1194,7 @@ func (self *SpriteBatch) RemoveFromHash(child *DisplayObject) bool {
 // RemoveFromHashI Removes a child of this Group from the hash array.
 // This call will return false if the child is not in the hash.
 func (self *SpriteBatch) RemoveFromHashI(args ...interface{}) bool {
-	return self.Object.Call("removeFromHash", args).Bool()
+	return self.Object.Call("removeFromHash", args...).Bool()
 }
 
 // AddMultiple Adds an array of existing Display Objects to this Group.
@@ -1236,7 +1236,7 @@ func (self *SpriteBatch) AddMultiple1O(children interface{}, silent bool) interf
 //
 // If `Group.inputEnableChildren` is set, then an Input Handler will be created on the objects, so long as one does not already exist.
 func (self *SpriteBatch) AddMultipleI(args ...interface{}) interface{} {
-	return self.Object.Call("addMultiple", args)
+	return self.Object.Call("addMultiple", args...)
 }
 
 // GetAt Returns the child found at the given index within this group.
@@ -1246,7 +1246,7 @@ func (self *SpriteBatch) GetAt(index int) interface{} {
 
 // GetAtI Returns the child found at the given index within this group.
 func (self *SpriteBatch) GetAtI(args ...interface{}) interface{} {
-	return self.Object.Call("getAt", args)
+	return self.Object.Call("getAt", args...)
 }
 
 // Create Creates a new Phaser.Sprite object and adds it to the top of this group.
@@ -1342,7 +1342,7 @@ func (self *SpriteBatch) Create4O(x int, y int, key interface{}, frame interface
 //
 // If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 func (self *SpriteBatch) CreateI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("create", args)}
+	return &DisplayObject{self.Object.Call("create", args...)}
 }
 
 // CreateMultiple Creates multiple Phaser.Sprite objects and adds them to the top of this Group.
@@ -1528,7 +1528,7 @@ func (self *SpriteBatch) CreateMultiple2O(quantity int, key interface{}, frame i
 //
 // If `Group.inputEnableChildren` is set, then an Input Handler will be created on the objects, so long as one does not already exist.
 func (self *SpriteBatch) CreateMultipleI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("createMultiple", args)
+	array00 := self.Object.Call("createMultiple", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -1548,7 +1548,7 @@ func (self *SpriteBatch) UpdateZ() {
 //
 // This must be called whenever children ordering is altered so that their `z` indices are correctly updated.
 func (self *SpriteBatch) UpdateZI(args ...interface{}) {
-	self.Object.Call("updateZ", args)
+	self.Object.Call("updateZ", args...)
 }
 
 // Align This method iterates through all children in the Group (regardless if they are visible or exist)
@@ -1728,7 +1728,7 @@ func (self *SpriteBatch) Align2O(width int, height int, cellWidth int, cellHeigh
 //
 // The final argument; `offset` lets you start the alignment from a specific child index.
 func (self *SpriteBatch) AlignI(args ...interface{}) bool {
-	return self.Object.Call("align", args).Bool()
+	return self.Object.Call("align", args...).Bool()
 }
 
 // ResetCursor Sets the group cursor to the first child in the group.
@@ -1749,7 +1749,7 @@ func (self *SpriteBatch) ResetCursor1O(index int) interface{} {
 //
 // If the optional index parameter is given it sets the cursor to the object at that index instead.
 func (self *SpriteBatch) ResetCursorI(args ...interface{}) interface{} {
-	return self.Object.Call("resetCursor", args)
+	return self.Object.Call("resetCursor", args...)
 }
 
 // Next Advances the group cursor to the next (higher) object in the group.
@@ -1763,7 +1763,7 @@ func (self *SpriteBatch) Next() interface{} {
 //
 // If the cursor is at the end of the group (top child) it is moved the start of the group (bottom child).
 func (self *SpriteBatch) NextI(args ...interface{}) interface{} {
-	return self.Object.Call("next", args)
+	return self.Object.Call("next", args...)
 }
 
 // Previous Moves the group cursor to the previous (lower) child in the group.
@@ -1777,7 +1777,7 @@ func (self *SpriteBatch) Previous() interface{} {
 //
 // If the cursor is at the start of the group (bottom child) it is moved to the end (top child).
 func (self *SpriteBatch) PreviousI(args ...interface{}) interface{} {
-	return self.Object.Call("previous", args)
+	return self.Object.Call("previous", args...)
 }
 
 // Swap Swaps the position of two children in this group.
@@ -1791,7 +1791,7 @@ func (self *SpriteBatch) Swap(child1 interface{}, child2 interface{}) {
 //
 // Both children must be in this group, a child cannot be swapped with itself, and unparented children cannot be swapped.
 func (self *SpriteBatch) SwapI(args ...interface{}) {
-	self.Object.Call("swap", args)
+	self.Object.Call("swap", args...)
 }
 
 // BringToTop Brings the given child to the top of this group so it renders above all other children.
@@ -1801,7 +1801,7 @@ func (self *SpriteBatch) BringToTop(child interface{}) interface{} {
 
 // BringToTopI Brings the given child to the top of this group so it renders above all other children.
 func (self *SpriteBatch) BringToTopI(args ...interface{}) interface{} {
-	return self.Object.Call("bringToTop", args)
+	return self.Object.Call("bringToTop", args...)
 }
 
 // SendToBack Sends the given child to the bottom of this group so it renders below all other children.
@@ -1811,7 +1811,7 @@ func (self *SpriteBatch) SendToBack(child interface{}) interface{} {
 
 // SendToBackI Sends the given child to the bottom of this group so it renders below all other children.
 func (self *SpriteBatch) SendToBackI(args ...interface{}) interface{} {
-	return self.Object.Call("sendToBack", args)
+	return self.Object.Call("sendToBack", args...)
 }
 
 // MoveUp Moves the given child up one place in this group unless it's already at the top.
@@ -1821,7 +1821,7 @@ func (self *SpriteBatch) MoveUp(child interface{}) interface{} {
 
 // MoveUpI Moves the given child up one place in this group unless it's already at the top.
 func (self *SpriteBatch) MoveUpI(args ...interface{}) interface{} {
-	return self.Object.Call("moveUp", args)
+	return self.Object.Call("moveUp", args...)
 }
 
 // MoveDown Moves the given child down one place in this group unless it's already at the bottom.
@@ -1831,7 +1831,7 @@ func (self *SpriteBatch) MoveDown(child interface{}) interface{} {
 
 // MoveDownI Moves the given child down one place in this group unless it's already at the bottom.
 func (self *SpriteBatch) MoveDownI(args ...interface{}) interface{} {
-	return self.Object.Call("moveDown", args)
+	return self.Object.Call("moveDown", args...)
 }
 
 // Xy Positions the child found at the given index within this group to the given x and y coordinates.
@@ -1841,7 +1841,7 @@ func (self *SpriteBatch) Xy(index int, x int, y int) {
 
 // XyI Positions the child found at the given index within this group to the given x and y coordinates.
 func (self *SpriteBatch) XyI(args ...interface{}) {
-	self.Object.Call("xy", args)
+	self.Object.Call("xy", args...)
 }
 
 // Reverse Reverses all children in this group.
@@ -1855,7 +1855,7 @@ func (self *SpriteBatch) Reverse() {
 //
 // This operation applies only to immediate children and does not propagate to subgroups.
 func (self *SpriteBatch) ReverseI(args ...interface{}) {
-	self.Object.Call("reverse", args)
+	self.Object.Call("reverse", args...)
 }
 
 // GetIndex Get the index position of the given child in this group, which should match the child's `z` property.
@@ -1865,7 +1865,7 @@ func (self *SpriteBatch) GetIndex(child interface{}) int {
 
 // GetIndexI Get the index position of the given child in this group, which should match the child's `z` property.
 func (self *SpriteBatch) GetIndexI(args ...interface{}) int {
-	return self.Object.Call("getIndex", args).Int()
+	return self.Object.Call("getIndex", args...).Int()
 }
 
 // GetByName Searches the Group for the first instance of a child with the `name`
@@ -1879,7 +1879,7 @@ func (self *SpriteBatch) GetByName(name string) interface{} {
 // property matching the given argument. Should more than one child have
 // the same name only the first instance is returned.
 func (self *SpriteBatch) GetByNameI(args ...interface{}) interface{} {
-	return self.Object.Call("getByName", args)
+	return self.Object.Call("getByName", args...)
 }
 
 // Replace Replaces a child of this Group with the given newChild. The newChild cannot be a member of this Group.
@@ -1897,7 +1897,7 @@ func (self *SpriteBatch) Replace(oldChild interface{}, newChild interface{}) int
 //
 // If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 func (self *SpriteBatch) ReplaceI(args ...interface{}) interface{} {
-	return self.Object.Call("replace", args)
+	return self.Object.Call("replace", args...)
 }
 
 // HasProperty Checks if the child has the given property.
@@ -1911,7 +1911,7 @@ func (self *SpriteBatch) HasProperty(child interface{}, key []string) bool {
 //
 // Will scan up to 4 levels deep only.
 func (self *SpriteBatch) HasPropertyI(args ...interface{}) bool {
-	return self.Object.Call("hasProperty", args).Bool()
+	return self.Object.Call("hasProperty", args...).Bool()
 }
 
 // SetProperty Sets a property to the given value on the child. The operation parameter controls how the value is set.
@@ -1959,7 +1959,7 @@ func (self *SpriteBatch) SetProperty2O(child interface{}, key []interface{}, val
 // - 3: will multiply the value already present by the given value.
 // - 4: will divide the value already present by the given value.
 func (self *SpriteBatch) SetPropertyI(args ...interface{}) bool {
-	return self.Object.Call("setProperty", args).Bool()
+	return self.Object.Call("setProperty", args...).Bool()
 }
 
 // CheckProperty Checks a property for the given value on the child.
@@ -1974,7 +1974,7 @@ func (self *SpriteBatch) CheckProperty1O(child interface{}, key []interface{}, v
 
 // CheckPropertyI Checks a property for the given value on the child.
 func (self *SpriteBatch) CheckPropertyI(args ...interface{}) bool {
-	return self.Object.Call("checkProperty", args).Bool()
+	return self.Object.Call("checkProperty", args...).Bool()
 }
 
 // Set Quickly set a property on a single child of this group to a new value.
@@ -2016,7 +2016,7 @@ func (self *SpriteBatch) Set4O(child *Sprite, key string, value interface{}, che
 //
 // The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 func (self *SpriteBatch) SetI(args ...interface{}) bool {
-	return self.Object.Call("set", args).Bool()
+	return self.Object.Call("set", args...).Bool()
 }
 
 // SetAll Quickly set the same property across all children of this group to a new value.
@@ -2076,7 +2076,7 @@ func (self *SpriteBatch) SetAll4O(key string, value interface{}, checkAlive bool
 //
 // The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 func (self *SpriteBatch) SetAllI(args ...interface{}) {
-	self.Object.Call("setAll", args)
+	self.Object.Call("setAll", args...)
 }
 
 // SetAllChildren Quickly set the same property across all children of this group, and any child Groups, to a new value.
@@ -2136,7 +2136,7 @@ func (self *SpriteBatch) SetAllChildren4O(key string, value interface{}, checkAl
 //
 // The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 func (self *SpriteBatch) SetAllChildrenI(args ...interface{}) {
-	self.Object.Call("setAllChildren", args)
+	self.Object.Call("setAllChildren", args...)
 }
 
 // CheckAll Quickly check that the same property across all children of this group is equal to the given value.
@@ -2171,7 +2171,7 @@ func (self *SpriteBatch) CheckAll3O(key string, value interface{}, checkAlive bo
 //
 // This call doesn't descend down children, so if you have a Group inside of this group, the property will be checked on the group but not its children.
 func (self *SpriteBatch) CheckAllI(args ...interface{}) {
-	self.Object.Call("checkAll", args)
+	self.Object.Call("checkAll", args...)
 }
 
 // AddAll Adds the amount to the given property on all children in this group.
@@ -2185,7 +2185,7 @@ func (self *SpriteBatch) AddAll(property string, amount int, checkAlive bool, ch
 //
 // `Group.addAll('x', 10)` will add 10 to the child.x value for each child.
 func (self *SpriteBatch) AddAllI(args ...interface{}) {
-	self.Object.Call("addAll", args)
+	self.Object.Call("addAll", args...)
 }
 
 // SubAll Subtracts the amount from the given property on all children in this group.
@@ -2199,7 +2199,7 @@ func (self *SpriteBatch) SubAll(property string, amount int, checkAlive bool, ch
 //
 // `Group.subAll('x', 10)` will minus 10 from the child.x value for each child.
 func (self *SpriteBatch) SubAllI(args ...interface{}) {
-	self.Object.Call("subAll", args)
+	self.Object.Call("subAll", args...)
 }
 
 // MultiplyAll Multiplies the given property by the amount on all children in this group.
@@ -2213,7 +2213,7 @@ func (self *SpriteBatch) MultiplyAll(property string, amount int, checkAlive boo
 //
 // `Group.multiplyAll('x', 2)` will x2 the child.x value for each child.
 func (self *SpriteBatch) MultiplyAllI(args ...interface{}) {
-	self.Object.Call("multiplyAll", args)
+	self.Object.Call("multiplyAll", args...)
 }
 
 // DivideAll Divides the given property by the amount on all children in this group.
@@ -2227,7 +2227,7 @@ func (self *SpriteBatch) DivideAll(property string, amount int, checkAlive bool,
 //
 // `Group.divideAll('x', 2)` will half the child.x value for each child.
 func (self *SpriteBatch) DivideAllI(args ...interface{}) {
-	self.Object.Call("divideAll", args)
+	self.Object.Call("divideAll", args...)
 }
 
 // CallAllExists Calls a function, specified by name, on all children in the group who exist (or do not exist).
@@ -2241,7 +2241,7 @@ func (self *SpriteBatch) CallAllExists(callback string, existsValue bool, parame
 //
 // After the existsValue parameter you can add as many parameters as you like, which will all be passed to the child callback.
 func (self *SpriteBatch) CallAllExistsI(args ...interface{}) {
-	self.Object.Call("callAllExists", args)
+	self.Object.Call("callAllExists", args...)
 }
 
 // CallbackFromArray Returns a reference to a function that exists on a child of the group based on the given callback array.
@@ -2251,15 +2251,16 @@ func (self *SpriteBatch) CallbackFromArray(child interface{}, callback []interfa
 
 // CallbackFromArrayI Returns a reference to a function that exists on a child of the group based on the given callback array.
 func (self *SpriteBatch) CallbackFromArrayI(args ...interface{}) {
-	self.Object.Call("callbackFromArray", args)
+	self.Object.Call("callbackFromArray", args...)
 }
 
 // CallAll Calls a function, specified by name, on all on children.
 //
 // The function is called for all children regardless if they are dead or alive (see callAllExists for different options).
 // After the method parameter and context you can add as many extra parameters as you like, which will all be passed to the child.
-func (self *SpriteBatch) CallAll(method string, context string, args interface{}) {
-	self.Object.Call("callAll", method, context, args)
+func (self *SpriteBatch) CallAll(method string, context string, args ...interface{}) {
+	args = append([]interface{}{method, context}, args...)
+	self.Object.Call("callAll", args...)
 }
 
 // CallAllI Calls a function, specified by name, on all on children.
@@ -2267,7 +2268,7 @@ func (self *SpriteBatch) CallAll(method string, context string, args interface{}
 // The function is called for all children regardless if they are dead or alive (see callAllExists for different options).
 // After the method parameter and context you can add as many extra parameters as you like, which will all be passed to the child.
 func (self *SpriteBatch) CallAllI(args ...interface{}) {
-	self.Object.Call("callAll", args)
+	self.Object.Call("callAll", args...)
 }
 
 // PreUpdate The core preUpdate - as called by World.
@@ -2277,7 +2278,7 @@ func (self *SpriteBatch) PreUpdate() {
 
 // PreUpdateI The core preUpdate - as called by World.
 func (self *SpriteBatch) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Update The core update - as called by World.
@@ -2287,7 +2288,7 @@ func (self *SpriteBatch) Update() {
 
 // UpdateI The core update - as called by World.
 func (self *SpriteBatch) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate The core postUpdate - as called by World.
@@ -2297,7 +2298,7 @@ func (self *SpriteBatch) PostUpdate() {
 
 // PostUpdateI The core postUpdate - as called by World.
 func (self *SpriteBatch) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // Filter Find children matching a certain predicate.
@@ -2339,7 +2340,7 @@ func (self *SpriteBatch) Filter1O(predicate interface{}, checkExists bool) *Arra
 //
 // Note: Currently this will skip any children which are Groups themselves.
 func (self *SpriteBatch) FilterI(args ...interface{}) *ArraySet {
-	return &ArraySet{self.Object.Call("filter", args)}
+	return &ArraySet{self.Object.Call("filter", args...)}
 }
 
 // ForEach Call a function on each child in this group.
@@ -2377,8 +2378,9 @@ func (self *SpriteBatch) ForEach1O(callback interface{}, callbackContext interfa
 // would invoke `awardBonusGold` function with the parameters `(child, 100, 500)`.
 //
 // Note: This check will skip any children which are Groups themselves.
-func (self *SpriteBatch) ForEach2O(callback interface{}, callbackContext interface{}, checkExists bool, args interface{}) {
-	self.Object.Call("forEach", callback, callbackContext, checkExists, args)
+func (self *SpriteBatch) ForEach2O(callback interface{}, callbackContext interface{}, checkExists bool, args ...interface{}) {
+	args = append([]interface{}{callback, callbackContext, checkExists}, args...)
+	self.Object.Call("forEach", args...)
 }
 
 // ForEachI Call a function on each child in this group.
@@ -2391,7 +2393,7 @@ func (self *SpriteBatch) ForEach2O(callback interface{}, callbackContext interfa
 //
 // Note: This check will skip any children which are Groups themselves.
 func (self *SpriteBatch) ForEachI(args ...interface{}) {
-	self.Object.Call("forEach", args)
+	self.Object.Call("forEach", args...)
 }
 
 // ForEachExists Call a function on each existing child in this group.
@@ -2404,15 +2406,16 @@ func (self *SpriteBatch) ForEachExists(callback interface{}, callbackContext int
 // ForEachExists1O Call a function on each existing child in this group.
 //
 // See {@link Phaser.Group#forEach forEach} for details.
-func (self *SpriteBatch) ForEachExists1O(callback interface{}, callbackContext interface{}, args interface{}) {
-	self.Object.Call("forEachExists", callback, callbackContext, args)
+func (self *SpriteBatch) ForEachExists1O(callback interface{}, callbackContext interface{}, args ...interface{}) {
+	args = append([]interface{}{callback, callbackContext}, args...)
+	self.Object.Call("forEachExists", args...)
 }
 
 // ForEachExistsI Call a function on each existing child in this group.
 //
 // See {@link Phaser.Group#forEach forEach} for details.
 func (self *SpriteBatch) ForEachExistsI(args ...interface{}) {
-	self.Object.Call("forEachExists", args)
+	self.Object.Call("forEachExists", args...)
 }
 
 // ForEachAlive Call a function on each alive child in this group.
@@ -2425,15 +2428,16 @@ func (self *SpriteBatch) ForEachAlive(callback interface{}, callbackContext inte
 // ForEachAlive1O Call a function on each alive child in this group.
 //
 // See {@link Phaser.Group#forEach forEach} for details.
-func (self *SpriteBatch) ForEachAlive1O(callback interface{}, callbackContext interface{}, args interface{}) {
-	self.Object.Call("forEachAlive", callback, callbackContext, args)
+func (self *SpriteBatch) ForEachAlive1O(callback interface{}, callbackContext interface{}, args ...interface{}) {
+	args = append([]interface{}{callback, callbackContext}, args...)
+	self.Object.Call("forEachAlive", args...)
 }
 
 // ForEachAliveI Call a function on each alive child in this group.
 //
 // See {@link Phaser.Group#forEach forEach} for details.
 func (self *SpriteBatch) ForEachAliveI(args ...interface{}) {
-	self.Object.Call("forEachAlive", args)
+	self.Object.Call("forEachAlive", args...)
 }
 
 // ForEachDead Call a function on each dead child in this group.
@@ -2446,15 +2450,16 @@ func (self *SpriteBatch) ForEachDead(callback interface{}, callbackContext inter
 // ForEachDead1O Call a function on each dead child in this group.
 //
 // See {@link Phaser.Group#forEach forEach} for details.
-func (self *SpriteBatch) ForEachDead1O(callback interface{}, callbackContext interface{}, args interface{}) {
-	self.Object.Call("forEachDead", callback, callbackContext, args)
+func (self *SpriteBatch) ForEachDead1O(callback interface{}, callbackContext interface{}, args ...interface{}) {
+	args = append([]interface{}{callback, callbackContext}, args...)
+	self.Object.Call("forEachDead", args...)
 }
 
 // ForEachDeadI Call a function on each dead child in this group.
 //
 // See {@link Phaser.Group#forEach forEach} for details.
 func (self *SpriteBatch) ForEachDeadI(args ...interface{}) {
-	self.Object.Call("forEachDead", args)
+	self.Object.Call("forEachDead", args...)
 }
 
 // Sort Sort the children in the group according to a particular key and ordering.
@@ -2502,7 +2507,7 @@ func (self *SpriteBatch) Sort2O(key string, order int) {
 // Internally this uses a standard JavaScript Array sort, so everything that applies there also applies here, including
 // alphabetical sorting, mixing strings and numbers, and Unicode sorting. See MDN for more details.
 func (self *SpriteBatch) SortI(args ...interface{}) {
-	self.Object.Call("sort", args)
+	self.Object.Call("sort", args...)
 }
 
 // CustomSort Sort the children in the group according to custom sort function.
@@ -2526,7 +2531,7 @@ func (self *SpriteBatch) CustomSort1O(sortHandler interface{}, context interface
 // The `sortHandler` is provided the two parameters: the two children involved in the comparison (a and b).
 // It should return -1 if `a > b`, 1 if `a < b` or 0 if `a === b`.
 func (self *SpriteBatch) CustomSortI(args ...interface{}) {
-	self.Object.Call("customSort", args)
+	self.Object.Call("customSort", args...)
 }
 
 // AscendingSortHandler An internal helper function for the sort process.
@@ -2536,7 +2541,7 @@ func (self *SpriteBatch) AscendingSortHandler(a interface{}, b interface{}) {
 
 // AscendingSortHandlerI An internal helper function for the sort process.
 func (self *SpriteBatch) AscendingSortHandlerI(args ...interface{}) {
-	self.Object.Call("ascendingSortHandler", args)
+	self.Object.Call("ascendingSortHandler", args...)
 }
 
 // DescendingSortHandler An internal helper function for the sort process.
@@ -2546,7 +2551,7 @@ func (self *SpriteBatch) DescendingSortHandler(a interface{}, b interface{}) {
 
 // DescendingSortHandlerI An internal helper function for the sort process.
 func (self *SpriteBatch) DescendingSortHandlerI(args ...interface{}) {
-	self.Object.Call("descendingSortHandler", args)
+	self.Object.Call("descendingSortHandler", args...)
 }
 
 // Iterate Iterates over the children of the group performing one of several actions for matched children.
@@ -2629,8 +2634,9 @@ func (self *SpriteBatch) Iterate2O(key string, value interface{}, returnType int
 //
 // If `args` is specified it must be an array. The matched child will be assigned to the first
 // element and the entire array will be applied to the callback function.
-func (self *SpriteBatch) Iterate3O(key string, value interface{}, returnType int, callback interface{}, callbackContext interface{}, args []interface{}) interface{} {
-	return self.Object.Call("iterate", key, value, returnType, callback, callbackContext, args)
+func (self *SpriteBatch) Iterate3O(key string, value interface{}, returnType int, callback interface{}, callbackContext interface{}, args ...interface{}) interface{} {
+	args = append([]interface{}{key, value, returnType, callback, callbackContext}, args...)
+	return self.Object.Call("iterate", args...)
 }
 
 // IterateI Iterates over the children of the group performing one of several actions for matched children.
@@ -2651,7 +2657,7 @@ func (self *SpriteBatch) Iterate3O(key string, value interface{}, returnType int
 // If `args` is specified it must be an array. The matched child will be assigned to the first
 // element and the entire array will be applied to the callback function.
 func (self *SpriteBatch) IterateI(args ...interface{}) interface{} {
-	return self.Object.Call("iterate", args)
+	return self.Object.Call("iterate", args...)
 }
 
 // GetFirstExists Get the first display object that exists, or doesn't exist.
@@ -2747,7 +2753,7 @@ func (self *SpriteBatch) GetFirstExists6O(exists bool, createIfNull bool, x int,
 // If a child *was* found , `createIfNull` is `false` and you provided the additional arguments then the child
 // will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 func (self *SpriteBatch) GetFirstExistsI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getFirstExists", args)}
+	return &DisplayObject{self.Object.Call("getFirstExists", args...)}
 }
 
 // GetFirstAlive Get the first child that is alive (`child.alive === true`).
@@ -2845,7 +2851,7 @@ func (self *SpriteBatch) GetFirstAlive5O(createIfNull bool, x int, y int, key in
 // If a child *was* found , `createIfNull` is `false` and you provided the additional arguments then the child
 // will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 func (self *SpriteBatch) GetFirstAliveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getFirstAlive", args)}
+	return &DisplayObject{self.Object.Call("getFirstAlive", args...)}
 }
 
 // GetFirstDead Get the first child that is dead (`child.alive === false`).
@@ -2943,7 +2949,7 @@ func (self *SpriteBatch) GetFirstDead5O(createIfNull bool, x int, y int, key int
 // If a child *was* found , `createIfNull` is `false` and you provided the additional arguments then the child
 // will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 func (self *SpriteBatch) GetFirstDeadI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getFirstDead", args)}
+	return &DisplayObject{self.Object.Call("getFirstDead", args...)}
 }
 
 // ResetChild Takes a child and if the `x` and `y` arguments are given it calls `child.reset(x, y)` on it.
@@ -2997,7 +3003,7 @@ func (self *SpriteBatch) ResetChild4O(child *DisplayObject, x int, y int, key in
 //
 // The two operations are separate. For example if you just wish to load a new texture then pass `null` as the x and y values.
 func (self *SpriteBatch) ResetChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("resetChild", args)}
+	return &DisplayObject{self.Object.Call("resetChild", args...)}
 }
 
 // GetTop Return the child at the top of this group.
@@ -3011,7 +3017,7 @@ func (self *SpriteBatch) GetTop() interface{} {
 //
 // The top child is the child displayed (rendered) above every other child.
 func (self *SpriteBatch) GetTopI(args ...interface{}) interface{} {
-	return self.Object.Call("getTop", args)
+	return self.Object.Call("getTop", args...)
 }
 
 // GetBottom Returns the child at the bottom of this group.
@@ -3025,7 +3031,7 @@ func (self *SpriteBatch) GetBottom() interface{} {
 //
 // The bottom child the child being displayed (rendered) below every other child.
 func (self *SpriteBatch) GetBottomI(args ...interface{}) interface{} {
-	return self.Object.Call("getBottom", args)
+	return self.Object.Call("getBottom", args...)
 }
 
 // GetClosestTo Get the closest child to given Object, with optional callback to filter children.
@@ -3081,7 +3087,7 @@ func (self *SpriteBatch) GetClosestTo2O(object interface{}, callback interface{}
 // with the distance as the second. The callback should return `true` if it passes your
 // filtering criteria, otherwise it should return `false`.
 func (self *SpriteBatch) GetClosestToI(args ...interface{}) interface{} {
-	return self.Object.Call("getClosestTo", args)
+	return self.Object.Call("getClosestTo", args...)
 }
 
 // GetFurthestFrom Get the child furthest away from the given Object, with optional callback to filter children.
@@ -3137,7 +3143,7 @@ func (self *SpriteBatch) GetFurthestFrom2O(object interface{}, callback interfac
 // with the distance as the second. The callback should return `true` if it passes your
 // filtering criteria, otherwise it should return `false`.
 func (self *SpriteBatch) GetFurthestFromI(args ...interface{}) interface{} {
-	return self.Object.Call("getFurthestFrom", args)
+	return self.Object.Call("getFurthestFrom", args...)
 }
 
 // CountLiving Get the number of living children in this group.
@@ -3147,7 +3153,7 @@ func (self *SpriteBatch) CountLiving() int {
 
 // CountLivingI Get the number of living children in this group.
 func (self *SpriteBatch) CountLivingI(args ...interface{}) int {
-	return self.Object.Call("countLiving", args).Int()
+	return self.Object.Call("countLiving", args...).Int()
 }
 
 // CountDead Get the number of dead children in this group.
@@ -3157,7 +3163,7 @@ func (self *SpriteBatch) CountDead() int {
 
 // CountDeadI Get the number of dead children in this group.
 func (self *SpriteBatch) CountDeadI(args ...interface{}) int {
-	return self.Object.Call("countDead", args).Int()
+	return self.Object.Call("countDead", args...).Int()
 }
 
 // GetRandom Returns a random child from the group.
@@ -3177,7 +3183,7 @@ func (self *SpriteBatch) GetRandom2O(startIndex int, length int) interface{} {
 
 // GetRandomI Returns a random child from the group.
 func (self *SpriteBatch) GetRandomI(args ...interface{}) interface{} {
-	return self.Object.Call("getRandom", args)
+	return self.Object.Call("getRandom", args...)
 }
 
 // GetRandomExists Returns a random child from the Group that has `exists` set to `true`.
@@ -3213,7 +3219,7 @@ func (self *SpriteBatch) GetRandomExists2O(startIndex int, endIndex int) interfa
 // and you set `startIndex` to 0 and `endIndex` to 50, it would return a random child from only
 // the first 50 children in the Group.
 func (self *SpriteBatch) GetRandomExistsI(args ...interface{}) interface{} {
-	return self.Object.Call("getRandomExists", args)
+	return self.Object.Call("getRandomExists", args...)
 }
 
 // GetAll Returns all children in this Group.
@@ -3291,7 +3297,7 @@ func (self *SpriteBatch) GetAll4O(property string, value interface{}, startIndex
 // and you set `startIndex` to 0 and `endIndex` to 50, it would return a random child from only
 // the first 50 children in the Group.
 func (self *SpriteBatch) GetAllI(args ...interface{}) interface{} {
-	return self.Object.Call("getAll", args)
+	return self.Object.Call("getAll", args...)
 }
 
 // Remove Removes the given child from this group.
@@ -3327,7 +3333,7 @@ func (self *SpriteBatch) Remove2O(child interface{}, destroy bool, silent bool) 
 //
 // If the group cursor was referring to the removed child it is updated to refer to the next child.
 func (self *SpriteBatch) RemoveI(args ...interface{}) bool {
-	return self.Object.Call("remove", args).Bool()
+	return self.Object.Call("remove", args...).Bool()
 }
 
 // MoveAll Moves all children from this Group to the Group given.
@@ -3342,7 +3348,7 @@ func (self *SpriteBatch) MoveAll1O(group *Group, silent bool) *Group {
 
 // MoveAllI Moves all children from this Group to the Group given.
 func (self *SpriteBatch) MoveAllI(args ...interface{}) *Group {
-	return &Group{self.Object.Call("moveAll", args)}
+	return &Group{self.Object.Call("moveAll", args...)}
 }
 
 // RemoveAll Removes all children from this Group, but does not remove the group from its parent.
@@ -3392,7 +3398,7 @@ func (self *SpriteBatch) RemoveAll3O(destroy bool, silent bool, destroyTexture b
 // You can also optionally also destroy the BaseTexture the Child is using. Be careful if you've
 // more than one Game Object sharing the same BaseTexture.
 func (self *SpriteBatch) RemoveAllI(args ...interface{}) {
-	self.Object.Call("removeAll", args)
+	self.Object.Call("removeAll", args...)
 }
 
 // RemoveBetween Removes all children from this group whose index falls beteen the given startIndex and endIndex values.
@@ -3417,7 +3423,7 @@ func (self *SpriteBatch) RemoveBetween3O(startIndex int, endIndex int, destroy b
 
 // RemoveBetweenI Removes all children from this group whose index falls beteen the given startIndex and endIndex values.
 func (self *SpriteBatch) RemoveBetweenI(args ...interface{}) {
-	self.Object.Call("removeBetween", args)
+	self.Object.Call("removeBetween", args...)
 }
 
 // Destroy Destroys this group.
@@ -3445,7 +3451,7 @@ func (self *SpriteBatch) Destroy2O(destroyChildren bool, soft bool) {
 //
 // Removes all children, then removes this group from its parent and nulls references.
 func (self *SpriteBatch) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // AddChild Adds a child to the container.
@@ -3455,7 +3461,7 @@ func (self *SpriteBatch) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *SpriteBatch) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -3465,7 +3471,7 @@ func (self *SpriteBatch) AddChildAt(child *DisplayObject, index int) *DisplayObj
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *SpriteBatch) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -3475,7 +3481,7 @@ func (self *SpriteBatch) SwapChildren(child *DisplayObject, child2 *DisplayObjec
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *SpriteBatch) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -3485,7 +3491,7 @@ func (self *SpriteBatch) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *SpriteBatch) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -3495,7 +3501,7 @@ func (self *SpriteBatch) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *SpriteBatch) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -3505,7 +3511,7 @@ func (self *SpriteBatch) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *SpriteBatch) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -3515,7 +3521,7 @@ func (self *SpriteBatch) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *SpriteBatch) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -3525,7 +3531,7 @@ func (self *SpriteBatch) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *SpriteBatch) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -3535,7 +3541,7 @@ func (self *SpriteBatch) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *SpriteBatch) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // GetBounds Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
@@ -3550,7 +3556,7 @@ func (self *SpriteBatch) GetBounds1O(targetCoordinateSpace interface{}) *Rectang
 
 // GetBoundsI Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
 func (self *SpriteBatch) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
@@ -3560,7 +3566,7 @@ func (self *SpriteBatch) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 func (self *SpriteBatch) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -3570,7 +3576,7 @@ func (self *SpriteBatch) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *SpriteBatch) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -3580,7 +3586,7 @@ func (self *SpriteBatch) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *SpriteBatch) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -3590,5 +3596,5 @@ func (self *SpriteBatch) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *SpriteBatch) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }

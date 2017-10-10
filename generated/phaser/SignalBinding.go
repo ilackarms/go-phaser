@@ -37,15 +37,16 @@ func NewSignalBinding2O(signal *Signal, listener interface{}, isOnce bool, liste
 // NewSignalBinding3O Object that represents a binding between a Signal and a listener function.
 // This is an internal constructor and shouldn't be created directly.
 // Inspired by Joa Ebert AS3 SignalBinding and Robert Penner's Slot classes.
-func NewSignalBinding3O(signal *Signal, listener interface{}, isOnce bool, listenerContext interface{}, priority int, args interface{}) *SignalBinding {
-	return &SignalBinding{js.Global.Get("Phaser").Get("SignalBinding").New(signal, listener, isOnce, listenerContext, priority, args)}
+func NewSignalBinding3O(signal *Signal, listener interface{}, isOnce bool, listenerContext interface{}, priority int, args ...interface{}) *SignalBinding {
+	args = append([]interface{}{signal, listener, isOnce, listenerContext, priority}, args...)
+	return &SignalBinding{js.Global.Get("Phaser").Get("SignalBinding").New(args...)}
 }
 
 // NewSignalBindingI Object that represents a binding between a Signal and a listener function.
 // This is an internal constructor and shouldn't be created directly.
 // Inspired by Joa Ebert AS3 SignalBinding and Robert Penner's Slot classes.
 func NewSignalBindingI(args ...interface{}) *SignalBinding {
-	return &SignalBinding{js.Global.Get("Phaser").Get("SignalBinding").New(args)}
+	return &SignalBinding{js.Global.Get("Phaser").Get("SignalBinding").New(args...)}
 }
 
 // SignalBinding Binding conversion method to SignalBinding point
@@ -111,7 +112,7 @@ func (self *SignalBinding) Execute1O(paramsArr []interface{}) interface{} {
 // ExecuteI Call listener passing arbitrary parameters.
 // If binding was added using `Signal.addOnce()` it will be automatically removed from signal dispatch queue, this method is used internally for the signal dispatch.
 func (self *SignalBinding) ExecuteI(args ...interface{}) interface{} {
-	return self.Object.Call("execute", args)
+	return self.Object.Call("execute", args...)
 }
 
 // Detach Detach binding from signal.
@@ -123,7 +124,7 @@ func (self *SignalBinding) Detach() interface{} {
 // DetachI Detach binding from signal.
 // alias to: @see mySignal.remove(myBinding.getListener());
 func (self *SignalBinding) DetachI(args ...interface{}) interface{} {
-	return self.Object.Call("detach", args)
+	return self.Object.Call("detach", args...)
 }
 
 // IsBound empty description
@@ -133,7 +134,7 @@ func (self *SignalBinding) IsBound() bool {
 
 // IsBoundI empty description
 func (self *SignalBinding) IsBoundI(args ...interface{}) bool {
-	return self.Object.Call("isBound", args).Bool()
+	return self.Object.Call("isBound", args...).Bool()
 }
 
 // IsOnce empty description
@@ -143,7 +144,7 @@ func (self *SignalBinding) IsOnce() bool {
 
 // IsOnceI empty description
 func (self *SignalBinding) IsOnceI(args ...interface{}) bool {
-	return self.Object.Call("isOnce", args).Bool()
+	return self.Object.Call("isOnce", args...).Bool()
 }
 
 // GetListener empty description
@@ -153,7 +154,7 @@ func (self *SignalBinding) GetListener() interface{} {
 
 // GetListenerI empty description
 func (self *SignalBinding) GetListenerI(args ...interface{}) interface{} {
-	return self.Object.Call("getListener", args)
+	return self.Object.Call("getListener", args...)
 }
 
 // GetSignal empty description
@@ -163,7 +164,7 @@ func (self *SignalBinding) GetSignal() *Signal {
 
 // GetSignalI empty description
 func (self *SignalBinding) GetSignalI(args ...interface{}) *Signal {
-	return &Signal{self.Object.Call("getSignal", args)}
+	return &Signal{self.Object.Call("getSignal", args...)}
 }
 
 // _destroy Delete instance properties
@@ -173,7 +174,7 @@ func (self *SignalBinding) _destroy() {
 
 // _destroyI Delete instance properties
 func (self *SignalBinding) _destroyI(args ...interface{}) {
-	self.Object.Call("_destroy", args)
+	self.Object.Call("_destroy", args...)
 }
 
 // ToString empty description
@@ -183,5 +184,5 @@ func (self *SignalBinding) ToString() string {
 
 // ToStringI empty description
 func (self *SignalBinding) ToStringI(args ...interface{}) string {
-	return self.Object.Call("toString", args).String()
+	return self.Object.Call("toString", args...).String()
 }

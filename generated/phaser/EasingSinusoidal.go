@@ -18,7 +18,7 @@ func NewEasingSinusoidal() *EasingSinusoidal {
 
 // NewEasingSinusoidalI Sinusoidal easing.
 func NewEasingSinusoidalI(args ...interface{}) *EasingSinusoidal {
-	return &EasingSinusoidal{js.Global.Get("Phaser").Get("Easing").Get("Sinusoidal").New(args)}
+	return &EasingSinusoidal{js.Global.Get("Phaser").Get("Easing").Get("Sinusoidal").New(args...)}
 }
 
 // EasingSinusoidal Binding conversion method to EasingSinusoidal point
@@ -36,7 +36,7 @@ func (self *EasingSinusoidal) In(k int) int {
 
 // InI Sinusoidal ease-in.
 func (self *EasingSinusoidal) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Sinusoidal ease-out.
@@ -46,7 +46,7 @@ func (self *EasingSinusoidal) Out(k int) int {
 
 // OutI Sinusoidal ease-out.
 func (self *EasingSinusoidal) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Sinusoidal ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingSinusoidal) InOut(k int) int {
 
 // InOutI Sinusoidal ease-in/out.
 func (self *EasingSinusoidal) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

@@ -63,7 +63,7 @@ func NewPhysicsNinja(game *Game) *PhysicsNinja {
 //
 // Feel free to attempt any of the above and submit a Pull Request with your code! Be sure to include test cases proving they work.
 func NewPhysicsNinjaI(args ...interface{}) *PhysicsNinja {
-	return &PhysicsNinja{js.Global.Get("Phaser").Get("Physics").Get("Ninja").New(args)}
+	return &PhysicsNinja{js.Global.Get("Phaser").Get("Physics").Get("Ninja").New(args...)}
 }
 
 // PhysicsNinja Binding conversion method to PhysicsNinja point
@@ -159,7 +159,7 @@ func (self *PhysicsNinja) EnableAABB1O(object interface{}, children bool) {
 // EnableAABBI This will create a Ninja Physics AABB body on the given game object. Its dimensions will match the width and height of the object at the point it is created.
 // A game object can only have 1 physics body active at any one time, and it can't be changed until the object is destroyed.
 func (self *PhysicsNinja) EnableAABBI(args ...interface{}) {
-	self.Object.Call("enableAABB", args)
+	self.Object.Call("enableAABB", args...)
 }
 
 // EnableCircle This will create a Ninja Physics Circle body on the given game object.
@@ -177,7 +177,7 @@ func (self *PhysicsNinja) EnableCircle1O(object interface{}, radius int, childre
 // EnableCircleI This will create a Ninja Physics Circle body on the given game object.
 // A game object can only have 1 physics body active at any one time, and it can't be changed until the object is destroyed.
 func (self *PhysicsNinja) EnableCircleI(args ...interface{}) {
-	self.Object.Call("enableCircle", args)
+	self.Object.Call("enableCircle", args...)
 }
 
 // EnableTile This will create a Ninja Physics Tile body on the given game object. There are 34 different types of tile you can create, including 45 degree slopes,
@@ -209,7 +209,7 @@ func (self *PhysicsNinja) EnableTile2O(object interface{}, id int, children bool
 // Note that for all degree based tile types they need to have an equal width and height. If the given object doesn't have equal width and height it will use the width.
 // A game object can only have 1 physics body active at any one time, and it can't be changed until the object is destroyed.
 func (self *PhysicsNinja) EnableTileI(args ...interface{}) {
-	self.Object.Call("enableTile", args)
+	self.Object.Call("enableTile", args...)
 }
 
 // Enable This will create a Ninja Physics body on the given game object or array of game objects.
@@ -245,7 +245,7 @@ func (self *PhysicsNinja) Enable4O(object interface{}, type_ int, id int, radius
 // EnableI This will create a Ninja Physics body on the given game object or array of game objects.
 // A game object can only have 1 physics body active at any one time, and it can't be changed until the object is destroyed.
 func (self *PhysicsNinja) EnableI(args ...interface{}) {
-	self.Object.Call("enable", args)
+	self.Object.Call("enable", args...)
 }
 
 // EnableBody Creates a Ninja Physics body on the given game object.
@@ -257,7 +257,7 @@ func (self *PhysicsNinja) EnableBody(object interface{}) {
 // EnableBodyI Creates a Ninja Physics body on the given game object.
 // A game object can only have 1 physics body active at any one time, and it can't be changed until the body is nulled.
 func (self *PhysicsNinja) EnableBodyI(args ...interface{}) {
-	self.Object.Call("enableBody", args)
+	self.Object.Call("enableBody", args...)
 }
 
 // SetBounds Updates the size of this physics world.
@@ -267,7 +267,7 @@ func (self *PhysicsNinja) SetBounds(x int, y int, width int, height int) {
 
 // SetBoundsI Updates the size of this physics world.
 func (self *PhysicsNinja) SetBoundsI(args ...interface{}) {
-	self.Object.Call("setBounds", args)
+	self.Object.Call("setBounds", args...)
 }
 
 // SetBoundsToWorld Updates the size of this physics world to match the size of the game world.
@@ -277,7 +277,7 @@ func (self *PhysicsNinja) SetBoundsToWorld() {
 
 // SetBoundsToWorldI Updates the size of this physics world to match the size of the game world.
 func (self *PhysicsNinja) SetBoundsToWorldI(args ...interface{}) {
-	self.Object.Call("setBoundsToWorld", args)
+	self.Object.Call("setBoundsToWorld", args...)
 }
 
 // ClearTilemapLayerBodies Clears all physics bodies from the given TilemapLayer that were created with `World.convertTilemap`.
@@ -292,7 +292,7 @@ func (self *PhysicsNinja) ClearTilemapLayerBodies1O(map_ *Tilemap, layer interfa
 
 // ClearTilemapLayerBodiesI Clears all physics bodies from the given TilemapLayer that were created with `World.convertTilemap`.
 func (self *PhysicsNinja) ClearTilemapLayerBodiesI(args ...interface{}) {
-	self.Object.Call("clearTilemapLayerBodies", args)
+	self.Object.Call("clearTilemapLayerBodies", args...)
 }
 
 // ConvertTilemap Goes through all tiles in the given Tilemap and TilemapLayer and converts those set to collide into physics tiles.
@@ -328,7 +328,7 @@ func (self *PhysicsNinja) ConvertTilemap(map_ *Tilemap, layer interface{}, slope
 // Your slopeMap array would look like this: `[ 1, 1, 1, 1, 2, 3 ]`.
 // Where each element of the array is a tile in your tilemap and the resulting Ninja Tile it should create.
 func (self *PhysicsNinja) ConvertTilemapI(args ...interface{}) []interface{} {
-	array00 := self.Object.Call("convertTilemap", args)
+	array00 := self.Object.Call("convertTilemap", args...)
 	length00 := array00.Length()
 	out00 := make([]interface{}, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -374,7 +374,7 @@ func (self *PhysicsNinja) Overlap3O(object1 interface{}, object2 interface{}, ov
 // Unlike collide the objects are NOT automatically separated or have any physics applied, they merely test for overlap results.
 // The second parameter can be an array of objects, of differing types.
 func (self *PhysicsNinja) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }
 
 // Collide Checks for collision between two game objects. You can perform Sprite vs. Sprite, Sprite vs. Group, Group vs. Group, Sprite vs. Tilemap Layer or Group vs. Tilemap Layer collisions.
@@ -424,7 +424,7 @@ func (self *PhysicsNinja) Collide3O(object1 interface{}, object2 interface{}, co
 // giving you the chance to perform additional checks. If the function returns true then the collision and separation is carried out. If it returns false it is skipped.
 // The collideCallback is an optional function that is only called if two sprites collide. If a processCallback has been set then it needs to return true for collideCallback to be called.
 func (self *PhysicsNinja) CollideI(args ...interface{}) bool {
-	return self.Object.Call("collide", args).Bool()
+	return self.Object.Call("collide", args...).Bool()
 }
 
 // CollideHandler Internal collision handler.
@@ -434,7 +434,7 @@ func (self *PhysicsNinja) CollideHandler(object1 interface{}, object2 interface{
 
 // CollideHandlerI Internal collision handler.
 func (self *PhysicsNinja) CollideHandlerI(args ...interface{}) {
-	self.Object.Call("collideHandler", args)
+	self.Object.Call("collideHandler", args...)
 }
 
 // CollideSpriteVsSprite An internal function. Use Phaser.Physics.Ninja.collide instead.
@@ -444,7 +444,7 @@ func (self *PhysicsNinja) CollideSpriteVsSprite() {
 
 // CollideSpriteVsSpriteI An internal function. Use Phaser.Physics.Ninja.collide instead.
 func (self *PhysicsNinja) CollideSpriteVsSpriteI(args ...interface{}) {
-	self.Object.Call("collideSpriteVsSprite", args)
+	self.Object.Call("collideSpriteVsSprite", args...)
 }
 
 // CollideSpriteVsGroup An internal function. Use Phaser.Physics.Ninja.collide instead.
@@ -454,7 +454,7 @@ func (self *PhysicsNinja) CollideSpriteVsGroup() {
 
 // CollideSpriteVsGroupI An internal function. Use Phaser.Physics.Ninja.collide instead.
 func (self *PhysicsNinja) CollideSpriteVsGroupI(args ...interface{}) {
-	self.Object.Call("collideSpriteVsGroup", args)
+	self.Object.Call("collideSpriteVsGroup", args...)
 }
 
 // CollideGroupVsSelf An internal function. Use Phaser.Physics.Ninja.collide instead.
@@ -464,7 +464,7 @@ func (self *PhysicsNinja) CollideGroupVsSelf() {
 
 // CollideGroupVsSelfI An internal function. Use Phaser.Physics.Ninja.collide instead.
 func (self *PhysicsNinja) CollideGroupVsSelfI(args ...interface{}) {
-	self.Object.Call("collideGroupVsSelf", args)
+	self.Object.Call("collideGroupVsSelf", args...)
 }
 
 // CollideGroupVsGroup An internal function. Use Phaser.Physics.Ninja.collide instead.
@@ -474,7 +474,7 @@ func (self *PhysicsNinja) CollideGroupVsGroup() {
 
 // CollideGroupVsGroupI An internal function. Use Phaser.Physics.Ninja.collide instead.
 func (self *PhysicsNinja) CollideGroupVsGroupI(args ...interface{}) {
-	self.Object.Call("collideGroupVsGroup", args)
+	self.Object.Call("collideGroupVsGroup", args...)
 }
 
 // Separate The core separation function to separate two physics bodies.
@@ -484,5 +484,5 @@ func (self *PhysicsNinja) Separate(body1 *PhysicsNinjaBody, body2 *PhysicsNinjaB
 
 // SeparateI The core separation function to separate two physics bodies.
 func (self *PhysicsNinja) SeparateI(args ...interface{}) bool {
-	return self.Object.Call("separate", args).Bool()
+	return self.Object.Call("separate", args...).Bool()
 }

@@ -18,7 +18,7 @@ func NewPhysicsP2PointProxy(world *PhysicsP2, destination interface{}) *PhysicsP
 
 // NewPhysicsP2PointProxyI A PointProxy is an internal class that allows for direct getter/setter style property access to Arrays and TypedArrays.
 func NewPhysicsP2PointProxyI(args ...interface{}) *PhysicsP2PointProxy {
-	return &PhysicsP2PointProxy{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("PointProxy").New(args)}
+	return &PhysicsP2PointProxy{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("PointProxy").New(args...)}
 }
 
 // PhysicsP2PointProxy Binding conversion method to PhysicsP2PointProxy point

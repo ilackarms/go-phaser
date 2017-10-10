@@ -39,7 +39,7 @@ func NewMouse(game *Game) *Mouse {
 // You should not normally access this class directly, but instead use a Phaser.Pointer object
 // which normalises all game input for you, including accurate button handling.
 func NewMouseI(args ...interface{}) *Mouse {
-	return &Mouse{js.Global.Get("Phaser").Get("Mouse").New(args)}
+	return &Mouse{js.Global.Get("Phaser").Get("Mouse").New(args...)}
 }
 
 // Mouse Binding conversion method to Mouse point
@@ -303,7 +303,7 @@ func (self *Mouse) Start() {
 
 // StartI Starts the event listeners running.
 func (self *Mouse) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // OnMouseDown The internal method that handles the mouse down event from the browser.
@@ -313,7 +313,7 @@ func (self *Mouse) OnMouseDown(event *MouseEvent) {
 
 // OnMouseDownI The internal method that handles the mouse down event from the browser.
 func (self *Mouse) OnMouseDownI(args ...interface{}) {
-	self.Object.Call("onMouseDown", args)
+	self.Object.Call("onMouseDown", args...)
 }
 
 // OnMouseMove The internal method that handles the mouse move event from the browser.
@@ -323,7 +323,7 @@ func (self *Mouse) OnMouseMove(event *MouseEvent) {
 
 // OnMouseMoveI The internal method that handles the mouse move event from the browser.
 func (self *Mouse) OnMouseMoveI(args ...interface{}) {
-	self.Object.Call("onMouseMove", args)
+	self.Object.Call("onMouseMove", args...)
 }
 
 // OnMouseUp The internal method that handles the mouse up event from the browser.
@@ -333,7 +333,7 @@ func (self *Mouse) OnMouseUp(event *MouseEvent) {
 
 // OnMouseUpI The internal method that handles the mouse up event from the browser.
 func (self *Mouse) OnMouseUpI(args ...interface{}) {
-	self.Object.Call("onMouseUp", args)
+	self.Object.Call("onMouseUp", args...)
 }
 
 // OnMouseUpGlobal The internal method that handles the mouse up event from the window.
@@ -343,7 +343,7 @@ func (self *Mouse) OnMouseUpGlobal(event *MouseEvent) {
 
 // OnMouseUpGlobalI The internal method that handles the mouse up event from the window.
 func (self *Mouse) OnMouseUpGlobalI(args ...interface{}) {
-	self.Object.Call("onMouseUpGlobal", args)
+	self.Object.Call("onMouseUpGlobal", args...)
 }
 
 // OnMouseOutGlobal The internal method that handles the mouse out event from the window.
@@ -353,7 +353,7 @@ func (self *Mouse) OnMouseOutGlobal(event *MouseEvent) {
 
 // OnMouseOutGlobalI The internal method that handles the mouse out event from the window.
 func (self *Mouse) OnMouseOutGlobalI(args ...interface{}) {
-	self.Object.Call("onMouseOutGlobal", args)
+	self.Object.Call("onMouseOutGlobal", args...)
 }
 
 // OnMouseOut The internal method that handles the mouse out event from the browser.
@@ -363,7 +363,7 @@ func (self *Mouse) OnMouseOut(event *MouseEvent) {
 
 // OnMouseOutI The internal method that handles the mouse out event from the browser.
 func (self *Mouse) OnMouseOutI(args ...interface{}) {
-	self.Object.Call("onMouseOut", args)
+	self.Object.Call("onMouseOut", args...)
 }
 
 // OnMouseOver The internal method that handles the mouse over event from the browser.
@@ -373,7 +373,7 @@ func (self *Mouse) OnMouseOver(event *MouseEvent) {
 
 // OnMouseOverI The internal method that handles the mouse over event from the browser.
 func (self *Mouse) OnMouseOverI(args ...interface{}) {
-	self.Object.Call("onMouseOver", args)
+	self.Object.Call("onMouseOver", args...)
 }
 
 // OnMouseWheel The internal method that handles the mouse wheel event from the browser.
@@ -383,7 +383,7 @@ func (self *Mouse) OnMouseWheel(event *MouseEvent) {
 
 // OnMouseWheelI The internal method that handles the mouse wheel event from the browser.
 func (self *Mouse) OnMouseWheelI(args ...interface{}) {
-	self.Object.Call("onMouseWheel", args)
+	self.Object.Call("onMouseWheel", args...)
 }
 
 // RequestPointerLock If the browser supports it you can request that the pointer be locked to the browser window.
@@ -397,7 +397,7 @@ func (self *Mouse) RequestPointerLock() {
 // This is classically known as 'FPS controls', where the pointer can't leave the browser until the user presses an exit key.
 // If the browser successfully enters a locked state the event Phaser.Mouse.pointerLock will be dispatched and the first parameter will be 'true'.
 func (self *Mouse) RequestPointerLockI(args ...interface{}) {
-	self.Object.Call("requestPointerLock", args)
+	self.Object.Call("requestPointerLock", args...)
 }
 
 // PointerLockChange Internal pointerLockChange handler.
@@ -407,7 +407,7 @@ func (self *Mouse) PointerLockChange(event *Event) {
 
 // PointerLockChangeI Internal pointerLockChange handler.
 func (self *Mouse) PointerLockChangeI(args ...interface{}) {
-	self.Object.Call("pointerLockChange", args)
+	self.Object.Call("pointerLockChange", args...)
 }
 
 // ReleasePointerLock Internal release pointer lock handler.
@@ -417,7 +417,7 @@ func (self *Mouse) ReleasePointerLock() {
 
 // ReleasePointerLockI Internal release pointer lock handler.
 func (self *Mouse) ReleasePointerLockI(args ...interface{}) {
-	self.Object.Call("releasePointerLock", args)
+	self.Object.Call("releasePointerLock", args...)
 }
 
 // Stop Stop the event listeners.
@@ -427,7 +427,7 @@ func (self *Mouse) Stop() {
 
 // StopI Stop the event listeners.
 func (self *Mouse) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // WheelEventProxy A purely internal event support class to proxy 'wheelscroll' and 'DOMMouseWheel'
@@ -443,5 +443,5 @@ func (self *Mouse) WheelEventProxy(scaleFactor int, deltaMode int) {
 //
 // See https://developer.mozilla.org/en-US/docs/Web/Events/mousewheel for choosing a scale and delta mode.
 func (self *Mouse) WheelEventProxyI(args ...interface{}) {
-	self.Object.Call("WheelEventProxy", args)
+	self.Object.Call("WheelEventProxy", args...)
 }

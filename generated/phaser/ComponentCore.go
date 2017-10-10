@@ -18,7 +18,7 @@ func NewComponentCore() *ComponentCore {
 
 // NewComponentCoreI Core Component Features.
 func NewComponentCoreI(args ...interface{}) *ComponentCore {
-	return &ComponentCore{js.Global.Get("Phaser").Get("Component").Get("Core").New(args)}
+	return &ComponentCore{js.Global.Get("Phaser").Get("Component").Get("Core").New(args...)}
 }
 
 // ComponentCore Binding conversion method to ComponentCore point
@@ -254,7 +254,7 @@ func (self *ComponentCore) Install() {
 //
 // The `this` context should be that of the applicable object instance or prototype.
 func (self *ComponentCore) InstallI(args ...interface{}) {
-	self.Object.Call("install", args)
+	self.Object.Call("install", args...)
 }
 
 // Init Initializes the mixin components.
@@ -268,7 +268,7 @@ func (self *ComponentCore) Init() {
 //
 // The `this` context should be an instance of the component mixin target.
 func (self *ComponentCore) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -282,7 +282,7 @@ func (self *ComponentCore) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *ComponentCore) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate Internal method called by the World postUpdate cycle.
@@ -292,5 +292,5 @@ func (self *ComponentCore) PostUpdate() {
 
 // PostUpdateI Internal method called by the World postUpdate cycle.
 func (self *ComponentCore) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }

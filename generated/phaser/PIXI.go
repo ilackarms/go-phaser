@@ -30,7 +30,7 @@ func NewPIXI() *PIXI {
 //
 // Contains assorted static properties and enumerations.
 func NewPIXII(args ...interface{}) *PIXI {
-	return &PIXI{js.Global.Get("PIXI").Get("PIXI").New(args)}
+	return &PIXI{js.Global.Get("PIXI").Get("PIXI").New(args...)}
 }
 
 // PIXI Binding conversion method to PIXI point
@@ -142,7 +142,7 @@ func (self *PIXI) Hex2rgb(hex int) {
 
 // Hex2rgbI Converts a hex color number to an [R, G, B] array
 func (self *PIXI) Hex2rgbI(args ...interface{}) {
-	self.Object.Call("hex2rgb", args)
+	self.Object.Call("hex2rgb", args...)
 }
 
 // Rgb2hex Converts a color as an [R, G, B] array to a hex number
@@ -152,7 +152,7 @@ func (self *PIXI) Rgb2hex(rgb []interface{}) {
 
 // Rgb2hexI Converts a color as an [R, G, B] array to a hex number
 func (self *PIXI) Rgb2hexI(args ...interface{}) {
-	self.Object.Call("rgb2hex", args)
+	self.Object.Call("rgb2hex", args...)
 }
 
 // CanUseNewCanvasBlendModes Checks whether the Canvas BlendModes are supported by the current browser for drawImage
@@ -162,7 +162,7 @@ func (self *PIXI) CanUseNewCanvasBlendModes() bool {
 
 // CanUseNewCanvasBlendModesI Checks whether the Canvas BlendModes are supported by the current browser for drawImage
 func (self *PIXI) CanUseNewCanvasBlendModesI(args ...interface{}) bool {
-	return self.Object.Call("canUseNewCanvasBlendModes", args).Bool()
+	return self.Object.Call("canUseNewCanvasBlendModes", args...).Bool()
 }
 
 // GetNextPowerOfTwo Given a number, this function returns the closest number that is a power of two
@@ -176,7 +176,7 @@ func (self *PIXI) GetNextPowerOfTwo(number int) int {
 //
 // this function is taken from Starling Framework as its pretty neat ;)
 func (self *PIXI) GetNextPowerOfTwoI(args ...interface{}) int {
-	return self.Object.Call("getNextPowerOfTwo", args).Int()
+	return self.Object.Call("getNextPowerOfTwo", args...).Int()
 }
 
 // IsPowerOfTwo checks if the given width and height make a power of two texture
@@ -186,5 +186,5 @@ func (self *PIXI) IsPowerOfTwo(width int, height int) bool {
 
 // IsPowerOfTwoI checks if the given width and height make a power of two texture
 func (self *PIXI) IsPowerOfTwoI(args ...interface{}) bool {
-	return self.Object.Call("isPowerOfTwo", args).Bool()
+	return self.Object.Call("isPowerOfTwo", args...).Bool()
 }

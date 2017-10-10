@@ -33,7 +33,7 @@ func NewPhysicsP2RotationalSpring3O(world *PhysicsP2, bodyA *P2Body, bodyB *P2Bo
 
 // NewPhysicsP2RotationalSpringI Creates a rotational spring, connecting two bodies. A spring can have a resting length, a stiffness and damping.
 func NewPhysicsP2RotationalSpringI(args ...interface{}) *PhysicsP2RotationalSpring {
-	return &PhysicsP2RotationalSpring{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("RotationalSpring").New(args)}
+	return &PhysicsP2RotationalSpring{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("RotationalSpring").New(args...)}
 }
 
 // PhysicsP2RotationalSpring Binding conversion method to PhysicsP2RotationalSpring point

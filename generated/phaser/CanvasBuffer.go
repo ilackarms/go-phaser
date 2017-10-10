@@ -20,7 +20,7 @@ func NewCanvasBuffer(width int, height int) *CanvasBuffer {
 
 // NewCanvasBufferI Creates a Canvas element of the given size.
 func NewCanvasBufferI(args ...interface{}) *CanvasBuffer {
-	return &CanvasBuffer{js.Global.Get("PIXI").Get("CanvasBuffer").New(args)}
+	return &CanvasBuffer{js.Global.Get("PIXI").Get("CanvasBuffer").New(args...)}
 }
 
 // CanvasBuffer Binding conversion method to CanvasBuffer point
@@ -78,7 +78,7 @@ func (self *CanvasBuffer) Clear() {
 
 // ClearI Clears the canvas that was created by the CanvasBuffer class.
 func (self *CanvasBuffer) ClearI(args ...interface{}) {
-	self.Object.Call("clear", args)
+	self.Object.Call("clear", args...)
 }
 
 // Resize Resizes the canvas to the specified width and height.
@@ -88,7 +88,7 @@ func (self *CanvasBuffer) Resize(width int, height int) {
 
 // ResizeI Resizes the canvas to the specified width and height.
 func (self *CanvasBuffer) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // Destroy Frees the canvas up for use again.
@@ -98,5 +98,5 @@ func (self *CanvasBuffer) Destroy() {
 
 // DestroyI Frees the canvas up for use again.
 func (self *CanvasBuffer) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

@@ -18,7 +18,7 @@ func NewComponentBounds() *ComponentBounds {
 
 // NewComponentBoundsI The Bounds component contains properties related to the bounds of the Game Object.
 func NewComponentBoundsI(args ...interface{}) *ComponentBounds {
-	return &ComponentBounds{js.Global.Get("Phaser").Get("Component").Get("Bounds").New(args)}
+	return &ComponentBounds{js.Global.Get("Phaser").Get("Component").Get("Bounds").New(args...)}
 }
 
 // ComponentBounds Binding conversion method to ComponentBounds point
@@ -296,7 +296,7 @@ func (self *ComponentBounds) AlignIn3O(container interface{}, position int, offs
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *ComponentBounds) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -471,5 +471,5 @@ func (self *ComponentBounds) AlignTo3O(parent interface{}, position int, offsetX
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *ComponentBounds) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }

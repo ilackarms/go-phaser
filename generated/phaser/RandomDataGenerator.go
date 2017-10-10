@@ -51,7 +51,7 @@ func NewRandomDataGenerator1O(seeds interface{}) *RandomDataGenerator {
 //  - https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
 //  - http://baagoe.org/en/wiki/Better_random_numbers_for_javascript (original, perm. 404)
 func NewRandomDataGeneratorI(args ...interface{}) *RandomDataGenerator {
-	return &RandomDataGenerator{js.Global.Get("Phaser").Get("RandomDataGenerator").New(args)}
+	return &RandomDataGenerator{js.Global.Get("Phaser").Get("RandomDataGenerator").New(args...)}
 }
 
 // RandomDataGenerator Binding conversion method to RandomDataGenerator point
@@ -69,7 +69,7 @@ func (self *RandomDataGenerator) Rnd() int {
 
 // RndI Private random helper.
 func (self *RandomDataGenerator) RndI(args ...interface{}) int {
-	return self.Object.Call("rnd", args).Int()
+	return self.Object.Call("rnd", args...).Int()
 }
 
 // Sow Reset the seed of the random data generator.
@@ -83,7 +83,7 @@ func (self *RandomDataGenerator) Sow(seeds []interface{}) {
 //
 // _Note_: the seed array is only processed up to the first `undefined` (or `null`) value, should such be present.
 func (self *RandomDataGenerator) SowI(args ...interface{}) {
-	self.Object.Call("sow", args)
+	self.Object.Call("sow", args...)
 }
 
 // Hash Internal method that creates a seed hash.
@@ -93,7 +93,7 @@ func (self *RandomDataGenerator) Hash(data interface{}) int {
 
 // HashI Internal method that creates a seed hash.
 func (self *RandomDataGenerator) HashI(args ...interface{}) int {
-	return self.Object.Call("hash", args).Int()
+	return self.Object.Call("hash", args...).Int()
 }
 
 // Integer Returns a random integer between 0 and 2^32.
@@ -103,7 +103,7 @@ func (self *RandomDataGenerator) Integer() int {
 
 // IntegerI Returns a random integer between 0 and 2^32.
 func (self *RandomDataGenerator) IntegerI(args ...interface{}) int {
-	return self.Object.Call("integer", args).Int()
+	return self.Object.Call("integer", args...).Int()
 }
 
 // Frac Returns a random real number between 0 and 1.
@@ -113,7 +113,7 @@ func (self *RandomDataGenerator) Frac() int {
 
 // FracI Returns a random real number between 0 and 1.
 func (self *RandomDataGenerator) FracI(args ...interface{}) int {
-	return self.Object.Call("frac", args).Int()
+	return self.Object.Call("frac", args...).Int()
 }
 
 // Real Returns a random real number between 0 and 2^32.
@@ -123,7 +123,7 @@ func (self *RandomDataGenerator) Real() int {
 
 // RealI Returns a random real number between 0 and 2^32.
 func (self *RandomDataGenerator) RealI(args ...interface{}) int {
-	return self.Object.Call("real", args).Int()
+	return self.Object.Call("real", args...).Int()
 }
 
 // IntegerInRange Returns a random integer between and including min and max.
@@ -133,7 +133,7 @@ func (self *RandomDataGenerator) IntegerInRange(min int, max int) int {
 
 // IntegerInRangeI Returns a random integer between and including min and max.
 func (self *RandomDataGenerator) IntegerInRangeI(args ...interface{}) int {
-	return self.Object.Call("integerInRange", args).Int()
+	return self.Object.Call("integerInRange", args...).Int()
 }
 
 // Between Returns a random integer between and including min and max.
@@ -145,7 +145,7 @@ func (self *RandomDataGenerator) Between(min int, max int) int {
 // BetweenI Returns a random integer between and including min and max.
 // This method is an alias for RandomDataGenerator.integerInRange.
 func (self *RandomDataGenerator) BetweenI(args ...interface{}) int {
-	return self.Object.Call("between", args).Int()
+	return self.Object.Call("between", args...).Int()
 }
 
 // RealInRange Returns a random real number between min and max.
@@ -155,7 +155,7 @@ func (self *RandomDataGenerator) RealInRange(min int, max int) int {
 
 // RealInRangeI Returns a random real number between min and max.
 func (self *RandomDataGenerator) RealInRangeI(args ...interface{}) int {
-	return self.Object.Call("realInRange", args).Int()
+	return self.Object.Call("realInRange", args...).Int()
 }
 
 // Normal Returns a random real number between -1 and 1.
@@ -165,7 +165,7 @@ func (self *RandomDataGenerator) Normal() int {
 
 // NormalI Returns a random real number between -1 and 1.
 func (self *RandomDataGenerator) NormalI(args ...interface{}) int {
-	return self.Object.Call("normal", args).Int()
+	return self.Object.Call("normal", args...).Int()
 }
 
 // Uuid Returns a valid RFC4122 version4 ID hex string from https://gist.github.com/1308368
@@ -175,7 +175,7 @@ func (self *RandomDataGenerator) Uuid() string {
 
 // UuidI Returns a valid RFC4122 version4 ID hex string from https://gist.github.com/1308368
 func (self *RandomDataGenerator) UuidI(args ...interface{}) string {
-	return self.Object.Call("uuid", args).String()
+	return self.Object.Call("uuid", args...).String()
 }
 
 // Pick Returns a random member of `array`.
@@ -185,7 +185,7 @@ func (self *RandomDataGenerator) Pick(ary []interface{}) interface{} {
 
 // PickI Returns a random member of `array`.
 func (self *RandomDataGenerator) PickI(args ...interface{}) interface{} {
-	return self.Object.Call("pick", args)
+	return self.Object.Call("pick", args...)
 }
 
 // Sign Returns a sign to be used with multiplication operator.
@@ -195,7 +195,7 @@ func (self *RandomDataGenerator) Sign() int {
 
 // SignI Returns a sign to be used with multiplication operator.
 func (self *RandomDataGenerator) SignI(args ...interface{}) int {
-	return self.Object.Call("sign", args).Int()
+	return self.Object.Call("sign", args...).Int()
 }
 
 // WeightedPick Returns a random member of `array`, favoring the earlier entries.
@@ -205,7 +205,7 @@ func (self *RandomDataGenerator) WeightedPick(ary []interface{}) interface{} {
 
 // WeightedPickI Returns a random member of `array`, favoring the earlier entries.
 func (self *RandomDataGenerator) WeightedPickI(args ...interface{}) interface{} {
-	return self.Object.Call("weightedPick", args)
+	return self.Object.Call("weightedPick", args...)
 }
 
 // Timestamp Returns a random timestamp between min and max, or between the beginning of 2000 and the end of 2020 if min and max aren't specified.
@@ -215,7 +215,7 @@ func (self *RandomDataGenerator) Timestamp(min int, max int) int {
 
 // TimestampI Returns a random timestamp between min and max, or between the beginning of 2000 and the end of 2020 if min and max aren't specified.
 func (self *RandomDataGenerator) TimestampI(args ...interface{}) int {
-	return self.Object.Call("timestamp", args).Int()
+	return self.Object.Call("timestamp", args...).Int()
 }
 
 // Angle Returns a random angle between -180 and 180.
@@ -225,7 +225,7 @@ func (self *RandomDataGenerator) Angle() int {
 
 // AngleI Returns a random angle between -180 and 180.
 func (self *RandomDataGenerator) AngleI(args ...interface{}) int {
-	return self.Object.Call("angle", args).Int()
+	return self.Object.Call("angle", args...).Int()
 }
 
 // State Gets or Sets the state of the generator. This allows you to retain the values
@@ -270,5 +270,5 @@ func (self *RandomDataGenerator) State1O(state string) string {
 // returns, which is a string with a header `!rnd` followed by the `c`,
 // `s0`, `s1` and `s2` values respectively, each comma-delimited.
 func (self *RandomDataGenerator) StateI(args ...interface{}) string {
-	return self.Object.Call("state", args).String()
+	return self.Object.Call("state", args...).String()
 }

@@ -21,7 +21,7 @@ func NewComponentFixedToCamera() *ComponentFixedToCamera {
 // NewComponentFixedToCameraI The FixedToCamera component enables a Game Object to be rendered relative to the game camera coordinates, regardless
 // of where in the world the camera is. This is used for things like sticking game UI to the camera that scrolls as it moves around the world.
 func NewComponentFixedToCameraI(args ...interface{}) *ComponentFixedToCamera {
-	return &ComponentFixedToCamera{js.Global.Get("Phaser").Get("Component").Get("FixedToCamera").New(args)}
+	return &ComponentFixedToCamera{js.Global.Get("Phaser").Get("Component").Get("FixedToCamera").New(args...)}
 }
 
 // ComponentFixedToCamera Binding conversion method to ComponentFixedToCamera point
@@ -89,5 +89,5 @@ func (self *ComponentFixedToCamera) PostUpdate() {
 // PostUpdateI The FixedToCamera component postUpdate handler.
 // Called automatically by the Game Object.
 func (self *ComponentFixedToCamera) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }

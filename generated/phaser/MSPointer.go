@@ -45,7 +45,7 @@ func NewMSPointer(game *Game) *MSPointer {
 // Please note that at the current time of writing Phaser does not yet support chorded button interactions:
 // http://www.w3.org/TR/pointerevents/#chorded-button-interactions
 func NewMSPointerI(args ...interface{}) *MSPointer {
-	return &MSPointer{js.Global.Get("Phaser").Get("MSPointer").New(args)}
+	return &MSPointer{js.Global.Get("Phaser").Get("MSPointer").New(args...)}
 }
 
 // MSPointer Binding conversion method to MSPointer point
@@ -169,7 +169,7 @@ func (self *MSPointer) Start() {
 
 // StartI Starts the event listeners running.
 func (self *MSPointer) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // OnPointerDown The function that handles the PointerDown event.
@@ -179,7 +179,7 @@ func (self *MSPointer) OnPointerDown(event *PointerEvent) {
 
 // OnPointerDownI The function that handles the PointerDown event.
 func (self *MSPointer) OnPointerDownI(args ...interface{}) {
-	self.Object.Call("onPointerDown", args)
+	self.Object.Call("onPointerDown", args...)
 }
 
 // OnPointerMove The function that handles the PointerMove event.
@@ -189,7 +189,7 @@ func (self *MSPointer) OnPointerMove(event *PointerEvent) {
 
 // OnPointerMoveI The function that handles the PointerMove event.
 func (self *MSPointer) OnPointerMoveI(args ...interface{}) {
-	self.Object.Call("onPointerMove", args)
+	self.Object.Call("onPointerMove", args...)
 }
 
 // OnPointerUp The function that handles the PointerUp event.
@@ -199,7 +199,7 @@ func (self *MSPointer) OnPointerUp(event *PointerEvent) {
 
 // OnPointerUpI The function that handles the PointerUp event.
 func (self *MSPointer) OnPointerUpI(args ...interface{}) {
-	self.Object.Call("onPointerUp", args)
+	self.Object.Call("onPointerUp", args...)
 }
 
 // OnPointerUpGlobal The internal method that handles the mouse up event from the window.
@@ -209,7 +209,7 @@ func (self *MSPointer) OnPointerUpGlobal(event *PointerEvent) {
 
 // OnPointerUpGlobalI The internal method that handles the mouse up event from the window.
 func (self *MSPointer) OnPointerUpGlobalI(args ...interface{}) {
-	self.Object.Call("onPointerUpGlobal", args)
+	self.Object.Call("onPointerUpGlobal", args...)
 }
 
 // OnPointerOut The internal method that handles the pointer out event from the browser.
@@ -219,7 +219,7 @@ func (self *MSPointer) OnPointerOut(event *PointerEvent) {
 
 // OnPointerOutI The internal method that handles the pointer out event from the browser.
 func (self *MSPointer) OnPointerOutI(args ...interface{}) {
-	self.Object.Call("onPointerOut", args)
+	self.Object.Call("onPointerOut", args...)
 }
 
 // Stop Stop the event listeners.
@@ -229,5 +229,5 @@ func (self *MSPointer) Stop() {
 
 // StopI Stop the event listeners.
 func (self *MSPointer) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }

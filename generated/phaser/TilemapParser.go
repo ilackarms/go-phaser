@@ -18,7 +18,7 @@ func NewTilemapParser() *TilemapParser {
 
 // NewTilemapParserI Phaser.TilemapParser parses data objects from Phaser.Loader that need more preparation before they can be inserted into a Tilemap.
 func NewTilemapParserI(args ...interface{}) *TilemapParser {
-	return &TilemapParser{js.Global.Get("Phaser").Get("TilemapParser").New(args)}
+	return &TilemapParser{js.Global.Get("Phaser").Get("TilemapParser").New(args...)}
 }
 
 // TilemapParser Binding conversion method to TilemapParser point
@@ -76,7 +76,7 @@ func (self *TilemapParser) Parse4O(game *Game, key string, tileWidth int, tileHe
 
 // ParseI Parse tilemap data from the cache and creates data for a Tilemap object.
 func (self *TilemapParser) ParseI(args ...interface{}) interface{} {
-	return self.Object.Call("parse", args)
+	return self.Object.Call("parse", args...)
 }
 
 // ParseCSV Parses a CSV file into valid map data.
@@ -96,7 +96,7 @@ func (self *TilemapParser) ParseCSV2O(key string, data string, tileWidth int, ti
 
 // ParseCSVI Parses a CSV file into valid map data.
 func (self *TilemapParser) ParseCSVI(args ...interface{}) interface{} {
-	return self.Object.Call("parseCSV", args)
+	return self.Object.Call("parseCSV", args...)
 }
 
 // GetEmptyData Returns an empty map data object.
@@ -106,7 +106,7 @@ func (self *TilemapParser) GetEmptyData() interface{} {
 
 // GetEmptyDataI Returns an empty map data object.
 func (self *TilemapParser) GetEmptyDataI(args ...interface{}) interface{} {
-	return self.Object.Call("getEmptyData", args)
+	return self.Object.Call("getEmptyData", args...)
 }
 
 // ParseJSON Parses a Tiled JSON file into valid map data.
@@ -116,5 +116,5 @@ func (self *TilemapParser) ParseJSON(json interface{}) interface{} {
 
 // ParseJSONI Parses a Tiled JSON file into valid map data.
 func (self *TilemapParser) ParseJSONI(args ...interface{}) interface{} {
-	return self.Object.Call("parseJSON", args)
+	return self.Object.Call("parseJSON", args...)
 }

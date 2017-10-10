@@ -18,7 +18,7 @@ func NewPixiShader(gl *WebGLContext) *PixiShader {
 
 // NewPixiShaderI empty description
 func NewPixiShaderI(args ...interface{}) *PixiShader {
-	return &PixiShader{js.Global.Get("PIXI").Get("PixiShader").New(args)}
+	return &PixiShader{js.Global.Get("PIXI").Get("PixiShader").New(args...)}
 }
 
 // PixiShader Binding conversion method to PixiShader point
@@ -102,7 +102,7 @@ func (self *PixiShader) Init() {
 
 // InitI Initialises the shader.
 func (self *PixiShader) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // InitUniforms Initialises the shader uniform values.
@@ -124,7 +124,7 @@ func (self *PixiShader) InitUniforms() {
 //
 // http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 func (self *PixiShader) InitUniformsI(args ...interface{}) {
-	self.Object.Call("initUniforms", args)
+	self.Object.Call("initUniforms", args...)
 }
 
 // InitSampler2D Initialises a Sampler2D uniform (which may only be available later on after initUniforms once the texture has loaded)
@@ -134,7 +134,7 @@ func (self *PixiShader) InitSampler2D() {
 
 // InitSampler2DI Initialises a Sampler2D uniform (which may only be available later on after initUniforms once the texture has loaded)
 func (self *PixiShader) InitSampler2DI(args ...interface{}) {
-	self.Object.Call("initSampler2D", args)
+	self.Object.Call("initSampler2D", args...)
 }
 
 // SyncUniforms Updates the shader uniform values.
@@ -144,7 +144,7 @@ func (self *PixiShader) SyncUniforms() {
 
 // SyncUniformsI Updates the shader uniform values.
 func (self *PixiShader) SyncUniformsI(args ...interface{}) {
-	self.Object.Call("syncUniforms", args)
+	self.Object.Call("syncUniforms", args...)
 }
 
 // Destroy Destroys the shader.
@@ -154,5 +154,5 @@ func (self *PixiShader) Destroy() {
 
 // DestroyI Destroys the shader.
 func (self *PixiShader) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

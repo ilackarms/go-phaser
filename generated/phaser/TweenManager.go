@@ -36,7 +36,7 @@ func NewTweenManager(game *Game) *TweenManager {
 // It also has callbacks swapped for Signals and a few issues patched with regard to properties and completion errors.
 // Please see https://github.com/sole/tween.js for a full list of contributors.
 func NewTweenManagerI(args ...interface{}) *TweenManager {
-	return &TweenManager{js.Global.Get("Phaser").Get("TweenManager").New(args)}
+	return &TweenManager{js.Global.Get("Phaser").Get("TweenManager").New(args...)}
 }
 
 // TweenManager Binding conversion method to TweenManager point
@@ -93,7 +93,7 @@ func (self *TweenManager) GetAll() []Tween {
 
 // GetAllI Get all the tween objects in an array.
 func (self *TweenManager) GetAllI(args ...interface{}) []Tween {
-	array00 := self.Object.Call("getAll", args)
+	array00 := self.Object.Call("getAll", args...)
 	length00 := array00.Length()
 	out00 := make([]Tween, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -110,7 +110,7 @@ func (self *TweenManager) RemoveAll() {
 
 // RemoveAllI Remove all tweens running and in the queue. Doesn't call any of the tween onComplete events.
 func (self *TweenManager) RemoveAllI(args ...interface{}) {
-	self.Object.Call("removeAll", args)
+	self.Object.Call("removeAll", args...)
 }
 
 // RemoveFrom Remove all tweens from a specific object, array of objects or Group.
@@ -125,7 +125,7 @@ func (self *TweenManager) RemoveFrom1O(obj interface{}, children bool) {
 
 // RemoveFromI Remove all tweens from a specific object, array of objects or Group.
 func (self *TweenManager) RemoveFromI(args ...interface{}) {
-	self.Object.Call("removeFrom", args)
+	self.Object.Call("removeFrom", args...)
 }
 
 // Add Add a new tween into the TweenManager.
@@ -135,7 +135,7 @@ func (self *TweenManager) Add(tween *Tween) *Tween {
 
 // AddI Add a new tween into the TweenManager.
 func (self *TweenManager) AddI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("add", args)}
+	return &Tween{self.Object.Call("add", args...)}
 }
 
 // Create Create a tween object for a specific object. The object can be any JavaScript object or Phaser object such as Sprite.
@@ -145,7 +145,7 @@ func (self *TweenManager) Create(object interface{}) *Tween {
 
 // CreateI Create a tween object for a specific object. The object can be any JavaScript object or Phaser object such as Sprite.
 func (self *TweenManager) CreateI(args ...interface{}) *Tween {
-	return &Tween{self.Object.Call("create", args)}
+	return &Tween{self.Object.Call("create", args...)}
 }
 
 // Remove Remove a tween from this manager.
@@ -155,7 +155,7 @@ func (self *TweenManager) Remove(tween *Tween) {
 
 // RemoveI Remove a tween from this manager.
 func (self *TweenManager) RemoveI(args ...interface{}) {
-	self.Object.Call("remove", args)
+	self.Object.Call("remove", args...)
 }
 
 // Update Update all the tween objects you added to this manager.
@@ -165,7 +165,7 @@ func (self *TweenManager) Update() bool {
 
 // UpdateI Update all the tween objects you added to this manager.
 func (self *TweenManager) UpdateI(args ...interface{}) bool {
-	return self.Object.Call("update", args).Bool()
+	return self.Object.Call("update", args...).Bool()
 }
 
 // IsTweening Checks to see if a particular Sprite is currently being tweened.
@@ -175,7 +175,7 @@ func (self *TweenManager) IsTweening(object interface{}) bool {
 
 // IsTweeningI Checks to see if a particular Sprite is currently being tweened.
 func (self *TweenManager) IsTweeningI(args ...interface{}) bool {
-	return self.Object.Call("isTweening", args).Bool()
+	return self.Object.Call("isTweening", args...).Bool()
 }
 
 // _pauseAll Private. Called by game focus loss. Pauses all currently running tweens.
@@ -185,7 +185,7 @@ func (self *TweenManager) _pauseAll() {
 
 // _pauseAllI Private. Called by game focus loss. Pauses all currently running tweens.
 func (self *TweenManager) _pauseAllI(args ...interface{}) {
-	self.Object.Call("_pauseAll", args)
+	self.Object.Call("_pauseAll", args...)
 }
 
 // _resumeAll Private. Called by game focus loss. Resumes all currently paused tweens.
@@ -195,7 +195,7 @@ func (self *TweenManager) _resumeAll() {
 
 // _resumeAllI Private. Called by game focus loss. Resumes all currently paused tweens.
 func (self *TweenManager) _resumeAllI(args ...interface{}) {
-	self.Object.Call("_resumeAll", args)
+	self.Object.Call("_resumeAll", args...)
 }
 
 // PauseAll Pauses all currently running tweens.
@@ -205,7 +205,7 @@ func (self *TweenManager) PauseAll() {
 
 // PauseAllI Pauses all currently running tweens.
 func (self *TweenManager) PauseAllI(args ...interface{}) {
-	self.Object.Call("pauseAll", args)
+	self.Object.Call("pauseAll", args...)
 }
 
 // ResumeAll Resumes all currently paused tweens.
@@ -215,5 +215,5 @@ func (self *TweenManager) ResumeAll() {
 
 // ResumeAllI Resumes all currently paused tweens.
 func (self *TweenManager) ResumeAllI(args ...interface{}) {
-	self.Object.Call("resumeAll", args)
+	self.Object.Call("resumeAll", args...)
 }

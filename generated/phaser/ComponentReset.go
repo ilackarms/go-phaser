@@ -18,7 +18,7 @@ func NewComponentReset() *ComponentReset {
 
 // NewComponentResetI The Reset component allows a Game Object to be reset and repositioned to a new location.
 func NewComponentResetI(args ...interface{}) *ComponentReset {
-	return &ComponentReset{js.Global.Get("Phaser").Get("Component").Get("Reset").New(args)}
+	return &ComponentReset{js.Global.Get("Phaser").Get("Component").Get("Reset").New(args...)}
 }
 
 // ComponentReset Binding conversion method to ComponentReset point
@@ -62,5 +62,5 @@ func (self *ComponentReset) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *ComponentReset) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }

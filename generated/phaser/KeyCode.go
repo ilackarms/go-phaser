@@ -48,7 +48,7 @@ func NewKeyCode() *KeyCode {
 // _Note_: Use `Phaser.KeyCode.KEY` instead of `Phaser.Keyboard.KEY` to refer to a key code;
 // the latter approach is supported for compatibility.
 func NewKeyCodeI(args ...interface{}) *KeyCode {
-	return &KeyCode{js.Global.Get("Phaser").Get("KeyCode").New(args)}
+	return &KeyCode{js.Global.Get("Phaser").Get("KeyCode").New(args...)}
 }
 
 // KeyCode Binding conversion method to KeyCode point

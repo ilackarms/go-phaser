@@ -18,7 +18,7 @@ func NewComponentLifeSpan() *ComponentLifeSpan {
 
 // NewComponentLifeSpanI LifeSpan Component Features.
 func NewComponentLifeSpanI(args ...interface{}) *ComponentLifeSpan {
-	return &ComponentLifeSpan{js.Global.Get("Phaser").Get("Component").Get("LifeSpan").New(args)}
+	return &ComponentLifeSpan{js.Global.Get("Phaser").Get("Component").Get("LifeSpan").New(args...)}
 }
 
 // ComponentLifeSpan Binding conversion method to ComponentLifeSpan point
@@ -84,7 +84,7 @@ func (self *ComponentLifeSpan) PreUpdate() {
 // PreUpdateI The LifeSpan component preUpdate handler.
 // Called automatically by the Game Object.
 func (self *ComponentLifeSpan) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -111,7 +111,7 @@ func (self *ComponentLifeSpan) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *ComponentLifeSpan) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -135,5 +135,5 @@ func (self *ComponentLifeSpan) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *ComponentLifeSpan) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }

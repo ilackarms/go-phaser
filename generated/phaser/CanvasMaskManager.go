@@ -18,7 +18,7 @@ func NewCanvasMaskManager() *CanvasMaskManager {
 
 // NewCanvasMaskManagerI A set of functions used to handle masking.
 func NewCanvasMaskManagerI(args ...interface{}) *CanvasMaskManager {
-	return &CanvasMaskManager{js.Global.Get("PIXI").Get("CanvasMaskManager").New(args)}
+	return &CanvasMaskManager{js.Global.Get("PIXI").Get("CanvasMaskManager").New(args...)}
 }
 
 // CanvasMaskManager Binding conversion method to CanvasMaskManager point
@@ -36,7 +36,7 @@ func (self *CanvasMaskManager) PushMask(maskData interface{}, renderSession inte
 
 // PushMaskI This method adds it to the current stack of masks.
 func (self *CanvasMaskManager) PushMaskI(args ...interface{}) {
-	self.Object.Call("pushMask", args)
+	self.Object.Call("pushMask", args...)
 }
 
 // PopMask Restores the current drawing context to the state it was before the mask was applied.
@@ -46,5 +46,5 @@ func (self *CanvasMaskManager) PopMask(renderSession interface{}) {
 
 // PopMaskI Restores the current drawing context to the state it was before the mask was applied.
 func (self *CanvasMaskManager) PopMaskI(args ...interface{}) {
-	self.Object.Call("popMask", args)
+	self.Object.Call("popMask", args...)
 }

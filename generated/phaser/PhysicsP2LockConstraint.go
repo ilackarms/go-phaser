@@ -33,7 +33,7 @@ func NewPhysicsP2LockConstraint3O(world *PhysicsP2, bodyA *P2Body, bodyB *P2Body
 
 // NewPhysicsP2LockConstraintI Locks the relative position between two bodies.
 func NewPhysicsP2LockConstraintI(args ...interface{}) *PhysicsP2LockConstraint {
-	return &PhysicsP2LockConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("LockConstraint").New(args)}
+	return &PhysicsP2LockConstraint{js.Global.Get("Phaser").Get("Physics").Get("P2").Get("LockConstraint").New(args...)}
 }
 
 // PhysicsP2LockConstraint Binding conversion method to PhysicsP2LockConstraint point

@@ -104,7 +104,7 @@ func NewGame8O(width interface{}, height interface{}, renderer int, parent inter
 // "Hell, there are no rules here - we're trying to accomplish something."
 //                                                       Thomas A. Edison
 func NewGameI(args ...interface{}) *Game {
-	return &Game{js.Global.Get("Phaser").Get("Game").New(args)}
+	return &Game{js.Global.Get("Phaser").Get("Game").New(args...)}
 }
 
 // Game Binding conversion method to Game point
@@ -672,7 +672,7 @@ func (self *Game) ParseConfig() {
 
 // ParseConfigI Parses a Game configuration object.
 func (self *Game) ParseConfigI(args ...interface{}) {
-	self.Object.Call("parseConfig", args)
+	self.Object.Call("parseConfig", args...)
 }
 
 // Boot Initialize engine sub modules and start the game.
@@ -682,7 +682,7 @@ func (self *Game) Boot() {
 
 // BootI Initialize engine sub modules and start the game.
 func (self *Game) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // ShowDebugHeader Displays a Phaser version debug header in the console.
@@ -692,7 +692,7 @@ func (self *Game) ShowDebugHeader() {
 
 // ShowDebugHeaderI Displays a Phaser version debug header in the console.
 func (self *Game) ShowDebugHeaderI(args ...interface{}) {
-	self.Object.Call("showDebugHeader", args)
+	self.Object.Call("showDebugHeader", args...)
 }
 
 // SetUpRenderer Checks if the device is capable of using the requested renderer and sets it up or an alternative if not.
@@ -702,7 +702,7 @@ func (self *Game) SetUpRenderer() {
 
 // SetUpRendererI Checks if the device is capable of using the requested renderer and sets it up or an alternative if not.
 func (self *Game) SetUpRendererI(args ...interface{}) {
-	self.Object.Call("setUpRenderer", args)
+	self.Object.Call("setUpRenderer", args...)
 }
 
 // ContextLost Handles WebGL context loss.
@@ -712,7 +712,7 @@ func (self *Game) ContextLost(event *Event) {
 
 // ContextLostI Handles WebGL context loss.
 func (self *Game) ContextLostI(args ...interface{}) {
-	self.Object.Call("contextLost", args)
+	self.Object.Call("contextLost", args...)
 }
 
 // ContextRestored Handles WebGL context restoration.
@@ -722,7 +722,7 @@ func (self *Game) ContextRestored() {
 
 // ContextRestoredI Handles WebGL context restoration.
 func (self *Game) ContextRestoredI(args ...interface{}) {
-	self.Object.Call("contextRestored", args)
+	self.Object.Call("contextRestored", args...)
 }
 
 // Update The core game loop.
@@ -732,7 +732,7 @@ func (self *Game) Update(time int) {
 
 // UpdateI The core game loop.
 func (self *Game) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // UpdateLogic Updates all logic subsystems in Phaser. Called automatically by Game.update.
@@ -742,7 +742,7 @@ func (self *Game) UpdateLogic(timeStep int) {
 
 // UpdateLogicI Updates all logic subsystems in Phaser. Called automatically by Game.update.
 func (self *Game) UpdateLogicI(args ...interface{}) {
-	self.Object.Call("updateLogic", args)
+	self.Object.Call("updateLogic", args...)
 }
 
 // UpdateRender Runs the Render cycle.
@@ -768,7 +768,7 @@ func (self *Game) UpdateRender(elapsedTime int) {
 // Should you wish to have fine-grained control over when Phaser renders then use the `Game.lockRender` boolean.
 // Phaser will only render when this boolean is `false`.
 func (self *Game) UpdateRenderI(args ...interface{}) {
-	self.Object.Call("updateRender", args)
+	self.Object.Call("updateRender", args...)
 }
 
 // EnableStep Enable core game loop stepping. When enabled you must call game.step() directly (perhaps via a DOM button?)
@@ -780,7 +780,7 @@ func (self *Game) EnableStep() {
 // EnableStepI Enable core game loop stepping. When enabled you must call game.step() directly (perhaps via a DOM button?)
 // Calling step will advance the game loop by one frame. This is extremely useful for hard to track down errors!
 func (self *Game) EnableStepI(args ...interface{}) {
-	self.Object.Call("enableStep", args)
+	self.Object.Call("enableStep", args...)
 }
 
 // DisableStep Disables core game loop stepping.
@@ -790,7 +790,7 @@ func (self *Game) DisableStep() {
 
 // DisableStepI Disables core game loop stepping.
 func (self *Game) DisableStepI(args ...interface{}) {
-	self.Object.Call("disableStep", args)
+	self.Object.Call("disableStep", args...)
 }
 
 // Step When stepping is enabled you must call this function directly (perhaps via a DOM button?) to advance the game loop by one frame.
@@ -802,7 +802,7 @@ func (self *Game) Step() {
 // StepI When stepping is enabled you must call this function directly (perhaps via a DOM button?) to advance the game loop by one frame.
 // This is extremely useful to hard to track down errors! Use the internal stepCount property to monitor progress.
 func (self *Game) StepI(args ...interface{}) {
-	self.Object.Call("step", args)
+	self.Object.Call("step", args...)
 }
 
 // Destroy Nukes the entire game from orbit.
@@ -822,7 +822,7 @@ func (self *Game) Destroy() {
 // Then sets all of those local handlers to null, destroys the renderer, removes the canvas from the DOM
 // and resets the PIXI default renderer.
 func (self *Game) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // GamePaused Called by the Stage visibility handler.
@@ -832,7 +832,7 @@ func (self *Game) GamePaused(event interface{}) {
 
 // GamePausedI Called by the Stage visibility handler.
 func (self *Game) GamePausedI(args ...interface{}) {
-	self.Object.Call("gamePaused", args)
+	self.Object.Call("gamePaused", args...)
 }
 
 // GameResumed Called by the Stage visibility handler.
@@ -842,7 +842,7 @@ func (self *Game) GameResumed(event interface{}) {
 
 // GameResumedI Called by the Stage visibility handler.
 func (self *Game) GameResumedI(args ...interface{}) {
-	self.Object.Call("gameResumed", args)
+	self.Object.Call("gameResumed", args...)
 }
 
 // FocusLoss Called by the Stage visibility handler.
@@ -852,7 +852,7 @@ func (self *Game) FocusLoss(event interface{}) {
 
 // FocusLossI Called by the Stage visibility handler.
 func (self *Game) FocusLossI(args ...interface{}) {
-	self.Object.Call("focusLoss", args)
+	self.Object.Call("focusLoss", args...)
 }
 
 // FocusGain Called by the Stage visibility handler.
@@ -862,5 +862,5 @@ func (self *Game) FocusGain(event interface{}) {
 
 // FocusGainI Called by the Stage visibility handler.
 func (self *Game) FocusGainI(args ...interface{}) {
-	self.Object.Call("focusGain", args)
+	self.Object.Call("focusGain", args...)
 }

@@ -18,7 +18,7 @@ func NewWebGLShaderManager() *WebGLShaderManager {
 
 // NewWebGLShaderManagerI empty description
 func NewWebGLShaderManagerI(args ...interface{}) *WebGLShaderManager {
-	return &WebGLShaderManager{js.Global.Get("PIXI").Get("WebGLShaderManager").New(args)}
+	return &WebGLShaderManager{js.Global.Get("PIXI").Get("WebGLShaderManager").New(args...)}
 }
 
 // WebGLShaderManager Binding conversion method to WebGLShaderManager point
@@ -94,7 +94,7 @@ func (self *WebGLShaderManager) SetContext(gl *WebGLContext) {
 
 // SetContextI Initialises the context and the properties.
 func (self *WebGLShaderManager) SetContextI(args ...interface{}) {
-	self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args...)
 }
 
 // SetAttribs Takes the attributes given in parameters.
@@ -104,7 +104,7 @@ func (self *WebGLShaderManager) SetAttribs(attribs []interface{}) {
 
 // SetAttribsI Takes the attributes given in parameters.
 func (self *WebGLShaderManager) SetAttribsI(args ...interface{}) {
-	self.Object.Call("setAttribs", args)
+	self.Object.Call("setAttribs", args...)
 }
 
 // SetShader Sets the current shader.
@@ -114,7 +114,7 @@ func (self *WebGLShaderManager) SetShader(shader interface{}) {
 
 // SetShaderI Sets the current shader.
 func (self *WebGLShaderManager) SetShaderI(args ...interface{}) {
-	self.Object.Call("setShader", args)
+	self.Object.Call("setShader", args...)
 }
 
 // Destroy Destroys this object.
@@ -124,5 +124,5 @@ func (self *WebGLShaderManager) Destroy() {
 
 // DestroyI Destroys this object.
 func (self *WebGLShaderManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

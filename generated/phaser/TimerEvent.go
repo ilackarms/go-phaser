@@ -39,7 +39,7 @@ func NewTimerEvent(timer *Timer, delay int, tick int, repeatCount int, loop bool
 //
 // Use {@link Phaser.Timer#add}, {@link Phaser.Timer#repeat}, or {@link Phaser.Timer#loop} methods to create a new event.
 func NewTimerEventI(args ...interface{}) *TimerEvent {
-	return &TimerEvent{js.Global.Get("Phaser").Get("TimerEvent").New(args)}
+	return &TimerEvent{js.Global.Get("Phaser").Get("TimerEvent").New(args...)}
 }
 
 // TimerEvent Binding conversion method to TimerEvent point

@@ -32,7 +32,7 @@ func NewTilemapLayer(game *Game, tilemap *Tilemap, index int, width int, height 
 //
 // By default TilemapLayers have fixedToCamera set to `true`. Changing this will break Camera follow and scrolling behavior.
 func NewTilemapLayerI(args ...interface{}) *TilemapLayer {
-	return &TilemapLayer{js.Global.Get("Phaser").Get("TilemapLayer").New(args)}
+	return &TilemapLayer{js.Global.Get("Phaser").Get("TilemapLayer").New(args...)}
 }
 
 // TilemapLayer Binding conversion method to TilemapLayer point
@@ -1200,7 +1200,7 @@ func (self *TilemapLayer) EnsureSharedCopyCanvas() {
 //
 // Code that uses the canvas is responsible to ensure the dimensions and save/restore state as appropriate.
 func (self *TilemapLayer) EnsureSharedCopyCanvasI(args ...interface{}) {
-	self.Object.Call("ensureSharedCopyCanvas", args)
+	self.Object.Call("ensureSharedCopyCanvas", args...)
 }
 
 // PreUpdate Automatically called by World.preUpdate.
@@ -1210,7 +1210,7 @@ func (self *TilemapLayer) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *TilemapLayer) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // PostUpdate Automatically called by World.postUpdate. Handles cache updates.
@@ -1220,7 +1220,7 @@ func (self *TilemapLayer) PostUpdate() {
 
 // PostUpdateI Automatically called by World.postUpdate. Handles cache updates.
 func (self *TilemapLayer) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // _renderCanvas Automatically called by the Canvas Renderer.
@@ -1232,7 +1232,7 @@ func (self *TilemapLayer) _renderCanvas() {
 // _renderCanvasI Automatically called by the Canvas Renderer.
 // Overrides the Sprite._renderCanvas function.
 func (self *TilemapLayer) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // _renderWebGL Automatically called by the Canvas Renderer.
@@ -1244,7 +1244,7 @@ func (self *TilemapLayer) _renderWebGL() {
 // _renderWebGLI Automatically called by the Canvas Renderer.
 // Overrides the Sprite._renderWebGL function.
 func (self *TilemapLayer) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // Destroy Destroys this TilemapLayer.
@@ -1254,7 +1254,7 @@ func (self *TilemapLayer) Destroy() {
 
 // DestroyI Destroys this TilemapLayer.
 func (self *TilemapLayer) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Resize Resizes the internal canvas and texture frame used by this TilemapLayer.
@@ -1276,7 +1276,7 @@ func (self *TilemapLayer) Resize(width int, height int) {
 // Be aware that no validation of the new sizes takes place and the current map scroll coordinates are not
 // modified either. You will have to handle both of these things from your game code if required.
 func (self *TilemapLayer) ResizeI(args ...interface{}) {
-	self.Object.Call("resize", args)
+	self.Object.Call("resize", args...)
 }
 
 // ResizeWorld Sets the world size to match the size of this layer.
@@ -1286,7 +1286,7 @@ func (self *TilemapLayer) ResizeWorld() {
 
 // ResizeWorldI Sets the world size to match the size of this layer.
 func (self *TilemapLayer) ResizeWorldI(args ...interface{}) {
-	self.Object.Call("resizeWorld", args)
+	self.Object.Call("resizeWorld", args...)
 }
 
 // _fixX Take an x coordinate that doesn't account for scrollFactorX and 'fix' it into a scrolled local space.
@@ -1296,7 +1296,7 @@ func (self *TilemapLayer) _fixX(x int) int {
 
 // _fixXI Take an x coordinate that doesn't account for scrollFactorX and 'fix' it into a scrolled local space.
 func (self *TilemapLayer) _fixXI(args ...interface{}) int {
-	return self.Object.Call("_fixX", args).Int()
+	return self.Object.Call("_fixX", args...).Int()
 }
 
 // _unfixX Take an x coordinate that _does_ account for scrollFactorX and 'unfix' it back to camera space.
@@ -1306,7 +1306,7 @@ func (self *TilemapLayer) _unfixX(x int) int {
 
 // _unfixXI Take an x coordinate that _does_ account for scrollFactorX and 'unfix' it back to camera space.
 func (self *TilemapLayer) _unfixXI(args ...interface{}) int {
-	return self.Object.Call("_unfixX", args).Int()
+	return self.Object.Call("_unfixX", args...).Int()
 }
 
 // _fixY Take a y coordinate that doesn't account for scrollFactorY and 'fix' it into a scrolled local space.
@@ -1316,7 +1316,7 @@ func (self *TilemapLayer) _fixY(y int) int {
 
 // _fixYI Take a y coordinate that doesn't account for scrollFactorY and 'fix' it into a scrolled local space.
 func (self *TilemapLayer) _fixYI(args ...interface{}) int {
-	return self.Object.Call("_fixY", args).Int()
+	return self.Object.Call("_fixY", args...).Int()
 }
 
 // _unfixY Take a y coordinate that _does_ account for scrollFactorY and 'unfix' it back to camera space.
@@ -1326,7 +1326,7 @@ func (self *TilemapLayer) _unfixY(y int) int {
 
 // _unfixYI Take a y coordinate that _does_ account for scrollFactorY and 'unfix' it back to camera space.
 func (self *TilemapLayer) _unfixYI(args ...interface{}) int {
-	return self.Object.Call("_unfixY", args).Int()
+	return self.Object.Call("_unfixY", args...).Int()
 }
 
 // GetTileX Convert a pixel value to a tile coordinate.
@@ -1336,7 +1336,7 @@ func (self *TilemapLayer) GetTileX(x int) int {
 
 // GetTileXI Convert a pixel value to a tile coordinate.
 func (self *TilemapLayer) GetTileXI(args ...interface{}) int {
-	return self.Object.Call("getTileX", args).Int()
+	return self.Object.Call("getTileX", args...).Int()
 }
 
 // GetTileY Convert a pixel value to a tile coordinate.
@@ -1346,7 +1346,7 @@ func (self *TilemapLayer) GetTileY(y int) int {
 
 // GetTileYI Convert a pixel value to a tile coordinate.
 func (self *TilemapLayer) GetTileYI(args ...interface{}) int {
-	return self.Object.Call("getTileY", args).Int()
+	return self.Object.Call("getTileY", args...).Int()
 }
 
 // GetTileXY Convert a pixel coordinate to a tile coordinate.
@@ -1356,7 +1356,7 @@ func (self *TilemapLayer) GetTileXY(x int, y int, point interface{}) interface{}
 
 // GetTileXYI Convert a pixel coordinate to a tile coordinate.
 func (self *TilemapLayer) GetTileXYI(args ...interface{}) interface{} {
-	return self.Object.Call("getTileXY", args)
+	return self.Object.Call("getTileXY", args...)
 }
 
 // GetRayCastTiles Gets all tiles that intersect with the given line.
@@ -1409,7 +1409,7 @@ func (self *TilemapLayer) GetRayCastTiles3O(line *Line, stepRate int, collides b
 
 // GetRayCastTilesI Gets all tiles that intersect with the given line.
 func (self *TilemapLayer) GetRayCastTilesI(args ...interface{}) []Tile {
-	array00 := self.Object.Call("getRayCastTiles", args)
+	array00 := self.Object.Call("getRayCastTiles", args...)
 	length00 := array00.Length()
 	out00 := make([]Tile, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -1457,7 +1457,7 @@ func (self *TilemapLayer) GetTiles2O(x int, y int, width int, height int, collid
 
 // GetTilesI Get all tiles that exist within the given area, defined by the top-left corner, width and height. Values given are in pixels, not tiles.
 func (self *TilemapLayer) GetTilesI(args ...interface{}) []Tile {
-	array00 := self.Object.Call("getTiles", args)
+	array00 := self.Object.Call("getTiles", args...)
 	length00 := array00.Length()
 	out00 := make([]Tile, length00, length00)
 	for i00 := 0; i00 < length00; i00++ {
@@ -1476,7 +1476,7 @@ func (self *TilemapLayer) ResolveTileset(Tile int) interface{} {
 // ResolveTilesetI Returns the appropriate tileset for the index, updating the internal cache as required.
 // This should only be called if `tilesets[index]` evaluates to undefined.
 func (self *TilemapLayer) ResolveTilesetI(args ...interface{}) interface{} {
-	return self.Object.Call("resolveTileset", args)
+	return self.Object.Call("resolveTileset", args...)
 }
 
 // ResetTilesetCache The TilemapLayer caches tileset look-ups.
@@ -1490,7 +1490,7 @@ func (self *TilemapLayer) ResetTilesetCache() {
 //
 // Call this method of clear the cache if tilesets have been added or updated after the layer has been rendered.
 func (self *TilemapLayer) ResetTilesetCacheI(args ...interface{}) {
-	self.Object.Call("resetTilesetCache", args)
+	self.Object.Call("resetTilesetCache", args...)
 }
 
 // SetScale This method will set the scale of the tilemap as well as update the underlying block data of this layer.
@@ -1510,7 +1510,7 @@ func (self *TilemapLayer) SetScale2O(xScale int, yScale int) {
 
 // SetScaleI This method will set the scale of the tilemap as well as update the underlying block data of this layer.
 func (self *TilemapLayer) SetScaleI(args ...interface{}) {
-	self.Object.Call("setScale", args)
+	self.Object.Call("setScale", args...)
 }
 
 // ShiftCanvas Shifts the contents of the canvas - does extra math so that different browsers agree on the result.
@@ -1524,7 +1524,7 @@ func (self *TilemapLayer) ShiftCanvas(context *dom.CanvasRenderingContext2D, x i
 //
 // The specified (x/y) will be shifted to (0,0) after the copy and the newly exposed canvas area will need to be filled in.
 func (self *TilemapLayer) ShiftCanvasI(args ...interface{}) {
-	self.Object.Call("shiftCanvas", args)
+	self.Object.Call("shiftCanvas", args...)
 }
 
 // RenderRegion Render tiles in the given area given by the virtual tile coordinates biased by the given scroll factor.
@@ -1536,7 +1536,7 @@ func (self *TilemapLayer) RenderRegion(scrollX int, scrollY int, left int, top i
 // RenderRegionI Render tiles in the given area given by the virtual tile coordinates biased by the given scroll factor.
 // This will constrain the tile coordinates based on wrapping but not physical coordinates.
 func (self *TilemapLayer) RenderRegionI(args ...interface{}) {
-	self.Object.Call("renderRegion", args)
+	self.Object.Call("renderRegion", args...)
 }
 
 // RenderDeltaScroll Shifts the canvas and render damaged edge tiles.
@@ -1546,7 +1546,7 @@ func (self *TilemapLayer) RenderDeltaScroll() {
 
 // RenderDeltaScrollI Shifts the canvas and render damaged edge tiles.
 func (self *TilemapLayer) RenderDeltaScrollI(args ...interface{}) {
-	self.Object.Call("renderDeltaScroll", args)
+	self.Object.Call("renderDeltaScroll", args...)
 }
 
 // RenderFull Clear and render the entire canvas.
@@ -1556,7 +1556,7 @@ func (self *TilemapLayer) RenderFull() {
 
 // RenderFullI Clear and render the entire canvas.
 func (self *TilemapLayer) RenderFullI(args ...interface{}) {
-	self.Object.Call("renderFull", args)
+	self.Object.Call("renderFull", args...)
 }
 
 // Render Renders the tiles to the layer canvas and pushes to the display.
@@ -1566,7 +1566,7 @@ func (self *TilemapLayer) Render() {
 
 // RenderI Renders the tiles to the layer canvas and pushes to the display.
 func (self *TilemapLayer) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // RenderDebug Renders a debug overlay on-top of the canvas. Called automatically by render when `debug` is true.
@@ -1580,7 +1580,7 @@ func (self *TilemapLayer) RenderDebug() {
 //
 // See `debugSettings` for assorted configuration options.
 func (self *TilemapLayer) RenderDebugI(args ...interface{}) {
-	self.Object.Call("renderDebug", args)
+	self.Object.Call("renderDebug", args...)
 }
 
 // SetTexture Sets the texture of the sprite. Be warned that this doesn't remove or destroy the previous
@@ -1601,7 +1601,7 @@ func (self *TilemapLayer) SetTexture1O(texture *Texture, destroy bool) {
 //
 // texture this Sprite was using.
 func (self *TilemapLayer) SetTextureI(args ...interface{}) {
-	self.Object.Call("setTexture", args)
+	self.Object.Call("setTexture", args...)
 }
 
 // OnTextureUpdate When the texture is updated, this event will fire to update the scale and frame
@@ -1611,7 +1611,7 @@ func (self *TilemapLayer) OnTextureUpdate(event interface{}) {
 
 // OnTextureUpdateI When the texture is updated, this event will fire to update the scale and frame
 func (self *TilemapLayer) OnTextureUpdateI(args ...interface{}) {
-	self.Object.Call("onTextureUpdate", args)
+	self.Object.Call("onTextureUpdate", args...)
 }
 
 // GetBounds Returns the bounds of the Sprite as a rectangle.
@@ -1653,7 +1653,7 @@ func (self *TilemapLayer) GetBounds(matrix *Matrix) *Rectangle {
 //
 // on the root most object in this Sprites display list first.
 func (self *TilemapLayer) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
@@ -1663,7 +1663,7 @@ func (self *TilemapLayer) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
 func (self *TilemapLayer) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // AddChild Adds a child to the container.
@@ -1673,7 +1673,7 @@ func (self *TilemapLayer) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *TilemapLayer) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -1683,7 +1683,7 @@ func (self *TilemapLayer) AddChildAt(child *DisplayObject, index int) *DisplayOb
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *TilemapLayer) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -1693,7 +1693,7 @@ func (self *TilemapLayer) SwapChildren(child *DisplayObject, child2 *DisplayObje
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *TilemapLayer) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -1703,7 +1703,7 @@ func (self *TilemapLayer) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *TilemapLayer) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -1713,7 +1713,7 @@ func (self *TilemapLayer) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *TilemapLayer) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -1723,7 +1723,7 @@ func (self *TilemapLayer) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *TilemapLayer) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -1733,7 +1733,7 @@ func (self *TilemapLayer) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *TilemapLayer) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -1743,7 +1743,7 @@ func (self *TilemapLayer) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *TilemapLayer) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -1753,7 +1753,7 @@ func (self *TilemapLayer) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *TilemapLayer) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -1763,7 +1763,7 @@ func (self *TilemapLayer) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *TilemapLayer) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -1777,7 +1777,7 @@ func (self *TilemapLayer) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *TilemapLayer) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // Play Plays an Animation.
@@ -1827,7 +1827,7 @@ func (self *TilemapLayer) Play3O(name string, frameRate int, loop bool, killOnCo
 // If the animation is already playing calling this again won't do anything.
 // If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
 func (self *TilemapLayer) PlayI(args ...interface{}) *Animation {
-	return &Animation{self.Object.Call("play", args)}
+	return &Animation{self.Object.Call("play", args...)}
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -1997,7 +1997,7 @@ func (self *TilemapLayer) AlignIn3O(container interface{}, position int, offsetX
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *TilemapLayer) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -2172,7 +2172,7 @@ func (self *TilemapLayer) AlignTo3O(parent interface{}, position int, offsetX in
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *TilemapLayer) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // BringToTop Brings this Game Object to the top of its parents display list.
@@ -2190,7 +2190,7 @@ func (self *TilemapLayer) BringToTop() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TilemapLayer) BringToTopI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("bringToTop", args)}
+	return &DisplayObject{self.Object.Call("bringToTop", args...)}
 }
 
 // SendToBack Sends this Game Object to the bottom of its parents display list.
@@ -2208,7 +2208,7 @@ func (self *TilemapLayer) SendToBack() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TilemapLayer) SendToBackI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("sendToBack", args)}
+	return &DisplayObject{self.Object.Call("sendToBack", args...)}
 }
 
 // MoveUp Moves this Game Object up one place in its parents display list.
@@ -2226,7 +2226,7 @@ func (self *TilemapLayer) MoveUp() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TilemapLayer) MoveUpI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveUp", args)}
+	return &DisplayObject{self.Object.Call("moveUp", args...)}
 }
 
 // MoveDown Moves this Game Object down one place in its parents display list.
@@ -2244,7 +2244,7 @@ func (self *TilemapLayer) MoveDown() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *TilemapLayer) MoveDownI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveDown", args)}
+	return &DisplayObject{self.Object.Call("moveDown", args...)}
 }
 
 // Crop Crop allows you to crop the texture being used to display this Game Object.
@@ -2289,7 +2289,7 @@ func (self *TilemapLayer) Crop1O(rect *Rectangle, copy bool) {
 // A reference to the rectangle is stored in `cropRect` unless the `copy` parameter is `true`,
 // in which case the values are duplicated to a local object.
 func (self *TilemapLayer) CropI(args ...interface{}) {
-	self.Object.Call("crop", args)
+	self.Object.Call("crop", args...)
 }
 
 // UpdateCrop If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -2301,7 +2301,7 @@ func (self *TilemapLayer) UpdateCrop() {
 // UpdateCropI If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
 // or the rectangle it references, then you need to update the crop frame by calling this method.
 func (self *TilemapLayer) UpdateCropI(args ...interface{}) {
-	self.Object.Call("updateCrop", args)
+	self.Object.Call("updateCrop", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -2328,7 +2328,7 @@ func (self *TilemapLayer) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *TilemapLayer) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -2352,7 +2352,7 @@ func (self *TilemapLayer) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *TilemapLayer) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // LoadTexture Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
@@ -2432,7 +2432,7 @@ func (self *TilemapLayer) LoadTexture2O(key interface{}, frame interface{}, stop
 //
 // Note: You cannot use a RenderTexture as a texture for a TileSprite.
 func (self *TilemapLayer) LoadTextureI(args ...interface{}) {
-	self.Object.Call("loadTexture", args)
+	self.Object.Call("loadTexture", args...)
 }
 
 // SetFrame Sets the texture frame the Game Object uses for rendering.
@@ -2446,7 +2446,7 @@ func (self *TilemapLayer) SetFrame(frame *Frame) {
 //
 // This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
 func (self *TilemapLayer) SetFrameI(args ...interface{}) {
-	self.Object.Call("setFrame", args)
+	self.Object.Call("setFrame", args...)
 }
 
 // ResizeFrame Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -2462,7 +2462,7 @@ func (self *TilemapLayer) ResizeFrame(parent interface{}, width int, height int)
 // You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
 // it can be useful to adjust the dimensions directly in this way.
 func (self *TilemapLayer) ResizeFrameI(args ...interface{}) {
-	self.Object.Call("resizeFrame", args)
+	self.Object.Call("resizeFrame", args...)
 }
 
 // ResetFrame Resets the texture frame dimensions that the Game Object uses for rendering.
@@ -2472,7 +2472,7 @@ func (self *TilemapLayer) ResetFrame() {
 
 // ResetFrameI Resets the texture frame dimensions that the Game Object uses for rendering.
 func (self *TilemapLayer) ResetFrameI(args ...interface{}) {
-	self.Object.Call("resetFrame", args)
+	self.Object.Call("resetFrame", args...)
 }
 
 // Overlap Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
@@ -2494,7 +2494,7 @@ func (self *TilemapLayer) Overlap(displayObject interface{}) bool {
 // Therefore it's relatively expensive to use in large quantities, i.e. with lots of Sprites at a high frequency.
 // It should be fine for low-volume testing where physics isn't required.
 func (self *TilemapLayer) OverlapI(args ...interface{}) bool {
-	return self.Object.Call("overlap", args).Bool()
+	return self.Object.Call("overlap", args...).Bool()
 }
 
 // Reset Resets the Game Object.
@@ -2530,7 +2530,7 @@ func (self *TilemapLayer) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *TilemapLayer) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }
 
 // CheckTransform Adjust scaling limits, if set, to this Game Object.
@@ -2540,7 +2540,7 @@ func (self *TilemapLayer) CheckTransform(wt *Matrix) {
 
 // CheckTransformI Adjust scaling limits, if set, to this Game Object.
 func (self *TilemapLayer) CheckTransformI(args ...interface{}) {
-	self.Object.Call("checkTransform", args)
+	self.Object.Call("checkTransform", args...)
 }
 
 // SetScaleMinMax Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
@@ -2582,5 +2582,5 @@ func (self *TilemapLayer) SetScaleMinMax(minX interface{}, minY interface{}, max
 //
 // Call `setScaleMinMax(null)` to clear all previously set values.
 func (self *TilemapLayer) SetScaleMinMaxI(args ...interface{}) {
-	self.Object.Call("setScaleMinMax", args)
+	self.Object.Call("setScaleMinMax", args...)
 }

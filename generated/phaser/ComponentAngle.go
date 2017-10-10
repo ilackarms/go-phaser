@@ -18,7 +18,7 @@ func NewComponentAngle() *ComponentAngle {
 
 // NewComponentAngleI The Angle Component provides access to an `angle` property; the rotation of a Game Object in degrees.
 func NewComponentAngleI(args ...interface{}) *ComponentAngle {
-	return &ComponentAngle{js.Global.Get("Phaser").Get("Component").Get("Angle").New(args)}
+	return &ComponentAngle{js.Global.Get("Phaser").Get("Component").Get("Angle").New(args...)}
 }
 
 // ComponentAngle Binding conversion method to ComponentAngle point

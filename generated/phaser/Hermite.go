@@ -87,7 +87,7 @@ func NewHermite1O(p1x int, p1y int, p2x int, p2y int, v1x int, v1y int, v2x int,
 // a desktop screen. If you use very long curves (more than 400 pixels) you may need to increase
 // this value further.
 func NewHermiteI(args ...interface{}) *Hermite {
-	return &Hermite{js.Global.Get("Phaser").Get("Hermite").New(args)}
+	return &Hermite{js.Global.Get("Phaser").Get("Hermite").New(args...)}
 }
 
 // Hermite Binding conversion method to Hermite point
@@ -203,7 +203,7 @@ func (self *Hermite) Recalculate() *Hermite {
 //
 // If you adjust any of the internal private values, then call this to update the points.
 func (self *Hermite) RecalculateI(args ...interface{}) *Hermite {
-	return &Hermite{self.Object.Call("recalculate", args)}
+	return &Hermite{self.Object.Call("recalculate", args...)}
 }
 
 // CalculateEvenPoints Calculate a number of points along the curve, based on `Hermite.accuracy`, and stores them in the private `_points` array.
@@ -213,7 +213,7 @@ func (self *Hermite) CalculateEvenPoints() int {
 
 // CalculateEvenPointsI Calculate a number of points along the curve, based on `Hermite.accuracy`, and stores them in the private `_points` array.
 func (self *Hermite) CalculateEvenPointsI(args ...interface{}) int {
-	return self.Object.Call("calculateEvenPoints", args).Int()
+	return self.Object.Call("calculateEvenPoints", args...).Int()
 }
 
 // FindT Convert a distance along this curve into a `time` value which will be between 0 and 1.
@@ -227,7 +227,7 @@ func (self *Hermite) FindT(distance int) int {
 //
 // For example if this curve has a length of 100 pixels then `findT(50)` would return `0.5`.
 func (self *Hermite) FindTI(args ...interface{}) int {
-	return self.Object.Call("findT", args).Int()
+	return self.Object.Call("findT", args...).Int()
 }
 
 // GetX Get the X component of a point on the curve based on the `t` (time) value, which must be between 0 and 1.
@@ -242,7 +242,7 @@ func (self *Hermite) GetX1O(t int) int {
 
 // GetXI Get the X component of a point on the curve based on the `t` (time) value, which must be between 0 and 1.
 func (self *Hermite) GetXI(args ...interface{}) int {
-	return self.Object.Call("getX", args).Int()
+	return self.Object.Call("getX", args...).Int()
 }
 
 // GetY Get the Y component of a point on the curve based on the `t` (time) value, which must be between 0 and 1.
@@ -257,7 +257,7 @@ func (self *Hermite) GetY1O(t int) int {
 
 // GetYI Get the Y component of a point on the curve based on the `t` (time) value, which must be between 0 and 1.
 func (self *Hermite) GetYI(args ...interface{}) int {
-	return self.Object.Call("getY", args).Int()
+	return self.Object.Call("getY", args...).Int()
 }
 
 // GetPoint Get a point on the curve using the `t` (time) value, which must be between 0 and 1.
@@ -277,7 +277,7 @@ func (self *Hermite) GetPoint2O(t int, point interface{}) *Point {
 
 // GetPointI Get a point on the curve using the `t` (time) value, which must be between 0 and 1.
 func (self *Hermite) GetPointI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("getPoint", args)}
+	return &Point{self.Object.Call("getPoint", args...)}
 }
 
 // GetPointWithDistance Get a point on the curve using the distance, in pixels, along the curve.
@@ -297,7 +297,7 @@ func (self *Hermite) GetPointWithDistance2O(distance int, point interface{}) *Po
 
 // GetPointWithDistanceI Get a point on the curve using the distance, in pixels, along the curve.
 func (self *Hermite) GetPointWithDistanceI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("getPointWithDistance", args)}
+	return &Point{self.Object.Call("getPointWithDistance", args...)}
 }
 
 // GetAngle Calculate and return the angle, in radians, of the curves tangent based on time.
@@ -312,7 +312,7 @@ func (self *Hermite) GetAngle1O(t int) int {
 
 // GetAngleI Calculate and return the angle, in radians, of the curves tangent based on time.
 func (self *Hermite) GetAngleI(args ...interface{}) int {
-	return self.Object.Call("getAngle", args).Int()
+	return self.Object.Call("getAngle", args...).Int()
 }
 
 // GetAngleWithDistance Calculate and return the angle, in radians, of the curves tangent at the given pixel distance along the curves length.
@@ -327,7 +327,7 @@ func (self *Hermite) GetAngleWithDistance1O(distance int) int {
 
 // GetAngleWithDistanceI Calculate and return the angle, in radians, of the curves tangent at the given pixel distance along the curves length.
 func (self *Hermite) GetAngleWithDistanceI(args ...interface{}) int {
-	return self.Object.Call("getAngleWithDistance", args).Int()
+	return self.Object.Call("getAngleWithDistance", args...).Int()
 }
 
 // GetEntryTangent Get the angle of the curves entry point.
@@ -337,5 +337,5 @@ func (self *Hermite) GetEntryTangent(point interface{}) *Point {
 
 // GetEntryTangentI Get the angle of the curves entry point.
 func (self *Hermite) GetEntryTangentI(args ...interface{}) *Point {
-	return &Point{self.Object.Call("getEntryTangent", args)}
+	return &Point{self.Object.Call("getEntryTangent", args...)}
 }

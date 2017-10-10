@@ -18,7 +18,7 @@ func NewAnimationParser() *AnimationParser {
 
 // NewAnimationParserI Responsible for parsing sprite sheet and JSON data into the internal FrameData format that Phaser uses for animations.
 func NewAnimationParserI(args ...interface{}) *AnimationParser {
-	return &AnimationParser{js.Global.Get("Phaser").Get("AnimationParser").New(args)}
+	return &AnimationParser{js.Global.Get("Phaser").Get("AnimationParser").New(args...)}
 }
 
 // AnimationParser Binding conversion method to AnimationParser point
@@ -51,7 +51,7 @@ func (self *AnimationParser) SpriteSheet3O(game *Game, key interface{}, frameWid
 
 // SpriteSheetI Parse a Sprite Sheet and extract the animation frame data from it.
 func (self *AnimationParser) SpriteSheetI(args ...interface{}) *FrameData {
-	return &FrameData{self.Object.Call("spriteSheet", args)}
+	return &FrameData{self.Object.Call("spriteSheet", args...)}
 }
 
 // JSONData Parse the JSON data and extract the animation frame data from it.
@@ -61,7 +61,7 @@ func (self *AnimationParser) JSONData(game *Game, json interface{}) *FrameData {
 
 // JSONDataI Parse the JSON data and extract the animation frame data from it.
 func (self *AnimationParser) JSONDataI(args ...interface{}) *FrameData {
-	return &FrameData{self.Object.Call("JSONData", args)}
+	return &FrameData{self.Object.Call("JSONData", args...)}
 }
 
 // JSONDataPyxel Parse the JSON data and extract the animation frame data from it.
@@ -71,7 +71,7 @@ func (self *AnimationParser) JSONDataPyxel(game *Game, json interface{}) *FrameD
 
 // JSONDataPyxelI Parse the JSON data and extract the animation frame data from it.
 func (self *AnimationParser) JSONDataPyxelI(args ...interface{}) *FrameData {
-	return &FrameData{self.Object.Call("JSONDataPyxel", args)}
+	return &FrameData{self.Object.Call("JSONDataPyxel", args...)}
 }
 
 // JSONDataHash Parse the JSON data and extract the animation frame data from it.
@@ -81,7 +81,7 @@ func (self *AnimationParser) JSONDataHash(game *Game, json interface{}) *FrameDa
 
 // JSONDataHashI Parse the JSON data and extract the animation frame data from it.
 func (self *AnimationParser) JSONDataHashI(args ...interface{}) *FrameData {
-	return &FrameData{self.Object.Call("JSONDataHash", args)}
+	return &FrameData{self.Object.Call("JSONDataHash", args...)}
 }
 
 // XMLData Parse the XML data and extract the animation frame data from it.
@@ -91,5 +91,5 @@ func (self *AnimationParser) XMLData(game *Game, xml interface{}) *FrameData {
 
 // XMLDataI Parse the XML data and extract the animation frame data from it.
 func (self *AnimationParser) XMLDataI(args ...interface{}) *FrameData {
-	return &FrameData{self.Object.Call("XMLData", args)}
+	return &FrameData{self.Object.Call("XMLData", args...)}
 }

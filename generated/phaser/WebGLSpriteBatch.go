@@ -18,7 +18,7 @@ func NewWebGLSpriteBatch() *WebGLSpriteBatch {
 
 // NewWebGLSpriteBatchI empty description
 func NewWebGLSpriteBatchI(args ...interface{}) *WebGLSpriteBatch {
-	return &WebGLSpriteBatch{js.Global.Get("PIXI").Get("WebGLSpriteBatch").New(args)}
+	return &WebGLSpriteBatch{js.Global.Get("PIXI").Get("WebGLSpriteBatch").New(args...)}
 }
 
 // WebGLSpriteBatch Binding conversion method to WebGLSpriteBatch point
@@ -220,7 +220,7 @@ func (self *WebGLSpriteBatch) InitDefaultShaders() {
 
 // InitDefaultShadersI empty description
 func (self *WebGLSpriteBatch) InitDefaultShadersI(args ...interface{}) {
-	self.Object.Call("initDefaultShaders", args)
+	self.Object.Call("initDefaultShaders", args...)
 }
 
 // CompileVertexShader empty description
@@ -230,7 +230,7 @@ func (self *WebGLSpriteBatch) CompileVertexShader(gl *WebGLContext, shaderSrc []
 
 // CompileVertexShaderI empty description
 func (self *WebGLSpriteBatch) CompileVertexShaderI(args ...interface{}) {
-	self.Object.Call("CompileVertexShader", args)
+	self.Object.Call("CompileVertexShader", args...)
 }
 
 // CompileFragmentShader empty description
@@ -240,7 +240,7 @@ func (self *WebGLSpriteBatch) CompileFragmentShader(gl *WebGLContext, shaderSrc 
 
 // CompileFragmentShaderI empty description
 func (self *WebGLSpriteBatch) CompileFragmentShaderI(args ...interface{}) {
-	self.Object.Call("CompileFragmentShader", args)
+	self.Object.Call("CompileFragmentShader", args...)
 }
 
 // _CompileShader empty description
@@ -250,7 +250,7 @@ func (self *WebGLSpriteBatch) _CompileShader(gl *WebGLContext, shaderSrc []inter
 
 // _CompileShaderI empty description
 func (self *WebGLSpriteBatch) _CompileShaderI(args ...interface{}) {
-	self.Object.Call("_CompileShader", args)
+	self.Object.Call("_CompileShader", args...)
 }
 
 // CompileProgram empty description
@@ -260,7 +260,7 @@ func (self *WebGLSpriteBatch) CompileProgram(gl *WebGLContext, vertexSrc []inter
 
 // CompileProgramI empty description
 func (self *WebGLSpriteBatch) CompileProgramI(args ...interface{}) {
-	self.Object.Call("compileProgram", args)
+	self.Object.Call("compileProgram", args...)
 }
 
 // SetContext empty description
@@ -270,7 +270,7 @@ func (self *WebGLSpriteBatch) SetContext(gl *WebGLContext) {
 
 // SetContextI empty description
 func (self *WebGLSpriteBatch) SetContextI(args ...interface{}) {
-	self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args...)
 }
 
 // Begin empty description
@@ -280,7 +280,7 @@ func (self *WebGLSpriteBatch) Begin(renderSession interface{}) {
 
 // BeginI empty description
 func (self *WebGLSpriteBatch) BeginI(args ...interface{}) {
-	self.Object.Call("begin", args)
+	self.Object.Call("begin", args...)
 }
 
 // End empty description
@@ -290,7 +290,7 @@ func (self *WebGLSpriteBatch) End() {
 
 // EndI empty description
 func (self *WebGLSpriteBatch) EndI(args ...interface{}) {
-	self.Object.Call("end", args)
+	self.Object.Call("end", args...)
 }
 
 // Render empty description
@@ -305,7 +305,7 @@ func (self *WebGLSpriteBatch) Render1O(sprite *Sprite, matrix *Matrix) {
 
 // RenderI empty description
 func (self *WebGLSpriteBatch) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }
 
 // RenderTilingSprite Renders a TilingSprite using the spriteBatch.
@@ -315,7 +315,7 @@ func (self *WebGLSpriteBatch) RenderTilingSprite(sprite *TilingSprite) {
 
 // RenderTilingSpriteI Renders a TilingSprite using the spriteBatch.
 func (self *WebGLSpriteBatch) RenderTilingSpriteI(args ...interface{}) {
-	self.Object.Call("renderTilingSprite", args)
+	self.Object.Call("renderTilingSprite", args...)
 }
 
 // Flush Renders the content and empties the current batch.
@@ -325,7 +325,7 @@ func (self *WebGLSpriteBatch) Flush() {
 
 // FlushI Renders the content and empties the current batch.
 func (self *WebGLSpriteBatch) FlushI(args ...interface{}) {
-	self.Object.Call("flush", args)
+	self.Object.Call("flush", args...)
 }
 
 // RenderBatch empty description
@@ -335,7 +335,7 @@ func (self *WebGLSpriteBatch) RenderBatch(texture *Texture, size int, startIndex
 
 // RenderBatchI empty description
 func (self *WebGLSpriteBatch) RenderBatchI(args ...interface{}) {
-	self.Object.Call("renderBatch", args)
+	self.Object.Call("renderBatch", args...)
 }
 
 // Stop empty description
@@ -345,7 +345,7 @@ func (self *WebGLSpriteBatch) Stop() {
 
 // StopI empty description
 func (self *WebGLSpriteBatch) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Start empty description
@@ -355,7 +355,7 @@ func (self *WebGLSpriteBatch) Start() {
 
 // StartI empty description
 func (self *WebGLSpriteBatch) StartI(args ...interface{}) {
-	self.Object.Call("start", args)
+	self.Object.Call("start", args...)
 }
 
 // Destroy Destroys the SpriteBatch.
@@ -365,5 +365,5 @@ func (self *WebGLSpriteBatch) Destroy() {
 
 // DestroyI Destroys the SpriteBatch.
 func (self *WebGLSpriteBatch) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

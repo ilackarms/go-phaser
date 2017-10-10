@@ -33,7 +33,7 @@ func NewFlexGrid(manager *ScaleManager, width int, height int) *FlexGrid {
 // FlexGrid is a a responsive grid manager that works in conjunction with the ScaleManager RESIZE scaling mode and FlexLayers
 // to provide for game object positioning in a responsive manner.
 func NewFlexGridI(args ...interface{}) *FlexGrid {
-	return &FlexGrid{js.Global.Get("Phaser").Get("FlexGrid").New(args)}
+	return &FlexGrid{js.Global.Get("Phaser").Get("FlexGrid").New(args...)}
 }
 
 // FlexGrid Binding conversion method to FlexGrid point
@@ -91,7 +91,7 @@ func (self *FlexGrid) SetSize(width int, height int) {
 
 // SetSizeI Sets the core game size. This resets the w/h parameters and bounds.
 func (self *FlexGrid) SetSizeI(args ...interface{}) {
-	self.Object.Call("setSize", args)
+	self.Object.Call("setSize", args...)
 }
 
 // CreateCustomLayer A custom layer is centered on the game and maintains its aspect ratio as it scales up and down.
@@ -106,7 +106,7 @@ func (self *FlexGrid) CreateCustomLayer1O(width int, height int, children []Disp
 
 // CreateCustomLayerI A custom layer is centered on the game and maintains its aspect ratio as it scales up and down.
 func (self *FlexGrid) CreateCustomLayerI(args ...interface{}) *FlexLayer {
-	return &FlexLayer{self.Object.Call("createCustomLayer", args)}
+	return &FlexLayer{self.Object.Call("createCustomLayer", args...)}
 }
 
 // CreateFluidLayer A fluid layer is centered on the game and maintains its aspect ratio as it scales up and down.
@@ -121,7 +121,7 @@ func (self *FlexGrid) CreateFluidLayer1O(children []interface{}) *FlexLayer {
 
 // CreateFluidLayerI A fluid layer is centered on the game and maintains its aspect ratio as it scales up and down.
 func (self *FlexGrid) CreateFluidLayerI(args ...interface{}) *FlexLayer {
-	return &FlexLayer{self.Object.Call("createFluidLayer", args)}
+	return &FlexLayer{self.Object.Call("createFluidLayer", args...)}
 }
 
 // CreateFullLayer A full layer is placed at 0,0 and extends to the full size of the game. Children are scaled according to the fluid ratios.
@@ -136,7 +136,7 @@ func (self *FlexGrid) CreateFullLayer1O(children []interface{}) *FlexLayer {
 
 // CreateFullLayerI A full layer is placed at 0,0 and extends to the full size of the game. Children are scaled according to the fluid ratios.
 func (self *FlexGrid) CreateFullLayerI(args ...interface{}) *FlexLayer {
-	return &FlexLayer{self.Object.Call("createFullLayer", args)}
+	return &FlexLayer{self.Object.Call("createFullLayer", args...)}
 }
 
 // CreateFixedLayer A fixed layer is centered on the game and is the size of the required dimensions and is never scaled.
@@ -151,7 +151,7 @@ func (self *FlexGrid) CreateFixedLayer1O(children []DisplayObject) *FlexLayer {
 
 // CreateFixedLayerI A fixed layer is centered on the game and is the size of the required dimensions and is never scaled.
 func (self *FlexGrid) CreateFixedLayerI(args ...interface{}) *FlexLayer {
-	return &FlexLayer{self.Object.Call("createFixedLayer", args)}
+	return &FlexLayer{self.Object.Call("createFixedLayer", args...)}
 }
 
 // Reset Resets the layer children references
@@ -161,7 +161,7 @@ func (self *FlexGrid) Reset() {
 
 // ResetI Resets the layer children references
 func (self *FlexGrid) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // OnResize Called when the game container changes dimensions.
@@ -171,7 +171,7 @@ func (self *FlexGrid) OnResize(width int, height int) {
 
 // OnResizeI Called when the game container changes dimensions.
 func (self *FlexGrid) OnResizeI(args ...interface{}) {
-	self.Object.Call("onResize", args)
+	self.Object.Call("onResize", args...)
 }
 
 // Refresh Updates all internal vars such as the bounds and scale values.
@@ -181,7 +181,7 @@ func (self *FlexGrid) Refresh() {
 
 // RefreshI Updates all internal vars such as the bounds and scale values.
 func (self *FlexGrid) RefreshI(args ...interface{}) {
-	self.Object.Call("refresh", args)
+	self.Object.Call("refresh", args...)
 }
 
 // FitSprite Fits a sprites width to the bounds.
@@ -191,7 +191,7 @@ func (self *FlexGrid) FitSprite(sprite *Sprite) {
 
 // FitSpriteI Fits a sprites width to the bounds.
 func (self *FlexGrid) FitSpriteI(args ...interface{}) {
-	self.Object.Call("fitSprite", args)
+	self.Object.Call("fitSprite", args...)
 }
 
 // Debug Call in the render function to output the bounds rects.
@@ -201,5 +201,5 @@ func (self *FlexGrid) Debug() {
 
 // DebugI Call in the render function to output the bounds rects.
 func (self *FlexGrid) DebugI(args ...interface{}) {
-	self.Object.Call("debug", args)
+	self.Object.Call("debug", args...)
 }

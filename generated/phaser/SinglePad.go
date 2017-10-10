@@ -18,7 +18,7 @@ func NewSinglePad(game *Game, padParent interface{}) *SinglePad {
 
 // NewSinglePadI A single Phaser Gamepad
 func NewSinglePadI(args ...interface{}) *SinglePad {
-	return &SinglePad{js.Global.Get("Phaser").Get("SinglePad").New(args)}
+	return &SinglePad{js.Global.Get("Phaser").Get("SinglePad").New(args...)}
 }
 
 // SinglePad Binding conversion method to SinglePad point
@@ -146,7 +146,7 @@ func (self *SinglePad) AddCallbacks(context interface{}, callbacks interface{}) 
 
 // AddCallbacksI Add callbacks to this Gamepad to handle connect / disconnect / button down / button up / axis change / float value buttons.
 func (self *SinglePad) AddCallbacksI(args ...interface{}) {
-	self.Object.Call("addCallbacks", args)
+	self.Object.Call("addCallbacks", args...)
 }
 
 // GetButton Gets a DeviceButton object from this controller to be stored and referenced locally.
@@ -158,7 +158,7 @@ func (self *SinglePad) GetButton(buttonCode int) *DeviceButton {
 // GetButtonI Gets a DeviceButton object from this controller to be stored and referenced locally.
 // The DeviceButton object can then be polled, have events attached to it, etc.
 func (self *SinglePad) GetButtonI(args ...interface{}) *DeviceButton {
-	return &DeviceButton{self.Object.Call("getButton", args)}
+	return &DeviceButton{self.Object.Call("getButton", args...)}
 }
 
 // PollStatus Main update function called by Phaser.Gamepad.
@@ -168,7 +168,7 @@ func (self *SinglePad) PollStatus() {
 
 // PollStatusI Main update function called by Phaser.Gamepad.
 func (self *SinglePad) PollStatusI(args ...interface{}) {
-	self.Object.Call("pollStatus", args)
+	self.Object.Call("pollStatus", args...)
 }
 
 // Connect Gamepad connect function, should be called by Phaser.Gamepad.
@@ -178,7 +178,7 @@ func (self *SinglePad) Connect(rawPad interface{}) {
 
 // ConnectI Gamepad connect function, should be called by Phaser.Gamepad.
 func (self *SinglePad) ConnectI(args ...interface{}) {
-	self.Object.Call("connect", args)
+	self.Object.Call("connect", args...)
 }
 
 // Disconnect Gamepad disconnect function, should be called by Phaser.Gamepad.
@@ -188,7 +188,7 @@ func (self *SinglePad) Disconnect() {
 
 // DisconnectI Gamepad disconnect function, should be called by Phaser.Gamepad.
 func (self *SinglePad) DisconnectI(args ...interface{}) {
-	self.Object.Call("disconnect", args)
+	self.Object.Call("disconnect", args...)
 }
 
 // Destroy Destroys this object and associated callback references.
@@ -198,7 +198,7 @@ func (self *SinglePad) Destroy() {
 
 // DestroyI Destroys this object and associated callback references.
 func (self *SinglePad) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // ProcessAxisChange Handles changes in axis.
@@ -208,7 +208,7 @@ func (self *SinglePad) ProcessAxisChange(axisState interface{}) {
 
 // ProcessAxisChangeI Handles changes in axis.
 func (self *SinglePad) ProcessAxisChangeI(args ...interface{}) {
-	self.Object.Call("processAxisChange", args)
+	self.Object.Call("processAxisChange", args...)
 }
 
 // ProcessButtonDown Handles button down press.
@@ -218,7 +218,7 @@ func (self *SinglePad) ProcessButtonDown(buttonCode int, value interface{}) {
 
 // ProcessButtonDownI Handles button down press.
 func (self *SinglePad) ProcessButtonDownI(args ...interface{}) {
-	self.Object.Call("processButtonDown", args)
+	self.Object.Call("processButtonDown", args...)
 }
 
 // ProcessButtonUp Handles button release.
@@ -228,7 +228,7 @@ func (self *SinglePad) ProcessButtonUp(buttonCode int, value interface{}) {
 
 // ProcessButtonUpI Handles button release.
 func (self *SinglePad) ProcessButtonUpI(args ...interface{}) {
-	self.Object.Call("processButtonUp", args)
+	self.Object.Call("processButtonUp", args...)
 }
 
 // ProcessButtonFloat Handles buttons with floating values (like analog buttons that acts almost like an axis but still registers like a button)
@@ -238,7 +238,7 @@ func (self *SinglePad) ProcessButtonFloat(buttonCode int, value interface{}) {
 
 // ProcessButtonFloatI Handles buttons with floating values (like analog buttons that acts almost like an axis but still registers like a button)
 func (self *SinglePad) ProcessButtonFloatI(args ...interface{}) {
-	self.Object.Call("processButtonFloat", args)
+	self.Object.Call("processButtonFloat", args...)
 }
 
 // Axis Returns value of requested axis.
@@ -248,7 +248,7 @@ func (self *SinglePad) Axis(axisCode int) int {
 
 // AxisI Returns value of requested axis.
 func (self *SinglePad) AxisI(args ...interface{}) int {
-	return self.Object.Call("axis", args).Int()
+	return self.Object.Call("axis", args...).Int()
 }
 
 // IsDown Returns true if the button is pressed down.
@@ -258,7 +258,7 @@ func (self *SinglePad) IsDown(buttonCode int) bool {
 
 // IsDownI Returns true if the button is pressed down.
 func (self *SinglePad) IsDownI(args ...interface{}) bool {
-	return self.Object.Call("isDown", args).Bool()
+	return self.Object.Call("isDown", args...).Bool()
 }
 
 // IsUp Returns true if the button is not currently pressed.
@@ -268,7 +268,7 @@ func (self *SinglePad) IsUp(buttonCode int) bool {
 
 // IsUpI Returns true if the button is not currently pressed.
 func (self *SinglePad) IsUpI(args ...interface{}) bool {
-	return self.Object.Call("isUp", args).Bool()
+	return self.Object.Call("isUp", args...).Bool()
 }
 
 // JustReleased Returns the "just released" state of a button from this gamepad. Just released is considered as being true if the button was released within the duration given (default 250ms).
@@ -283,7 +283,7 @@ func (self *SinglePad) JustReleased1O(buttonCode int, duration int) bool {
 
 // JustReleasedI Returns the "just released" state of a button from this gamepad. Just released is considered as being true if the button was released within the duration given (default 250ms).
 func (self *SinglePad) JustReleasedI(args ...interface{}) bool {
-	return self.Object.Call("justReleased", args).Bool()
+	return self.Object.Call("justReleased", args...).Bool()
 }
 
 // JustPressed Returns the "just pressed" state of a button from this gamepad. Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
@@ -298,7 +298,7 @@ func (self *SinglePad) JustPressed1O(buttonCode int, duration int) bool {
 
 // JustPressedI Returns the "just pressed" state of a button from this gamepad. Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
 func (self *SinglePad) JustPressedI(args ...interface{}) bool {
-	return self.Object.Call("justPressed", args).Bool()
+	return self.Object.Call("justPressed", args...).Bool()
 }
 
 // ButtonValue Returns the value of a gamepad button. Intended mainly for cases when you have floating button values, for example
@@ -310,7 +310,7 @@ func (self *SinglePad) ButtonValue(buttonCode int) int {
 // ButtonValueI Returns the value of a gamepad button. Intended mainly for cases when you have floating button values, for example
 // analog trigger buttons on the XBOX 360 controller.
 func (self *SinglePad) ButtonValueI(args ...interface{}) int {
-	return self.Object.Call("buttonValue", args).Int()
+	return self.Object.Call("buttonValue", args...).Int()
 }
 
 // Reset Reset all buttons/axes of this gamepad.
@@ -320,5 +320,5 @@ func (self *SinglePad) Reset() {
 
 // ResetI Reset all buttons/axes of this gamepad.
 func (self *SinglePad) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }

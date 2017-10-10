@@ -18,7 +18,7 @@ func NewComponentInCamera() *ComponentInCamera {
 
 // NewComponentInCameraI The InCamera component checks if the Game Object intersects with the Game Camera.
 func NewComponentInCameraI(args ...interface{}) *ComponentInCamera {
-	return &ComponentInCamera{js.Global.Get("Phaser").Get("Component").Get("InCamera").New(args)}
+	return &ComponentInCamera{js.Global.Get("Phaser").Get("Component").Get("InCamera").New(args...)}
 }
 
 // ComponentInCamera Binding conversion method to ComponentInCamera point

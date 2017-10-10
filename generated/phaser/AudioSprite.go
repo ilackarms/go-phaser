@@ -21,7 +21,7 @@ func NewAudioSprite(game *Game, key string) *AudioSprite {
 // NewAudioSpriteI Audio Sprites are a combination of audio files and a JSON configuration.
 // The JSON follows the format of that created by https://github.com/tonistiigi/audiosprite
 func NewAudioSpriteI(args ...interface{}) *AudioSprite {
-	return &AudioSprite{js.Global.Get("Phaser").Get("AudioSprite").New(args)}
+	return &AudioSprite{js.Global.Get("Phaser").Get("AudioSprite").New(args...)}
 }
 
 // AudioSprite Binding conversion method to AudioSprite point
@@ -109,7 +109,7 @@ func (self *AudioSprite) Play2O(marker string, volume int) *Sound {
 
 // PlayI Play a sound with the given name.
 func (self *AudioSprite) PlayI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("play", args)}
+	return &Sound{self.Object.Call("play", args...)}
 }
 
 // Stop Stop a sound with the given name.
@@ -124,7 +124,7 @@ func (self *AudioSprite) Stop1O(marker string) {
 
 // StopI Stop a sound with the given name.
 func (self *AudioSprite) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // Get Get a sound with the given name.
@@ -134,5 +134,5 @@ func (self *AudioSprite) Get(marker string) *Sound {
 
 // GetI Get a sound with the given name.
 func (self *AudioSprite) GetI(args ...interface{}) *Sound {
-	return &Sound{self.Object.Call("get", args)}
+	return &Sound{self.Object.Call("get", args...)}
 }

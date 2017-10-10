@@ -75,7 +75,7 @@ func NewCreature1O(game *Game, x int, y int, key interface{}, mesh string, anima
 //
 // So you'll need to do `grunt custom` to create a build that includes them.
 func NewCreatureI(args ...interface{}) *Creature {
-	return &Creature{js.Global.Get("Phaser").Get("Creature").New(args)}
+	return &Creature{js.Global.Get("Phaser").Get("Creature").New(args...)}
 }
 
 // Creature Binding conversion method to Creature point
@@ -663,7 +663,7 @@ func (self *Creature) PreUpdate() {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *Creature) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // _initWebGL empty description
@@ -673,7 +673,7 @@ func (self *Creature) _initWebGL() {
 
 // _initWebGLI empty description
 func (self *Creature) _initWebGLI(args ...interface{}) {
-	self.Object.Call("_initWebGL", args)
+	self.Object.Call("_initWebGL", args...)
 }
 
 // _renderWebGL empty description
@@ -683,7 +683,7 @@ func (self *Creature) _renderWebGL() {
 
 // _renderWebGLI empty description
 func (self *Creature) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCreature empty description
@@ -693,7 +693,7 @@ func (self *Creature) _renderCreature() {
 
 // _renderCreatureI empty description
 func (self *Creature) _renderCreatureI(args ...interface{}) {
-	self.Object.Call("_renderCreature", args)
+	self.Object.Call("_renderCreature", args...)
 }
 
 // UpdateCreatureBounds empty description
@@ -703,7 +703,7 @@ func (self *Creature) UpdateCreatureBounds() {
 
 // UpdateCreatureBoundsI empty description
 func (self *Creature) UpdateCreatureBoundsI(args ...interface{}) {
-	self.Object.Call("updateCreatureBounds", args)
+	self.Object.Call("updateCreatureBounds", args...)
 }
 
 // UpdateData empty description
@@ -713,7 +713,7 @@ func (self *Creature) UpdateData() {
 
 // UpdateDataI empty description
 func (self *Creature) UpdateDataI(args ...interface{}) {
-	self.Object.Call("updateData", args)
+	self.Object.Call("updateData", args...)
 }
 
 // UpdateRenderData empty description
@@ -723,7 +723,7 @@ func (self *Creature) UpdateRenderData() {
 
 // UpdateRenderDataI empty description
 func (self *Creature) UpdateRenderDataI(args ...interface{}) {
-	self.Object.Call("updateRenderData", args)
+	self.Object.Call("updateRenderData", args...)
 }
 
 // SetAnimation Sets the Animation this Creature object will play, as defined in the mesh data.
@@ -733,7 +733,7 @@ func (self *Creature) SetAnimation(key string) {
 
 // SetAnimationI Sets the Animation this Creature object will play, as defined in the mesh data.
 func (self *Creature) SetAnimationI(args ...interface{}) {
-	self.Object.Call("setAnimation", args)
+	self.Object.Call("setAnimation", args...)
 }
 
 // Play Plays the currently set animation.
@@ -748,7 +748,7 @@ func (self *Creature) Play1O(loop bool) {
 
 // PlayI Plays the currently set animation.
 func (self *Creature) PlayI(args ...interface{}) {
-	self.Object.Call("play", args)
+	self.Object.Call("play", args...)
 }
 
 // Stop Stops the currently playing animation.
@@ -758,7 +758,7 @@ func (self *Creature) Stop() {
 
 // StopI Stops the currently playing animation.
 func (self *Creature) StopI(args ...interface{}) {
-	self.Object.Call("stop", args)
+	self.Object.Call("stop", args...)
 }
 
 // AddChild Adds a child to the container.
@@ -768,7 +768,7 @@ func (self *Creature) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *Creature) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -778,7 +778,7 @@ func (self *Creature) AddChildAt(child *DisplayObject, index int) *DisplayObject
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *Creature) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -788,7 +788,7 @@ func (self *Creature) SwapChildren(child *DisplayObject, child2 *DisplayObject) 
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *Creature) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -798,7 +798,7 @@ func (self *Creature) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *Creature) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -808,7 +808,7 @@ func (self *Creature) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *Creature) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -818,7 +818,7 @@ func (self *Creature) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *Creature) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -828,7 +828,7 @@ func (self *Creature) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *Creature) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -838,7 +838,7 @@ func (self *Creature) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *Creature) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -848,7 +848,7 @@ func (self *Creature) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *Creature) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // GetBounds Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
@@ -863,7 +863,7 @@ func (self *Creature) GetBounds1O(targetCoordinateSpace interface{}) *Rectangle 
 
 // GetBoundsI Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
 func (self *Creature) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
@@ -873,7 +873,7 @@ func (self *Creature) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 func (self *Creature) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -883,7 +883,7 @@ func (self *Creature) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *Creature) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -893,7 +893,7 @@ func (self *Creature) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *Creature) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -907,7 +907,7 @@ func (self *Creature) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *Creature) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // PostUpdate Internal method called by the World postUpdate cycle.
@@ -917,7 +917,7 @@ func (self *Creature) PostUpdate() {
 
 // PostUpdateI Internal method called by the World postUpdate cycle.
 func (self *Creature) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // BringToTop Brings this Game Object to the top of its parents display list.
@@ -935,7 +935,7 @@ func (self *Creature) BringToTop() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Creature) BringToTopI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("bringToTop", args)}
+	return &DisplayObject{self.Object.Call("bringToTop", args...)}
 }
 
 // SendToBack Sends this Game Object to the bottom of its parents display list.
@@ -953,7 +953,7 @@ func (self *Creature) SendToBack() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Creature) SendToBackI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("sendToBack", args)}
+	return &DisplayObject{self.Object.Call("sendToBack", args...)}
 }
 
 // MoveUp Moves this Game Object up one place in its parents display list.
@@ -971,7 +971,7 @@ func (self *Creature) MoveUp() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Creature) MoveUpI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveUp", args)}
+	return &DisplayObject{self.Object.Call("moveUp", args...)}
 }
 
 // MoveDown Moves this Game Object down one place in its parents display list.
@@ -989,7 +989,7 @@ func (self *Creature) MoveDown() *DisplayObject {
 // If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
 // because the World is the root Group from which all Game Objects descend.
 func (self *Creature) MoveDownI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("moveDown", args)}
+	return &DisplayObject{self.Object.Call("moveDown", args...)}
 }
 
 // Destroy Destroys the Game Object. This removes it from its parent group, destroys the input, event and animation handlers if present
@@ -1033,7 +1033,7 @@ func (self *Creature) Destroy2O(destroyChildren bool, destroyTexture bool) {
 // You can optionally also destroy the BaseTexture this Game Object is using. Be careful if you've
 // more than one Game Object sharing the same BaseTexture.
 func (self *Creature) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -1060,7 +1060,7 @@ func (self *Creature) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *Creature) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -1084,7 +1084,7 @@ func (self *Creature) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *Creature) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // Reset Resets the Game Object.
@@ -1120,5 +1120,5 @@ func (self *Creature) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *Creature) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }

@@ -18,7 +18,7 @@ func NewVec2() *Vec2 {
 
 // NewVec2I empty description
 func NewVec2I(args ...interface{}) *Vec2 {
-	return &Vec2{js.Global.Get("vec2").New(args)}
+	return &Vec2{js.Global.Get("vec2").New(args...)}
 }
 
 // Vec2 Binding conversion method to Vec2 point

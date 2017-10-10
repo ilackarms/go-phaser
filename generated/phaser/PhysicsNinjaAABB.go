@@ -21,7 +21,7 @@ func NewPhysicsNinjaAABB(body *PhysicsNinjaBody, x int, y int, width int, height
 // NewPhysicsNinjaAABBI Ninja Physics AABB constructor.
 // Note: This class could be massively optimised and reduced in size. I leave that challenge up to you.
 func NewPhysicsNinjaAABBI(args ...interface{}) *PhysicsNinjaAABB {
-	return &PhysicsNinjaAABB{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("AABB").New(args)}
+	return &PhysicsNinjaAABB{js.Global.Get("Phaser").Get("Physics").Get("Ninja").Get("AABB").New(args...)}
 }
 
 // PhysicsNinjaAABB Binding conversion method to PhysicsNinjaAABB point
@@ -139,7 +139,7 @@ func (self *PhysicsNinjaAABB) Integrate() {
 
 // IntegrateI Updates this AABBs position.
 func (self *PhysicsNinjaAABB) IntegrateI(args ...interface{}) {
-	self.Object.Call("integrate", args)
+	self.Object.Call("integrate", args...)
 }
 
 // ReportCollision Process a collision partner-agnostic collision response and apply the resulting forces.
@@ -149,7 +149,7 @@ func (self *PhysicsNinjaAABB) ReportCollision(px int, py int, dx int, dy int) {
 
 // ReportCollisionI Process a collision partner-agnostic collision response and apply the resulting forces.
 func (self *PhysicsNinjaAABB) ReportCollisionI(args ...interface{}) {
-	self.Object.Call("reportCollision", args)
+	self.Object.Call("reportCollision", args...)
 }
 
 // ReportCollisionVsWorld Process a world collision and apply the resulting forces.
@@ -159,7 +159,7 @@ func (self *PhysicsNinjaAABB) ReportCollisionVsWorld(px int, py int, dx int, dy 
 
 // ReportCollisionVsWorldI Process a world collision and apply the resulting forces.
 func (self *PhysicsNinjaAABB) ReportCollisionVsWorldI(args ...interface{}) {
-	self.Object.Call("reportCollisionVsWorld", args)
+	self.Object.Call("reportCollisionVsWorld", args...)
 }
 
 // Reverse empty description
@@ -169,7 +169,7 @@ func (self *PhysicsNinjaAABB) Reverse() {
 
 // ReverseI empty description
 func (self *PhysicsNinjaAABB) ReverseI(args ...interface{}) {
-	self.Object.Call("reverse", args)
+	self.Object.Call("reverse", args...)
 }
 
 // ReportCollisionVsBody Process a body collision and apply the resulting forces. Still very much WIP and doesn't work fully. Feel free to fix!
@@ -179,7 +179,7 @@ func (self *PhysicsNinjaAABB) ReportCollisionVsBody(px int, py int, dx int, dy i
 
 // ReportCollisionVsBodyI Process a body collision and apply the resulting forces. Still very much WIP and doesn't work fully. Feel free to fix!
 func (self *PhysicsNinjaAABB) ReportCollisionVsBodyI(args ...interface{}) {
-	self.Object.Call("reportCollisionVsBody", args)
+	self.Object.Call("reportCollisionVsBody", args...)
 }
 
 // CollideWorldBounds Collides this AABB against the world bounds.
@@ -189,7 +189,7 @@ func (self *PhysicsNinjaAABB) CollideWorldBounds() {
 
 // CollideWorldBoundsI Collides this AABB against the world bounds.
 func (self *PhysicsNinjaAABB) CollideWorldBoundsI(args ...interface{}) {
-	self.Object.Call("collideWorldBounds", args)
+	self.Object.Call("collideWorldBounds", args...)
 }
 
 // CollideAABBVsAABB Collides this AABB against a AABB.
@@ -199,7 +199,7 @@ func (self *PhysicsNinjaAABB) CollideAABBVsAABB(aabb *PhysicsNinjaAABB) {
 
 // CollideAABBVsAABBI Collides this AABB against a AABB.
 func (self *PhysicsNinjaAABB) CollideAABBVsAABBI(args ...interface{}) {
-	self.Object.Call("collideAABBVsAABB", args)
+	self.Object.Call("collideAABBVsAABB", args...)
 }
 
 // CollideAABBVsTile Collides this AABB against a Tile.
@@ -209,7 +209,7 @@ func (self *PhysicsNinjaAABB) CollideAABBVsTile(tile *PhysicsNinjaTile) {
 
 // CollideAABBVsTileI Collides this AABB against a Tile.
 func (self *PhysicsNinjaAABB) CollideAABBVsTileI(args ...interface{}) {
-	self.Object.Call("collideAABBVsTile", args)
+	self.Object.Call("collideAABBVsTile", args...)
 }
 
 // ResolveTile Resolves tile collision.
@@ -219,7 +219,7 @@ func (self *PhysicsNinjaAABB) ResolveTile(x int, y int, body *PhysicsNinjaAABB, 
 
 // ResolveTileI Resolves tile collision.
 func (self *PhysicsNinjaAABB) ResolveTileI(args ...interface{}) bool {
-	return self.Object.Call("resolveTile", args).Bool()
+	return self.Object.Call("resolveTile", args...).Bool()
 }
 
 // ProjAABB_Full Resolves Full tile collision.
@@ -229,7 +229,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_Full(x int, y int, obj *PhysicsNinjaAABB,
 
 // ProjAABB_FullI Resolves Full tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_FullI(args ...interface{}) int {
-	return self.Object.Call("projAABB_Full", args).Int()
+	return self.Object.Call("projAABB_Full", args...).Int()
 }
 
 // ProjAABB_Half Resolves Half tile collision.
@@ -239,7 +239,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_Half(x int, y int, obj *PhysicsNinjaAABB,
 
 // ProjAABB_HalfI Resolves Half tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_HalfI(args ...interface{}) int {
-	return self.Object.Call("projAABB_Half", args).Int()
+	return self.Object.Call("projAABB_Half", args...).Int()
 }
 
 // ProjAABB_45Deg Resolves 45 Degree tile collision.
@@ -249,7 +249,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_45Deg(x int, y int, obj *PhysicsNinjaAABB
 
 // ProjAABB_45DegI Resolves 45 Degree tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_45DegI(args ...interface{}) int {
-	return self.Object.Call("projAABB_45Deg", args).Int()
+	return self.Object.Call("projAABB_45Deg", args...).Int()
 }
 
 // ProjAABB_22DegS Resolves 22 Degree tile collision.
@@ -259,7 +259,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_22DegS(x int, y int, obj *PhysicsNinjaAAB
 
 // ProjAABB_22DegSI Resolves 22 Degree tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_22DegSI(args ...interface{}) int {
-	return self.Object.Call("projAABB_22DegS", args).Int()
+	return self.Object.Call("projAABB_22DegS", args...).Int()
 }
 
 // ProjAABB_22DegB Resolves 22 Degree tile collision.
@@ -269,7 +269,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_22DegB(x int, y int, obj *PhysicsNinjaAAB
 
 // ProjAABB_22DegBI Resolves 22 Degree tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_22DegBI(args ...interface{}) int {
-	return self.Object.Call("projAABB_22DegB", args).Int()
+	return self.Object.Call("projAABB_22DegB", args...).Int()
 }
 
 // ProjAABB_67DegS Resolves 67 Degree tile collision.
@@ -279,7 +279,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_67DegS(x int, y int, obj *PhysicsNinjaAAB
 
 // ProjAABB_67DegSI Resolves 67 Degree tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_67DegSI(args ...interface{}) int {
-	return self.Object.Call("projAABB_67DegS", args).Int()
+	return self.Object.Call("projAABB_67DegS", args...).Int()
 }
 
 // ProjAABB_67DegB Resolves 67 Degree tile collision.
@@ -289,7 +289,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_67DegB(x int, y int, obj *PhysicsNinjaAAB
 
 // ProjAABB_67DegBI Resolves 67 Degree tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_67DegBI(args ...interface{}) int {
-	return self.Object.Call("projAABB_67DegB", args).Int()
+	return self.Object.Call("projAABB_67DegB", args...).Int()
 }
 
 // ProjAABB_Convex Resolves Convex tile collision.
@@ -299,7 +299,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_Convex(x int, y int, obj *PhysicsNinjaAAB
 
 // ProjAABB_ConvexI Resolves Convex tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_ConvexI(args ...interface{}) int {
-	return self.Object.Call("projAABB_Convex", args).Int()
+	return self.Object.Call("projAABB_Convex", args...).Int()
 }
 
 // ProjAABB_Concave Resolves Concave tile collision.
@@ -309,7 +309,7 @@ func (self *PhysicsNinjaAABB) ProjAABB_Concave(x int, y int, obj *PhysicsNinjaAA
 
 // ProjAABB_ConcaveI Resolves Concave tile collision.
 func (self *PhysicsNinjaAABB) ProjAABB_ConcaveI(args ...interface{}) int {
-	return self.Object.Call("projAABB_Concave", args).Int()
+	return self.Object.Call("projAABB_Concave", args...).Int()
 }
 
 // Destroy Destroys this AABB's reference to Body and System
@@ -319,7 +319,7 @@ func (self *PhysicsNinjaAABB) Destroy() {
 
 // DestroyI Destroys this AABB's reference to Body and System
 func (self *PhysicsNinjaAABB) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Render Render this AABB for debugging purposes.
@@ -329,5 +329,5 @@ func (self *PhysicsNinjaAABB) Render(context interface{}, xOffset int, yOffset i
 
 // RenderI Render this AABB for debugging purposes.
 func (self *PhysicsNinjaAABB) RenderI(args ...interface{}) {
-	self.Object.Call("render", args)
+	self.Object.Call("render", args...)
 }

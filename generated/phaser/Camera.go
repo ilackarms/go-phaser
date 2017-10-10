@@ -21,7 +21,7 @@ func NewCamera(game *Game, id int, x int, y int, width int, height int) *Camera 
 // NewCameraI A Camera is your view into the game world. It has a position and size and renders only those objects within its field of view.
 // The game automatically creates a single Stage sized camera on boot. Move the camera around the world with Phaser.Camera.x/y
 func NewCameraI(args ...interface{}) *Camera {
-	return &Camera{js.Global.Get("Phaser").Get("Camera").New(args)}
+	return &Camera{js.Global.Get("Phaser").Get("Camera").New(args...)}
 }
 
 // Camera Binding conversion method to Camera point
@@ -383,7 +383,7 @@ func (self *Camera) Boot() {
 
 // BootI Called automatically by Phaser.World.
 func (self *Camera) BootI(args ...interface{}) {
-	self.Object.Call("boot", args)
+	self.Object.Call("boot", args...)
 }
 
 // PreUpdate Camera preUpdate. Sets the total view counter to zero.
@@ -393,7 +393,7 @@ func (self *Camera) PreUpdate() {
 
 // PreUpdateI Camera preUpdate. Sets the total view counter to zero.
 func (self *Camera) PreUpdateI(args ...interface{}) {
-	self.Object.Call("preUpdate", args)
+	self.Object.Call("preUpdate", args...)
 }
 
 // Follow Tell the camera which sprite to follow.
@@ -448,7 +448,7 @@ func (self *Camera) Follow3O(target interface{}, style int, lerpX float64, lerpY
 // If you find you're getting a slight "jitter" effect when following a Sprite it's probably to do with sub-pixel rendering of the Sprite position.
 // This can be disabled by setting `game.renderer.renderSession.roundPixels = true` to force full pixel rendering.
 func (self *Camera) FollowI(args ...interface{}) {
-	self.Object.Call("follow", args)
+	self.Object.Call("follow", args...)
 }
 
 // Unfollow Sets the Camera follow target to null, stopping it from following an object if it's doing so.
@@ -458,7 +458,7 @@ func (self *Camera) Unfollow() {
 
 // UnfollowI Sets the Camera follow target to null, stopping it from following an object if it's doing so.
 func (self *Camera) UnfollowI(args ...interface{}) {
-	self.Object.Call("unfollow", args)
+	self.Object.Call("unfollow", args...)
 }
 
 // FocusOn Move the camera focus on a display object instantly.
@@ -468,7 +468,7 @@ func (self *Camera) FocusOn(displayObject interface{}) {
 
 // FocusOnI Move the camera focus on a display object instantly.
 func (self *Camera) FocusOnI(args ...interface{}) {
-	self.Object.Call("focusOn", args)
+	self.Object.Call("focusOn", args...)
 }
 
 // FocusOnXY Move the camera focus on a location instantly.
@@ -478,7 +478,7 @@ func (self *Camera) FocusOnXY(x int, y int) {
 
 // FocusOnXYI Move the camera focus on a location instantly.
 func (self *Camera) FocusOnXYI(args ...interface{}) {
-	self.Object.Call("focusOnXY", args)
+	self.Object.Call("focusOnXY", args...)
 }
 
 // Shake This creates a camera shake effect. It works by applying a random amount of additional
@@ -541,7 +541,7 @@ func (self *Camera) Shake5O(intensity float64, duration int, force bool, directi
 //
 // When the shake effect ends the signal Camera.onShakeComplete is dispatched.
 func (self *Camera) ShakeI(args ...interface{}) bool {
-	return self.Object.Call("shake", args).Bool()
+	return self.Object.Call("shake", args...).Bool()
 }
 
 // Flash This creates a camera flash effect. It works by filling the game with the solid fill
@@ -591,7 +591,7 @@ func (self *Camera) Flash3O(color float64, duration int, force bool) bool {
 //
 // When the effect ends the signal Camera.onFlashComplete is dispatched.
 func (self *Camera) FlashI(args ...interface{}) bool {
-	return self.Object.Call("flash", args).Bool()
+	return self.Object.Call("flash", args...).Bool()
 }
 
 // Fade This creates a camera fade effect. It works by filling the game with the
@@ -666,7 +666,7 @@ func (self *Camera) Fade3O(color float64, duration int, force bool) bool {
 //
 // When the effect ends the signal Camera.onFadeComplete is dispatched.
 func (self *Camera) FadeI(args ...interface{}) bool {
-	return self.Object.Call("fade", args).Bool()
+	return self.Object.Call("fade", args...).Bool()
 }
 
 // Update The camera update loop. This is called automatically by the core game loop.
@@ -676,7 +676,7 @@ func (self *Camera) Update() {
 
 // UpdateI The camera update loop. This is called automatically by the core game loop.
 func (self *Camera) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // UpdateFX Update the camera flash and fade effects.
@@ -686,7 +686,7 @@ func (self *Camera) UpdateFX() {
 
 // UpdateFXI Update the camera flash and fade effects.
 func (self *Camera) UpdateFXI(args ...interface{}) {
-	self.Object.Call("updateFX", args)
+	self.Object.Call("updateFX", args...)
 }
 
 // UpdateShake Update the camera shake effect.
@@ -696,7 +696,7 @@ func (self *Camera) UpdateShake() {
 
 // UpdateShakeI Update the camera shake effect.
 func (self *Camera) UpdateShakeI(args ...interface{}) {
-	self.Object.Call("updateShake", args)
+	self.Object.Call("updateShake", args...)
 }
 
 // UpdateTarget Internal method that handles tracking a sprite.
@@ -706,7 +706,7 @@ func (self *Camera) UpdateTarget() {
 
 // UpdateTargetI Internal method that handles tracking a sprite.
 func (self *Camera) UpdateTargetI(args ...interface{}) {
-	self.Object.Call("updateTarget", args)
+	self.Object.Call("updateTarget", args...)
 }
 
 // SetBoundsToWorld Update the Camera bounds to match the game world.
@@ -716,7 +716,7 @@ func (self *Camera) SetBoundsToWorld() {
 
 // SetBoundsToWorldI Update the Camera bounds to match the game world.
 func (self *Camera) SetBoundsToWorldI(args ...interface{}) {
-	self.Object.Call("setBoundsToWorld", args)
+	self.Object.Call("setBoundsToWorld", args...)
 }
 
 // CheckBounds Method called to ensure the camera doesn't venture outside of the game world.
@@ -728,7 +728,7 @@ func (self *Camera) CheckBounds() {
 // CheckBoundsI Method called to ensure the camera doesn't venture outside of the game world.
 // Called automatically by Camera.update.
 func (self *Camera) CheckBoundsI(args ...interface{}) {
-	self.Object.Call("checkBounds", args)
+	self.Object.Call("checkBounds", args...)
 }
 
 // SetPosition A helper function to set both the X and Y properties of the camera at once
@@ -740,7 +740,7 @@ func (self *Camera) SetPosition(x int, y int) {
 // SetPositionI A helper function to set both the X and Y properties of the camera at once
 // without having to use game.camera.x and game.camera.y.
 func (self *Camera) SetPositionI(args ...interface{}) {
-	self.Object.Call("setPosition", args)
+	self.Object.Call("setPosition", args...)
 }
 
 // SetSize Sets the size of the view rectangle given the width and height in parameters.
@@ -750,7 +750,7 @@ func (self *Camera) SetSize(width int, height int) {
 
 // SetSizeI Sets the size of the view rectangle given the width and height in parameters.
 func (self *Camera) SetSizeI(args ...interface{}) {
-	self.Object.Call("setSize", args)
+	self.Object.Call("setSize", args...)
 }
 
 // Reset Resets the camera back to 0,0 and un-follows any object it may have been tracking.
@@ -764,7 +764,7 @@ func (self *Camera) Reset() {
 // Also immediately resets any camera effects that may have been running such as
 // shake, flash or fade.
 func (self *Camera) ResetI(args ...interface{}) {
-	self.Object.Call("reset", args)
+	self.Object.Call("reset", args...)
 }
 
 // ResetFX Resets any active FX, such as a fade or flash and immediately clears it.
@@ -776,5 +776,5 @@ func (self *Camera) ResetFX() {
 // ResetFXI Resets any active FX, such as a fade or flash and immediately clears it.
 // Useful to calling after a fade in order to remove the fade from the Stage.
 func (self *Camera) ResetFXI(args ...interface{}) {
-	self.Object.Call("resetFX", args)
+	self.Object.Call("resetFX", args...)
 }

@@ -18,7 +18,7 @@ func NewEasingQuintic() *EasingQuintic {
 
 // NewEasingQuinticI Quintic easing.
 func NewEasingQuinticI(args ...interface{}) *EasingQuintic {
-	return &EasingQuintic{js.Global.Get("Phaser").Get("Easing").Get("Quintic").New(args)}
+	return &EasingQuintic{js.Global.Get("Phaser").Get("Easing").Get("Quintic").New(args...)}
 }
 
 // EasingQuintic Binding conversion method to EasingQuintic point
@@ -36,7 +36,7 @@ func (self *EasingQuintic) In(k int) int {
 
 // InI Quintic ease-in.
 func (self *EasingQuintic) InI(args ...interface{}) int {
-	return self.Object.Call("In", args).Int()
+	return self.Object.Call("In", args...).Int()
 }
 
 // Out Quintic ease-out.
@@ -46,7 +46,7 @@ func (self *EasingQuintic) Out(k int) int {
 
 // OutI Quintic ease-out.
 func (self *EasingQuintic) OutI(args ...interface{}) int {
-	return self.Object.Call("Out", args).Int()
+	return self.Object.Call("Out", args...).Int()
 }
 
 // InOut Quintic ease-in/out.
@@ -56,5 +56,5 @@ func (self *EasingQuintic) InOut(k int) int {
 
 // InOutI Quintic ease-in/out.
 func (self *EasingQuintic) InOutI(args ...interface{}) int {
-	return self.Object.Call("InOut", args).Int()
+	return self.Object.Call("InOut", args...).Int()
 }

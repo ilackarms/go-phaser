@@ -165,7 +165,7 @@ func NewBitmapText3O(game *Game, x int, y int, font string, text string, size in
 //
 // If you were using an older version of Phaser (< 2.4) and using the DOMish parser hack, please remove this. It isn't required any longer.
 func NewBitmapTextI(args ...interface{}) *BitmapText {
-	return &BitmapText{js.Global.Get("Phaser").Get("BitmapText").New(args)}
+	return &BitmapText{js.Global.Get("Phaser").Get("BitmapText").New(args...)}
 }
 
 // BitmapText Binding conversion method to BitmapText point
@@ -1045,7 +1045,7 @@ func (self *BitmapText) PreUpdate() bool {
 
 // PreUpdateI Automatically called by World.preUpdate.
 func (self *BitmapText) PreUpdateI(args ...interface{}) bool {
-	return self.Object.Call("preUpdate", args).Bool()
+	return self.Object.Call("preUpdate", args...).Bool()
 }
 
 // PostUpdate Automatically called by World.preUpdate.
@@ -1055,7 +1055,7 @@ func (self *BitmapText) PostUpdate() {
 
 // PostUpdateI Automatically called by World.preUpdate.
 func (self *BitmapText) PostUpdateI(args ...interface{}) {
-	self.Object.Call("postUpdate", args)
+	self.Object.Call("postUpdate", args...)
 }
 
 // SetText The text to be displayed by this BitmapText object.
@@ -1069,7 +1069,7 @@ func (self *BitmapText) SetText(text string) {
 //
 // It's faster to use `BitmapText.text = string`, but this is kept for backwards compatibility.
 func (self *BitmapText) SetTextI(args ...interface{}) {
-	self.Object.Call("setText", args)
+	self.Object.Call("setText", args...)
 }
 
 // ScanLine Given the input text this will scan the characters until either a newline is encountered,
@@ -1081,7 +1081,7 @@ func (self *BitmapText) ScanLine(data interface{}, scale float64, text string) i
 // ScanLineI Given the input text this will scan the characters until either a newline is encountered,
 // or the line exceeds maxWidth, taking into account kerning, character widths and scaling.
 func (self *BitmapText) ScanLineI(args ...interface{}) interface{} {
-	return self.Object.Call("scanLine", args)
+	return self.Object.Call("scanLine", args...)
 }
 
 // CleanText Given a text string this will scan each character in the string to ensure it exists
@@ -1105,7 +1105,7 @@ func (self *BitmapText) CleanText1O(text string, replace string) string {
 //
 // If no font data has been loaded at all this returns an empty string, as nothing can be rendered.
 func (self *BitmapText) CleanTextI(args ...interface{}) string {
-	return self.Object.Call("cleanText", args).String()
+	return self.Object.Call("cleanText", args...).String()
 }
 
 // UpdateText Renders text and updates it when needed.
@@ -1115,7 +1115,7 @@ func (self *BitmapText) UpdateText() {
 
 // UpdateTextI Renders text and updates it when needed.
 func (self *BitmapText) UpdateTextI(args ...interface{}) {
-	self.Object.Call("updateText", args)
+	self.Object.Call("updateText", args...)
 }
 
 // PurgeGlyphs If a BitmapText changes from having a large number of characters to having very few characters it will cause lots of
@@ -1139,7 +1139,7 @@ func (self *BitmapText) PurgeGlyphs() int {
 //
 // Calling this doesn't prevent you from increasing the length of the text again in the future.
 func (self *BitmapText) PurgeGlyphsI(args ...interface{}) int {
-	return self.Object.Call("purgeGlyphs", args).Int()
+	return self.Object.Call("purgeGlyphs", args...).Int()
 }
 
 // UpdateTransform Updates the transform of this object.
@@ -1149,7 +1149,7 @@ func (self *BitmapText) UpdateTransform() {
 
 // UpdateTransformI Updates the transform of this object.
 func (self *BitmapText) UpdateTransformI(args ...interface{}) {
-	self.Object.Call("updateTransform", args)
+	self.Object.Call("updateTransform", args...)
 }
 
 // AddChild Adds a child to the container.
@@ -1159,7 +1159,7 @@ func (self *BitmapText) AddChild(child *DisplayObject) *DisplayObject {
 
 // AddChildI Adds a child to the container.
 func (self *BitmapText) AddChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChild", args)}
+	return &DisplayObject{self.Object.Call("addChild", args...)}
 }
 
 // AddChildAt Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
@@ -1169,7 +1169,7 @@ func (self *BitmapText) AddChildAt(child *DisplayObject, index int) *DisplayObje
 
 // AddChildAtI Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 func (self *BitmapText) AddChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("addChildAt", args)}
+	return &DisplayObject{self.Object.Call("addChildAt", args...)}
 }
 
 // SwapChildren Swaps the position of 2 Display Objects within this container.
@@ -1179,7 +1179,7 @@ func (self *BitmapText) SwapChildren(child *DisplayObject, child2 *DisplayObject
 
 // SwapChildrenI Swaps the position of 2 Display Objects within this container.
 func (self *BitmapText) SwapChildrenI(args ...interface{}) {
-	self.Object.Call("swapChildren", args)
+	self.Object.Call("swapChildren", args...)
 }
 
 // GetChildIndex Returns the index position of a child DisplayObject instance
@@ -1189,7 +1189,7 @@ func (self *BitmapText) GetChildIndex(child *DisplayObject) int {
 
 // GetChildIndexI Returns the index position of a child DisplayObject instance
 func (self *BitmapText) GetChildIndexI(args ...interface{}) int {
-	return self.Object.Call("getChildIndex", args).Int()
+	return self.Object.Call("getChildIndex", args...).Int()
 }
 
 // SetChildIndex Changes the position of an existing child in the display object container
@@ -1199,7 +1199,7 @@ func (self *BitmapText) SetChildIndex(child *DisplayObject, index int) {
 
 // SetChildIndexI Changes the position of an existing child in the display object container
 func (self *BitmapText) SetChildIndexI(args ...interface{}) {
-	self.Object.Call("setChildIndex", args)
+	self.Object.Call("setChildIndex", args...)
 }
 
 // GetChildAt Returns the child at the specified index
@@ -1209,7 +1209,7 @@ func (self *BitmapText) GetChildAt(index int) *DisplayObject {
 
 // GetChildAtI Returns the child at the specified index
 func (self *BitmapText) GetChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("getChildAt", args)}
+	return &DisplayObject{self.Object.Call("getChildAt", args...)}
 }
 
 // RemoveChild Removes a child from the container.
@@ -1219,7 +1219,7 @@ func (self *BitmapText) RemoveChild(child *DisplayObject) *DisplayObject {
 
 // RemoveChildI Removes a child from the container.
 func (self *BitmapText) RemoveChildI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChild", args)}
+	return &DisplayObject{self.Object.Call("removeChild", args...)}
 }
 
 // RemoveChildAt Removes a child from the specified index position.
@@ -1229,7 +1229,7 @@ func (self *BitmapText) RemoveChildAt(index int) *DisplayObject {
 
 // RemoveChildAtI Removes a child from the specified index position.
 func (self *BitmapText) RemoveChildAtI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("removeChildAt", args)}
+	return &DisplayObject{self.Object.Call("removeChildAt", args...)}
 }
 
 // RemoveChildren Removes all children from this container that are within the begin and end indexes.
@@ -1239,7 +1239,7 @@ func (self *BitmapText) RemoveChildren(beginIndex int, endIndex int) {
 
 // RemoveChildrenI Removes all children from this container that are within the begin and end indexes.
 func (self *BitmapText) RemoveChildrenI(args ...interface{}) {
-	self.Object.Call("removeChildren", args)
+	self.Object.Call("removeChildren", args...)
 }
 
 // GetBounds Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
@@ -1254,7 +1254,7 @@ func (self *BitmapText) GetBounds1O(targetCoordinateSpace interface{}) *Rectangl
 
 // GetBoundsI Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
 func (self *BitmapText) GetBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getBounds", args)}
+	return &Rectangle{self.Object.Call("getBounds", args...)}
 }
 
 // GetLocalBounds Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
@@ -1264,7 +1264,7 @@ func (self *BitmapText) GetLocalBounds() *Rectangle {
 
 // GetLocalBoundsI Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 func (self *BitmapText) GetLocalBoundsI(args ...interface{}) *Rectangle {
-	return &Rectangle{self.Object.Call("getLocalBounds", args)}
+	return &Rectangle{self.Object.Call("getLocalBounds", args...)}
 }
 
 // Contains Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
@@ -1274,7 +1274,7 @@ func (self *BitmapText) Contains(child *DisplayObject) bool {
 
 // ContainsI Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 func (self *BitmapText) ContainsI(args ...interface{}) bool {
-	return self.Object.Call("contains", args).Bool()
+	return self.Object.Call("contains", args...).Bool()
 }
 
 // _renderWebGL Renders the object using the WebGL renderer
@@ -1284,7 +1284,7 @@ func (self *BitmapText) _renderWebGL(renderSession *RenderSession) {
 
 // _renderWebGLI Renders the object using the WebGL renderer
 func (self *BitmapText) _renderWebGLI(args ...interface{}) {
-	self.Object.Call("_renderWebGL", args)
+	self.Object.Call("_renderWebGL", args...)
 }
 
 // _renderCanvas Renders the object using the Canvas renderer
@@ -1294,7 +1294,7 @@ func (self *BitmapText) _renderCanvas(renderSession *RenderSession) {
 
 // _renderCanvasI Renders the object using the Canvas renderer
 func (self *BitmapText) _renderCanvasI(args ...interface{}) {
-	self.Object.Call("_renderCanvas", args)
+	self.Object.Call("_renderCanvas", args...)
 }
 
 // Update Override this method in your own custom objects to handle any update requirements.
@@ -1308,7 +1308,7 @@ func (self *BitmapText) Update() {
 // It is called immediately after `preUpdate` and before `postUpdate`.
 // Remember if this Game Object has any children you should call update on those too.
 func (self *BitmapText) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // AlignIn Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -1478,7 +1478,7 @@ func (self *BitmapText) AlignIn3O(container interface{}, position int, offsetX i
 // So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
 // one expands it.
 func (self *BitmapText) AlignInI(args ...interface{}) interface{} {
-	return self.Object.Call("alignIn", args)
+	return self.Object.Call("alignIn", args...)
 }
 
 // AlignTo Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -1653,7 +1653,7 @@ func (self *BitmapText) AlignTo3O(parent interface{}, position int, offsetX int,
 // So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
 // one expands it.
 func (self *BitmapText) AlignToI(args ...interface{}) interface{} {
-	return self.Object.Call("alignTo", args)
+	return self.Object.Call("alignTo", args...)
 }
 
 // Destroy Destroys the Game Object. This removes it from its parent group, destroys the input, event and animation handlers if present
@@ -1697,7 +1697,7 @@ func (self *BitmapText) Destroy2O(destroyChildren bool, destroyTexture bool) {
 // You can optionally also destroy the BaseTexture this Game Object is using. Be careful if you've
 // more than one Game Object sharing the same BaseTexture.
 func (self *BitmapText) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }
 
 // Revive Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
@@ -1724,7 +1724,7 @@ func (self *BitmapText) Revive1O(health int) *DisplayObject {
 //
 // It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
 func (self *BitmapText) ReviveI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("revive", args)}
+	return &DisplayObject{self.Object.Call("revive", args...)}
 }
 
 // Kill Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -1748,7 +1748,7 @@ func (self *BitmapText) Kill() *DisplayObject {
 //
 // If you don't need this Game Object any more you should call `destroy` instead.
 func (self *BitmapText) KillI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("kill", args)}
+	return &DisplayObject{self.Object.Call("kill", args...)}
 }
 
 // Reset Resets the Game Object.
@@ -1784,5 +1784,5 @@ func (self *BitmapText) Reset1O(x int, y int, health int) *DisplayObject {
 //
 // If this Game Object has a Physics Body it will reset the Body.
 func (self *BitmapText) ResetI(args ...interface{}) *DisplayObject {
-	return &DisplayObject{self.Object.Call("reset", args)}
+	return &DisplayObject{self.Object.Call("reset", args...)}
 }

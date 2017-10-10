@@ -18,7 +18,7 @@ func NewWebGLStencilManager() *WebGLStencilManager {
 
 // NewWebGLStencilManagerI empty description
 func NewWebGLStencilManagerI(args ...interface{}) *WebGLStencilManager {
-	return &WebGLStencilManager{js.Global.Get("PIXI").Get("WebGLStencilManager").New(args)}
+	return &WebGLStencilManager{js.Global.Get("PIXI").Get("WebGLStencilManager").New(args...)}
 }
 
 // WebGLStencilManager Binding conversion method to WebGLStencilManager point
@@ -36,7 +36,7 @@ func (self *WebGLStencilManager) SetContext(gl *WebGLContext) {
 
 // SetContextI Sets the drawing context to the one given in parameter.
 func (self *WebGLStencilManager) SetContextI(args ...interface{}) {
-	self.Object.Call("setContext", args)
+	self.Object.Call("setContext", args...)
 }
 
 // PushMask Applies the Mask and adds it to the current filter stack.
@@ -46,7 +46,7 @@ func (self *WebGLStencilManager) PushMask(graphics *Graphics, webGLData []interf
 
 // PushMaskI Applies the Mask and adds it to the current filter stack.
 func (self *WebGLStencilManager) PushMaskI(args ...interface{}) {
-	self.Object.Call("pushMask", args)
+	self.Object.Call("pushMask", args...)
 }
 
 // BindGraphics TODO this does not belong here!
@@ -56,7 +56,7 @@ func (self *WebGLStencilManager) BindGraphics(graphics *Graphics, webGLData []in
 
 // BindGraphicsI TODO this does not belong here!
 func (self *WebGLStencilManager) BindGraphicsI(args ...interface{}) {
-	self.Object.Call("bindGraphics", args)
+	self.Object.Call("bindGraphics", args...)
 }
 
 // PopStencil empty description
@@ -66,7 +66,7 @@ func (self *WebGLStencilManager) PopStencil(graphics *Graphics, webGLData []inte
 
 // PopStencilI empty description
 func (self *WebGLStencilManager) PopStencilI(args ...interface{}) {
-	self.Object.Call("popStencil", args)
+	self.Object.Call("popStencil", args...)
 }
 
 // Destroy Destroys the mask stack.
@@ -76,5 +76,5 @@ func (self *WebGLStencilManager) Destroy() {
 
 // DestroyI Destroys the mask stack.
 func (self *WebGLStencilManager) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

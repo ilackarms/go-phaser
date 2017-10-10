@@ -27,7 +27,7 @@ func NewFilter(game *Game, uniforms interface{}, fragmentSrc interface{}) *Filte
 // The vast majority of filters (including all of those that ship with Phaser) use fragment shaders, and
 // therefore only work in WebGL and are not supported by Canvas at all.
 func NewFilterI(args ...interface{}) *Filter {
-	return &Filter{js.Global.Get("Phaser").Get("Filter").New(args)}
+	return &Filter{js.Global.Get("Phaser").Get("Filter").New(args...)}
 }
 
 // Filter Binding conversion method to Filter point
@@ -135,7 +135,7 @@ func (self *Filter) Init() {
 
 // InitI Should be over-ridden.
 func (self *Filter) InitI(args ...interface{}) {
-	self.Object.Call("init", args)
+	self.Object.Call("init", args...)
 }
 
 // SetResolution Set the resolution uniforms on the filter.
@@ -145,7 +145,7 @@ func (self *Filter) SetResolution(width int, height int) {
 
 // SetResolutionI Set the resolution uniforms on the filter.
 func (self *Filter) SetResolutionI(args ...interface{}) {
-	self.Object.Call("setResolution", args)
+	self.Object.Call("setResolution", args...)
 }
 
 // Update Updates the filter.
@@ -160,7 +160,7 @@ func (self *Filter) Update1O(pointer *Pointer) {
 
 // UpdateI Updates the filter.
 func (self *Filter) UpdateI(args ...interface{}) {
-	self.Object.Call("update", args)
+	self.Object.Call("update", args...)
 }
 
 // AddToWorld Creates a new Phaser.Image object using a blank texture and assigns
@@ -248,7 +248,7 @@ func (self *Filter) AddToWorld6O(x int, y int, width int, height int, anchorX in
 // If you do provide width and height values then this filter will be resized to match those
 // values.
 func (self *Filter) AddToWorldI(args ...interface{}) *Image {
-	return &Image{self.Object.Call("addToWorld", args)}
+	return &Image{self.Object.Call("addToWorld", args...)}
 }
 
 // Destroy Clear down this Filter and null out references
@@ -258,5 +258,5 @@ func (self *Filter) Destroy() {
 
 // DestroyI Clear down this Filter and null out references
 func (self *Filter) DestroyI(args ...interface{}) {
-	self.Object.Call("destroy", args)
+	self.Object.Call("destroy", args...)
 }

@@ -18,7 +18,7 @@ func NewEarCut() *EarCut {
 
 // NewEarCutI empty description
 func NewEarCutI(args ...interface{}) *EarCut {
-	return &EarCut{js.Global.Get("PIXI").Get("EarCut").New(args)}
+	return &EarCut{js.Global.Get("PIXI").Get("EarCut").New(args...)}
 }
 
 // EarCut Binding conversion method to EarCut point
